@@ -7,7 +7,7 @@
     <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право. Работаю удалённо. Самозанятый юрист.">
     <title>Серко — Юрист онлайн. Решаю вопросы удалённо</title>
 
-    <!-- Yandex.Metrika counter (исправлено) -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ========== ВАШИ ПОЛНЫЕ СТИЛИ (сохранены без изменений) ========== */
+        /* ========== ПОЛНЫЕ СТИЛИ (без лишних вставок) ========== */
         @font-face {
             font-family: 'Cormorant Garamond';
             src: local('Cormorant Garamond'), local('CormorantGaramond-Regular');
@@ -138,7 +138,6 @@
             letter-spacing: 1px;
         }
 
-        /* Золотые грани — "СЕР" */
         .preloader-cube-face:nth-child(odd) {
             color: #d4af37;
             border-color: #d4af37;
@@ -146,7 +145,6 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(212, 175, 55, 0.05);
         }
 
-        /* Серебряные грани — "КО" */
         .preloader-cube-face:nth-child(even) {
             color: #e8e8e8;
             border-color: #c0c0c0;
@@ -210,7 +208,7 @@
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
         }
 
-        /* Gloss Effect - уменьшена интенсивность */
+        /* Gloss Effect */
         .gloss-overlay {
             position: absolute;
             top: 0;
@@ -370,7 +368,7 @@
             width: 100%;
         }
 
-        /* ========== ЕДИНЫЙ СТИЛЬ КНОПОК — все золотые, прямоугольные ========== */
+        /* Единый стиль кнопок */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -419,7 +417,6 @@
             transform: scale(0.98);
         }
 
-        /* Outline вариант — прозрачный с золотой рамкой */
         .btn-outline {
             background: transparent;
             color: var(--gold);
@@ -462,18 +459,15 @@
             display: none;
         }
 
-        /* Кнопки в карточках услуг (наследуют .btn) */
         .service-btn {
             width: 100%;
             min-height: 52px;
         }
 
-        /* Кнопки в прайсинге (наследуют .btn) */
         .pricing-card .btn {
             width: 100%;
         }
 
-        /* Chat Widget — золотой круг */
         .chat-widget {
             position: fixed;
             bottom: 20px;
@@ -499,7 +493,6 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.4);
         }
 
-        /* Остальные ваши стили (без изменений) — сохранены полностью */
         .nav-mobile-btn {
             display: flex;
             align-items: center;
@@ -550,7 +543,6 @@
             pointer-events: none;
         }
 
-        /* Particles - уменьшено количество и интенсивность */
         .particles {
             position: absolute;
             inset: 0;
@@ -672,7 +664,6 @@
             transition: transform 0.1s;
         }
 
-        /* Hero Card */
         .hero-card {
             background: linear-gradient(145deg, rgba(28, 28, 28, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -872,7 +863,7 @@
             font-weight: 500;
         }
 
-        /* Marquee - уменьшена интенсивность анимации */
+        /* Marquee */
         .marquee {
             background: var(--wood-dark);
             border-top: 1px solid rgba(212, 175, 55, 0.2);
@@ -1846,7 +1837,6 @@
             font-weight: 300;
         }
 
-        /* Форма удалена, стили оставлены для совместимости, но они не используются */
         .contact-form {
             display: none;
         }
@@ -1968,7 +1958,6 @@
             width: 100%;
         }
 
-        /* Footer bottom с фото */
         .footer-bottom {
             padding-top: 24px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
@@ -2406,7 +2395,20 @@
         }
 
         #cookieBanner a {
-            color: var(--gold);
+            color: var(--gold) !important;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        #cookieBanner a:hover {
+            color: var(--gold-light) !important;
+            text-decoration-color: var(--gold);
+        }
+
+        /* Глобально: убираем фиолетовый цвет посещённых ссылок */
+        a:visited {
+            color: inherit;
         }
 
         /* TABLET ADJUSTMENTS */
@@ -2735,6 +2737,94 @@
             .chat-modal {
                 width: 360px;
             }
+        }
+
+        /* ==========================================
+        СТИЛИ ДЛЯ ССЫЛОК В БЛОКАХ СОГЛАСИЯ — ДОБАВИТЬ В КОНЕЦ CSS
+        ========================================== */
+        
+        /* Hero consent — стилизация ссылок */
+        .hero-consent {
+            margin-top: 24px;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-consent label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .hero-consent input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .hero-consent a {
+            color: var(--gold) !important;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        .hero-consent a:hover {
+            color: var(--gold-light) !important;
+            text-decoration-color: var(--gold);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Contact consent — стилизация */
+        .contact-consent {
+            margin-top: 32px;
+            padding: 24px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+        }
+
+        .contact-consent label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .contact-consent input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .contact-consent a {
+            color: var(--gold) !important;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        .contact-consent a:hover {
+            color: var(--gold-light) !important;
+            text-decoration-color: var(--gold);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
         }
     </style>
 </head>
