@@ -2411,6 +2411,100 @@
             color: inherit;
         }
 
+        /* ==========================================
+        СТИЛИ ДЛЯ БЛОКОВ СОГЛАСИЯ (красивая версия)
+        ========================================== */
+        .hero-consent {
+            margin-top: 24px;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-consent label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7; /* Увеличена для читаемости */
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .hero-consent input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px; /* Выравнивание по базовой линии */
+            accent-color: var(--gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* Ссылки в hero-consent — золотые, без разрывов */
+        .hero-consent a {
+            color: var(--gold) !important;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.4);
+            text-underline-offset: 3px; /* Отступ подчёркивания */
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Запрещаем перенос внутри ссылки */
+        }
+
+        .hero-consent a:hover {
+            color: var(--gold-light) !important;
+            text-decoration-color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Contact consent — стилизация */
+        .contact-consent {
+            margin-top: 32px;
+            padding: 24px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-consent label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .contact-consent input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            accent-color: var(--gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .contact-consent a {
+            color: var(--gold) !important;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.4);
+            text-underline-offset: 3px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .contact-consent a:hover {
+            color: var(--gold-light) !important;
+            text-decoration-color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
         /* TABLET ADJUSTMENTS */
         @media (min-width: 640px) {
             .hero-content h1 {
@@ -2738,94 +2832,6 @@
                 width: 360px;
             }
         }
-
-        /* ==========================================
-        СТИЛИ ДЛЯ ССЫЛОК В БЛОКАХ СОГЛАСИЯ — ДОБАВИТЬ В КОНЕЦ CSS
-        ========================================== */
-        
-        /* Hero consent — стилизация ссылок */
-        .hero-consent {
-            margin-top: 24px;
-            text-align: center;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-consent label {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            cursor: pointer;
-            text-align: left;
-        }
-
-        .hero-consent input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: var(--gold);
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .hero-consent a {
-            color: var(--gold) !important;
-            text-decoration: underline;
-            text-decoration-color: rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-        }
-
-        .hero-consent a:hover {
-            color: var(--gold-light) !important;
-            text-decoration-color: var(--gold);
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Contact consent — стилизация */
-        .contact-consent {
-            margin-top: 32px;
-            padding: 24px;
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 4px;
-        }
-
-        .contact-consent label {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            cursor: pointer;
-            text-align: left;
-        }
-
-        .contact-consent input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: var(--gold);
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .contact-consent a {
-            color: var(--gold) !important;
-            text-decoration: underline;
-            text-decoration-color: rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-        }
-
-        .contact-consent a:hover {
-            color: var(--gold-light) !important;
-            text-decoration-color: var(--gold);
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-        }
     </style>
 </head>
 <body>
@@ -2922,10 +2928,15 @@
                 <a href="#services" class="btn btn-outline btn-large">Смотреть услуги</a>
             </div>
             
+            <!-- Hero consent — красивая версия -->
             <div class="hero-consent">
-                <input type="checkbox" id="heroConsent" onchange="toggleHeroButtons()">
-                <label for="heroConsent">
-                    Я согласен(а) с <a href="privacy.html" target="_blank">политикой конфиденциальности</a> и <a href="personal-data.html" target="_blank">обработкой персональных данных</a>. Подтверждаю, что мне исполнилось 18 лет.
+                <label>
+                    <input type="checkbox" id="heroConsent" onchange="toggleHeroButtons()">
+                    <span>
+                        Я согласен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> 
+                        и даю согласие на <a href="personal-data.html" target="_blank">обработку персональных данных</a>. 
+                        Подтверждаю, что мне исполнилось 18 лет.
+                    </span>
                 </label>
             </div>
         </div>
@@ -3465,7 +3476,7 @@
                     </div>
                 </div>
                 
-                <!-- Чекбокс согласия для контактов -->
+                <!-- Чекбокс согласия для контактов (стили обновлены) -->
                 <div class="contact-consent">
                     <label>
                         <input type="checkbox" id="contactConsent" onchange="toggleContactLinks()">
