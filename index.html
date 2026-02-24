@@ -1,0 +1,3765 @@
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106860023', 'ym');
+
+    ym(106860023, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106860023" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право. Работаю удалённо. Самозанятый юрист.">
+    <title>Серко — Юрист онлайн. Решаю вопросы удалённо</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Стили без изменений — сохранены полностью из предыдущей версии */
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: local('Cormorant Garamond'), local('CormorantGaramond-Regular');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: local('Cormorant Garamond Medium'), local('CormorantGaramond-Medium');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: local('Cormorant Garamond SemiBold'), local('CormorantGaramond-SemiBold');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: local('Cormorant Garamond Bold'), local('CormorantGaramond-Bold');
+            font-weight: 700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --wood-dark: #1a120b;
+            --wood-medium: #2c1810;
+            --wood-light: #3d2416;
+            --piano-black: #0a0a0a;
+            --piano-gloss: #1c1c1c;
+            --gold: #d4af37;
+            --gold-light: #f4d03f;
+            --gold-dark: #b8860b;
+            --gold-neon: rgba(212, 175, 55, 0.25);
+            --cream: #f5f5dc;
+            --cream-dark: #e8e4d9;
+            --text-primary: #f5f5f5;
+            --text-secondary: #c9b896;
+            --text-muted: #8b7355;
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.8);
+            --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.2);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --success: #4ade80;
+            --error: #f87171;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--piano-black);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-width: 320px;
+            position: relative;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--piano-black);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-cube {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCubeSlow 4s infinite linear;
+        }
+
+                .preloader-cube-face {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 22px;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            letter-spacing: 1px;
+        }
+
+        /* Золотые грани — "СЕР" */
+        .preloader-cube-face:nth-child(odd) {
+            color: #d4af37;
+            border-color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+
+        /* Серебряные грани — "КО" */
+        .preloader-cube-face:nth-child(even) {
+            color: #e8e8e8;
+            border-color: #c0c0c0;
+            text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.15), inset 0 0 20px rgba(192, 192, 192, 0.05);
+        }
+
+        .preloader-cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(40px); }
+        .preloader-cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(40px); }
+        .preloader-cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(40px); }
+        .preloader-cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(40px); }
+        .preloader-cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(40px); }
+        .preloader-cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(40px); }
+
+        @keyframes rotateCubeSlow {
+            0% { transform: rotateX(0) rotateY(0); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* Wood Texture Background */
+        .wood-bg {
+            background: 
+                linear-gradient(135deg, rgba(26, 18, 11, 0.95) 0%, rgba(44, 24, 16, 0.9) 50%, rgba(26, 18, 11, 0.95) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.1) 2px,
+                    rgba(0,0,0,0.1) 4px
+                );
+            background-size: cover, 100px 100%;
+            position: relative;
+        }
+
+        .wood-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* Piano Black Sections */
+        .piano-black {
+            background: linear-gradient(180deg, var(--piano-black) 0%, #151515 50%, var(--piano-black) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .piano-black::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+        }
+
+        /* Gloss Effect - уменьшена интенсивность */
+        .gloss-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                transparent 40%,
+                transparent 60%,
+                rgba(255, 255, 255, 0.03) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            position: relative;
+            z-index: 1002;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo:hover .logo-title {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .logo-emblem {
+            width: 44px;
+            height: 44px;
+            position: relative;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.25));
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-emblem {
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+            transform: rotate(5deg);
+        }
+
+        .logo-emblem svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+            text-shadow: 0 2px 8px rgba(212, 175, 55, 0.25);
+            transition: var(--transition);
+        }
+
+        .logo-title .small {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: lowercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .logo-title .big {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 4px;
+        }
+
+        .logo-subtitle {
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .nav-desktop {
+            display: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            border-radius: 2px;
+            min-height: 48px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            color: var(--piano-black);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, var(--gold), var(--gold-light), var(--gold));
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4), 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-primary:hover::after {
+            opacity: 0.7;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 4px rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.03);
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-outline:hover {
+            color: var(--piano-black);
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-light);
+        }
+
+        .btn-outline:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-large {
+            padding: 18px 32px;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .nav-mobile-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--gold);
+            z-index: 1002;
+            transition: var(--transition);
+        }
+
+        .nav-mobile-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+        }
+
+        .nav-mobile-btn:active {
+            background: rgba(212, 175, 55, 0.3);
+            transform: scale(0.95);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: 100px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -50%;
+            width: 100%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+            filter: blur(40px);
+            pointer-events: none;
+        }
+
+        /* Particles - уменьшено количество и интенсивность */
+        .particles {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float 20s infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 36px;
+            line-height: 1.15;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .hero-content h1 strong {
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-top: 8px;
+            font-size: 40px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 100%;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+            align-items: center;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 12px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            width: 100%;
+            max-width: 340px;
+            justify-content: center;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .hero-feature:hover {
+            border-color: rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.08);
+            transform: translateX(5px);
+        }
+
+        .hero-feature::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .hero-visual {
+            position: relative;
+            perspective: 1000px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .hero-card-3d {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background: linear-gradient(145deg, rgba(28, 28, 28, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px;
+            position: relative;
+            transition: var(--transition);
+            transform: rotateY(-5deg) rotateX(5deg);
+            overflow: hidden;
+        }
+
+        .hero-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .hero-card-shine {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                125deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.08) 30%,
+                transparent 60%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+            pointer-events: none;
+        }
+
+        .hero-card:hover .hero-card-shine {
+            transform: translateX(100%);
+        }
+
+        .hero-photo-large {
+            width: 100%;
+            aspect-ratio: 3/4;
+            max-height: 320px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+            position: relative;
+            transition: var(--transition);
+            background: var(--wood-dark);
+        }
+
+        .hero-photo-large:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .hero-photo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: sepia(10%) saturate(90%) contrast(105%);
+            transition: var(--transition);
+        }
+
+        .hero-photo-large:hover img {
+            filter: sepia(5%) saturate(95%) contrast(110%);
+            transform: scale(1.02);
+        }
+
+        @media (min-width: 1024px) {
+            .hero-photo-large {
+                max-height: 380px;
+            }
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .hero-avatar-small {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+        }
+
+        .hero-avatar-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: sepia(10%) saturate(90%) contrast(105%);
+        }
+
+        .hero-card-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .hero-card-subtitle {
+            font-size: 10px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .hero-quote {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 16px;
+            border-left: 2px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .hero-card:hover .hero-quote {
+            border-left-width: 3px;
+            padding-left: 15px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 12px 6px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            transition: left 0.4s;
+        }
+
+        .hero-stat:hover::before {
+            left: 0;
+        }
+
+        .hero-stat:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.08);
+        }
+
+        .hero-stat-value {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .hero-stat-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* Marquee - уменьшена интенсивность анимации */
+        .marquee {
+            background: var(--wood-dark);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee 35s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 20px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 0 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .marquee-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            animation: diamondPulse 3s infinite;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes diamondPulse {
+            0%, 100% { transform: rotate(45deg) scale(1); opacity: 1; }
+            50% { transform: rotate(45deg) scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: linear-gradient(90deg, var(--wood-dark) 0%, var(--wood-medium) 50%, var(--wood-dark) 100%);
+            padding: 32px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .trust-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .trust-item:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .trust-item:hover .trust-icon {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .trust-item strong {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 20px;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            display: block;
+        }
+
+        .trust-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 18px;
+            background: rgba(212, 175, 55, 0.05);
+            transition: var(--transition);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 0 20px;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            position: relative;
+            background: rgba(212, 175, 55, 0.05);
+            transition: var(--transition);
+            animation: borderGlow 3s infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 0 4px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        }
+
+        .section-label:hover {
+            background: rgba(212, 175, 55, 0.15);
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 6px;
+        }
+
+        .section-label::before {
+            left: 10px;
+        }
+
+        .section-label::after {
+            right: 10px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .section-title strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 100%;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, rgba(28, 28, 28, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .service-card::before,
+        .service-card::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transition: all 0.4s;
+            opacity: 0;
+        }
+
+        .service-card::before {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+        }
+
+        .service-card::after {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+        }
+
+        .service-card:hover::before {
+            left: 0;
+            opacity: 1;
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        .service-card:hover::after {
+            right: 0;
+            opacity: 1;
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        .service-card .line-left,
+        .service-card .line-right {
+            position: absolute;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(180deg, transparent, var(--gold), transparent);
+            transition: all 0.4s;
+            opacity: 0;
+        }
+
+        .service-card .line-left {
+            left: 0;
+            top: 0;
+        }
+
+        .service-card .line-right {
+            right: 0;
+            bottom: 0;
+        }
+
+        .service-card:hover .line-left,
+        .service-card:hover .line-right {
+            height: 100%;
+            opacity: 1;
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        .service-card:active {
+            transform: scale(0.99);
+        }
+
+        .service-number {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 56px;
+            font-weight: 300;
+            color: rgba(212, 175, 55, 0.1);
+            line-height: 1;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: var(--gold);
+            opacity: 0;
+            filter: blur(8px);
+            z-index: -1;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover .service-icon::after {
+            opacity: 0.4;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            border-color: rgba(212, 175, 55, 0.35);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .service-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            padding-right: 60px;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .service-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 16px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .service-price-value {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .service-price-unit {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-features li {
+            padding-left: 28px;
+        }
+
+        .service-features li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-features li::before {
+            left: 4px;
+        }
+
+        .service-btn {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            min-height: 52px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s;
+            z-index: -1;
+        }
+
+        .service-btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .service-btn:hover {
+            color: var(--piano-black);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+
+        /* How it Works */
+        .how-it-works {
+            background: linear-gradient(180deg, var(--wood-dark) 0%, var(--piano-black) 100%);
+            padding: 80px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .how-content {
+            padding: 0 20px;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .step {
+            text-align: left;
+            position: relative;
+            padding: 24px;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            flex-shrink: 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 2px solid var(--gold);
+            opacity: 0;
+            transition: all 0.4s;
+        }
+
+        .step:hover .step-number {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            transform: scale(1.1);
+        }
+
+        .step:hover .step-number::before {
+            opacity: 1;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 0 20px;
+            margin-top: 48px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(180deg, rgba(28, 28, 28, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.1);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--gold);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.9),
+                0 0 30px rgba(212, 175, 55, 0.15);
+            order: -1;
+        }
+
+        .pricing-card.popular::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, var(--gold), transparent, var(--gold));
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.4;
+        }
+
+        .pricing-card.popular:hover {
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(212, 175, 55, 0.25);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            color: var(--piano-black);
+            padding: 8px 24px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+
+        .pricing-name {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+        }
+
+        .pricing-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .pricing-price {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-period {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover .pricing-features li {
+            padding-left: 5px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .pricing-card .btn {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .pricing-card .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .pricing-card .btn:hover {
+            color: var(--piano-black);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 0 50px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .pricing-card .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .pricing-card .btn-primary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .pricing-card .btn-primary:hover {
+            background: var(--gold);
+            color: var(--piano-black);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 0 50px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Guarantee */
+        .guarantee {
+            background: 
+                linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(212, 175, 55, 0.02) 10px,
+                    rgba(212, 175, 55, 0.02) 20px
+                );
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .guarantee-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .guarantee-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            transition: var(--transition);
+        }
+
+        .guarantee:hover .guarantee-icon {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+            transform: scale(1.1);
+        }
+
+        .guarantee-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        .guarantee-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-list {
+            margin-top: 48px;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(10, 10, 10, 0.5);
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .faq-item:hover::before,
+        .faq-item.active::before {
+            transform: scaleY(1);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--gold);
+            padding-left: 24px;
+        }
+
+        .faq-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--gold);
+            transition: all 0.4s;
+        }
+
+        .faq-icon::before {
+            width: 16px;
+            height: 2px;
+        }
+
+        .faq-icon::after {
+            width: 2px;
+            height: 16px;
+        }
+
+        .faq-item.active .faq-icon {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            padding: 0 20px;
+            margin-top: 48px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-left: 3px solid var(--gold);
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .contact-method:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--gold);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover .contact-method-icon {
+            background: rgba(212, 175, 55, 0.15);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+            transform: scale(1.1);
+        }
+
+        .contact-method-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .contact-method-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .contact-method-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+            word-break: break-word;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover .contact-method-value {
+            color: var(--gold);
+        }
+
+        .contact-urgent {
+            margin-top: 32px;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-urgent:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-urgent-title {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .contact-urgent-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Форма удалена, стили оставлены для совместимости, но они не используются */
+        .contact-form {
+            display: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--piano-black);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 60px 20px 24px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .footer-logo .small {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+        }
+
+        .footer-logo .big {
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .footer-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 4px 0;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Footer bottom с фото */
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .footer-photo-passport {
+            width: 45px;
+            height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            flex-shrink: 0;
+            background: var(--wood-dark);
+        }
+
+        .footer-photo-passport:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+            transform: scale(1.1);
+        }
+
+        .footer-photo-passport img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: sepia(10%) saturate(90%) contrast(105%);
+            transition: var(--transition);
+        }
+
+        .footer-photo-passport:hover img {
+            filter: sepia(5%) saturate(95%) contrast(110%);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-bottom-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+            }
+        }
+
+        .footer-bottom-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-legal-links a {
+            color: var(--text-muted);
+            font-size: 11px;
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 340px;
+            height: 100vh;
+            height: 100dvh;
+            background: linear-gradient(180deg, var(--piano-black) 0%, var(--wood-dark) 100%);
+            z-index: 1001;
+            padding: 100px 28px 40px;
+            transition: right 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-close:hover {
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.4s;
+        }
+
+        .mobile-menu.active .mobile-nav {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.2s;
+        }
+
+        .mobile-nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .mobile-nav .btn {
+            margin-top: 24px;
+            width: 100%;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #1a120b 0%, #0a0a0a 100%);
+            border: 1px solid #d4af37;
+            padding: 48px;
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+            backdrop-filter: blur(20px);
+            max-width: 480px;
+            width: 90%;
+        }
+
+        .notification.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .notification.success {
+            border-color: var(--success);
+        }
+
+        .notification.error {
+            border-color: var(--error);
+        }
+
+        .notification-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .notification.success .notification-icon {
+            border-color: var(--success);
+            color: var(--success);
+            background: rgba(74, 222, 128, 0.1);
+        }
+
+        .notification.error .notification-icon {
+            border-color: var(--error);
+            color: var(--error);
+            background: rgba(248, 113, 113, 0.1);
+        }
+
+        .notification-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 24px;
+            color: #f5f5f5;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .notification-text {
+            color: #c9b896;
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .notification-btn {
+            background: #d4af37;
+            color: #0a0a0a;
+            border: none;
+            padding: 12px 32px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .notification-btn:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .notification.success .notification-btn {
+            background: var(--success);
+        }
+
+        .notification.error .notification-btn {
+            background: var(--error);
+            color: white;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--piano-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--wood-medium);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-dark);
+        }
+
+        /* Chat Widget - заменяет Telegram Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .chat-widget:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .chat-widget svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--piano-black);
+        }
+
+        /* Chat Modal */
+        .chat-modal {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            background: linear-gradient(145deg, rgba(28, 28, 28, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 24px;
+            z-index: 998;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            backdrop-filter: blur(20px);
+        }
+
+        .chat-modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .chat-modal-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .chat-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateX(5px);
+        }
+
+        .chat-option-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .chat-option-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .chat-option-subtext {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* TABLET ADJUSTMENTS */
+        @media (min-width: 640px) {
+            .hero-content h1 {
+                font-size: 44px;
+            }
+            
+            .hero-content h1 strong {
+                font-size: 48px;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .pricing-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .pricing-card.popular {
+                grid-column: span 2;
+                order: -1;
+            }
+            
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .trust-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 40px;
+                align-items: start;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .contact-info h3 {
+                text-align: center;
+            }
+            
+            .footer-content {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 40px;
+                text-align: left;
+            }
+            
+            .footer-brand {
+                text-align: left;
+            }
+            
+            .footer-desc {
+                margin: 0;
+            }
+            
+            .footer-section {
+                text-align: left;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        /* DESKTOP */
+        @media (min-width: 1024px) {
+            .header-content {
+                padding: 20px 40px;
+            }
+            
+            .logo-emblem {
+                width: 56px;
+                height: 56px;
+            }
+            
+            .logo-title {
+                font-size: 28px;
+            }
+            
+            .logo-title .small {
+                font-size: 13px;
+            }
+            
+            .logo-title .big {
+                font-size: 30px;
+            }
+            
+            .logo-subtitle {
+                display: block;
+            }
+            
+            .nav-desktop {
+                display: flex;
+                gap: 40px;
+                align-items: center;
+            }
+            
+            .nav-mobile-btn {
+                display: none;
+            }
+            
+            .btn-large {
+                width: auto;
+                padding: 18px 36px;
+            }
+            
+            .hero {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 80px;
+                align-items: center;
+                padding: 160px 40px 120px;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            
+            .hero-content {
+                text-align: left;
+            }
+            
+            .hero-content h1 {
+                font-size: 56px;
+            }
+            
+            .hero-content h1 strong {
+                font-size: 64px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+                max-width: 540px;
+            }
+            
+            .hero-features {
+                align-items: flex-start;
+            }
+            
+            .hero-feature {
+                justify-content: flex-start;
+                width: auto;
+                max-width: none;
+            }
+            
+            .hero-cta {
+                flex-direction: row;
+                width: auto;
+                margin: 0;
+            }
+            
+            .hero-visual {
+                order: 0;
+            }
+            
+            .hero-card {
+                padding: 24px;
+                transform: rotateY(-15deg) rotateX(5deg);
+            }
+            
+            .hero-card:hover {
+                transform: rotateY(0) rotateX(0);
+            }
+
+            .hero-photo-large {
+                max-height: 380px;
+            }
+
+            .hero-card-header {
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+
+            .hero-avatar-small {
+                width: 60px;
+                height: 60px;
+            }
+
+            .hero-card-title {
+                font-size: 24px;
+            }
+
+            .hero-quote {
+                font-size: 16px;
+                margin-bottom: 24px;
+            }
+
+            .hero-stats {
+                gap: 12px;
+            }
+
+            .hero-stat {
+                padding: 20px 10px;
+            }
+
+            .hero-stat-value {
+                font-size: 32px;
+            }
+
+            .hero-stat-label {
+                font-size: 10px;
+            }
+            
+            .section-header {
+                margin-bottom: 80px;
+            }
+            
+            .section-title {
+                font-size: 52px;
+            }
+            
+            .services {
+                padding: 120px 40px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+                padding: 0;
+            }
+            
+            .service-card {
+                padding: 40px;
+            }
+            
+            .how-it-works {
+                padding: 120px 40px;
+            }
+            
+            .steps {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 40px;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: -20px;
+                top: 40px;
+                width: 40px;
+                height: 1px;
+                background: linear-gradient(90deg, var(--gold), transparent);
+            }
+            
+            .pricing {
+                padding: 120px 40px;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+                padding: 0;
+            }
+            
+            .pricing-card.popular {
+                grid-column: span 1;
+                transform: scale(1.05);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: scale(1.05) translateY(-10px);
+            }
+            
+            .faq {
+                padding: 120px 40px;
+            }
+            
+            .faq-list {
+                max-width: 900px;
+                margin: 80px auto 0;
+                padding: 0;
+            }
+            
+            .contact {
+                padding: 120px 40px;
+            }
+            
+            .contact-grid {
+                gap: 80px;
+                max-width: 800px;
+                margin: 80px auto 0;
+            }
+            
+            .footer {
+                padding: 80px 40px 40px;
+            }
+            
+            .footer-content {
+                max-width: 1400px;
+                margin: 0 auto 80px;
+                gap: 80px;
+            }
+            
+            .footer-bottom {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            .footer-photo-passport {
+                width: 52px;
+                height: 70px;
+            }
+
+            .chat-modal {
+                width: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+<div class="preloader" id="preloader">
+    <div class="preloader-cube">
+        <div class="preloader-cube-face gold">СЕР</div>
+        <div class="preloader-cube-face silver">КО</div>
+        <div class="preloader-cube-face gold">СЕР</div>
+        <div class="preloader-cube-face silver">КО</div>
+        <div class="preloader-cube-face gold">СЕР</div>
+        <div class="preloader-cube-face silver">КО</div>
+    </div>
+</div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-emblem">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#b8860b;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="48" stroke="url(#goldGrad)" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="42" stroke="url(#goldGrad)" stroke-width="1"/>
+                        <line x1="50" y1="20" x2="50" y2="55" stroke="#f5f5f5" stroke-width="3"/>
+                        <line x1="25" y1="35" x2="75" y2="35" stroke="#f5f5f5" stroke-width="2"/>
+                        <path d="M25 35 L20 50 Q25 55 30 50 L25 35" fill="url(#goldGrad)"/>
+                        <path d="M75 35 L80 50 Q75 55 70 50 L75 35" fill="url(#goldGrad)"/>
+                        <rect x="45" y="55" width="10" height="25" fill="#f5f5f5"/>
+                        <rect x="35" y="80" width="30" height="5" fill="#f5f5f5"/>
+                        <path d="M15 60 Q10 50 15 40" stroke="url(#goldGrad)" stroke-width="2" fill="none"/>
+                        <path d="M85 60 Q90 50 85 40" stroke="url(#goldGrad)" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-title">
+                        <span class="small">мастерская права</span>
+                        <span class="big">СЕРКО</span>
+                    </div>
+                    <div class="logo-subtitle">Юридические услуги</div>
+                </div>
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#how" class="nav-link">Процесс</a>
+                <a href="#pricing" class="nav-link">Тарифы</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="tel:+79774232473" class="btn btn-primary">📞 Позвонить</a>
+            </nav>
+            
+            <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">×</button>
+        <nav class="mobile-nav">
+            <a href="#services" onclick="toggleMenu()">Услуги</a>
+            <a href="#how" onclick="toggleMenu()">Процесс</a>
+            <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
+            <a href="#faq" onclick="toggleMenu()">FAQ</a>
+            <a href="#contact" onclick="toggleMenu()">Контакты</a>
+            <a href="tel:+79774232473" class="btn btn-primary" onclick="toggleMenu()">📞 Позвонить</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero wood-bg">
+        <div class="gloss-overlay"></div>
+        <div class="particles" id="particles"></div>
+        
+        <div class="hero-content fade-in">
+            <h1>Юрист онлайн <strong>для ваших задач</strong></h1>
+            <p class="hero-subtitle">Работаю удалённо: проверю документы, подготовлю договор, проконсультирую по налогам, семейным вопросам или недвижимости. Без встреч в офисе — экономите время и деньги. Выезд и представительство в суде — когда без этого не обойтись.</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">70% задач решаю онлайн</div>
+                <div class="hero-feature">Честные цены без скрытых платежей</div>
+                <div class="hero-feature">Лично отвечаю на каждое обращение</div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="https://max.ru/chat/79774232473" target="_blank" class="btn btn-primary btn-large" style="background: linear-gradient(135deg, #6b4ee6 0%, #9b59b6 50%, #6b4ee6 100%); box-shadow: 0 4px 15px rgba(107, 78, 230, 0.3);">💬 Написать в MAX</a>
+                <a href="https://wa.me/79774232473" target="_blank" class="btn btn-outline btn-large" style="border-color: #25d366; color: #25d366;">💬 WhatsApp</a>
+                <a href="#services" class="btn btn-outline btn-large">Смотреть услуги</a>
+            </div>
+            <div style="margin-top: 16px; display: flex; align-items: center; gap: 8px; justify-content: center;">
+                <input type="checkbox" id="heroConsent" required style="width: 16px; height: 16px; accent-color: var(--gold);">
+                <label for="heroConsent" style="font-size: 11px; color: var(--text-muted); cursor: pointer;">
+                    Согласен с <a href="privacy.html" target="_blank" style="color: var(--gold);">политикой</a> и <a href="personal-data.html" target="_blank" style="color: var(--gold);">обработкой данных</a>
+                </label>
+            </div>
+        </div>
+        
+        <div class="hero-visual fade-in">
+            <div class="hero-card-3d" id="heroCard3d">
+                <div class="hero-card">
+                    <div class="hero-card-shine"></div>
+                    
+                    <!-- ФОТО: Большое фото -->
+                    <div class="hero-photo-large">
+                        <img src="фотто%205.png" alt="Иван Серко">
+                    </div>
+                    
+                    <div class="hero-card-header">
+                        <!-- ФОТО: Аватар -->
+                        <div class="hero-avatar-small">
+                            <img src="фотто%205.png" alt="Иван Серко">
+                        </div>
+                        <div>
+                            <div class="hero-card-title">Иван Серко</div>
+                            <div class="hero-card-subtitle">Частный юрист, самозанятый</div>
+                        </div>
+                    </div>
+                    
+                    <p class="hero-quote">
+                        "Каждое дело беру лично. Нет команды ассистентов — вы общаетесь напрямую со мной. Если вопрос выходит за мои компетенции, честно скажу об этом и подскажу, к кому обратиться."
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">70%</div>
+                            <div class="hero-stat-label">Онлайн</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">100%</div>
+                            <div class="hero-stat-label">Лично</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">24ч</div>
+                            <div class="hero-stat-label">Ответ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span class="marquee-item">Удалённая работа</span>
+            <span class="marquee-item">Индивидуальный подход</span>
+            <span class="marquee-item">Честные цены</span>
+            <span class="marquee-item">Прямая связь</span>
+            <span class="marquee-item">Удалённая работа</span>
+            <span class="marquee-item">Индивидуальный подход</span>
+            <span class="marquee-item">Честные цены</span>
+            <span class="marquee-item">Прямая связь</span>
+        </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-content">
+            <div class="trust-item">
+                <div class="trust-icon">★</div>
+                <div><strong>Специалист</strong></div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">◆</div>
+                <div><strong>100%</strong> конфиденциальность</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">◆</div>
+                <div><strong>В день</strong> ответ</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">◆</div>
+                <div><strong>Без</strong> посредников</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services piano-black" id="services">
+        <div class="gloss-overlay"></div>
+        <div class="section-header fade-in">
+            <div class="section-label">Практика</div>
+            <h2 class="section-title">С чем <strong>обращаются</strong></h2>
+            <p class="section-subtitle">Большинство вопросов решаю дистанционно. Выезд для подписания документов, личного участия или судебных заседаний — обсуждаем отдельно.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- 1. Недвижимость -->
+            <div class="service-card fade-in" id="nedvizhimost" onclick="selectService('Недвижимость')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">01</div>
+                <div class="service-icon">🏛️</div>
+                <h3 class="service-title">Недвижимость</h3>
+                <p class="service-desc">Проверка квартиры перед покупкой, сопровождение сделки, споры с застройщиком, приватизация, оформление права собственности. <strong>Полное сопровождение от 15 000 ₽</strong>, отдельные услуги — уточняйте.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 15 000 ₽</span>
+                    <span class="service-price-unit">сопровождение сделки</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 2. Семейные вопросы -->
+            <div class="service-card fade-in" id="semeynye-voprosy" onclick="selectService('Семейное право')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">02</div>
+                <div class="service-icon">⚖️</div>
+                <h3 class="service-title">Семейные вопросы</h3>
+                <p class="service-desc">Развод, раздел имущества, алименты, порядок общения с детьми, брачный договор. Ведение дела в суде — отдельно.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 15 000 ₽</span>
+                    <span class="service-price-unit">консультация + документы</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 3. Наследственные дела -->
+            <div class="service-card fade-in" id="nasledstvo" onclick="selectService('Наследство')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">03</div>
+                <div class="service-icon">📜</div>
+                <h3 class="service-title">Наследственные дела</h3>
+                <p class="service-desc">Вступление в наследство, восстановление пропущенных сроков, оспаривание завещания, раздел наследственного имущества между наследниками.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 10 000 ₽</span>
+                    <span class="service-price-unit">оформление наследства</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 4. Налоговые споры -->
+            <div class="service-card fade-in" id="nalogi" onclick="selectService('Налоги')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">04</div>
+                <div class="service-icon">📊</div>
+                <h3 class="service-title">Налоговые споры</h3>
+                <p class="service-desc">Проверки ФНС, оспаривание штрафов и доначислений, возврат налоговых вычетов, сопровождение налоговых проверок.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 8 000 ₽</span>
+                    <span class="service-price-unit">спор с ФНС</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 5. Административное право -->
+            <div class="service-card fade-in" id="administrativnoe-pravo" onclick="selectService('Административное право')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">05</div>
+                <div class="service-icon">🚗</div>
+                <h3 class="service-title">Административное право</h3>
+                <p class="service-desc">Штрафы ГИБДД и других органов, таможенные споры, налоговые правонарушения, обжалование действий чиновников.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 5 000 ₽</span>
+                    <span class="service-price-unit">штрафы и обжалование</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 6. Трудовые споры -->
+            <div class="service-card fade-in" id="trudovye-spory" onclick="selectService('Трудовые споры')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">06</div>
+                <div class="service-icon">💼</div>
+                <h3 class="service-title">Трудовые споры</h3>
+                <p class="service-desc">Незаконное увольнение, взыскание задолженности по зарплате, оспаривание дисциплинарных взысканий, восстановление на работе.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 12 000 ₽</span>
+                    <span class="service-price-unit">трудовой спор</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 7. Документы и договоры -->
+            <div class="service-card fade-in" id="dokumenty" onclick="selectService('Документы')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">07</div>
+                <div class="service-icon">📄</div>
+                <h3 class="service-title">Документы и договоры</h3>
+                <p class="service-desc">Составление договоров купли-продажи, аренды, займа, брачного договора. Проверка документов на юридические риски.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 4 000 ₽</span>
+                    <span class="service-price-unit">за документ</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <!-- 8. Представительство в суде -->
+            <div class="service-card fade-in" id="predstavitelstvo-v-sude" onclick="selectService('Представительство')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">08</div>
+                <div class="service-icon">⚔️</div>
+                <h3 class="service-title">Представительство в суде</h3>
+                <p class="service-desc">Составление исковых заявлений и жалоб, участие в судебных заседаниях, обжалование решений, исполнительное производство.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 25 000 ₽</span>
+                    <span class="service-price-unit">за дело (инстанция)</span>
+                </div>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works" id="how">
+        <div class="how-content">
+            <div class="section-header fade-in">
+                <div class="section-label">Процесс</div>
+                <h2 class="section-title">Как <strong>работаю</strong></h2>
+                <p class="section-subtitle">От сообщения до результата</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Пишете</h3>
+                        <p class="step-desc">Описываете ситуацию в мессенджере или через форму. Отвечаю в течение суток</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Разбираю</h3>
+                        <p class="step-desc">Смотрю документы, задаю уточняющие вопросы, оцениваю перспективы дела</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Предлагаю</h3>
+                        <p class="step-desc">Говорю, что можно сделать, сколько времени займёт, какой результат реален</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Решаем формат</h3>
+                        <p class="step-desc">Дистанционно или нужен выезд — зависит от задачи, не от моих предпочтений</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Выполняю</h3>
+                        <p class="step-desc">Держу в курсе, отвечаю на вопросы, веду дело до результата</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing wood-bg" id="pricing">
+        <div class="gloss-overlay"></div>
+        <div class="section-header fade-in">
+            <div class="section-label">Стоимость</div>
+            <h2 class="section-title">Цены на <strong>услуги</strong></h2>
+            <p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- 1. Консультация -->
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">Консультация</div>
+                <div class="pricing-desc">Первичная правовая оценка</div>
+                <div class="pricing-price">от 2 000 ₽</div>
+                <div class="pricing-period">30-60 минут онлайн / телефон</div>
+                <ul class="pricing-features">
+                    <li>Анализ ситуации</li>
+                    <li>Правовая оценка рисков</li>
+                    <li>Варианты решения</li>
+                    <li>План действий</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+
+            <!-- 2. Документ -->
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">Документ</div>
+                <div class="pricing-desc">Составление или проверка</div>
+                <div class="pricing-price">от 4 000 ₽</div>
+                <div class="pricing-period">Один документ</div>
+                <ul class="pricing-features">
+                    <li>Договор купли-продажи</li>
+                    <li>Договор аренды / найма</li>
+                    <li>Брачный договор</li>
+                    <li>Проверка на риски</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+
+            <!-- 3. Пакет Выгодно -->
+            <div class="pricing-card popular fade-in">
+                <div class="popular-badge">Экономия 20%</div>
+                <div class="pricing-name">Стартовый пакет</div>
+                <div class="pricing-desc">Консультация + Документ</div>
+                <div class="pricing-price">от 5 000 ₽</div>
+                <div class="pricing-period">Вместо 6 000 ₽ по отдельности</div>
+                <ul class="pricing-features">
+                    <li>Консультация 30 минут</li>
+                    <li>Составление документа</li>
+                    <li>Правовой анализ</li>
+                    <li>Рекомендации по сделке</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%;">Выбрать пакет</a>
+            </div>
+
+            <!-- 4. Недвижимость (соответствует Services #nedvizhimost — 15 000 ₽) -->
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">Недвижимость</div>
+                <div class="pricing-desc">Полное сопровождение сделки</div>
+                <div class="pricing-price">от 15 000 ₽</div>
+                <div class="pricing-period">Под ключ</div>
+                <ul class="pricing-features">
+                    <li>Проверка объекта и продавца</li>
+                    <li>Подготовка договора</li>
+                    <li>Сопровождение сделки</li>
+                    <li>Регистрация в Росреестре</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+
+            <!-- 5. Семейные споры (соответствует Services #semeynye-voprosy — 15 000 ₽) -->
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">Семейные споры</div>
+                <div class="pricing-desc">Развод, алименты, имущество</div>
+                <div class="pricing-price">от 15 000 ₽</div>
+                <div class="pricing-period">Консультация + документы</div>
+                <ul class="pricing-features">
+                    <li>Консультация и стратегия</li>
+                    <li>Подготовка документов</li>
+                    <li>Судебное ведение — отдельно</li>
+                    <li>Мировое соглашение</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+
+            <!-- 6. Судебное ведение (соответствует Services #predstavitelstvo-v-sude — 25 000 ₽) -->
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">Судебное ведение</div>
+                <div class="pricing-desc">Представительство в суде</div>
+                <div class="pricing-price">от 25 000 ₽</div>
+                <div class="pricing-period">За дело (одна инстанция)</div>
+                <ul class="pricing-features">
+                    <li>Составление искового заявления</li>
+                    <li>Представительство в суде</li>
+                    <li>Обжалование решений</li>
+                    <li>Сопровождение исполнения</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Me -->
+    <section class="how-it-works" id="why">
+        <div class="how-content">
+            <div class="section-header fade-in">
+                <div class="section-label">Почему я</div>
+                <h2 class="section-title">Честно о моей <strong>работе</strong></h2>
+            </div>
+            
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Специалист</h3>
+                        <p class="step-desc">У меня есть современные инструменты, свежие знания законов и искреннее желание помочь. Каждое дело — это возможность для меня расти вместе с вами.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">70% онлайн</h3>
+                        <p class="step-desc">Работаю удалённо: электронные документы, цифровые подписи, госуслуги, электронное судопроизводство. Это быстрее и дешевле для вас.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Прямая связь</h3>
+                        <p class="step-desc">Пишете мне — отвечаю я. Нет секретарей, ассистентов и переключений. Вы всегда знаете, с кем общаетесь.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Честность прежде всего</h3>
+                        <p class="step-desc">Если вопрос вне моей компетенции — скажу прямо и подскажу, к кому обратиться. Не беру дела, в которых не уверен.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq piano-black" id="faq">
+        <div class="gloss-overlay"></div>
+        <div class="section-header fade-in">
+            <div class="section-label">Вопросы</div>
+            <h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>У вас большой опыт работы?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>Я специалист с современными инструментами и свежими знаниями законодательства. Если ваш вопрос требует опыта, которого у меня пока нет — я честно скажу об этом и подскажу, к кому обратиться.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Как проходит удалённая работа?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>Мы общаемся в мессенджерах (WhatsApp, MAX), обмениваемся документами через облачные сервисы или email. Подпись — электронная или через нотариуса при необходимости. 70% задач решается без личных встреч. Если нужен выезд — обсуждаем отдельно.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>А если нужен выезд?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>Если без личного присутствия не обойтись (например, подписание договора у нотариуса, судебное заседание), я приеду. Но сначала оценю, действительно ли это необходимо — иногда можно решить вопрос дистанционно.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Как быстро вы отвечаете?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>Обычно в течение суток. В рабочие дни с 9:00 до 21:00. Для срочных вопросов — напишите в WhatsApp или MAX, там отвечаю быстрее.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Какие гарантии?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>Оплата поэтапно или по результату. Если после консультации вы решите, что моя помощь не требуется — верну 100% оплаты. Работаю по договору, фиксирую все договорённости письменно.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact wood-bg" id="contact">
+        <div class="gloss-overlay"></div>
+        <div class="section-header fade-in">
+            <div class="section-label">Контакты</div>
+            <h2 class="section-title">Начните с <strong>разговора</strong></h2>
+            <p class="section-subtitle">Опишите ситуацию — за 15-20 минут пойму, смогу помочь или нет, подберём формат работы и назову сроки.</p>
+        </div>
+        
+        <div class="contact-grid" style="max-width: 800px; margin: 48px auto 0;">
+            <div class="contact-info fade-in" style="text-align: center;">
+                <h3 style="text-align: center;">Прямая связь</h3>
+                <div class="contact-methods">
+                    <!-- MAX — основной -->
+                    <a href="https://max.ru/chat/79774232473" target="_blank" class="contact-method" style="border-left-color: #6b4ee6; background: linear-gradient(135deg, rgba(107, 78, 230, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);">
+                        <div class="contact-method-icon" style="background: rgba(107, 78, 230, 0.15); border-color: #6b4ee6; color: #9b59b6;">💬</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label" style="color: #9b59b6;">Написать в MAX (основной)</div>
+                            <div class="contact-method-value">+7 (977) 42-32-473</div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Отвечаю быстрее всего</div>
+                        </div>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/79774232473" target="_blank" class="contact-method" style="border-left-color: #25d366;">
+                        <div class="contact-method-icon" style="background: rgba(37, 211, 102, 0.1); border-color: #25d366; color: #25d366;">💬</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label" style="color: #25d366;">Написать в WhatsApp</div>
+                            <div class="contact-method-value">+7 (977) 42-32-473</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Telegram -->
+                    <a href="https://t.me/ConsulLexbot" target="_blank" class="contact-method" style="border-left-color: #0088cc;">
+                        <div class="contact-method-icon" style="background: rgba(0, 136, 204, 0.1); border-color: #0088cc; color: #0088cc;">✈️</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label" style="color: #0088cc;">Telegram-бот (если доступен)</div>
+                            <div class="contact-method-value">@ConsulLexbot</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Позвонить -->
+                    <a href="tel:+79774232473" class="contact-method" style="border-left-color: var(--gold);">
+                        <div class="contact-method-icon">📞</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">Позвонить</div>
+                            <div class="contact-method-value">+7 (977) 42-32-473</div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">9:00 — 21:00, ежедневно</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Email -->
+                    <a href="mailto:333742917@mail.ru" class="contact-method">
+                        <div class="contact-method-icon">✉️</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">Email</div>
+                            <div class="contact-method-value">333742917@mail.ru</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="contact-urgent" style="margin-top: 32px;">
+                    <div class="contact-urgent-title">⚡ Срочный вопрос?</div>
+                    <div class="contact-urgent-text">
+                        Пишите в <strong>MAX</strong> — отвечаю в приоритетном порядке.<br>
+                        Для постоянных клиентов доступна поддержка 24/7.
+                    </div>
+                </div>
+                
+                <!-- Чекбокс согласия для контактов -->
+                <div style="margin-top: 32px; padding: 20px; background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2);">
+                    <label style="display: flex; align-items: flex-start; gap: 12px; font-size: 12px; color: var(--text-secondary); cursor: pointer; text-align: left;">
+                        <input type="checkbox" id="contactConsent" required style="margin-top: 2px; width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0;">
+                        <span>
+                            Нажимая на кнопки связи, я подтверждаю, что ознакомлен(а) с 
+                            <a href="privacy.html" target="_blank" style="color: var(--gold);">Политикой конфиденциальности</a> и 
+                            <a href="personal-data.html" target="_blank" style="color: var(--gold);">Согласием на обработку персональных данных</a>, 
+                            даю согласие на обработку моих данных для целей оказания юридических услуг.
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer piano-black">
+        <div class="gloss-overlay"></div>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="small">мастерская права</span><br>
+                    <span class="big">СЕРКО</span>
+                </div>
+                <p class="footer-desc">
+                    Решаю юридические вопросы удалённо. Индивидуальный подход, честные цены, прямая связь.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-title">Услуги</div>
+                <ul class="footer-links">
+                    <li><a href="#services">Недвижимость</a></li>
+                    <li><a href="#services">Семейные споры</a></li>
+                    <li><a href="#services">Наследство</a></li>
+                    <li><a href="#services">Налоги</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-title">Информация</div>
+                <ul class="footer-links">
+                    <li><a href="#how">Как это работает</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-title">Реквизиты</div>
+                <ul class="footer-links">
+                    <li style="color: var(--text-muted);">ИНН: 500918804320</li>
+                    <li style="color: var(--text-muted);">Самозанятый</li>
+                    <li style="color: var(--text-muted);">г. Москва</li>
+                    <li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer bottom с фото и юридическими ссылками -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-row">
+                <!-- ФОТО: В футере -->
+                <div class="footer-photo-passport">
+                    <img src="фотто%205.png" alt="Иван Серко">
+                </div>
+                <div class="footer-bottom-content">
+                    <div style="color: var(--gold); font-weight: 600; font-size: 14px;">Серко Иван Иванович, 1987 г.р.</div>
+                    <div class="footer-bottom-text">
+                        <span>© 2026 Мастерская права СЕРКО. Все права защищены.</span>
+                        <span>Информация не является публичной офертой</span>
+                    </div>
+                    <div class="footer-legal-links">
+                        <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+                        <a href="personal-data.html" target="_blank">Обработка персональных данных</a>
+                        <a href="contract.html" target="_blank">Типовой договор</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget — MAX основной -->
+    <div class="chat-widget" onclick="toggleChatModal()" title="Написать" style="background: linear-gradient(135deg, #6b4ee6 0%, #9b59b6 100%);">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            <path d="M7 9h10v2H7zm0-3h10v2H7z"/>
+        </svg>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-modal-title" style="color: #9b59b6;">Выберите способ связи</div>
+        <div class="chat-options">
+            <a href="https://max.ru/chat/79774232473" target="_blank" class="chat-option" style="background: rgba(107, 78, 230, 0.1); border-color: #6b4ee6;">
+                <div class="chat-option-icon" style="background: #6b4ee6; color: white;">💬</div>
+                <div>
+                    <div class="chat-option-text" style="color: #9b59b6; font-weight: 600;">MAX (основной)</div>
+                    <div class="chat-option-subtext">Отвечаю быстрее всего</div>
+                </div>
+            </a>
+            <a href="https://wa.me/79774232473" target="_blank" class="chat-option">
+                <div class="chat-option-icon" style="background: #25d366; color: white;">💬</div>
+                <div>
+                    <div class="chat-option-text">WhatsApp</div>
+                    <div class="chat-option-subtext">+7 (977) 42-32-473</div>
+                </div>
+            </a>
+            <a href="https://t.me/ConsulLexbot" target="_blank" class="chat-option">
+                <div class="chat-option-icon" style="background: #0088cc; color: white;">✈️</div>
+                <div>
+                    <div class="chat-option-text">Telegram-бот</div>
+                    <div class="chat-option-subtext">@ConsulLexbot</div>
+                </div>
+            </a>
+            <a href="tel:+79774232473" class="chat-option">
+                <div class="chat-option-icon" style="background: var(--gold); color: var(--piano-black);">📞</div>
+                <div>
+                    <div class="chat-option-text">Позвонить</div>
+                    <div class="chat-option-subtext">9:00 — 21:00</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Notification (оставлена для возможного использования, но не используется) -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">✓</div>
+        <div class="notification-title">Заявка отправлена</div>
+        <div class="notification-text">Я получил ваше сообщение и свяжусь с вами в течение суток</div>
+        <button class="notification-btn" onclick="closeNotification()">Закрыть</button>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.98); border-top: 1px solid rgba(212, 175, 55, 0.3); padding: 20px; z-index: 9998; display: none; backdrop-filter: blur(10px);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center;">
+            <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                Сайт использует файлы cookie и Яндекс.Метрику для анализа трафика. 
+                Продолжая использовать сайт, вы соглашаетесь с 
+                <a href="privacy.html" target="_blank" style="color: var(--gold);">политикой конфиденциальности</a>.
+            </p>
+            <button onclick="acceptCookies()" class="btn btn-primary" style="min-height: 40px; padding: 10px 24px; font-size: 12px;">Понятно</button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // PRELOADER
+        // ==========================================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 650);
+        });
+
+        // ==========================================
+        // ЧАСТИЦЫ (уменьшенное количество)
+        // ==========================================
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 12; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // ==========================================
+        // 3D CARD EFFECT
+        // ==========================================
+        const heroCard3d = document.getElementById('heroCard3d');
+        const heroVisual = document.querySelector('.hero-visual');
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+        if (!isTouchDevice && heroVisual && heroCard3d) {
+            heroVisual.addEventListener('mousemove', (e) => {
+                const rect = heroVisual.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) / 25;
+                const y = (e.clientY - rect.top - rect.height / 2) / 25;
+                
+                heroCard3d.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+            });
+            
+            heroVisual.addEventListener('mouseleave', () => {
+                heroCard3d.style.transform = 'rotateY(-5deg) rotateX(5deg)';
+            });
+        }
+
+        // ==========================================
+        // MOBILE MENU
+        // ==========================================
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.querySelector('.overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // ==========================================
+        // CHAT MODAL
+        // ==========================================
+        function toggleChatModal() {
+            const modal = document.getElementById('chatModal');
+            modal.classList.toggle('active');
+        }
+
+        // Закрытие модалки при клике вне её
+        document.addEventListener('click', (e) => {
+            const widget = document.querySelector('.chat-widget');
+            const modal = document.getElementById('chatModal');
+            if (!widget.contains(e.target) && !modal.contains(e.target)) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // ==========================================
+        // FAQ
+        // ==========================================
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // ==========================================
+        // SERVICE SELECTION
+        // ==========================================
+        function selectService(serviceName) {
+    // Прокручиваем к контактам, где можно выбрать способ связи
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    // Можно добавить уведомление, что услуга выбрана
+    console.log('Выбрана услуга:', serviceName);
+}
+
+        // ==========================================
+        // NOTIFICATION FUNCTIONS (упрощённые, не используются)
+        // ==========================================
+        function closeNotification() {
+            document.getElementById('notification').classList.remove('active');
+        }
+
+        // ==========================================
+        // SMOOTH SCROLL
+        // ==========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ==========================================
+        // INTERSECTION OBSERVER
+        // ==========================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ==========================================
+        // ПЛАВНАЯ ПРОКРУТКА К ЯКОРЯМ + ПОДСВЕТКА
+        // ==========================================
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const element = document.querySelector(hash);
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        element.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+                        element.style.borderColor = 'rgba(212, 175, 55, 0.6)';
+                        setTimeout(() => {
+                            element.style.boxShadow = '';
+                            element.style.borderColor = '';
+                        }, 2000);
+                    }, 500);
+                }
+            }
+        });
+
+        // ==========================================
+        // COOKIE BANNER
+        // ==========================================
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookieBanner').style.display = 'block';
+            }, 2000);
+        }
+    </script>
+
+    <!-- Пример содержимого personal-data.html (для справки) — разместите на отдельной странице -->
+    <!-- 
+    В файле personal-data.html добавьте следующие разделы после раздела 6:
+    
+    <h3>6.1. Cookie и аналитика</h3>
+    <p>Я использую файлы cookie и сервис Яндекс.Метрика для анализа посещаемости сайта. 
+    Эти данные обрабатываются в обезличенной форме и не позволяют идентифицировать вас лично. 
+    Вы можете отключить cookie в настройках браузера.</p>
+    
+    <h3>6.2. Проверка статуса самозанятого</h3>
+    <p>Мои реквизиты как самозанятого:<br>
+    <strong>ФИО:</strong> Серко Иван Иванович<br>
+    <strong>Дата рождения:</strong> 1987 год<br>
+    <strong>ИНН:</strong> 500918804320<br>
+    <strong>Статус:</strong> Самозанятый (НПД)<br>
+    Проверить мой статус можно в приложении <a href="https://npd.nalog.ru/check-status/" target="_blank">"Мой налог"</a>.</p>
+    -->
+</body>
+</html>
