@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ========== ПОЛНЫЕ СТИЛИ (без лишних вставок) ========== */
+        /* ========== ПОЛНЫЕ СТИЛИ ========== */
         @font-face {
             font-family: 'Cormorant Garamond';
             src: local('Cormorant Garamond'), local('CormorantGaramond-Regular');
@@ -1699,6 +1699,203 @@
             font-weight: 300;
         }
 
+        /* Why Me - Compact Grid Section */
+        .why-me {
+            background: linear-gradient(180deg, var(--wood-dark) 0%, var(--piano-black) 100%);
+            padding: 80px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-me::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.03) 50%, transparent 100%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(212, 175, 55, 0.02) 100px,
+                    rgba(212, 175, 55, 0.02) 101px
+                );
+            pointer-events: none;
+        }
+
+        .why-content {
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .why-card {
+            background: linear-gradient(145deg, rgba(28, 28, 28, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 32px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .why-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .why-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .why-number {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 48px;
+            font-weight: 300;
+            color: rgba(212, 175, 55, 0.1);
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .why-card:hover .why-number {
+            color: rgba(212, 175, 55, 0.2);
+            transform: scale(1.1);
+        }
+
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .why-card:hover .why-icon {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .why-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            line-height: 1.3;
+            transition: var(--transition);
+        }
+
+        .why-card:hover .why-title {
+            color: var(--gold);
+        }
+
+        .why-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Tablet: 2 columns */
+        @media (min-width: 640px) {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .why-card {
+                padding: 36px 28px;
+            }
+        }
+
+        /* Desktop: 2×2 grid with larger cards */
+        @media (min-width: 1024px) {
+            .why-me {
+                padding: 120px 40px;
+            }
+            
+            .why-content {
+                padding: 0;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+                margin-top: 64px;
+            }
+            
+            .why-card {
+                padding: 48px 40px;
+                min-height: 280px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .why-number {
+                font-size: 72px;
+                top: 20px;
+                right: 30px;
+            }
+            
+            .why-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 28px;
+                margin-bottom: 24px;
+            }
+            
+            .why-title {
+                font-size: 26px;
+                margin-bottom: 16px;
+            }
+            
+            .why-desc {
+                font-size: 15px;
+                line-height: 1.8;
+                flex-grow: 1;
+            }
+        }
+
         /* Contact */
         .contact {
             padding: 80px 0;
@@ -3187,42 +3384,41 @@
         </div>
     </section>
 
-    <!-- Why Me -->
-    <section class="how-it-works" id="why">
-        <div class="how-content">
+    <!-- Why Me - Compact Grid -->
+    <section class="why-me" id="why">
+        <div class="why-content">
             <div class="section-header fade-in">
                 <div class="section-label">Почему я</div>
                 <h2 class="section-title">Честно о моей <strong>работе</strong></h2>
             </div>
             
-            <div class="steps">
-                <div class="step fade-in">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Удалённо — не значит хуже</h3>
-                        <p class="step-desc">Электронные документы, цифровые подписи, электронное судопроизводство, Госуслуги — современные инструменты позволяют решать большинство вопросов дистанционно быстрее и дешевле.</p>
-                    </div>
+            <div class="why-grid">
+                <div class="why-card fade-in">
+                    <div class="why-number">01</div>
+                    <div class="why-icon">🌐</div>
+                    <h3 class="why-title">Удалённо — не значит хуже</h3>
+                    <p class="why-desc">Электронные документы, цифровые подписи, электронное судопроизводство, Госуслуги — современные инструменты позволяют решать большинство вопросов дистанционно быстрее и дешевле.</p>
                 </div>
-                <div class="step fade-in">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Честно о возможностях</h3>
-                        <p class="step-desc">Если задача в моей компетенции — берусь. Если требует узкой специализации (например, уголовное право) — подскажу, к кому обратиться. Не беру деньги за то, в чём не уверен.</p>
-                    </div>
+
+                <div class="why-card fade-in">
+                    <div class="why-number">02</div>
+                    <div class="why-icon">🎯</div>
+                    <h3 class="why-title">Честно о возможностях</h3>
+                    <p class="why-desc">Если задача в моей компетенции — берусь. Если требует узкой специализации (например, уголовное право) — подскажу, к кому обратиться. Не беру деньги за то, в чём не уверен.</p>
                 </div>
-                <div class="step fade-in">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Прямая связь</h3>
-                        <p class="step-desc">Пишете мне — отвечаю я. Нет ассистентов, секретарей, переадресаций. Знаю каждое дело лично и держу вас в курсе.</p>
-                    </div>
+
+                <div class="why-card fade-in">
+                    <div class="why-number">03</div>
+                    <div class="why-icon">💬</div>
+                    <h3 class="why-title">Прямая связь</h3>
+                    <p class="why-desc">Пишете мне — отвечаю я. Нет ассистентов, секретарей, переадресаций. Знаю каждое дело лично и держу вас в курсе.</p>
                 </div>
-                <div class="step fade-in">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Цена фиксируется заранее</h3>
-                        <p class="step-desc">После разговора называю точную стоимость. Никаких «от 15 000 ₽, а потом выяснится 50 000 ₽». Оплата поэтапно или по результату.</p>
-                    </div>
+
+                <div class="why-card fade-in">
+                    <div class="why-number">04</div>
+                    <div class="why-icon">🔒</div>
+                    <h3 class="why-title">Цена фиксируется заранее</h3>
+                    <p class="why-desc">После разговора называю точную стоимость. Никаких «от 15 000 ₽, а потом выяснится 50 000 ₽». Оплата поэтапно или по результату.</p>
                 </div>
             </div>
         </div>
