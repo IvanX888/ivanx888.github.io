@@ -2754,7 +2754,7 @@
             margin-top: 2px;
         }
 
-        /* ===== УЛУЧШЕННЫЕ СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА СОГЛАСИЯ ===== */
+        /* ===== СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА СОГЛАСИЯ ===== */
         .consent-modal-header {
             text-align: center;
             margin-bottom: 24px;
@@ -2783,7 +2783,6 @@
             padding: 20px;
             margin-bottom: 24px;
             border-radius: 8px;
-            transition: var(--transition);
         }
 
         /* УВЕЛИЧЕННАЯ ОБЛАСТЬ КЛИКА */
@@ -2796,10 +2795,9 @@
             color: var(--text-secondary);
             line-height: 1.6;
             position: relative;
-            padding: 10px;
-            margin: -10px;
-            border-radius: 4px;
-            transition: var(--transition);
+            padding: 15px;
+            margin: -15px;
+            border-radius: 6px;
         }
 
         /* Подсветка при наведении */
@@ -2807,55 +2805,58 @@
             background: rgba(212, 175, 55, 0.08);
         }
 
-        /* УВЕЛИЧЕННЫЙ ЧЕКБОКС */
+        /* УВЕЛИЧЕННЫЙ ЧЕКБОКС — отдельная зона клика */
         .consent-modal-checkbox input[type="checkbox"] {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             margin-top: 0;
             accent-color: var(--gold);
             cursor: pointer;
             flex-shrink: 0;
             position: relative;
-            z-index: 2;
-            min-width: 28px;
-            min-height: 28px;
-            transform: scale(1.2);
+            z-index: 3; /* Выше текста */
+            min-width: 32px;
+            min-height: 32px;
+            transform: scale(1.3);
             transform-origin: left center;
+            /* Отступы для увеличения зоны клика */
+            padding: 10px;
+            margin: -10px;
         }
 
-        /* Визуальная обратная связь при клике */
-        .consent-modal-checkbox input[type="checkbox"]:active {
-            transform: scale(1.1);
+        /* Текст — не перехватывает клик, кроме ссылок */
+        .consent-modal-checkbox span {
+            pointer-events: none;
+            user-select: none;
         }
 
-        /* Фокус для клавиатурной навигации */
-        .consent-modal-checkbox input[type="checkbox"]:focus {
-            outline: 2px solid var(--gold);
-            outline-offset: 4px;
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+        /* Ссылки — работают, но с защитой от случайных кликов */
+        .consent-modal-checkbox a {
+            pointer-events: auto;
+            color: var(--gold) !important;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.4);
+            padding: 4px 8px;
+            margin: -4px -8px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Анимация при изменении состояния */
+        .consent-modal-checkbox a:hover {
+            background: rgba(212, 175, 55, 0.15);
+            text-decoration-color: var(--gold);
+        }
+
+        /* Анимация */
         .consent-modal-checkbox input[type="checkbox"]:checked {
             animation: checkPulse 0.3s ease;
         }
 
         @keyframes checkPulse {
-            0% { transform: scale(1.2); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1.2); }
-        }
-
-        .consent-modal-checkbox a {
-            color: var(--gold) !important;
-            text-decoration: underline;
-            text-decoration-color: rgba(212, 175, 55, 0.4);
-            transition: var(--transition);
-        }
-
-        .consent-modal-checkbox a:hover {
-            color: var(--gold-light) !important;
-            text-decoration-color: var(--gold);
+            0% { transform: scale(1.3); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1.3); }
         }
 
         .consent-modal-actions {
