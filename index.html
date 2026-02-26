@@ -2754,7 +2754,7 @@
             margin-top: 2px;
         }
 
-        /* Стили для модального окна согласия */
+        /* ===== УЛУЧШЕННЫЕ СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА СОГЛАСИЯ ===== */
         .consent-modal-header {
             text-align: center;
             margin-bottom: 24px;
@@ -2782,29 +2782,82 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
             padding: 20px;
             margin-bottom: 24px;
+            border-radius: 8px;
+            transition: var(--transition);
         }
+
+        /* УВЕЛИЧЕННАЯ ОБЛАСТЬ КЛИКА */
         .consent-modal-checkbox label {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 16px;
             cursor: pointer;
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.6;
+            position: relative;
+            padding: 10px;
+            margin: -10px;
+            border-radius: 4px;
+            transition: var(--transition);
         }
+
+        /* Подсветка при наведении */
+        .consent-modal-checkbox label:hover {
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        /* УВЕЛИЧЕННЫЙ ЧЕКБОКС */
         .consent-modal-checkbox input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
+            width: 28px;
+            height: 28px;
+            margin-top: 0;
             accent-color: var(--gold);
             cursor: pointer;
             flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            min-width: 28px;
+            min-height: 28px;
+            transform: scale(1.2);
+            transform-origin: left center;
         }
+
+        /* Визуальная обратная связь при клике */
+        .consent-modal-checkbox input[type="checkbox"]:active {
+            transform: scale(1.1);
+        }
+
+        /* Фокус для клавиатурной навигации */
+        .consent-modal-checkbox input[type="checkbox"]:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 4px;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Анимация при изменении состояния */
+        .consent-modal-checkbox input[type="checkbox"]:checked {
+            animation: checkPulse 0.3s ease;
+        }
+
+        @keyframes checkPulse {
+            0% { transform: scale(1.2); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1.2); }
+        }
+
         .consent-modal-checkbox a {
             color: var(--gold) !important;
             text-decoration: underline;
             text-decoration-color: rgba(212, 175, 55, 0.4);
+            transition: var(--transition);
         }
+
+        .consent-modal-checkbox a:hover {
+            color: var(--gold-light) !important;
+            text-decoration-color: var(--gold);
+        }
+
         .consent-modal-actions {
             display: flex;
             flex-direction: column;
@@ -2901,71 +2954,71 @@
             .footer-photo-passport { width: 52px; height: 70px; }
             .chat-modal { width: 360px; }
         }
-		
-		
-		/* Мобильные стили для модальных окон */
-@media (max-width: 640px) {
-    .service-modal-content,
-    .consent-modal-content {
-        padding: 25px 20px;
-        max-width: 95%;
-    }
 
-    .service-modal h3,
-    .consent-modal h3 {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
+        /* Мобильные стили для модальных окон */
+        @media (max-width: 640px) {
+            .service-modal-content,
+            .consent-modal-content {
+                padding: 25px 20px;
+                max-width: 95%;
+            }
 
-    .service-modal-tips li {
-        font-size: 13px;
-        padding: 8px 0 8px 20px;
-        word-break: break-word;
-        hyphens: auto;
-    }
+            .service-modal h3,
+            .consent-modal h3 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
 
-    .service-modal-tips li::before {
-        font-size: 10px;
-        left: 0;
-    }
+            .service-modal-tips li {
+                font-size: 13px;
+                padding: 8px 0 8px 20px;
+                word-break: break-word;
+                hyphens: auto;
+            }
 
-    .service-modal-btn .btn {
-        padding: 14px 20px;
-        font-size: 13px;
-    }
+            .service-modal-tips li::before {
+                font-size: 10px;
+                left: 0;
+            }
 
-    .consent-modal-text {
-        font-size: 14px;
-    }
+            .service-modal-btn .btn {
+                padding: 14px 20px;
+                font-size: 13px;
+            }
 
-    .consent-modal-checkbox label {
-        font-size: 12px;
-        gap: 8px;
-    }
+            .consent-modal-text {
+                font-size: 14px;
+            }
 
-    .consent-modal-checkbox input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-    }
+            .consent-modal-checkbox label {
+                font-size: 12px;
+                gap: 8px;
+            }
 
-    .channel-option {
-        padding: 12px;
-    }
+            .consent-modal-checkbox input[type="checkbox"] {
+                width: 28px;
+                height: 28px;
+                min-width: 28px;
+            }
 
-    .channel-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
+            .channel-option {
+                padding: 12px;
+            }
 
-    .channel-title {
-        font-size: 14px;
-    }
+            .channel-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
 
-    .channel-sub {
-        font-size: 11px;
-    }
-}
+            .channel-title {
+                font-size: 14px;
+            }
+
+            .channel-sub {
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3764,7 +3817,7 @@
             </p>
             
             <div class="consent-modal-checkbox">
-                <label>
+                <label for="modalConsentCheckbox">
                     <input type="checkbox" id="modalConsentCheckbox">
                     <span>
                         Я ознакомлен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> 
