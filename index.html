@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право. Работаю удалённо. Самозанятый юрист.">
+    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, земельное право. Работаю удалённо. Самозанятый юрист.">
     <title>Серко — Юрист онлайн. Решаю вопросы удалённо</title>
 
     <!-- Yandex.Metrika counter -->
@@ -190,7 +190,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
             pointer-events: none;
             opacity: 0.4;
         }
@@ -3414,6 +3414,21 @@
                 </div>
                 <button class="btn service-btn">Заказать</button>
             </div>
+
+            <!-- 9. Земельное право -->
+            <div class="service-card fade-in" id="zemelnoe-pravo" onclick="selectService('Земельное право')">
+                <div class="line-left"></div>
+                <div class="line-right"></div>
+                <div class="service-number">09</div>
+                <div class="service-icon">🏡</div>
+                <h3 class="service-title">Земельное право</h3>
+                <p class="service-desc">Межевание, раздел участков, оформление права собственности, земельные споры. Работаю с ИЖС, садовыми участками, сельхозземлями. Проверю перед покупкой, сопровожу сделку, разрешу споры с соседями.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 10 000 ₽</span>
+                    <span class="service-price-unit">консультация и документы</span>
+                </div>
+                <button class="btn service-btn">Заказать</button>
+            </div>
         </div>
     </section>
 
@@ -3566,6 +3581,21 @@
                 </ul>
                 <a href="#contact" class="btn" style="width: 100%;">Выбрать</a>
             </div>
+
+            <!-- 7. Земельное право -->
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">Земельное право</div>
+                <div class="pricing-desc">Межевание, споры, оформление</div>
+                <div class="pricing-price">от 10 000 ₽</div>
+                <div class="pricing-period">Консультация и документы</div>
+                <ul class="pricing-features">
+                    <li>Межевание и установление границ</li>
+                    <li>Оформление прав собственности</li>
+                    <li>Земельные споры с соседями</li>
+                    <li>Проверка участка перед покупкой</li>
+                </ul>
+                <a href="#contact" class="btn" style="width: 100%;">Выбрать</a>
+            </div>
         </div>
     </section>
 
@@ -3665,6 +3695,27 @@
                 </button>
                 <div class="faq-answer">
                     <p>После разговора фиксирую стоимость и сроки. Работаю по договору (можно электронно). Если после консультации решите, что помощь не требуется — верну деньги. Оплата поэтапно или по результату — обсуждаем индивидуально.</p>
+                </div>
+            </div>
+
+            <!-- Новые вопросы про земельное право -->
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Как разделить земельный участок при разводе?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>Если участок приобретён в браке, он является совместно нажитым имуществом и делится поровну (ст. 34, 39 СК РФ). Раздел возможен по соглашению супругов (с определением долей и межеванием) либо в судебном порядке. После раздела каждому выделяется самостоятельный участок с постановкой на кадастровый учёт.</p>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Нужно ли межевание при продаже дачи?</span>
+                    <div class="faq-icon"></div>
+                </button>
+                <div class="faq-answer">
+                    <p>С 1 января 2018 года межевание для продажи обязательно. Без установленных границ вы не сможете зарегистрировать переход права собственности (ФЗ-218 «О государственной регистрации недвижимости»). Если границы не определены, потребуется вызвать кадастрового инженера для межевания и постановки участка на кадастровый учёт.</p>
                 </div>
             </div>
         </div>
@@ -3860,7 +3911,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ВЫБОРА СПОСОБА СВЯЗИ (ОБНОВЛЕНО: WhatsApp и Telegram убраны, добавлен VK) -->
+    <!-- МОДАЛЬНОЕ ОКНО ВЫБОРА СПОСОБА СВЯЗИ -->
     <div class="service-modal" id="channelModal">
         <div class="service-modal-content">
             <span class="service-modal-close" id="channelModalClose">&times;</span>
@@ -4034,7 +4085,7 @@
         }
 
         // ==========================================
-        // МОДАЛЬНОЕ ОКНО УСЛУГИ (СОВЕТЫ — исправленные нормы)
+        // МОДАЛЬНОЕ ОКНО УСЛУГИ (СОВЕТЫ)
         // ==========================================
         const serviceModal = document.getElementById('serviceModal');
         const modalContent = document.getElementById('serviceModalContent');
@@ -4111,6 +4162,17 @@
                     'Участие в заседании возможно по видео-конференц-связи (ст. 155.1 ГПК РФ).',
                     'Доверенность можно оформить в простой письменной форме (ст. 185 ГК РФ).',
                     'Решение суда вступает в силу через месяц, если не обжаловано (ст. 209 ГПК РФ).'
+                ]
+            },
+            zemelnoe_pravo: {
+                title: 'Земельное право',
+                tips: [
+                    'Межевание: обязательно при разделе, продаже части, уточнении границ. Требуется кадастровый инженер, межевой план, согласование с соседями (ст. 11.4-11.6 ЗК РФ).',
+                    'Раздел участка: возможен по соглашению или в суде. Каждый новый участок получает свой кадастровый номер. Минимальные размеры установлены местными нормативами.',
+                    'Право собственности: оформляется на основании договора, наследства, приватизации, судебного решения. Регистрация в Росреестре обязательна (ФЗ-218).',
+                    'Земельные споры: границы, сервитуты, пользование чужой землей — решаются в судебном порядке. Срок исковой давности — 3 года (ст. 196 ГК РФ).',
+                    'Перевод категорий: земли сельхозназначения в земли поселений — сложная процедура через публичные слушания и муниципалитет.',
+                    'Проверка перед покупкой: выписка из ЕГРН, кадастровая стоимость, обременения, аресты, ВРИ (вид разрешенного использования).'
                 ]
             }
         };
@@ -4267,7 +4329,8 @@
                 'Административное право': 'administrativnoe_pravo',
                 'Трудовые споры': 'trudovye_spory',
                 'Документы': 'dokumenty',
-                'Представительство': 'predstavitelstvo_v_sude'
+                'Представительство': 'predstavitelstvo_v_sude',
+                'Земельное право': 'zemelnoe_pravo'
             };
             const key = keyMap[serviceName];
             if (key) {
