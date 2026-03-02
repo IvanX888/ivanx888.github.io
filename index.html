@@ -495,12 +495,12 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.4);
         }
 
-        /* ===== НОВЫЙ ВИДЖЕТ ЗВОНКА (ДОБАВЛЕНО) ===== */
+        /* ===== НОВЫЙ ВИДЖЕТ ЗВОНКА (ИСПРАВЛЕННЫЙ Z-INDEX) ===== */
         .call-widget {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            z-index: 999;
+            z-index: 99999; /* ПОВЕРХ ВСЕХ ОКОН (выше чем модалки 10001) */
             background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
             color: var(--piano-black);
             border-radius: 50%;
@@ -546,6 +546,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 99999; /* Подсказка тоже поверх всего */
         }
 
         .call-widget:hover::after {
