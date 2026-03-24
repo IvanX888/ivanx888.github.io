@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, земельное право. Работаю удалённо. Самозанятый юрист.">
-    <meta name="keywords" content="юрист онлайн, юридические услуги, недвижимость, семейный юрист, наследство, налоговые споры, земельное право">
+    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса, земельное право. Работаю удалённо. Самозанятый юрист.">
+    <meta name="keywords" content="юрист онлайн, юридические услуги, недвижимость, семейный юрист, наследство, налоговые споры, бизнес юрист, земельное право">
     <meta name="author" content="Иван Серко">
     <meta name="robots" content="index, follow">
     
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://serko-law.ru">
     <meta property="og:title" content="Серко — Юрист онлайн. Решаю вопросы удалённо">
-    <meta property="og:description" content="Юридические консультации онлайн по всей России. Недвижимость, семейные споры, налоги. Работаю удалённо, цена фиксируется заранее.">
+    <meta property="og:description" content="Юридические консультации онлайн по всей России. Недвижимость, семейные споры, налоги, услуги для бизнеса, земельное право. Работаю удалённо, цена фиксируется заранее.">
     <meta property="og:image" content="https://serko-law.ru/og-image.jpg">
     <meta property="og:locale" content="ru_RU">
     
@@ -60,7 +60,7 @@
         "@context": "https://schema.org",
         "@type": "LegalService",
         "name": "Мастерская права СЕРКО",
-        "description": "Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, земельное право.",
+        "description": "Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса, земельное право.",
         "url": "https://serko-law.ru",
         "telephone": "+7-977-423-24-73",
         "email": "333742917@mail.ru",
@@ -82,13 +82,13 @@
             "@type": "Person",
             "name": "Серко Иван Иванович",
             "jobTitle": "Частный юрист",
-            "description": "Самозанятый юрист, специализация: гражданское право"
+            "description": "Самозанятый юрист, специализация: гражданское право, бизнес-консультирование"
         },
         "areaServed": {
             "@type": "Country",
             "name": "Россия"
         },
-        "serviceType": ["Юридические консультации", "Сопровождение сделок", "Представительство в суде"],
+        "serviceType": ["Юридические консультации", "Сопровождение сделок", "Представительство в суде", "Услуги для бизнеса", "Земельное право"],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Юридические услуги",
@@ -3602,17 +3602,17 @@
                     <button class="btn service-btn">Заказать</button>
                 </article>
 
-                <!-- 9. Земельное право -->
-                <article class="service-card fade-in" id="zemelnoe-pravo" onclick="selectService('Земельное право')" tabindex="0" role="button" aria-label="Подробнее об услуге Земельное право">
+                <!-- 9. Юридические услуги для бизнеса (вместо Земельного права) -->
+                <article class="service-card fade-in" id="biznes-uslugi" onclick="selectService('Бизнес-услуги')" tabindex="0" role="button" aria-label="Подробнее об услуге Юридические услуги для бизнеса">
                     <div class="line-left" aria-hidden="true"></div>
                     <div class="line-right" aria-hidden="true"></div>
                     <div class="service-number" aria-hidden="true">09</div>
-                    <div class="service-icon" aria-hidden="true">🏡</div>
-                    <h3 class="service-title">Земельное право</h3>
-                    <p class="service-desc">Межевание, раздел участков, оформление права собственности, земельные споры. Работаю с ИЖС, садовыми участками, сельхозземлями. Проверю перед покупкой, сопровожу сделку, разрешу споры с соседями.</p>
+                    <div class="service-icon" aria-hidden="true">💼</div>
+                    <h3 class="service-title">Юридические услуги для бизнеса</h3>
+                    <p class="service-desc">Консультации, договоры, регистрация ИП/ООО, абонентское обслуживание. Работаю онлайн с ИП и юрлицами. Цена фиксируется до начала работы.</p>
                     <div class="service-price">
                         <span class="service-price-value">от 10 000 ₽</span>
-                        <span class="service-price-unit">консультация и документы</span>
+                        <span class="service-price-unit">консультация + документ</span>
                     </div>
                     <button class="btn service-btn">Заказать</button>
                 </article>
@@ -4181,7 +4181,7 @@
         let consentGiven = localStorage.getItem('legalConsent') === 'true';
 
         // ==========================================
-        // PRELOADER — 500мс
+        // PRELOADER — 1.5 сек (300ms + 400ms)
         // ==========================================
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -4191,9 +4191,9 @@
                     // Полностью скрываем после анимации
                     setTimeout(() => {
                         preloader.style.display = 'none';
-                    }, 800);
+                    }, 400);
                 }
-            }, 500);
+            }, 300);
         });
 
         // ==========================================
@@ -4409,6 +4409,15 @@
                     'Решение суда вступает в силу через месяц, если не обжаловано (ст. 209 ГПК РФ).'
                 ]
             },
+            biznes_uslugi: {
+                title: 'Юридические услуги для бизнеса',
+                tips: [
+                    'Консультация по выбору системы налогообложения, регистрация ИП/ООО, внесение изменений в ЕГРЮЛ.',
+                    'Составление договоров: поставки, оказания услуг, подряда, аренды, лицензионных договоров.',
+                    'Проверка контрагентов, подготовка претензий, досудебное урегулирование споров.',
+                    'Абонентское обслуживание: фиксированная стоимость, приоритетная поддержка, срочная подготовка документов.'
+                ]
+            },
             zemelnoe_pravo: {
                 title: 'Земельное право',
                 tips: [
@@ -4591,6 +4600,7 @@
                 'Трудовые споры': 'trudovye_spory',
                 'Документы': 'dokumenty',
                 'Представительство': 'predstavitelstvo_v_sude',
+                'Бизнес-услуги': 'biznes_uslugi',
                 'Земельное право': 'zemelnoe_pravo'
             };
             const key = keyMap[serviceName];
