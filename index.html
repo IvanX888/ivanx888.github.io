@@ -60,7 +60,6 @@
             --danger-bg: rgba(239,68,68,0.1);
             --success-bg: rgba(34,197,94,0.08);
             --border: rgba(212,175,55,0.25);
-            /* Добавленные переменные для шаблонов */
             --bg: #050505;
             --surface: rgba(20,20,20,0.9);
         }
@@ -155,8 +154,7 @@
         .hero-card::before { content: ''; position: absolute; top:-1px; left:20%; right:20%; height:2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
         .hero-card-shine { position: absolute; inset:0; background: linear-gradient(125deg, transparent 0%, rgba(255,255,255,0.08) 30%, transparent 60%); transform: translateX(-100%); transition: transform 0.6s; pointer-events:none; }
         .hero-card:hover .hero-card-shine { transform: translateX(100%); }
-        .hero-photo-large { width:100%; aspect-ratio:3/4; max-height:280px; border-radius:8px; overflow:hidden; border:2px solid rgba(212,175,55,0.3); margin-bottom:16px; position:relative; transition: var(--transition); background: var(--wood-dark); }
-        .hero-photo-large:hover { border-color: rgba(212,175,55,0.5); box-shadow:0 0 25px rgba(212,175,55,0.15); }
+        .hero-photo-large { width:100%; aspect-ratio:3/4; max-height:280px; border-radius:8px; overflow:hidden; border:2px solid rgba(212,175,55,0.3); margin-bottom:16px; position:relative; transition: var(--transition); background: var(--wood-dark); display:flex; align-items:center; justify-content:center; }
         .hero-photo-large img { width:100%; height:100%; object-fit:cover; object-position:center top; filter: sepia(10%) saturate(90%) contrast(105%); transition: var(--transition); loading:lazy; }
         .hero-photo-large:hover img { filter: sepia(5%) saturate(95%) contrast(110%); transform: scale(1.02); }
         .hero-card-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid rgba(212,175,55,0.2); }
@@ -664,6 +662,7 @@
                         <div class="service-topic" onclick="openModal('check')">➜ Проверка квартиры перед покупкой</div>
                         <div class="service-topic" onclick="openModal('neighbors')">➜ Споры с соседями</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 2. Семейные вопросы -->
                 <article class="service-card fade-in" id="semeynye-voprosy">
@@ -678,6 +677,7 @@
                         <div class="service-topic" onclick="openModal('divorce')">➜ Развод и раздел имущества</div>
                         <div class="service-topic" onclick="openModal('prenup')">➜ Брачный договор</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 3. Наследственные дела -->
                 <article class="service-card fade-in" id="nasledstvo">
@@ -691,6 +691,7 @@
                         <div class="service-topic" onclick="openModal('inheritance')">➜ Вступление в наследство</div>
                         <div class="service-topic" onclick="openModal('inheritance')">➜ Споры между наследниками</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 4. Трудовые споры -->
                 <article class="service-card fade-in" id="trudovye-spory">
@@ -705,6 +706,7 @@
                         <div class="service-topic" onclick="openModal('salary')">➜ Задержка зарплаты</div>
                         <div class="service-topic" onclick="openModal('reinstatement')">➜ Восстановление на работе</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
             </div>
             <div class="services-hidden" id="servicesHidden">
@@ -720,6 +722,7 @@
                         <div class="service-topic" onclick="openModal('tax')">➜ Оспаривание штрафов ФНС</div>
                         <div class="service-topic" onclick="openModal('tax2')">➜ Возврат налоговых вычетов</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 6. Административное право -->
                 <article class="service-card fade-in" id="administrativnoe-pravo">
@@ -733,6 +736,7 @@
                         <div class="service-topic" onclick="openModal('fine')">➜ Штраф ГИБДД</div>
                         <div class="service-topic" onclick="openModal('fine2')">➜ Лишение прав</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 7. Документы и договоры -->
                 <article class="service-card fade-in" id="dokumenty">
@@ -746,6 +750,7 @@
                         <div class="service-topic" onclick="openModal('business3')">➜ Составление договора</div>
                         <div class="service-topic" onclick="openModal('business3')">➜ Проверка договора</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 8. Представительство в суде -->
                 <article class="service-card fade-in" id="predstavitelstvo-v-sude">
@@ -759,6 +764,7 @@
                         <div class="service-topic" onclick="openModal('court')">➜ Ведение дела в суде 1-й инстанции</div>
                         <div class="service-topic" onclick="openModal('appeal')">➜ Апелляционное обжалование</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
                 <!-- 9. Юридические услуги для бизнеса -->
                 <article class="service-card fade-in" id="biznes-uslugi">
@@ -773,6 +779,7 @@
                         <div class="service-topic" onclick="openModal('business2')">➜ Регистрация ИП/ООО</div>
                         <div class="service-topic" onclick="openModal('business3')">➜ Договоры с контрагентами</div>
                     </div>
+                    <button type="button" class="btn service-btn" onclick="openChannelModal()">Заказать</button>
                 </article>
             </div>
             <button type="button" class="show-more-btn" id="showMoreServices" onclick="toggleServices()">Показать все услуги</button>
@@ -904,14 +911,13 @@
 
     <script>
         // ==========================================
-        // СТАРЫЕ ГЛОБАЛЬНЫЕ ФУНКЦИИ (обновлены)
+        // ГЛОБАЛЬНЫЕ ФУНКЦИИ (обновлены)
         // ==========================================
         let pendingAction = null, pendingMessenger = '', consentGiven = false;
         try {
             consentGiven = localStorage.getItem('legalConsent') === 'true';
         } catch(e) { console.warn('localStorage недоступен'); }
 
-        // Прелоадер удалён, поэтому функция загрузки пуста
         const particlesContainer = document.getElementById('particles');
         if(particlesContainer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             const frag = document.createDocumentFragment();
@@ -952,7 +958,6 @@
         consentCheckbox.addEventListener('change',function(){ consentConfirmBtn.disabled=!this.checked; });
         document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ closeConsentModal(); closeChannelModal(); closeServiceModal(); const cm=document.getElementById('chatModal'); if(cm?.classList.contains('active')) cm.classList.remove('active'); } });
         consentModalDiv.addEventListener('click',(e)=>{if(e.target===consentModalDiv)closeConsentModal();});
-        function selectService(serviceName) { const keyMap={ 'Недвижимость':'nedvizhimost','Семейное право':'semeynye_voprosy','Наследство':'nasledstvo','Налоги':'nalogi','Административное право':'administrativnoe_pravo','Трудовые споры':'trudovye_spory','Документы':'dokumenty','Представительство':'predstavitelstvo_v_sude','Бизнес-услуги':'biznes_uslugi','Земельное право':'zemelnoe_pravo' }; const key=keyMap[serviceName]; if(key) openServiceModal(key); else document.getElementById('contact')?.scrollIntoView({behavior:'smooth'}); }
         function handleContactClick(url, messenger, event) { if(event) event.preventDefault(); pendingAction=url; pendingMessenger=messenger; let msg=''; if(messenger==='max') msg='Вы будете перенаправлены в российский мессенджер MAX. Ваши данные не передаются автоматически.'; else if(messenger==='vk') msg='Вы будете перенаправлены в российский мессенджер VK. Ваши данные не передаются автоматически.'; else if(messenger==='phone') msg='Вы будете перенаправлены на набор номера телефона.'; else if(messenger==='email') msg='Вы будете перенаправлены в почтовый клиент.'; else msg='Перед переходом подтвердите согласие на обработку данных.'; if(consentGiven){ if(url.startsWith('tel:')) window.location.href=url; else window.open(url,'_blank','noopener,noreferrer'); } else openConsentModal(msg); }
         function initContactButtons() { const btnMax=document.getElementById('btnMax'), btnWhatsapp=document.getElementById('btnWhatsapp'); if(btnMax) btnMax.onclick=e=>handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g','max',e); if(btnWhatsapp) btnWhatsapp.onclick=e=>handleContactClick('https://wa.me/79774232473','whatsapp',e); const cMax=document.getElementById('contactMax'), cWa=document.getElementById('contactWhatsapp'), cTg=document.getElementById('contactTelegram'), cPh=document.getElementById('contactPhone'), cEm=document.getElementById('contactEmail'); if(cMax) cMax.onclick=e=>handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g','max',e); if(cWa) cWa.onclick=e=>handleContactClick('https://wa.me/79774232473','whatsapp',e); if(cTg) cTg.onclick=e=>handleContactClick('https://t.me/ConsulLexbot','telegram',e); if(cPh) cPh.onclick=e=>handleContactClick('tel:+79774232473','phone',e); if(cEm) cEm.onclick=e=>handleContactClick('mailto:333742917@mail.ru','email',e); const chMax=document.getElementById('chatMax'), chWa=document.getElementById('chatWhatsapp'), chTg=document.getElementById('chatTelegram'), chPh=document.getElementById('chatPhone'); if(chMax) chMax.onclick=e=>{ e.preventDefault(); handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g','max'); toggleChatModal(); }; if(chWa) chWa.onclick=e=>{ e.preventDefault(); handleContactClick('https://wa.me/79774232473','whatsapp'); toggleChatModal(); }; if(chTg) chTg.onclick=e=>{ e.preventDefault(); handleContactClick('https://t.me/ConsulLexbot','telegram'); toggleChatModal(); }; if(chPh) chPh.onclick=e=>{ e.preventDefault(); handleContactClick('tel:+79774232473','phone'); toggleChatModal(); }; const headPhone=document.querySelector('.nav-desktop .btn'); if(headPhone && headPhone.href && headPhone.href.includes('tel:')) headPhone.onclick=e=>handleContactClick('tel:+79774232473','phone',e); const mobPhone=document.querySelector('.mobile-nav .btn'); if(mobPhone && mobPhone.href && mobPhone.href.includes('tel:')) mobPhone.onclick=e=>{ e.preventDefault(); handleContactClick('tel:+79774232473','phone'); toggleMenu(); }; }
         function closeNotification() { document.getElementById('notification')?.classList.remove('active'); }
@@ -965,7 +970,7 @@
         if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initContactButtons); else initContactButtons();
 
         // ==========================================
-        // НОВЫЕ ФУНКЦИИ: МОДАЛКИ С ПОСЛЕДСТВИЯМИ
+        // МОДАЛКИ С ПОСЛЕДСТВИЯМИ
         // ==========================================
         const modalsData = {
             alimony: { title:"Жена подала на алименты", steps:["Судебный приказ – 10 дней на обжалование (ст. 129 ГПК РФ)","Арест счетов и списание 50-70% зарплаты","Запрет выезда за границу, опись имущества"], solution:"Обжалую приказ в 10-дневный срок, соберу доказательства расходов, буду добиваться снижения суммы, защищу имущество от ареста", price:"от 5 000 ₽", urgent:"10 дней на обжалование!", disclaimer:"Результат зависит от материального положения, количества детей и обстоятельств дела." },
@@ -1016,23 +1021,25 @@
         }
         function closeModal() { const m = document.getElementById('dynamicModal'); if(m) { document.removeEventListener('keydown', m._escHandler); m.remove(); document.body.style.overflow = ''; } }
         function showPrivacyModal(messenger) {
+            let url = '';
+            let msg = '';
+            if(messenger === 'max') {
+                url = 'https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g';
+                msg = 'Вы будете перенаправлены в российский мессенджер MAX. Ваши данные не передаются автоматически.';
+            } else if(messenger === 'wa') {
+                url = 'https://wa.me/79774232473';
+                msg = 'Вы будете перенаправлены в WhatsApp.';
+            } else {
+                return;
+            }
+            pendingAction = url;
             pendingMessenger = messenger;
-            const modal = document.getElementById('privacyModal');
-            if(modal) modal.classList.add('active');
+            openConsentModal(msg);
         }
-
-        // Экранирование HTML
-        function escapeHtml(str) {
-            return str.replace(/[&<>]/g, function(m) {
-                if(m === '&') return '&amp;';
-                if(m === '<') return '&lt;';
-                if(m === '>') return '&gt;';
-                return m;
-            });
-        }
+        function escapeHtml(str) { return str.replace(/[&<>]/g, function(m) { if(m === '&') return '&amp;'; if(m === '<') return '&lt;'; if(m === '>') return '&gt;'; return m; }); }
 
         // ==========================================
-        // НОВАЯ СИСТЕМА ШАБЛОНОВ (12 готовых + заглушки)
+        // СИСТЕМА ШАБЛОНОВ
         // ==========================================
         const templatesConfig = [
             { id:'alimony', category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', description:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', price:'Бесплатно', hasTemplate:true, lawRef:'ст. 129 ГПК РФ' },
@@ -1158,6 +1165,17 @@
             hidden.classList.toggle('visible');
             btn.textContent = hidden.classList.contains('visible') ? 'Скрыть дополнительные услуги' : 'Показать все услуги';
         }
+        function revealAndScroll(targetId) {
+            const target = document.getElementById(targetId);
+            if(!target) return false;
+            if(target.closest('#servicesHidden') && !document.getElementById('servicesHidden').classList.contains('visible')) {
+                toggleServices();
+                setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+            } else {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return true;
+        }
         document.addEventListener('DOMContentLoaded', async () => {
             templateManager = new TemplateManager();
             window.templateManager = templateManager;
@@ -1177,6 +1195,27 @@
             document.getElementById('showMoreTemplates').addEventListener('click', toggleTemplates);
             if(window.location.hash === '#services-full') toggleServices();
             if(window.location.hash === '#templates-full') { toggleTemplates(); }
+            const hiddenIds = ['nalogi', 'administrativnoe-pravo', 'dokumenty', 'predstavitelstvo-v-sude', 'biznes-uslugi'];
+            if(window.location.hash) {
+                const id = window.location.hash.substring(1);
+                if(hiddenIds.includes(id)) {
+                    const hiddenBlock = document.getElementById('servicesHidden');
+                    if(hiddenBlock && !hiddenBlock.classList.contains('visible')) {
+                        toggleServices();
+                        setTimeout(() => revealAndScroll(id), 100);
+                    } else {
+                        revealAndScroll(id);
+                    }
+                } else {
+                    const el = document.getElementById(id);
+                    if(el && el.closest('#servicesHidden')) {
+                        if(!document.getElementById('servicesHidden').classList.contains('visible')) toggleServices();
+                        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+                    } else if(el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
         });
     </script>
 </body>
