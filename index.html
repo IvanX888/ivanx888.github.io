@@ -379,7 +379,7 @@
     <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>Удалённо</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div><div class="trust-item"><div class="trust-icon">🤝</div><div><strong>Без посредников</strong></div></div></div></div>
     <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте последствия и решение</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
     <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
-    <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
+    <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button><button class="filter-btn" data-filter="business">Бизнес</button><button class="filter-btn" data-filter="tax">Налоговые</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
     <section class="support" id="support"><div class="section-header fade-in"><div class="section-label">Поддержать</div><h2 class="section-title">Помочь проекту</h2></div><div class="support-box fade-in"><div class="qr-container"><div class="qr-code"><img src="qr-tbank.png" alt="QR код Т-Банк" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size: 80px;\'>💳</div>'"></div><p style="color: var(--text-muted); font-size: 14px;">Отсканируйте в Т-Банке или Сбере</p></div><div><div class="support-highlight">✨ Ваша поддержка поможет создавать больше бесплатных материалов ✨</div><div class="support-methods"><div class="support-method"><div class="contact-method-icon">📞</div><div><strong>По номеру телефона</strong><span>+7 (977) 423-24-73 (Т-Банк, СберПэй)</span></div></div><div class="support-method"><div class="contact-method-icon">🏦</div><div><strong>Т-Банк (по договору)</strong><span>8017435982</span></div></div></div><button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.open('https://messenger.online.sberbank.ru/sl/f1uGrTg8JnJ9BN0G7', '_blank');">Открыть сбор в СберБанк Онлайн</button><div class="legal-note">Платеж является добровольным пожертвованием (ст. 582 ГК РФ). Не является оплатой услуг. По запросу — отчет о расходовании.</div></div></div></section>
     <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
     <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
@@ -389,7 +389,7 @@
     <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
     <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>
     <script>
-        // ------------------ МОДАЛЬНЫЕ ДАННЫЕ (полные тексты, без цен) ------------------
+        // ------------------ МОДАЛЬНЫЕ ДАННЫЕ (полные тексты) ------------------
         const modalContent = {
             check: { title: "Что скрывает продавец? Проверка перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Вы заплатите, а недвижимость уйдёт кредитору. Вы останетесь без денег и без жилья."},{title:"Прописанные «вечные жильцы» не выезжают",desc:"Суд по выселению — 1,5 года, и это если повезёт."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет в регистрации. Переделывайте за свой счёт или судитесь."}], solution:["Закажу выписку ЕГРН с тайной историей переходов прав","Проверю аресты и залоги через ФССП, найду «чёрных риелторов» по базам","Пропишу в договоре санкции за скрытые обременения"] },
             realty: { title: "Сопровождение сделки купли-продажи", urgent: "Безопасная сделка — ключ к сохранению средств", steps: [{title:"Продавец — фиктивный",desc:"Паспорт настоящий, но владелец давно продал квартиру мошенникам. Деньги уйдут, квартиры нет."},{title:"«Серая» схема оплаты",desc:"Риелтор берёт деньги в конверте. Исчезновение посредника = потеря всей суммы."},{title:"Подписали передаточный акт без юриста",desc:"Квартира сгорела/затопилась, а риск ещё на вас. Продавец умывает руки."}], solution:["Проверю личность продавца и полномочия","Пропишу в договоре условия приемки квартиры «как есть»","Организую безопасный расчёт: аккредитив или банковская ячейка"] },
@@ -446,13 +446,10 @@
         let pendingContactType = null;
 
         function handleContactClick(url, type) {
-            // Проверяем, давал ли пользователь согласие ранее
             if(localStorage.getItem('user_consent') === 'true') {
-                // Согласие уже есть → сразу переходим
                 if(url.startsWith('tel:')) window.location.href = url;
                 else window.open(url, '_blank', 'noopener,noreferrer');
             } else {
-                // Нет согласия → показываем модалку и запоминаем намерение
                 pendingContactUrl = url;
                 pendingContactType = type;
                 document.getElementById('consentOverlay').classList.add('active');
@@ -468,7 +465,6 @@
         }
 
         function proceedContact() {
-            // Запоминаем, что пользователь дал согласие
             localStorage.setItem('user_consent', 'true');
             if(pendingContactUrl) {
                 if(pendingContactUrl.startsWith('tel:')) window.location.href = pendingContactUrl;
@@ -480,7 +476,8 @@
         document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
-        // ШАБЛОНЫ — ссылки на файлы в корневой папке (как у вас)
+        // ШАБЛОНЫ — правильный путь к папке "Шаблоны"
+        const templatesFolder = "Шаблоны/";
         const fullTemplates = [
             {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'alimony.doc'},
             {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'divorce.doc'},
@@ -504,7 +501,7 @@
             const btn=document.getElementById('templatesToggleBtn'); 
             let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
             const visible=showAllTemplates?filtered:filtered.slice(0,2); 
-            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>📥 Скачать DOC</a></div>`).join(''); 
+            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${templatesFolder}${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>📥 Скачать DOC</a></div>`).join(''); 
             if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
         }
         function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
