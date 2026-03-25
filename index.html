@@ -1,4 +1,450 @@
-    <script>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса. Работаю удалённо.">
+    <meta name="keywords" content="юрист онлайн, юридические услуги, недвижимость, семейный юрист, наследство, налоговые споры, бизнес юрист">
+    <meta name="author" content="Иван Серко">
+    <meta name="robots" content="index, follow">
+    <title>Серко — Юрист онлайн. Решаю вопросы удалённо</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z' fill='none' stroke='%23d4af37' stroke-width='3'/%3E%3Cpath d='M50 25 L50 65 M35 40 L50 55 L65 40' stroke='%23d4af37' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wood-dark: #1a120b;
+            --wood-medium: #2c1810;
+            --piano-black: #0a0a0a;
+            --gold: #d4af37;
+            --gold-light: #f4d03f;
+            --gold-dark: #b8860b;
+            --text-primary: #f5f5f5;
+            --text-secondary: #c9b896;
+            --text-muted: #8b7355;
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.8);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --success: #4ade80;
+            --error: #f87171;
+            --danger: #ef4444;
+            --danger-bg: rgba(239,68,68,0.1);
+            --success-bg: rgba(34,197,94,0.08);
+            --border: rgba(212,175,55,0.25);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--piano-black);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+        a, .service-topic, .filter-btn, .show-more-btn, .faq-question, .contact-method, .footer-links a, .mobile-nav a, .nav-link, .btn, .logo {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a)::after,
+        .service-topic::after,
+        .filter-btn::after,
+        .show-more-btn::after,
+        .faq-question::after,
+        .contact-method::after,
+        .footer-links a::after,
+        .mobile-nav a::after,
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px rgba(212,175,55,0.4);
+        }
+        a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a):hover::after,
+        .service-topic:hover::after,
+        .filter-btn:hover::after,
+        .show-more-btn:hover::after,
+        .faq-question:hover::after,
+        .contact-method:hover::after,
+        .footer-links a:hover::after,
+        .mobile-nav a:hover::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        a:hover, .service-topic:hover, .filter-btn:hover, .show-more-btn:hover, .faq-question:hover, .contact-method:hover, .footer-links a:hover, .mobile-nav a:hover, .nav-link:hover {
+            color: var(--gold);
+        }
+        .wood-bg { 
+            background: linear-gradient(135deg, rgba(26,18,11,0.95) 0%, rgba(44,24,16,0.9) 50%, rgba(26,18,11,0.95) 100%); 
+            position: relative; 
+        }
+        .wood-bg::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"); 
+            pointer-events: none; 
+        }
+        .piano-black { 
+            background: linear-gradient(180deg, var(--piano-black) 0%, #151515 50%, var(--piano-black) 100%); 
+            position: relative; 
+        }
+        .header { 
+            position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212,175,55,0.2); z-index: 1000; transition: var(--transition); 
+        }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; min-height: 60px; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 1002; cursor: pointer; }
+        .logo-emblem { width: 40px; height: 40px; flex-shrink: 0; }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(16px, 4vw, 20px); font-weight: 600; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; }
+        .logo-title .small { color: var(--text-secondary); font-weight: 400; font-size: clamp(9px, 2.5vw, 10px); letter-spacing: 2px; text-transform: lowercase; display: block; }
+        .nav-desktop { display: none; }
+        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); padding: 8px 0; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; transition: var(--transition); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif; border-radius: 4px; min-height: 48px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); color: var(--piano-black); white-space: nowrap; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
+        .btn-outline { background: transparent; color: var(--gold); }
+        .btn-outline:hover { background: var(--gold); color: var(--piano-black); }
+        .nav-mobile-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 20px; cursor: pointer; color: var(--gold); z-index: 1002; }
+        .hero { min-height: 100vh; padding: 100px 16px 40px; display: flex; flex-direction: column; gap: 32px; position: relative; }
+        .hero-content { text-align: center; position: relative; z-index: 2; }
+        .hero-content h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 6vw, 32px); line-height: 1.2; font-weight: 400; margin-bottom: 20px; }
+        .hero-content h1 strong { color: var(--gold); font-weight: 600; display: block; margin-top: 8px; font-size: clamp(28px, 7vw, 36px); }
+        .hero-subtitle { font-size: clamp(14px, 4vw, 16px); color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+        .hero-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; align-items: center; }
+        .hero-feature { display: flex; align-items: center; gap: 10px; font-size: clamp(12px, 3.5vw, 14px); color: var(--text-secondary); background: rgba(212,175,55,0.05); padding: 12px 16px; border: 1px solid rgba(212,175,55,0.1); width: 100%; max-width: 400px; justify-content: center; border-radius: 4px; }
+        .hero-cta { display: flex; flex-direction: column; gap: 12px; }
+        .hero-visual { position: relative; perspective: 1000px; }
+        .hero-card { background: linear-gradient(145deg, rgba(28,28,28,0.9) 0%, rgba(10,10,10,0.95) 100%); border: 1px solid rgba(212,175,55,0.3); padding: 20px; border-radius: 8px; position: relative; }
+        .hero-photo-large { 
+            width: 100%; 
+            max-height: 300px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            border: 2px solid rgba(212,175,55,0.3); 
+            margin-bottom: 16px; 
+            background: var(--wood-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-photo-large img { 
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+        }
+        .hero-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); }
+        .hero-avatar-small { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); }
+        .hero-avatar-small svg { width: 32px; height: 32px; }
+        .hero-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 600; }
+        .hero-card-subtitle { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+        .hero-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; line-height: 1.6; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; padding-left: 12px; border-left: 2px solid var(--gold); }
+        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .hero-stat { text-align: center; padding: 12px 4px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.1); border-radius: 4px; }
+        .hero-stat-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 700; color: var(--gold); }
+        .hero-stat-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
+        .marquee { background: var(--wood-dark); border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2); padding: 16px 0; overflow: hidden; }
+        .marquee-content { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
+        .marquee-item { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; padding: 0 24px; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .trust-bar { background: linear-gradient(90deg, var(--wood-dark) 0%, var(--wood-medium) 50%, var(--wood-dark) 100%); padding: 24px 16px; border-top: 1px solid rgba(212,175,55,0.2); }
+        .trust-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); text-align: center; }
+        .trust-item strong { color: var(--gold); font-size: 16px; font-family: 'Cormorant Garamond', Georgia, serif; }
+        .trust-icon { width: 40px; height: 40px; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; border-radius: 4px; }
+        .section-header { text-align: center; margin-bottom: 40px; padding: 0 16px; }
+        .section-label { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; background: rgba(212,175,55,0.05); border-radius: 4px; }
+        .section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(26px, 6vw, 32px); font-weight: 400; margin-bottom: 12px; }
+        .section-title strong { color: var(--gold); font-weight: 600; }
+        .section-subtitle { font-size: clamp(14px, 3.5vw, 16px); color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        .services { padding: 60px 0; }
+        .services-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; }
+        .services-hidden { display: none; grid-template-columns: 1fr; gap: 20px; padding: 0 16px; margin-top: 20px; }
+        .services-hidden.visible { display: grid; }
+        .service-card { background: linear-gradient(145deg, rgba(28,28,28,0.6) 0%, rgba(10,10,10,0.8) 100%); border: 1px solid rgba(212,175,55,0.15); padding: 28px 24px; position: relative; overflow: hidden; transition: var(--transition); border-radius: 8px; scroll-margin-top: 80px; }
+        .service-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .service-number { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 48px; font-weight: 300; color: rgba(212,175,55,0.1); position: absolute; top: 12px; right: 16px; line-height: 1; }
+        .service-icon { width: 56px; height: 56px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; border-radius: 8px; }
+        .service-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+        .service-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+        .service-topics { display: flex; flex-direction: column; gap: 10px; }
+        .service-topic { padding: 14px 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 6px; cursor: pointer; font-size: 14px; color: var(--text-secondary); transition: var(--transition); display: flex; align-items: center; gap: 10px; position: relative; }
+        .service-topic::before { content: '→'; color: var(--gold); font-weight: bold; transition: var(--transition); }
+        .service-topic:hover { background: rgba(212,175,55,0.1); border-color: var(--gold); color: var(--text-primary); transform: translateX(5px); padding-left: 20px; }
+        .service-topic:hover::before { transform: translateX(3px); }
+        .pricing { padding: 60px 0; }
+        .pricing-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; margin-top: 40px; }
+        .pricing-card { background: linear-gradient(180deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid rgba(212,175,55,0.2); padding: 32px 24px; text-align: center; position: relative; border-radius: 8px; transition: var(--transition); }
+        .pricing-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-5px); }
+        .pricing-card.popular { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, rgba(10,10,10,0.95) 100%); }
+        .popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--piano-black); padding: 6px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 0 4px 4px; }
+        .pricing-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .pricing-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+        .pricing-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+        .pricing-period { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+        .pricing-features { list-style: none; margin: 24px 0; text-align: left; }
+        .pricing-features li { padding: 12px 0; border-bottom: 1px solid rgba(212,175,55,0.1); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .pricing-features li::before { content: '✓'; color: var(--gold); font-weight: bold; }
+        .templates { padding: 60px 16px; background: rgba(212,175,55,0.02); }
+        .templates-filter { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+        .filter-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 20px; cursor: pointer; transition: var(--transition); font-size: 13px; }
+        .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.1); }
+        .templates-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .template-card { background: rgba(20,20,20,0.8); border: 1px solid var(--border); padding: 24px; border-radius: 12px; transition: var(--transition); }
+        .template-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .template-icon { font-size: 36px; margin-bottom: 12px; }
+        .template-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; margin-bottom: 8px; }
+        .template-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
+        .template-note { font-size: 12px; color: var(--gold); background: rgba(212,175,55,0.1); padding: 8px 12px; border-radius: 6px; margin-bottom: 16px; display: inline-block; }
+        .show-more-btn { display: block; margin: 40px auto 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 32px; cursor: pointer; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; transition: var(--transition); }
+        .show-more-btn:hover { background: var(--gold); color: #000; }
+        .support { padding: 60px 16px; max-width: 1200px; margin: 0 auto; }
+        .support-handshake { text-align: center; font-size: 48px; margin-bottom: 24px; }
+        .support-box { background: linear-gradient(135deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid var(--gold); border-radius: 16px; padding: 40px 24px; display: grid; gap: 32px; }
+        .qr-container { text-align: center; }
+        .qr-code { width: 200px; height: 200px; background: white; padding: 12px; border-radius: 12px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; }
+        .qr-code img { width: 100%; height: 100%; object-fit: contain; }
+        .support-highlight { font-size: 18px; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 24px; }
+        .support-methods { display: flex; flex-direction: column; gap: 16px; }
+        .support-method { display: flex; align-items: center; gap: 12px; padding: 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; }
+        .support-method strong { color: var(--gold); display: block; margin-bottom: 4px; }
+        .support-method span { font-size: 14px; color: var(--text-secondary); }
+        .legal-note { font-size: 11px; color: var(--text-muted); margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
+        .faq { padding: 60px 16px; }
+        .faq-list { max-width: 900px; margin: 40px auto 0; }
+        .faq-item { border-bottom: 1px solid rgba(212,175,55,0.2); background: rgba(10,10,10,0.5); margin-bottom: 10px; border-radius: 4px; overflow: hidden; }
+        .faq-question { width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-size: 15px; font-weight: 500; text-align: left; cursor: pointer; color: var(--text-primary); font-family: 'Montserrat', sans-serif; gap: 12px; }
+        .faq-question:hover { color: var(--gold); }
+        .faq-icon { width: 36px; height: 36px; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; transition: all 0.3s; border-radius: 4px; flex-shrink: 0; position: relative; }
+        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--gold); transition: all 0.3s; }
+        .faq-icon::before { width: 14px; height: 2px; }
+        .faq-icon::after { width: 2px; height: 14px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .faq-item.active .faq-answer { max-height: 500px; }
+        .faq-answer p { padding: 0 20px 20px; color: var(--text-secondary); line-height: 1.7; font-size: 14px; }
+        .contact { padding: 60px 16px; }
+        .contact-grid { max-width: 600px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 16px; }
+        .contact-method { display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; text-decoration: none; color: var(--text-primary); transition: var(--transition); cursor: pointer; }
+        .contact-method:hover { border-color: var(--gold); transform: translateX(10px); background: rgba(212,175,55,0.1); }
+        .contact-method-icon { width: 48px; height: 48px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 8px; flex-shrink: 0; }
+        .contact-method-content { flex: 1; }
+        .contact-method-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .contact-method-value { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .footer { background: var(--piano-black); border-top: 1px solid rgba(212,175,55,0.2); padding: 48px 16px 24px; }
+        .footer-content { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: var(--gold); }
+        .footer-desc { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
+        .footer-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; color: var(--gold); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: var(--transition); position: relative; display: inline-block; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(212,175,55,0.1); text-align: center; font-size: 12px; color: var(--text-muted); max-width: 1200px; margin: 0 auto; }
+        .footer-legal-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-legal-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; cursor: pointer; }
+        .footer-legal-links a:hover { color: var(--gold); text-decoration: underline; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal { background: #111; border: 1px solid var(--gold); max-width: 800px; width: 100%; max-height: 90vh; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transform: scale(0.9); transition: transform 0.3s; }
+        .modal-overlay.active .modal { transform: scale(1); }
+        .modal-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(212,175,55,0.05); }
+        .modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; color: var(--gold); }
+        .modal-close { background: rgba(255,255,255,0.05); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-size: 24px; cursor: pointer; color: var(--gold); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .modal-close:hover { background: var(--danger); color: white; border-color: var(--danger); }
+        .modal-body { padding: 24px; overflow-y: auto; }
+        .urgency-warning { background: var(--danger-bg); border: 1px solid var(--danger); padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-weight: 500; color: var(--danger); }
+        .scenario { margin-bottom: 24px; }
+        .scenario-title { font-size: 14px; color: var(--danger); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
+        .scenario-step { display: flex; gap: 16px; margin-bottom: 16px; padding: 16px; background: rgba(239,68,68,0.05); border-radius: 8px; border-left: 3px solid var(--danger); }
+        .step-num { width: 32px; height: 32px; background: var(--danger-bg); border: 1px solid var(--danger); color: var(--danger); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 50%; flex-shrink: 0; font-size: 14px; }
+        .step-content h4 { font-size: 16px; margin-bottom: 6px; color: var(--text-primary); }
+        .step-content p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+        .solution-box { background: var(--success-bg); border-left: 4px solid var(--success); padding: 20px; margin: 24px 0; border-radius: 0 12px 12px 0; }
+        .solution-box h4 { color: var(--success); margin-bottom: 12px; font-size: 18px; }
+        .solution-box ul { list-style: none; color: var(--text-secondary); font-size: 14px; }
+        .solution-box li { padding: 6px 0; padding-left: 20px; position: relative; }
+        .solution-box li::before { content: '→'; position: absolute; left: 0; color: var(--success); font-weight: bold; }
+        .modal-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin-top: 20px; font-size: 12px; color: var(--text-muted); font-style: italic; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh; background: linear-gradient(180deg, var(--piano-black) 0%, var(--wood-dark) 100%); z-index: 1001; padding: 80px 24px 32px; transition: right 0.4s ease; border-left: 1px solid rgba(212,175,55,0.2); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 28px; cursor: pointer; color: var(--gold); }
+        .mobile-nav { display: flex; flex-direction: column; gap: 4px; }
+        .mobile-nav a { font-size: 16px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(212,175,55,0.1); text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .mobile-nav a:hover { color: var(--gold); padding-left: 10px; }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s; }
+        .overlay.active { opacity: 1; visibility: visible; }
+        .chat-widget, .call-widget { position: fixed; bottom: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); color: var(--piano-black); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212,175,55,0.4); cursor: pointer; transition: var(--transition); border: 2px solid var(--gold); font-size: 24px; z-index: 999; }
+        .chat-widget { right: 20px; }
+        .call-widget { left: 20px; animation: pulseCall 2s infinite; }
+        @keyframes pulseCall { 0%, 100% { box-shadow: 0 4px 15px rgba(212,175,55,0.4); } 50% { box-shadow: 0 4px 25px rgba(212,175,55,0.7); } }
+        @media (min-width: 640px) {
+            .trust-content { grid-template-columns: repeat(4, 1fr); }
+            .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+            .services-hidden { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+            .templates-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); text-align: left; }
+            .support-box { grid-template-columns: 1fr 1fr; align-items: center; }
+        }
+        @media (min-width: 1024px) {
+            .nav-desktop { display: flex; gap: 32px; }
+            .nav-mobile-btn { display: none; }
+            .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 140px 40px 100px; max-width: 1400px; margin: 0 auto; }
+            .hero-content { text-align: left; }
+            .hero-features { align-items: flex-start; }
+            .hero-cta { flex-direction: row; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); padding: 0 40px; }
+            .services-hidden { grid-template-columns: repeat(3, 1fr); padding: 0 40px; }
+            .pricing-grid { grid-template-columns: repeat(4, 1fr); padding: 0 40px; }
+            .pricing-card.popular { transform: scale(1.05); }
+            .templates-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-content { grid-template-columns: 2fr 1fr 1fr 1fr; }
+        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.98); border-top: 1px solid var(--gold); padding: 16px; z-index: 9999; display: none; text-align: center; }
+        .cookie-banner p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
+        .cookie-banner a { color: var(--gold); text-decoration: underline; cursor: pointer; }
+        .consent-modal .modal { max-width: 500px; }
+        .consent-modal .modal-body { text-align: center; }
+        .consent-actions { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="#top" class="logo" id="scrollTopBtn">
+                <div class="logo-emblem">
+                    <!-- Щит вместо буквы С -->
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" stroke="#d4af37" stroke-width="3" fill="rgba(212,175,55,0.1)"/>
+                        <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#d4af37" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text"><div class="logo-title"><span class="small">мастерская права</span><span style="display: block; color: #d4af37; font-weight: 700;">СЕРКО</span></div></div>
+            </a>
+            <nav class="nav-desktop">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#pricing" class="nav-link">Тарифы</a>
+                <a href="#templates" class="nav-link">Шаблоны</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="tel:+79774232473" class="btn" onclick="event.preventDefault(); handleContactClick('tel:+79774232473', 'phone');">📞 Позвонить</a>
+            </nav>
+            <button class="nav-mobile-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMenu()">×</button>
+        <nav class="mobile-nav">
+            <a href="#services" onclick="toggleMenu()">Услуги</a>
+            <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
+            <a href="#templates" onclick="toggleMenu()">Шаблоны</a>
+            <a href="#faq" onclick="toggleMenu()">FAQ</a>
+            <a href="#contact" onclick="toggleMenu()">Контакты</a>
+            <a href="tel:+79774232473" class="btn" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top: 20px;">📞 Позвонить</a>
+        </nav>
+    </div>
+    <section class="hero wood-bg" id="top">
+        <div class="hero-content fade-in">
+            <h1>Юрист онлайн <strong>для сложных задач</strong></h1>
+            <p class="hero-subtitle">Работаю удалённо по всей России: проверю документы, составлю договор, подготовлю иск, проконсультирую. Без встреч в офисе — быстрее, дешевле, удобнее.</p>
+            <!-- Оптимизировано: убраны лишние повторы -->
+            <div class="hero-features">
+                <div class="hero-feature">⚡ Работаю удалённо по всей России</div>
+                <div class="hero-feature">🎯 Цена фиксируется до начала работы</div>
+                <div class="hero-feature">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
+            </div>
+            <div class="hero-cta">
+                <a href="#" class="btn btn-large" onclick="event.preventDefault(); handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬 Написать в MAX</a>
+                <a href="#" class="btn btn-outline btn-large" onclick="event.preventDefault(); handleContactClick('https://wa.me/79774232473', 'whatsapp');">💬 WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-visual fade-in">
+            <div class="hero-card">
+                <div class="hero-photo-large"><img src="фото5.png" alt="Иван Серко" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%231a120b%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23d4af37%22 font-family=%22serif%22 font-size=%2224%22%3EИС%3C/text%3E%3C/svg%3E'"></div>
+                <div class="hero-card-header">
+                    <div class="hero-avatar-small">
+                        <!-- Щит вместо фото -->
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" stroke="#d4af37" stroke-width="4" fill="none"/>
+                            <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#d4af37" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="hero-card-title">Иван Серко</div>
+                        <div class="hero-card-subtitle">Частный юрист</div>
+                    </div>
+                </div>
+                <blockquote class="hero-quote">"Беру дела, в которых уверен. Если вопрос сложный — разберусь, если вне моей компетенции — подскажу, к кому обратиться. Работаю без посредников: вы пишете мне — отвечаю я."</blockquote>
+                <div class="hero-stats">
+                    <div class="hero-stat"><div class="hero-stat-value">127</div><div class="hero-stat-label">дел решено удаленно в 2025</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">100%</div><div class="hero-stat-label">Лично</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">24ч</div><div class="hero-stat-label">Ответ</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю удалённо</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю удалённо</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
+    <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>Удалённо</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div><div class="trust-item"><div class="trust-icon">🤝</div><div><strong>Без посредников</strong></div></div></div></div>
+    <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте последствия и решение</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
+    <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
+    <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button><button class="filter-btn" data-filter="business">Бизнес</button><button class="filter-btn" data-filter="tax">Налоговые</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
+    <section class="support" id="support">
+        <div class="section-header fade-in">
+            <div class="section-label">Поддержать</div>
+            <h2 class="section-title">Помочь проекту</h2>
+        </div>
+        <div class="support-handshake fade-in">🤝</div>
+        <div class="support-box fade-in">
+            <div class="qr-container">
+                <div class="qr-code">
+                    <img src="qr-tbank.png" alt="QR код Т-Банк" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size: 80px;\'>💳</div>'">
+                </div>
+                <p style="color: var(--text-muted); font-size: 14px;">Отсканируйте в Т-Банке или Сбере</p>
+            </div>
+            <div>
+                <div class="support-highlight">✨ Ваша поддержка поможет создавать больше бесплатных материалов ✨</div>
+                <div class="support-methods">
+                    <div class="support-method">
+                        <div class="contact-method-icon">📞</div>
+                        <div>
+                            <strong>По номеру телефона</strong>
+                            <span>+7 (977) 423-24-73 (Т-Банк, СберПэй)</span>
+                        </div>
+                    </div>
+                    <div class="support-method">
+                        <div class="contact-method-icon">🏦</div>
+                        <div>
+                            <strong>Т-Банк (по договору)</strong>
+                            <span>8017435982</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.open('https://messenger.online.sberbank.ru/sl/f1uGrTg8JnJ9BN0G7', '_blank');">Открыть сбор в СберБанк Онлайн</button>
+                <div class="legal-note">Платеж является добровольным пожертвованием (ст. 582 ГК РФ). Не является оплатой услуг. По запросу — отчет о расходовании.</div>
+            </div>
+        </div>
+    </section>
+    <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
+    <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
+    <footer class="footer"><div class="footer-content"><div><div class="footer-logo">СЕРКО</div><p class="footer-desc">Решаю юридические вопросы удалённо. Индивидуальный подход, честные цены, прямая связь.</p></div><div><div class="footer-title">Услуги</div><ul class="footer-links"><li><a href="#nedvizhimost">Недвижимость</a></li><li><a href="#semeynye">Семейные споры</a></li><li><a href="#nasledstvo">Наследство</a></li><li><a href="#trudovye">Трудовое право</a></li><li><a href="#nalogovye">Налоговые споры</a></li></ul></div><div><div class="footer-title">Информация</div><ul class="footer-links"><li><a href="#pricing">Тарифы</a></li><li><a href="#templates">Шаблоны</a></li><li><a href="#faq">Вопросы</a></li></ul></div><div><div class="footer-title">Реквизиты</div><ul class="footer-links"><li style="color: var(--text-muted);">ИНН: 500918804320</li><li style="color: var(--text-muted);">Самозанятый</li><li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Мастерская права СЕРКО. Все права защищены.</p><div class="footer-legal-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Типовой договор</a><a href="personal.html">Обработка персональных данных</a></div><p style="margin-top: 8px; font-size: 11px;">Информация не является публичной офертой</p></div></footer>
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();"><div class="modal"><div class="modal-header"><h3 class="modal-title" id="modalTitle"></h3><button class="modal-close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
+    <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index: 2100;"><div class="modal consent-modal"><div class="modal-header"><h3 class="modal-title">Согласие на обработку данных</h3><button class="modal-close" onclick="closeConsentModal()">×</button></div><div class="modal-body"><p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p><div class="consent-actions"><button class="btn" id="consentConfirmBtn">Согласен</button><button class="btn btn-outline" id="consentCancelBtn">Отмена</button></div></div></div></div>
+    <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
+    <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>    <script>
         // ------------------ МОДАЛЬНЫЕ ДАННЫЕ (полные тексты) ------------------
         const modalContent = {
             check: { title: "Что скрывает продавец? Проверка перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Вы заплатите, а недвижимость уйдёт кредитору. Вы останетесь без денег и без жилья."},{title:"Прописанные «вечные жильцы» не выезжают",desc:"Суд по выселению — 1,5 года, и это если повезёт."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет в регистрации. Переделывайте за свой счёт или судитесь."}], solution:["Закажу выписку ЕГРН с тайной историей переходов прав","Проверю аресты и залоги через ФССП, найду «чёрных риелторов» по базам","Пропишу в договоре санкции за скрытые обременения"] },
