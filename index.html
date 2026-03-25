@@ -441,45 +441,62 @@
         function toggleMenu(){ const menu=document.getElementById('mobileMenu'); const overlay=document.querySelector('.overlay'); menu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow=menu.classList.contains('active')?'hidden':''; }
         function scrollToTop(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }
 
-        // Согласие
+        // СОГЛАСИЕ С ЗАПОМИНАНИЕМ
         let pendingContactUrl = null;
         let pendingContactType = null;
+
         function handleContactClick(url, type) {
-            pendingContactUrl = url;
-            pendingContactType = type;
-            document.getElementById('consentOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            // Проверяем, давал ли пользователь согласие ранее
+            if(localStorage.getItem('user_consent') === 'true') {
+                // Согласие уже есть → сразу переходим
+                if(url.startsWith('tel:')) window.location.href = url;
+                else window.open(url, '_blank', 'noopener,noreferrer');
+            } else {
+                // Нет согласия → показываем модалку и запоминаем намерение
+                pendingContactUrl = url;
+                pendingContactType = type;
+                document.getElementById('consentOverlay').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
+
         function closeConsentModal() {
             document.getElementById('consentOverlay').classList.remove('active');
             document.body.style.overflow = '';
             pendingContactUrl = null;
             pendingContactType = null;
         }
+
         function proceedContact() {
+            // Запоминаем, что пользователь дал согласие
+            localStorage.setItem('user_consent', 'true');
             if(pendingContactUrl) {
                 if(pendingContactUrl.startsWith('tel:')) window.location.href = pendingContactUrl;
                 else window.open(pendingContactUrl, '_blank', 'noopener,noreferrer');
             }
             closeConsentModal();
         }
+
         document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
-        // Шаблоны с указанием файлов в папке templates/
+        // ШАБЛОНЫ — ссылки на файлы в корневой папке (как у вас)
         const fullTemplates = [
-            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'alimony_objection.docx'},
-            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'property_division.docx'},
-            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'reinstatement_claim.docx'},
-            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'labor_complaint.docx'},
-            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'purchase_agreement.docx'},
-            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'flood_claim.docx'},
-            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'debt_claim.docx'},
-            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'prenup_agreement.docx'},
-            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'appeal.docx'},
-            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'lease_agreement.docx'},
-            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'termination_agreement.docx'},
-            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'alimony_agreement.docx'}
+            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'alimony.doc'},
+            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'divorce.doc'},
+            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'fired.doc'},
+            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'salary.doc'},
+            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'realty.doc'},
+            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'neighbors.doc'},
+            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'court.doc'},
+            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'prenup.doc'},
+            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'court.doc'},
+            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'realty.doc'},
+            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'fired.doc'},
+            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'alimony.doc'},
+            {id:13, category:'property', icon:'🏞️', title:'Соглашение о разделе земельного участка', desc:'Выдел долей в натуре', note:'⚠️ Требуется межевание и регистрация', file:'land.doc'},
+            {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'business.doc'},
+            {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'tax.doc'}
         ];
         let currentFilter='all'; let showAllTemplates=false;
         function renderTemplates(){ 
@@ -487,7 +504,7 @@
             const btn=document.getElementById('templatesToggleBtn'); 
             let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
             const visible=showAllTemplates?filtered:filtered.slice(0,2); 
-            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="templates/${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>📥 Скачать DOC</a></div>`).join(''); 
+            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>📥 Скачать DOC</a></div>`).join(''); 
             if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
         }
         function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
