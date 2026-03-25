@@ -361,7 +361,6 @@
         <div class="hero-content fade-in">
             <h1>Юрист онлайн <strong>для сложных задач</strong></h1>
             <p class="hero-subtitle">Работаю удалённо по всей России: проверю документы, составлю договор, подготовлю иск, проконсультирую. Без встреч в офисе — быстрее, дешевле, удобнее.</p>
-            <!-- Оптимизировано: убраны лишние повторы -->
             <div class="hero-features">
                 <div class="hero-feature">⚡ Работаю удалённо по всей России</div>
                 <div class="hero-feature">🎯 Цена фиксируется до начала работы</div>
@@ -440,14 +439,17 @@
     </section>
     <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
     <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
-    <footer class="footer"><div class="footer-content"><div><div class="footer-logo">СЕРКО</div><p class="footer-desc">Решаю юридические вопросы удалённо. Индивидуальный подход, честные цены, прямая связь.</p></div><div><div class="footer-title">Услуги</div><ul class="footer-links"><li><a href="#nedvizhimost">Недвижимость</a></li><li><a href="#semeynye">Семейные споры</a></li><li><a href="#nasledstvo">Наследство</a></li><li><a href="#trudovye">Трудовое право</a></li><li><a href="#nalogovye">Налоговые споры</a></li></ul></div><div><div class="footer-title">Информация</div><ul class="footer-links"><li><a href="#pricing">Тарифы</a></li><li><a href="#templates">Шаблоны</a></li><li><a href="#faq">Вопросы</a></li></ul></div><div><div class="footer-title">Реквизиты</div><ul class="footer-links"><li style="color: var(--text-muted);">ИНН: 500918804320</li><li style="color: var(--text-muted);">Самозанятый</li><li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Мастерская права СЕРКО. Все права защищены.</p><div class="footer-legal-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Типовой договор</a><a href="personal.html">Обработка персональных данных</a></div><p style="margin-top: 8px; font-size: 11px;">Информация не является публичной офертой</p></div></footer>
+    
+    <!-- ИСПРАВЛЕНО: ссылка на personal-data.html вместо personal.html -->
+    <footer class="footer"><div class="footer-content"><div><div class="footer-logo">СЕРКО</div><p class="footer-desc">Решаю юридические вопросы удалённо. Индивидуальный подход, честные цены, прямая связь.</p></div><div><div class="footer-title">Услуги</div><ul class="footer-links"><li><a href="#nedvizhimost">Недвижимость</a></li><li><a href="#semeynye">Семейные споры</a></li><li><a href="#nasledstvo">Наследство</a></li><li><a href="#trudovye">Трудовое право</a></li><li><a href="#nalogovye">Налоговые споры</a></li></ul></div><div><div class="footer-title">Информация</div><ul class="footer-links"><li><a href="#pricing">Тарифы</a></li><li><a href="#templates">Шаблоны</a></li><li><a href="#faq">Вопросы</a></li></ul></div><div><div class="footer-title">Реквизиты</div><ul class="footer-links"><li style="color: var(--text-muted);">ИНН: 500918804320</li><li style="color: var(--text-muted);">Самозанятый</li><li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 Мастерская права СЕРКО. Все права защищены.</p><div class="footer-legal-links"><a href="privacy.html">Политика конфиденциальности</a><a href="contract.html">Типовой договор</a><a href="personal-data.html">Обработка персональных данных</a></div><p style="margin-top: 8px; font-size: 11px;">Информация не является публичной офертой</p></div></footer>
+    
     <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();"><div class="modal"><div class="modal-header"><h3 class="modal-title" id="modalTitle"></h3><button class="modal-close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
     <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index: 2100;"><div class="modal consent-modal"><div class="modal-header"><h3 class="modal-title">Согласие на обработку данных</h3><button class="modal-close" onclick="closeConsentModal()">×</button></div><div class="modal-body"><p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p><div class="consent-actions"><button class="btn" id="consentConfirmBtn">Согласен</button><button class="btn btn-outline" id="consentCancelBtn">Отмена</button></div></div></div></div>
     <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
     <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>
 
     <script>
-        // ------------------ МОДАЛЬНЫЕ ДАННЫЕ (полные тексты) ------------------
+        // ------------------ МОДАЛЬНЫЕ ДАННЫЕ ------------------
         const modalContent = {
             check: { title: "Что скрывает продавец? Проверка перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Вы заплатите, а недвижимость уйдёт кредитору. Вы останетесь без денег и без жилья."},{title:"Прописанные «вечные жильцы» не выезжают",desc:"Суд по выселению — 1,5 года, и это если повезёт."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет в регистрации. Переделывайте за свой счёт или судитесь."}], solution:["Закажу выписку ЕГРН с тайной историей переходов прав","Проверю аресты и залоги через ФССП, найду «чёрных риелторов» по базам","Пропишу в договоре санкции за скрытые обременения"] },
             realty: { title: "Сопровождение сделки купли-продажи", urgent: "Безопасная сделка — ключ к сохранению средств", steps: [{title:"Продавец — фиктивный",desc:"Паспорт настоящий, но владелец давно продал квартиру мошенникам. Деньги уйдут, квартиры нет."},{title:"«Серая» схема оплаты",desc:"Риелтор берёт деньги в конверте. Исчезновение посредника = потеря всей суммы."},{title:"Подписали передаточный акт без юриста",desc:"Квартира сгорела/затопилась, а риск ещё на вас. Продавец умывает руки."}], solution:["Проверю личность продавца и полномочия","Пропишу в договоре условия приемки квартиры «как есть»","Организую безопасный расчёт: аккредитив или банковская ячейка"] },
@@ -534,23 +536,23 @@
         document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
-        // ШАБЛОНЫ — ИСПРАВЛЕННЫЕ ПУТИ (добавлено ./ для поиска в текущей папке)
+        // ИСПРАВЛЕНО: пути к шаблонам с учетом папки "Шаблоны" (русские буквы)
         const fullTemplates = [
-            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'./alimony.doc'},
-            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'./divorce.doc'},
-            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'./fired.doc'},
-            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'./salary.doc'},
-            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'./realty.doc'},
-            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'./neighbors.doc'},
-            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'./court.doc'},
-            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'./prenup.doc'},
-            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'./court.doc'},
-            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'./realty.doc'},
-            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'./fired.doc'},
-            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'./alimony.doc'},
-            {id:13, category:'property', icon:'🏞️', title:'Соглашение о разделе земельного участка', desc:'Выдел долей в натуре', note:'⚠️ Требуется межевание и регистрация', file:'./land.doc'},
-            {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'./business.doc'},
-            {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'./tax.doc'}
+            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'./Шаблоны/alimony.doc'},
+            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'./Шаблоны/divorce.doc'},
+            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'./Шаблоны/fired.doc'},
+            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'./Шаблоны/salary.doc'},
+            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'./Шаблоны/realty.doc'},
+            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'./Шаблоны/neighbors.doc'},
+            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'./Шаблоны/court.doc'},
+            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'./Шаблоны/prenup.doc'},
+            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'./Шаблоны/court.doc'},
+            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'./Шаблоны/realty.doc'},
+            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'./Шаблоны/fired.doc'},
+            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'./Шаблоны/alimony.doc'},
+            {id:13, category:'property', icon:'🏞️', title:'Соглашение о разделе земельного участка', desc:'Выдел долей в натуре', note:'⚠️ Требуется межевание и регистрация', file:'./Шаблоны/land.doc'},
+            {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'./Шаблоны/business.doc'},
+            {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'./Шаблоны/tax.doc'}
         ];
         let currentFilter='all'; let showAllTemplates=false;
         function renderTemplates(){ 
@@ -558,13 +560,13 @@
             const btn=document.getElementById('templatesToggleBtn'); 
             let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
             const visible=showAllTemplates?filtered:filtered.slice(0,2); 
-            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download target="_blank">📥 Скачать DOC</a></div>`).join(''); 
+            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать DOC</a></div>`).join(''); 
             if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
         }
         function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
         function toggleTemplates(){ showAllTemplates=!showAllTemplates; renderTemplates(); }
         
-        // FAQ — ДОБАВЛЕНО 2 НОВЫХ ОТВЕТА
+        // FAQ
         const faqItems=[
             {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Постоянно изучаю изменения в законодательстве. Если вопрос требует опыта, которого у меня пока нет — честно скажу и подскажу коллегу."},
             {q:"Как проходит удалённая работа?",a:"Общаемся в мессенджерах, документы пересылаем сканами или через облако, подпись — электронная или у нотариуса. Суды принимают документы в электронном виде. Личная встреча нужна редко."},
