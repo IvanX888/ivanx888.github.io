@@ -476,7 +476,7 @@
         document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
-        // ШАБЛОНЫ — файлы лежат в корневой папке (без подпапок)
+        // ШАБЛОНЫ — файлы лежат в корне, убираем target="_blank" для принудительной загрузки
         const fullTemplates = [
             {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'alimony.doc'},
             {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'divorce.doc'},
@@ -500,7 +500,7 @@
             const btn=document.getElementById('templatesToggleBtn'); 
             let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
             const visible=showAllTemplates?filtered:filtered.slice(0,2); 
-            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download target="_blank">📥 Скачать DOC</a></div>`).join(''); 
+            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>📥 Скачать DOC</a></div>`).join(''); 
             if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
         }
         function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
