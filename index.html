@@ -444,7 +444,9 @@
     <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();"><div class="modal"><div class="modal-header"><h3 class="modal-title" id="modalTitle"></h3><button class="modal-close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
     <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index: 2100;"><div class="modal consent-modal"><div class="modal-header"><h3 class="modal-title">Согласие на обработку данных</h3><button class="modal-close" onclick="closeConsentModal()">×</button></div><div class="modal-body"><p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p><div class="consent-actions"><button class="btn" id="consentConfirmBtn">Согласен</button><button class="btn btn-outline" id="consentCancelBtn">Отмена</button></div></div></div></div>
     <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
-    <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>    <script>
+    <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>
+
+    <script>
         // ------------------ МОДАЛЬНЫЕ ДАННЫЕ (полные тексты) ------------------
         const modalContent = {
             check: { title: "Что скрывает продавец? Проверка перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Вы заплатите, а недвижимость уйдёт кредитору. Вы останетесь без денег и без жилья."},{title:"Прописанные «вечные жильцы» не выезжают",desc:"Суд по выселению — 1,5 года, и это если повезёт."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет в регистрации. Переделывайте за свой счёт или судитесь."}], solution:["Закажу выписку ЕГРН с тайной историей переходов прав","Проверю аресты и залоги через ФССП, найду «чёрных риелторов» по базам","Пропишу в договоре санкции за скрытые обременения"] },
