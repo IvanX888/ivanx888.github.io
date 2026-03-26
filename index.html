@@ -25,7 +25,6 @@
     <!-- /Yandex.Metrika counter -->
     
     <style>
-        /* ========== БАЗОВЫЕ СТИЛИ ========== */
         :root {
             --wood-dark: #1a120b;
             --wood-medium: #2c1810;
@@ -36,48 +35,80 @@
             --text-primary: #f5f5f5;
             --text-secondary: #c9b896;
             --text-muted: #8b7355;
-            --border: rgba(212,175,55,0.25);
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.8);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             --success: #4ade80;
+            --error: #f87171;
             --danger: #ef4444;
             --danger-bg: rgba(239,68,68,0.1);
             --success-bg: rgba(34,197,94,0.08);
+            --border: rgba(212,175,55,0.25);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--piano-black);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            min-width: 320px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
         a, .service-topic, .filter-btn, .show-more-btn, .faq-question, .contact-method, .footer-links a, .mobile-nav a, .nav-link, .btn, .logo {
             transition: all 0.2s ease;
             position: relative;
         }
         a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a)::after,
-        .service-topic::after, .filter-btn::after, .show-more-btn::after, .faq-question::after, .contact-method::after,
-        .footer-links a::after, .mobile-nav a::after, .nav-link::after {
-            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
-            background: var(--gold); transition: width 0.3s ease;
+        .service-topic::after,
+        .filter-btn::after,
+        .show-more-btn::after,
+        .faq-question::after,
+        .contact-method::after,
+        .footer-links a::after,
+        .mobile-nav a::after,
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px rgba(212,175,55,0.4);
         }
         a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a):hover::after,
-        .service-topic:hover::after, .filter-btn:hover::after, .show-more-btn:hover::after, .faq-question:hover::after,
-        .contact-method:hover::after, .footer-links a:hover::after, .mobile-nav a:hover::after, .nav-link:hover::after { width: 100%; }
-        a:hover, .service-topic:hover, .filter-btn:hover, .show-more-btn:hover, .faq-question:hover,
-        .contact-method:hover, .footer-links a:hover, .mobile-nav a:hover, .nav-link:hover { color: var(--gold); }
-        
-        /* Фоны */
+        .service-topic:hover::after,
+        .filter-btn:hover::after,
+        .show-more-btn:hover::after,
+        .faq-question:hover::after,
+        .contact-method:hover::after,
+        .footer-links a:hover::after,
+        .mobile-nav a:hover::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        a:hover, .service-topic:hover, .filter-btn:hover, .show-more-btn:hover, .faq-question:hover, .contact-method:hover, .footer-links a:hover, .mobile-nav a:hover, .nav-link:hover {
+            color: var(--gold);
+        }
         .wood-bg { 
             background: linear-gradient(135deg, rgba(26,18,11,0.95) 0%, rgba(44,24,16,0.9) 50%, rgba(26,18,11,0.95) 100%); 
             position: relative; 
         }
+        .wood-bg::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"); 
+            pointer-events: none; 
+        }
         .piano-black { 
             background: linear-gradient(180deg, var(--piano-black) 0%, #151515 50%, var(--piano-black) 100%); 
+            position: relative; 
         }
-        
-        /* Хедер */
         .header { 
             position: fixed; top: 0; left: 0; right: 0; 
             background: rgba(10,10,10,0.98); 
@@ -85,244 +116,255 @@
             backdrop-filter: blur(20px); 
             border-bottom: 1px solid rgba(212,175,55,0.2); 
             z-index: 1000; 
+            transition: var(--transition); 
         }
-        .header-content { max-width: 1400px; margin: 0 auto; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        @supports not (backdrop-filter: blur(10px)) {
+            .header { background: rgba(10,10,10,0.99); }
+            .modal-overlay { background: rgba(0,0,0,0.98); }
+        }
+        @supports (-webkit-backdrop-filter: blur(10px)) {
+            .header { -webkit-backdrop-filter: blur(20px); }
+            .modal-overlay { -webkit-backdrop-filter: blur(12px); }
+        }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; min-height: 60px; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 1002; cursor: pointer; }
         .logo-emblem { width: 40px; height: 40px; flex-shrink: 0; }
         .logo-text { display: flex; flex-direction: column; }
-        .logo-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 4vw, 20px); font-weight: 600; color: var(--gold); text-transform: uppercase; line-height: 1.1; }
-        .logo-title .small { color: var(--text-secondary); font-weight: 400; font-size: 10px; display: block; text-transform: lowercase; }
-        .nav-desktop { display: none; gap: 32px; }
-        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; padding: 8px 0; }
-        .btn { 
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px; 
-            padding: 14px 24px; font-size: 12px; font-weight: 600; text-decoration: none; 
-            cursor: pointer; border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 1px;
-            border-radius: 4px; min-height: 48px; 
-            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); 
-            color: var(--piano-black); white-space: nowrap; 
-        }
+        .logo-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(16px, 4vw, 20px); font-weight: 600; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; }
+        .logo-title .small { color: var(--text-secondary); font-weight: 400; font-size: clamp(9px, 2.5vw, 10px); letter-spacing: 2px; text-transform: lowercase; display: block; }
+        .nav-desktop { display: none; }
+        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); padding: 8px 0; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; transition: var(--transition); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif; border-radius: 4px; min-height: 48px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); color: var(--piano-black); white-space: nowrap; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
         .btn-outline { background: transparent; color: var(--gold); }
         .btn-outline:hover { background: var(--gold); color: var(--piano-black); }
-        .nav-mobile-btn { 
-            width: 44px; height: 44px; background: rgba(212,175,55,0.1); 
-            border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; 
-            font-size: 20px; cursor: pointer; color: var(--gold); 
-        }
-        
-        /* Герой */
-        .hero { min-height: 100vh; padding: 100px 16px 40px; display: flex; flex-direction: column; gap: 32px; }
-        .hero-content { text-align: center; }
-        .hero-content h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 6vw, 32px); margin-bottom: 20px; }
-        .hero-content h1 strong { color: var(--gold); display: block; margin-top: 8px; font-size: clamp(28px, 7vw, 36px); }
-        .hero-subtitle { font-size: clamp(14px, 4vw, 16px); color: var(--text-secondary); margin-bottom: 24px; }
-        .hero-features { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-bottom: 24px; }
-        .hero-feature { 
-            background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.1); 
-            padding: 12px 16px; border-radius: 4px; width: 100%; max-width: 400px; text-align: center;
-        }
+        .nav-mobile-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 20px; cursor: pointer; color: var(--gold); z-index: 1002; }
+        .hero { min-height: 100vh; padding: 100px 16px 40px; display: flex; flex-direction: column; gap: 32px; position: relative; }
+        .hero-content { text-align: center; position: relative; z-index: 2; }
+        .hero-content h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 6vw, 32px); line-height: 1.2; font-weight: 400; margin-bottom: 20px; }
+        .hero-content h1 strong { color: var(--gold); font-weight: 600; display: block; margin-top: 8px; font-size: clamp(28px, 7vw, 36px); }
+        .hero-subtitle { font-size: clamp(14px, 4vw, 16px); color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+        .hero-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; align-items: center; }
+        .hero-feature { display: flex; align-items: center; gap: 10px; font-size: clamp(12px, 3.5vw, 14px); color: var(--text-secondary); background: rgba(212,175,55,0.05); padding: 12px 16px; border: 1px solid rgba(212,175,55,0.1); width: 100%; max-width: 400px; justify-content: center; border-radius: 4px; }
         .hero-cta { display: flex; flex-direction: column; gap: 12px; }
-        .hero-card { background: linear-gradient(145deg, rgba(28,28,28,0.9) 0%, rgba(10,10,10,0.95) 100%); border: 1px solid rgba(212,175,55,0.3); padding: 20px; border-radius: 8px; }
+        .hero-visual { position: relative; perspective: 1000px; }
+        .hero-card { background: linear-gradient(145deg, rgba(28,28,28,0.9) 0%, rgba(10,10,10,0.95) 100%); border: 1px solid rgba(212,175,55,0.3); padding: 20px; border-radius: 8px; position: relative; }
         .hero-photo-large { 
-            width: 100%; max-height: 400px; min-height: 250px;
-            border-radius: 8px; overflow: hidden; 
-            border: 2px solid rgba(212,175,55,0.3); margin-bottom: 16px; 
+            width: 100%; 
+            max-height: 300px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            border: 2px solid rgba(212,175,55,0.3); 
+            margin-bottom: 16px; 
             background: var(--wood-dark);
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .hero-photo-large img { width: 100%; height: auto; max-height: 400px; object-fit: cover; object-position: center top; display: block; }
-        .hero-photo-large.error { background: var(--wood-dark); display: flex; align-items: center; justify-content: center; }
-        .hero-photo-large.error::after { content: 'ИС'; font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--gold); }
+        .hero-photo-large img { 
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+        }
         .hero-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); }
-        .hero-avatar-small { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); }
+        .hero-avatar-small { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); }
         .hero-avatar-small svg { width: 32px; height: 32px; }
-        .hero-card-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
-        .hero-card-subtitle { font-size: 11px; color: var(--gold); text-transform: uppercase; }
-        .hero-quote { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; padding-left: 12px; border-left: 2px solid var(--gold); }
+        .hero-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 600; }
+        .hero-card-subtitle { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+        .hero-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; line-height: 1.6; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; padding-left: 12px; border-left: 2px solid var(--gold); }
         .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .hero-stat { text-align: center; padding: 12px 4px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.1); border-radius: 4px; }
-        .hero-stat-value { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--gold); }
+        .hero-stat-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 700; color: var(--gold); }
         .hero-stat-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
-        
-        /* Бегущая строка */
         .marquee { background: var(--wood-dark); border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2); padding: 16px 0; overflow: hidden; }
         .marquee-content { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
-        .marquee-item { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--text-muted); padding: 0 24px; text-transform: uppercase; }
+        .marquee-item { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; padding: 0 24px; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        
-        /* Блок доверия */
-        .trust-bar { background: linear-gradient(90deg, var(--wood-dark) 0%, var(--wood-medium) 50%, var(--wood-dark) 100%); padding: 24px 16px; }
+        .trust-bar { background: linear-gradient(90deg, var(--wood-dark) 0%, var(--wood-medium) 50%, var(--wood-dark) 100%); padding: 24px 16px; border-top: 1px solid rgba(212,175,55,0.2); }
         .trust-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; text-transform: uppercase; color: var(--text-secondary); }
-        .trust-item strong { color: var(--gold); font-size: 16px; font-family: 'Cormorant Garamond', serif; }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); text-align: center; }
+        .trust-item strong { color: var(--gold); font-size: 16px; font-family: 'Cormorant Garamond', Georgia, serif; }
         .trust-icon { width: 40px; height: 40px; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; border-radius: 4px; }
-        
-        /* Общие секции */
-        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header { text-align: center; margin-bottom: 40px; padding: 0 16px; }
         .section-label { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; background: rgba(212,175,55,0.05); border-radius: 4px; }
-        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 6vw, 32px); font-weight: 400; margin-bottom: 12px; }
+        .section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(26px, 6vw, 32px); font-weight: 400; margin-bottom: 12px; }
         .section-title strong { color: var(--gold); font-weight: 600; }
-        .section-subtitle { font-size: clamp(14px, 3.5vw, 16px); color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
-        
-        /* Услуги */
+        .section-subtitle { font-size: clamp(14px, 3.5vw, 16px); color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
         .services { padding: 60px 0; }
-        .services-grid, .services-hidden { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; }
-        .services-hidden { display: none; }
-        .services-hidden.visible { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .service-card { background: linear-gradient(145deg, rgba(28,28,28,0.6) 0%, rgba(10,10,10,0.8) 100%); border: 1px solid rgba(212,175,55,0.15); padding: 28px 24px; border-radius: 8px; scroll-margin-top: 80px; transition: var(--transition); }
-        .service-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-3px); }
-        .service-number { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(212,175,55,0.1); position: absolute; top: 12px; right: 16px; }
+        .services-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; }
+        .services-hidden { display: none; grid-template-columns: 1fr; gap: 20px; padding: 0 16px; margin-top: 20px; }
+        .services-hidden.visible { display: grid; }
+        .service-card { background: linear-gradient(145deg, rgba(28,28,28,0.6) 0%, rgba(10,10,10,0.8) 100%); border: 1px solid rgba(212,175,55,0.15); padding: 28px 24px; position: relative; overflow: hidden; transition: var(--transition); border-radius: 8px; scroll-margin-top: 80px; }
+        .service-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .service-number { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 48px; font-weight: 300; color: rgba(212,175,55,0.1); position: absolute; top: 12px; right: 16px; line-height: 1; }
         .service-icon { width: 56px; height: 56px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; border-radius: 8px; }
-        .service-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 8px; }
-        .service-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
+        .service-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+        .service-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
         .service-topics { display: flex; flex-direction: column; gap: 10px; }
-        .service-topic { padding: 14px 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 6px; cursor: pointer; font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; }
-        .service-topic::before { content: '→'; color: var(--gold); }
-        .service-topic:hover { background: rgba(212,175,55,0.1); border-color: var(--gold); color: var(--text-primary); transform: translateX(5px); }
-        
-        /* Тарифы */
+        .service-topic { padding: 14px 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 6px; cursor: pointer; font-size: 14px; color: var(--text-secondary); transition: var(--transition); display: flex; align-items: center; gap: 10px; position: relative; }
+        .service-topic::before { content: '→'; color: var(--gold); font-weight: bold; transition: var(--transition); }
+        .service-topic:hover { background: rgba(212,175,55,0.1); border-color: var(--gold); color: var(--text-primary); transform: translateX(5px); padding-left: 20px; }
+        .service-topic:hover::before { transform: translateX(3px); }
         .pricing { padding: 60px 0; }
         .pricing-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; margin-top: 40px; }
-        .pricing-card { background: linear-gradient(180deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid rgba(212,175,55,0.2); padding: 32px 24px; text-align: center; border-radius: 8px; }
-        .pricing-card.popular { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, rgba(10,10,10,0.95) 100%); position: relative; }
-        .popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--piano-black); padding: 6px 20px; font-size: 10px; font-weight: 700; border-radius: 0 0 4px 4px; }
-        .pricing-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; }
-        .pricing-price { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--gold); }
+        .pricing-card { background: linear-gradient(180deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid rgba(212,175,55,0.2); padding: 32px 24px; text-align: center; position: relative; border-radius: 8px; transition: var(--transition); }
+        .pricing-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-5px); }
+        .pricing-card.popular { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, rgba(10,10,10,0.95) 100%); }
+        .popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--piano-black); padding: 6px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 0 4px 4px; }
+        .pricing-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .pricing-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+        .pricing-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+        .pricing-period { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
         .pricing-features { list-style: none; margin: 24px 0; text-align: left; }
-        .pricing-features li { padding: 12px 0; border-bottom: 1px solid rgba(212,175,55,0.1); display: flex; align-items: center; gap: 10px; }
-        .pricing-features li::before { content: '✓'; color: var(--gold); }
-        
-        /* Шаблоны */
+        .pricing-features li { padding: 12px 0; border-bottom: 1px solid rgba(212,175,55,0.1); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .pricing-features li::before { content: '✓'; color: var(--gold); font-weight: bold; }
         .templates { padding: 60px 16px; background: rgba(212,175,55,0.02); }
         .templates-filter { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-        .filter-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 20px; cursor: pointer; font-size: 13px; }
-        .filter-btn.active, .filter-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.1); }
+        .filter-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 20px; cursor: pointer; transition: var(--transition); font-size: 13px; }
+        .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.1); }
         .templates-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .template-card { background: rgba(20,20,20,0.8); border: 1px solid var(--border); padding: 24px; border-radius: 12px; }
+        .template-card { background: rgba(20,20,20,0.8); border: 1px solid var(--border); padding: 24px; border-radius: 12px; transition: var(--transition); }
         .template-card:hover { border-color: var(--gold); transform: translateY(-3px); }
         .template-icon { font-size: 36px; margin-bottom: 12px; }
-        .template-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 8px; }
-        .template-note { font-size: 12px; color: var(--gold); background: rgba(212,175,55,0.1); padding: 8px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px; }
-        .show-more-btn { display: block; margin: 40px auto 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 32px; cursor: pointer; font-size: 13px; text-transform: uppercase; border-radius: 30px; }
+        .template-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; margin-bottom: 8px; }
+        .template-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
+        .template-note { font-size: 12px; color: var(--gold); background: rgba(212,175,55,0.1); padding: 8px 12px; border-radius: 6px; margin-bottom: 16px; display: inline-block; }
+        .show-more-btn { display: block; margin: 40px auto 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 32px; cursor: pointer; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; transition: var(--transition); }
         .show-more-btn:hover { background: var(--gold); color: #000; }
-        
-        /* Поддержка */
         .support { padding: 60px 16px; max-width: 1200px; margin: 0 auto; }
+        .support-handshake { text-align: center; font-size: 48px; margin-bottom: 24px; }
         .support-box { background: linear-gradient(135deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid var(--gold); border-radius: 16px; padding: 40px 24px; display: grid; gap: 32px; }
+        .qr-container { text-align: center; }
         .qr-code { width: 200px; height: 200px; background: white; padding: 12px; border-radius: 12px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; }
         .qr-code img { width: 100%; height: 100%; object-fit: contain; }
-        .qr-code.error { background: #eee; }
-        .qr-code.error::after { content: '💳'; font-size: 80px; }
+        .support-highlight { font-size: 18px; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 24px; }
+        .support-methods { display: flex; flex-direction: column; gap: 16px; }
         .support-method { display: flex; align-items: center; gap: 12px; padding: 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; }
+        .support-method strong { color: var(--gold); display: block; margin-bottom: 4px; }
+        .support-method span { font-size: 14px; color: var(--text-secondary); }
         .legal-note { font-size: 11px; color: var(--text-muted); margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
-        
-        /* FAQ */
         .faq { padding: 60px 16px; }
         .faq-list { max-width: 900px; margin: 40px auto 0; }
         .faq-item { border-bottom: 1px solid rgba(212,175,55,0.2); background: rgba(10,10,10,0.5); margin-bottom: 10px; border-radius: 4px; overflow: hidden; }
-        .faq-question { width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-size: 15px; font-weight: 500; text-align: left; cursor: pointer; color: var(--text-primary); gap: 12px; }
+        .faq-question { width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-size: 15px; font-weight: 500; text-align: left; cursor: pointer; color: var(--text-primary); font-family: 'Montserrat', sans-serif; gap: 12px; }
         .faq-question:hover { color: var(--gold); }
-        .faq-icon { width: 36px; height: 36px; border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; position: relative; }
-        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--gold); }
-        .faq-icon::before { width: 14px; height: 2px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        .faq-icon::after { width: 2px; height: 14px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .faq-icon { width: 36px; height: 36px; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; transition: all 0.3s; border-radius: 4px; flex-shrink: 0; position: relative; }
+        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--gold); transition: all 0.3s; }
+        .faq-icon::before { width: 14px; height: 2px; }
+        .faq-icon::after { width: 2px; height: 14px; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
         .faq-item.active .faq-answer { max-height: 500px; }
-        .faq-answer p { padding: 0 20px 20px; color: var(--text-secondary); font-size: 14px; }
-        
-        /* Контакты */
+        .faq-answer p { padding: 0 20px 20px; color: var(--text-secondary); line-height: 1.7; font-size: 14px; }
         .contact { padding: 60px 16px; }
         .contact-grid { max-width: 600px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 16px; }
-        .contact-method { display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; cursor: pointer; }
+        .contact-method { display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; text-decoration: none; color: var(--text-primary); transition: var(--transition); cursor: pointer; }
         .contact-method:hover { border-color: var(--gold); transform: translateX(10px); background: rgba(212,175,55,0.1); }
-        .contact-method-icon { width: 48px; height: 48px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 8px; }
-        
-        /* Футер */
+        .contact-method-icon { width: 48px; height: 48px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 8px; flex-shrink: 0; }
+        .contact-method-content { flex: 1; }
+        .contact-method-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .contact-method-value { font-size: 16px; font-weight: 600; color: var(--text-primary); }
         .footer { background: var(--piano-black); border-top: 1px solid rgba(212,175,55,0.2); padding: 48px 16px 24px; }
-        .footer-content { display: grid; grid-template-columns: 1fr; gap: 32px; text-align: center; max-width: 1200px; margin: 0 auto 40px; }
-        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--gold); }
+        .footer-content { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: var(--gold); }
+        .footer-desc { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
+        .footer-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; color: var(--gold); }
         .footer-links { list-style: none; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: var(--transition); position: relative; display: inline-block; }
         .footer-links a:hover { color: var(--gold); }
-        .footer-bottom { text-align: center; font-size: 12px; color: var(--text-muted); padding-top: 24px; border-top: 1px solid rgba(212,175,55,0.1); }
-        
-        /* Модалки */
+        .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(212,175,55,0.1); text-align: center; font-size: 12px; color: var(--text-muted); max-width: 1200px; margin: 0 auto; }
+        .footer-legal-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-legal-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; cursor: pointer; }
+        .footer-legal-links a:hover { color: var(--gold); text-decoration: underline; }
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal { background: #111; border: 1px solid var(--gold); max-width: 800px; width: 100%; max-height: 90vh; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transform: scale(0.9); transition: transform 0.3s; }
         .modal-overlay.active .modal { transform: scale(1); }
         .modal-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(212,175,55,0.05); }
-        .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--gold); }
-        .modal-close { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 24px; cursor: pointer; color: var(--gold); display: flex; align-items: center; justify-content: center; }
+        .modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; color: var(--gold); }
+        .modal-close { background: rgba(255,255,255,0.05); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-size: 24px; cursor: pointer; color: var(--gold); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .modal-close:hover { background: var(--danger); color: white; border-color: var(--danger); }
         .modal-body { padding: 24px; overflow-y: auto; }
-        .urgency-warning { background: var(--danger-bg); border: 1px solid var(--danger); padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; color: var(--danger); }
+        .urgency-warning { background: var(--danger-bg); border: 1px solid var(--danger); padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-weight: 500; color: var(--danger); }
+        .scenario { margin-bottom: 24px; }
+        .scenario-title { font-size: 14px; color: var(--danger); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
         .scenario-step { display: flex; gap: 16px; margin-bottom: 16px; padding: 16px; background: rgba(239,68,68,0.05); border-radius: 8px; border-left: 3px solid var(--danger); }
-        .step-num { width: 32px; height: 32px; background: var(--danger-bg); border: 1px solid var(--danger); color: var(--danger); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 50%; }
+        .step-num { width: 32px; height: 32px; background: var(--danger-bg); border: 1px solid var(--danger); color: var(--danger); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 50%; flex-shrink: 0; font-size: 14px; }
+        .step-content h4 { font-size: 16px; margin-bottom: 6px; color: var(--text-primary); }
+        .step-content p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
         .solution-box { background: var(--success-bg); border-left: 4px solid var(--success); padding: 20px; margin: 24px 0; border-radius: 0 12px 12px 0; }
-        .solution-box h4 { color: var(--success); margin-bottom: 12px; }
+        .solution-box h4 { color: var(--success); margin-bottom: 12px; font-size: 18px; }
+        .solution-box ul { list-style: none; color: var(--text-secondary); font-size: 14px; }
+        .solution-box li { padding: 6px 0; padding-left: 20px; position: relative; }
+        .solution-box li::before { content: '→'; position: absolute; left: 0; color: var(--success); font-weight: bold; }
         .modal-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
-        .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin-top: 20px; font-size: 12px; color: var(--text-muted); }
-        
-        /* Мобильное меню */
+        .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin-top: 20px; font-size: 12px; color: var(--text-muted); font-style: italic; }
         .mobile-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh; background: linear-gradient(180deg, var(--piano-black) 0%, var(--wood-dark) 100%); z-index: 1001; padding: 80px 24px 32px; transition: right 0.4s ease; border-left: 1px solid rgba(212,175,55,0.2); }
         .mobile-menu.active { right: 0; }
-        .mobile-menu-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 28px; cursor: pointer; color: var(--gold); display: flex; align-items: center; justify-content: center; }
-        .mobile-nav a { display: block; font-size: 16px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(212,175,55,0.1); text-transform: uppercase; letter-spacing: 1px; }
+        .mobile-menu-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 28px; cursor: pointer; color: var(--gold); }
+        .mobile-nav { display: flex; flex-direction: column; gap: 4px; }
+        .mobile-nav a { font-size: 16px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(212,175,55,0.1); text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .mobile-nav a:hover { color: var(--gold); padding-left: 10px; }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s; }
         .overlay.active { opacity: 1; visibility: visible; }
-        .chat-widget, .call-widget { position: fixed; bottom: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212,175,55,0.4); cursor: pointer; border: 2px solid var(--gold); font-size: 24px; z-index: 999; color: var(--piano-black); }
+        .chat-widget, .call-widget { position: fixed; bottom: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); color: var(--piano-black); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212,175,55,0.4); cursor: pointer; transition: var(--transition); border: 2px solid var(--gold); font-size: 24px; z-index: 999; }
         .chat-widget { right: 20px; }
         .call-widget { left: 20px; animation: pulseCall 2s infinite; }
-        @keyframes pulseCall { 0%,100%{box-shadow:0 4px 15px rgba(212,175,55,0.4);} 50%{box-shadow:0 4px 25px rgba(212,175,55,0.7);} }
-        
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        
+        @keyframes pulseCall { 0%, 100% { box-shadow: 0 4px 15px rgba(212,175,55,0.4); } 50% { box-shadow: 0 4px 25px rgba(212,175,55,0.7); } }
         @media (min-width: 640px) {
             .trust-content { grid-template-columns: repeat(4, 1fr); }
             .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-            .services-hidden.visible { grid-template-columns: repeat(2, 1fr); }
+            .services-hidden { grid-template-columns: repeat(2, 1fr); }
             .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
             .templates-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-content { grid-template-columns: repeat(2, 1fr); text-align: left; }
             .support-box { grid-template-columns: 1fr 1fr; align-items: center; }
         }
         @media (min-width: 1024px) {
-            .nav-desktop { display: flex; }
+            .nav-desktop { display: flex; gap: 32px; }
             .nav-mobile-btn { display: none; }
             .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 140px 40px 100px; max-width: 1400px; margin: 0 auto; }
             .hero-content { text-align: left; }
             .hero-features { align-items: flex-start; }
             .hero-cta { flex-direction: row; }
             .services-grid { grid-template-columns: repeat(2, 1fr); padding: 0 40px; }
-            .services-hidden.visible { grid-template-columns: repeat(3, 1fr); padding: 0 40px; }
+            .services-hidden { grid-template-columns: repeat(3, 1fr); padding: 0 40px; }
             .pricing-grid { grid-template-columns: repeat(4, 1fr); padding: 0 40px; }
+            .pricing-card.popular { transform: scale(1.05); }
             .templates-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-content { grid-template-columns: 2fr 1fr 1fr 1fr; }
         }
-        
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
         .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.98); border-top: 1px solid var(--gold); padding: 16px; z-index: 9999; display: none; text-align: center; }
+        .cookie-banner p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
+        .cookie-banner a { color: var(--gold); text-decoration: underline; cursor: pointer; }
         .consent-modal .modal { max-width: 500px; }
         .consent-modal .modal-body { text-align: center; }
         .consent-actions { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 9999; background: var(--gold); color: var(--piano-black); padding: 8px 16px; text-decoration: none; font-weight: 600;">Перейти к основному контенту</a>
-    
     <header class="header">
         <div class="header-content">
             <a href="#top" class="logo" id="scrollTopBtn">
                 <div class="logo-emblem">
                     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f4d03f"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#b8860b"/></linearGradient></defs>
+                        <defs>
+                            <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
                         <path d="M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z" fill="url(#shieldGrad)" stroke="#b8860b" stroke-width="2"/>
-                        <path d="M50 25 L50 65 M35 40 L50 55 L65 40" stroke="#0a0a0a" stroke-width="3" fill="none"/>
+                        <path d="M50 25 L50 65 M35 40 L50 55 L65 40" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <div class="logo-text"><div class="logo-title"><span class="small">мастерская права</span><span style="display: block;">СЕРКО</span></div></div>
+                <div class="logo-text"><div class="logo-title"><span class="small">мастерская права</span><span style="display: block; color: #d4af37; font-weight: 700;">СЕРКО</span></div></div>
             </a>
             <nav class="nav-desktop">
                 <a href="#services" class="nav-link">Услуги</a>
@@ -343,155 +385,186 @@
             <a href="#templates" onclick="toggleMenu()">Шаблоны</a>
             <a href="#faq" onclick="toggleMenu()">FAQ</a>
             <a href="#contact" onclick="toggleMenu()">Контакты</a>
-            <a href="tel:+79774232473" class="btn" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top:20px;">📞 Позвонить</a>
+            <a href="tel:+79774232473" class="btn" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top: 20px;">📞 Позвонить</a>
         </nav>
     </div>
-    
-    <main id="main-content">
-        <section class="hero wood-bg" id="top">
-            <div class="hero-content fade-in">
-                <h1>Юрист онлайн <strong>для сложных задач</strong></h1>
-                <p class="hero-subtitle">Работаю удалённо по всей России: проверю документы, составлю договор, подготовлю иск, проконсультирую. Без встреч в офисе — быстрее, дешевле, удобнее.</p>
-                <div class="hero-features">
-                    <div class="hero-feature">⚡ Работаю удалённо по всей России</div>
-                    <div class="hero-feature">🎯 Цена фиксируется до начала работы</div>
-                    <div class="hero-feature">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
+    <section class="hero wood-bg" id="top">
+        <div class="hero-content fade-in">
+            <h1>Юрист онлайн <strong>для сложных задач</strong></h1>
+            <p class="hero-subtitle">Работаю удалённо по всей России: проверю документы, составлю договор, подготовлю иск, проконсультирую. Без встреч в офисе — быстрее, дешевле, удобнее.</p>
+            <div class="hero-features">
+                <div class="hero-feature">⚡ Работаю удалённо по всей России</div>
+                <div class="hero-feature">🎯 Цена фиксируется до начала работы</div>
+                <div class="hero-feature">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
+            </div>
+            <div class="hero-cta">
+                <a href="#" class="btn btn-large" onclick="event.preventDefault(); handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬 Написать в MAX</a>
+                <a href="#" class="btn btn-outline btn-large" onclick="event.preventDefault(); handleContactClick('https://wa.me/79774232473', 'whatsapp');">💬 WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-visual fade-in">
+            <div class="hero-card">
+                <div class="hero-photo-large"><img src="фото5.png" alt="Иван Серко" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%231a120b%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23d4af37%22 font-family=%22serif%22 font-size=%2224%22%3EИС%3C/text%3E%3C/svg%3E'"></div>
+                <div class="hero-card-header">
+                    <div class="hero-avatar-small">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="shieldGradSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" fill="url(#shieldGradSmall)" stroke="#b8860b" stroke-width="3"/>
+                            <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#0a0a0a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="hero-card-title">Иван Серко</div>
+                        <div class="hero-card-subtitle">Частный юрист</div>
+                    </div>
                 </div>
-                <div class="hero-cta">
-                    <a href="#" class="btn btn-large" onclick="event.preventDefault(); handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬 Написать в MAX</a>
-                    <a href="#" class="btn btn-outline btn-large" onclick="event.preventDefault(); handleContactClick('https://wa.me/79774232473', 'whatsapp');">💬 WhatsApp</a>
+                <blockquote class="hero-quote">"Беру дела, в которых уверен. Если вопрос сложный — разберусь, если вне моей компетенции — подскажу, к кому обратиться. Работаю без посредников: вы пишете мне — отвечаю я."</blockquote>
+                <div class="hero-stats">
+                    <div class="hero-stat"><div class="hero-stat-value">127</div><div class="hero-stat-label">дел решено удаленно в 2025</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">100%</div><div class="hero-stat-label">Лично</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">24ч</div><div class="hero-stat-label">Ответ</div></div>
                 </div>
             </div>
-            <div class="hero-visual fade-in">
-                <div class="hero-card">
-                    <div class="hero-photo-large" id="heroPhotoContainer">
-                        <img src="foto5.png" alt="Иван Серко" id="heroPhoto" onerror="this.onerror=null; this.parentElement.classList.add('error'); this.style.display='none';">
-                    </div>
-                    <div class="hero-card-header">
-                        <div class="hero-avatar-small">
-                            <svg viewBox="0 0 100 100" fill="none">
-                                <defs><linearGradient id="shieldGradSmall" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f4d03f"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#b8860b"/></linearGradient></defs>
-                                <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" fill="url(#shieldGradSmall)" stroke="#b8860b" stroke-width="3"/>
-                                <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#0a0a0a" stroke-width="4" fill="none"/>
-                            </svg>
+        </div>
+    </section>
+    <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю удалённо</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю удалённо</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
+    <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>Удалённо</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div><div class="trust-item"><div class="trust-icon">🤝</div><div><strong>Без посредников</strong></div></div></div></div>
+    <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте последствия и решение</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
+    <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
+    <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button><button class="filter-btn" data-filter="business">Бизнес</button><button class="filter-btn" data-filter="tax">Налоговые</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
+    <section class="support" id="support">
+        <div class="section-header fade-in">
+            <div class="section-label">Поддержать</div>
+            <h2 class="section-title">Помочь проекту</h2>
+        </div>
+        <div class="support-handshake fade-in">🤝</div>
+        <div class="support-box fade-in">
+            <div class="qr-container">
+                <div class="qr-code">
+                    <img src="qr-tbank.png" alt="QR код Т-Банк" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size: 80px;\'>💳</div>'">
+                </div>
+                <p style="color: var(--text-muted); font-size: 14px;">Отсканируйте в Т-Банке или Сбере</p>
+            </div>
+            <div>
+                <div class="support-highlight">✨ Ваша поддержка поможет создавать больше бесплатных материалов ✨</div>
+                <div class="support-methods">
+                    <div class="support-method">
+                        <div class="contact-method-icon">📞</div>
+                        <div>
+                            <strong>По номеру телефона</strong>
+                            <span>+7 (977) 423-24-73 (Т-Банк, СберПэй)</span>
                         </div>
-                        <div><div class="hero-card-title">Иван Серко</div><div class="hero-card-subtitle">Частный юрист</div></div>
                     </div>
-                    <blockquote class="hero-quote">"Беру дела, в которых уверен. Если вопрос сложный — разберусь, если вне моей компетенции — подскажу, к кому обратиться. Работаю без посредников: вы пишете мне — отвечаю я."</blockquote>
-                    <div class="hero-stats">
-                        <div class="hero-stat"><div class="hero-stat-value">127</div><div class="hero-stat-label">дел решено удаленно в 2025</div></div>
-                        <div class="hero-stat"><div class="hero-stat-value">100%</div><div class="hero-stat-label">Лично</div></div>
-                        <div class="hero-stat"><div class="hero-stat-value">24ч</div><div class="hero-stat-label">Ответ</div></div>
+                    <div class="support-method">
+                        <div class="contact-method-icon">🏦</div>
+                        <div>
+                            <strong>Т-Банк (по договору)</strong>
+                            <span>8017435982</span>
+                        </div>
                     </div>
                 </div>
+                <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.open('https://messenger.online.sberbank.ru/sl/f1uGrTg8JnJ9BN0G7', '_blank');">Открыть сбор в СберБанк Онлайн</button>
+                <div class="legal-note">Платеж является добровольным пожертвованием (ст. 582 ГК РФ). Не является оплатой услуг. По запросу — отчет о расходовании.</div>
             </div>
-        </section>
-        
-        <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю удалённо</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю удалённо</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
-        
-        <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>Удалённо</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div><div class="trust-item"><div class="trust-icon">🤝</div><div><strong>Без посредников</strong></div></div></div></div>
-        
-        <section class="services piano-black" id="services">
-            <div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте последствия и решение</p></div>
-            <div class="services-grid" id="servicesGrid"></div>
-            <div class="services-hidden" id="servicesHidden"></div>
-            <button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button>
-        </section>
-        
-        <section class="pricing wood-bg" id="pricing">
-            <div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p></div>
-            <div class="pricing-grid" id="pricingGrid"></div>
-        </section>
-        
-        <section class="templates" id="templates">
-            <div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div>
-            <div class="templates-filter" role="tablist">
-                <button class="filter-btn active" data-filter="all">Все</button>
-                <button class="filter-btn" data-filter="family">Семейное</button>
-                <button class="filter-btn" data-filter="labor">Трудовое</button>
-                <button class="filter-btn" data-filter="property">Недвижимость</button>
-                <button class="filter-btn" data-filter="court">Судебные</button>
-                <button class="filter-btn" data-filter="business">Бизнес</button>
-                <button class="filter-btn" data-filter="tax">Налоговые</button>
-            </div>
-            <div class="templates-grid" id="templatesGrid"></div>
-            <button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button>
-        </section>
-        
-        <section class="support" id="support">
-            <div class="section-header fade-in"><div class="section-label">Поддержать</div><h2 class="section-title">Помочь проекту</h2></div>
-            <div class="support-handshake fade-in">🤝</div>
-            <div class="support-box fade-in">
-                <div class="qr-container">
-                    <div class="qr-code" id="qrContainer"><img src="qr-tbank.png" alt="QR код" id="qrImage" onerror="this.onerror=null; this.parentElement.classList.add('error'); this.style.display='none';"></div>
-                    <p style="color:var(--text-muted); font-size:14px;">Отсканируйте в Т-Банке или Сбере</p>
-                </div>
-                <div>
-                    <div class="support-highlight" style="font-size:18px; font-weight:700; color:var(--gold); text-align:center; margin-bottom:24px;">✨ Ваша поддержка поможет создавать больше бесплатных материалов ✨</div>
-                    <div class="support-methods">
-                        <div class="support-method"><div class="contact-method-icon">📞</div><div><strong>По номеру телефона</strong><span>+7 (977) 423-24-73 (Т-Банк, СберПэй)</span></div></div>
-                        <div class="support-method"><div class="contact-method-icon">🏦</div><div><strong>Т-Банк (по договору)</strong><span>8017435982</span></div></div>
-                    </div>
-                    <button class="btn" style="width:100%; margin-top:20px;" onclick="window.open('https://messenger.online.sberbank.ru/sl/f1uGrTg8JnJ9BN0G7', '_blank');">Открыть сбор в СберБанк Онлайн</button>
-                    <div class="legal-note">Платеж является добровольным пожертвованием (ст. 582 ГК РФ). Не является оплатой услуг. По запросу — отчет о расходовании.</div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="faq piano-black" id="faq">
-            <div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div>
-            <div class="faq-list" id="faqList"></div>
-        </section>
-        
-        <section class="contact wood-bg" id="contact">
-            <div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div>
-            <div class="contact-grid fade-in" id="contactGrid"></div>
-        </section>
-    </main>
+        </div>
+    </section>
+    <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
+    <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
     
     <footer class="footer">
         <div class="footer-content">
-            <div><div class="footer-logo">СЕРКО</div><p class="footer-desc">Решаю юридические вопросы удалённо. Индивидуальный подход, честные цены, прямая связь.</p></div>
-            <div><div class="footer-title">Услуги</div><ul class="footer-links"><li><a href="#nedvizhimost">Недвижимость</a></li><li><a href="#semeynye">Семейные споры</a></li><li><a href="#nasledstvo">Наследство</a></li><li><a href="#trudovye">Трудовое право</a></li><li><a href="#nalogovye">Налоговые споры</a></li></ul></div>
-            <div><div class="footer-title">Информация</div><ul class="footer-links"><li><a href="#pricing">Тарифы</a></li><li><a href="#templates">Шаблоны</a></li><li><a href="#faq">Вопросы</a></li></ul></div>
-            <div><div class="footer-title">Реквизиты</div><ul class="footer-links"><li style="color:var(--text-muted);">ИНН: 500918804320</li><li style="color:var(--text-muted);">Самозанятый</li><li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li></ul></div>
+            <div>
+                <div class="footer-logo">СЕРКО</div>
+                <p class="footer-desc">Решаю юридические вопросы удалённо. Индивидуальный подход, честные цены, прямая связь.</p>
+            </div>
+            <div>
+                <div class="footer-title">Услуги</div>
+                <ul class="footer-links">
+                    <li><a href="#nedvizhimost">Недвижимость</a></li>
+                    <li><a href="#semeynye">Семейные споры</a></li>
+                    <li><a href="#nasledstvo">Наследство</a></li>
+                    <li><a href="#trudovye">Трудовое право</a></li>
+                    <li><a href="#nalogovye">Налоговые споры</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-title">Информация</div>
+                <ul class="footer-links">
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#templates">Шаблоны</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-title">Реквизиты</div>
+                <ul class="footer-links">
+                    <li style="color: var(--text-muted);">ИНН: 500918804320</li>
+                    <li style="color: var(--text-muted);">Самозанятый</li>
+                    <li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>© 2026 Мастерская права СЕРКО. Все права защищены.</p>
-            <div class="footer-legal-links"><a href="privacy.html">Политика конфиденциальности</a> <a href="contract.html">Типовой договор</a> <a href="personal-data.html">Обработка персональных данных</a></div>
-            <p style="margin-top:8px; font-size:11px;">Информация не является публичной офертой</p>
+            <div class="footer-legal-links">
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="contract.html">Типовой договор</a>
+                <a href="personal-data.html">Обработка персональных данных</a>
+            </div>
+            <p style="margin-top: 8px; font-size: 11px;">Информация не является публичной офертой</p>
         </div>
     </footer>
     
     <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();">
-        <div class="modal"><div class="modal-header"><h3 class="modal-title" id="modalTitle"></h3><button class="modal-close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div>
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
     </div>
     
-    <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index:2100;">
-        <div class="modal consent-modal"><div class="modal-header"><h3 class="modal-title">Согласие на обработку данных</h3><button class="modal-close" onclick="closeConsentModal()">×</button></div><div class="modal-body"><p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p><div class="consent-actions"><button class="btn" id="consentConfirmBtn">Согласен</button><button class="btn btn-outline" id="consentCancelBtn">Отмена</button></div></div></div>
+    <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index: 2100;">
+        <div class="modal consent-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Согласие на обработку данных</h3>
+                <button class="modal-close" onclick="closeConsentModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p>
+                <div class="consent-actions">
+                    <button class="btn" id="consentConfirmBtn">Согласен</button>
+                    <button class="btn btn-outline" id="consentCancelBtn">Отмена</button>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
     <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>
 
     <script>
-        // Конфигурация
-        const CONFIG = {
-            CONTACTS: {
-                MAX: 'https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g',
-                WHATSAPP: 'https://wa.me/79774232473',
-                PHONE: 'tel:+79774232473',
-                EMAIL: 'mailto:333742917@mail.ru'
-            },
-            METRIKA_ID: 106860023
-        };
-
-        // Проверка localStorage
+        // ------------------ ПРОВЕРКА ДОСТУПНОСТИ localStorage ------------------
         function isStorageAvailable() {
-            try { localStorage.setItem('test','test'); localStorage.removeItem('test'); return true; } catch(e) { return false; }
+            try {
+                const test = '__storage_test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch(e) {
+                console.warn('localStorage недоступен (приватный режим или блокировка)');
+                return false;
+            }
         }
         
-        // Модальные данные (полные)
+        // ------------------ МОДАЛЬНЫЕ ДАННЫЕ ------------------
         const modalContent = {
             check: { title: "Что скрывает продавец? Проверка перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Вы заплатите, а недвижимость уйдёт кредитору. Вы останетесь без денег и без жилья."},{title:"Прописанные «вечные жильцы» не выезжают",desc:"Суд по выселению — 1,5 года, и это если повезёт."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет в регистрации. Переделывайте за свой счёт или судитесь."}], solution:["Закажу выписку ЕГРН с тайной историей переходов прав","Проверю аресты и залоги через ФССП, найду «чёрных риелторов» по базам","Пропишу в договоре санкции за скрытые обременения"] },
             realty: { title: "Сопровождение сделки купли-продажи", urgent: "Безопасная сделка — ключ к сохранению средств", steps: [{title:"Продавец — фиктивный",desc:"Паспорт настоящий, но владелец давно продал квартиру мошенникам. Деньги уйдут, квартиры нет."},{title:"«Серая» схема оплаты",desc:"Риелтор берёт деньги в конверте. Исчезновение посредника = потеря всей суммы."},{title:"Подписали передаточный акт без юриста",desc:"Квартира сгорела/затопилась, а риск ещё на вас. Продавец умывает руки."}], solution:["Проверю личность продавца и полномочия","Пропишу в договоре условия приемки квартиры «как есть»","Организую безопасный расчёт: аккредитив или банковская ячейка"] },
@@ -522,6 +595,7 @@
             biz_abon: { title: "Абонентское юридическое обслуживание", urgent: "Постоянная защита", steps: [{title:"Штатный юрист ушёл в отпуск — срочная сделка осталась без проверки",desc:"Убытки от непродуманного договора."},{title:"Налоговая проверка застала врасплох",desc:"Документы не собраны, объяснений нет — штраф 500 000 ₽."},{title:"Сотрудник украл коммерческую тайну, ушёл к конкуренту",desc:"Нет договора о конфиденциальности — безнаказанно."}], solution:["Постоянная поддержка: договоры, претензии, консультации, подготовка к проверкам","Фиксированная цена — нет сюрпризов","Кадровое сопровождение"] }
         };
 
+        // Сервисы - все якоря прописаны
         const serviceGroups = [
             { title: "Недвижимость", desc: "Купили квартиру — а там сюрприз. Проверю перед сделкой, защищу от мошенников.", icon: "🏛️", number: "01", topics: ["check","realty","neighbors"], id: "nedvizhimost" },
             { title: "Семейные споры", desc: "Развод без потери квартиры, денег и нервов. Защищу ваши активы.", icon: "⚖️", number: "02", topics: ["divorce","alimony","prenup"], id: "semeynye" },
@@ -534,52 +608,15 @@
             { title: "Юридические услуги для бизнеса", desc: "Защита бизнеса: налоги, кадры, контрагенты. Абонентское обслуживание.", icon: "🏢", number: "09", topics: ["biz_reg","biz_contract","biz_abon"], id: "biznes" }
         ];
 
-        function renderServices() { 
-            const grid = document.getElementById('servicesGrid'); 
-            const hidden = document.getElementById('servicesHidden'); 
-            const firstFour = serviceGroups.slice(0,4); 
-            const rest = serviceGroups.slice(4); 
-            grid.innerHTML = firstFour.map(g => serviceCardHtml(g)).join(''); 
-            hidden.innerHTML = rest.map(g => serviceCardHtml(g)).join(''); 
-        }
-        
-        function serviceCardHtml(g){ 
-            return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t => `<div class="service-topic" onclick="openModal('${t}')">${modalContent[t].title}</div>`).join('')}</div></article>`; 
-        }
-        
-        function toggleServices(){ 
-            const hidden = document.getElementById('servicesHidden'); 
-            const btn = document.querySelector('button[onclick="toggleServices()"]'); 
-            hidden.classList.toggle('visible'); 
-            btn.textContent = hidden.classList.contains('visible') ? 'Скрыть дополнительные услуги' : 'Показать все услуги'; 
-        }
-        
-        function openModal(topic){ 
-            const data = modalContent[topic]; 
-            if(!data) return; 
-            document.getElementById('modalTitle').innerText = data.title; 
-            const stepsHtml = data.steps.map((s, i) => `<div class="scenario-step"><div class="step-num">${i+1}</div><div class="step-content"><h4>${s.title}</h4><p>${s.desc}</p></div></div>`).join(''); 
-            const solutionHtml = data.solution.map(s => `<li>${s}</li>`).join(''); 
-            document.getElementById('modalBody').innerHTML = `<div class="urgency-warning">⚠️ ${data.urgent}</div><div class="scenario"><div class="scenario-title">⚠️ Что будет, если не действовать:</div>${stepsHtml}</div><div class="solution-box"><h4>✓ Как я помогу:</h4><ul>${solutionHtml}</ul></div><div class="modal-actions"><button class="btn" onclick="handleContactClick('${CONFIG.CONTACTS.MAX}', 'max'); closeModal();">⚡ Срочно в MAX</button><button class="btn btn-outline" onclick="handleContactClick('${CONFIG.CONTACTS.WHATSAPP}', 'whatsapp'); closeModal();">💬 WhatsApp</button></div><div class="disclaimer-box">⚠️ Результат зависит от конкретных обстоятельств дела и доказательной базы.</div>`; 
-            document.getElementById('modalOverlay').classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-        }
-        
-        function closeModal(){ 
-            document.getElementById('modalOverlay').classList.remove('active'); 
-            document.body.style.overflow = ''; 
-        }
-        
-        function toggleMenu(){ 
-            const menu = document.getElementById('mobileMenu'); 
-            const overlay = document.querySelector('.overlay'); 
-            menu.classList.toggle('active'); 
-            overlay.classList.toggle('active'); 
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        function scrollToTop(e){ e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); }
-        
+        function renderServices() { const grid=document.getElementById('servicesGrid'); const hidden=document.getElementById('servicesHidden'); const firstFour=serviceGroups.slice(0,4); const rest=serviceGroups.slice(4); grid.innerHTML=firstFour.map(g=>serviceCardHtml(g)).join(''); hidden.innerHTML=rest.map(g=>serviceCardHtml(g)).join(''); }
+        function serviceCardHtml(g){ return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t=>`<div class="service-topic" onclick="openModal('${t}')">${modalContent[t].title}</div>`).join('')}</div></article>`; }
+        function toggleServices(){ const hidden=document.getElementById('servicesHidden'); const btn=document.querySelector('button[onclick="toggleServices()"]'); hidden.classList.toggle('visible'); btn.textContent=hidden.classList.contains('visible')?'Скрыть дополнительные услуги':'Показать все услуги'; }
+        function openModal(topic){ const data=modalContent[topic]; if(!data) return; document.getElementById('modalTitle').innerText=data.title; const stepsHtml=data.steps.map((s,i)=>`<div class="scenario-step"><div class="step-num">${i+1}</div><div class="step-content"><h4>${s.title}</h4><p>${s.desc}</p></div></div>`).join(''); const solutionHtml=data.solution.map(s=>`<li>${s}</li>`).join(''); document.getElementById('modalBody').innerHTML=`<div class="urgency-warning">⚠️ ${data.urgent}</div><div class="scenario"><div class="scenario-title">⚠️ Что будет, если не действовать:</div>${stepsHtml}</div><div class="solution-box"><h4>✓ Как я помогу:</h4><ul>${solutionHtml}</ul></div><div class="modal-actions"><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max'); closeModal();">⚡ Срочно в MAX</button><button class="btn btn-outline" onclick="handleContactClick('https://wa.me/79774232473', 'whatsapp'); closeModal();">💬 WhatsApp</button></div><div class="disclaimer-box">⚠️ Результат зависит от конкретных обстоятельств дела и доказательной базы.</div>`; document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow='hidden'; }
+        function closeModal(){ document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow=''; }
+        function toggleMenu(){ const menu=document.getElementById('mobileMenu'); const overlay=document.querySelector('.overlay'); menu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow=menu.classList.contains('active')?'hidden':''; }
+        function scrollToTop(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+        // ------------------ АВТОМАТИЧЕСКОЕ РАСКРЫТИЕ СКРЫТЫХ УСЛУГ ПРИ ПЕРЕХОДЕ ПО ЯКОРЮ ------------------
         function checkAndOpenHiddenServices() {
             const hash = window.location.hash;
             if (!hash) return;
@@ -592,20 +629,32 @@
                     const btn = document.querySelector('button[onclick="toggleServices()"]');
                     if (btn) btn.textContent = 'Скрыть дополнительные услуги';
                 }
-                setTimeout(() => targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             }
         }
 
+        // ------------------ ПРОВЕРКА ДОСТУПНОСТИ localStorage ДЛЯ СОГЛАСИЯ ------------------
         const storageAvailable = isStorageAvailable();
+
+        // СОГЛАСИЕ С ЗАПОМИНАНИЕМ
         let pendingContactUrl = null;
+        let pendingContactType = null;
 
         function handleContactClick(url, type) {
-            if (typeof ym !== 'undefined') ym(CONFIG.METRIKA_ID, 'reachGoal', 'contact_click', { contact_type: type });
+            // Отправка события в Яндекс.Метрику (с проверкой наличия)
+            if (typeof ym !== 'undefined') {
+                ym(106860023, 'reachGoal', 'contact_click', { contact_type: type });
+            }
+            
+            // Проверяем доступность localStorage
             if (storageAvailable && localStorage.getItem('user_consent') === 'true') {
                 if(url.startsWith('tel:')) window.location.href = url;
                 else window.open(url, '_blank', 'noopener,noreferrer');
             } else {
                 pendingContactUrl = url;
+                pendingContactType = type;
                 document.getElementById('consentOverlay').classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
@@ -615,10 +664,13 @@
             document.getElementById('consentOverlay').classList.remove('active');
             document.body.style.overflow = '';
             pendingContactUrl = null;
+            pendingContactType = null;
         }
 
         function proceedContact() {
-            if (storageAvailable) localStorage.setItem('user_consent', 'true');
+            if (storageAvailable) {
+                localStorage.setItem('user_consent', 'true');
+            }
             if(pendingContactUrl) {
                 if(pendingContactUrl.startsWith('tel:')) window.location.href = pendingContactUrl;
                 else window.open(pendingContactUrl, '_blank', 'noopener,noreferrer');
@@ -626,6 +678,10 @@
             closeConsentModal();
         }
 
+        document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
+        document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
+
+        // Шаблоны - PDF
         const fullTemplates = [
             {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'templates/alimony.pdf'},
             {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'templates/divorce.pdf'},
@@ -643,30 +699,20 @@
             {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'templates/service.pdf'},
             {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'templates/tax.pdf'}
         ];
-        
-        let currentFilter = 'all'; 
-        let showAllTemplates = false;
-        
+        let currentFilter='all'; let showAllTemplates=false;
         function renderTemplates(){ 
-            const grid = document.getElementById('templatesGrid'); 
-            const btn = document.getElementById('templatesToggleBtn'); 
-            let filtered = currentFilter === 'all' ? fullTemplates : fullTemplates.filter(t => t.category === currentFilter); 
-            const visible = showAllTemplates ? filtered : filtered.slice(0, 2); 
-            grid.innerHTML = visible.map(t => `<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать PDF</a></div>`).join(''); 
-            if(filtered.length > 2){ btn.style.display = 'block'; btn.textContent = showAllTemplates ? 'Скрыть часть шаблонов' : 'Показать все шаблоны'; } else btn.style.display = 'none';
+            const grid=document.getElementById('templatesGrid'); 
+            const btn=document.getElementById('templatesToggleBtn'); 
+            let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
+            const visible=showAllTemplates?filtered:filtered.slice(0,2); 
+            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать PDF</a></div>`).join(''); 
+            if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
         }
+        function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
+        function toggleTemplates(){ showAllTemplates=!showAllTemplates; renderTemplates(); }
         
-        function filterTemplates(category, btn){ 
-            currentFilter = category; 
-            showAllTemplates = false; 
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); 
-            if(btn) btn.classList.add('active');
-            renderTemplates(); 
-        }
-        
-        function toggleTemplates(){ showAllTemplates = !showAllTemplates; renderTemplates(); }
-        
-        const faqItems = [
+        // FAQ
+        const faqItems=[
             {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Постоянно изучаю изменения в законодательстве. Если вопрос требует опыта, которого у меня пока нет — честно скажу и подскажу коллегу."},
             {q:"Как проходит удалённая работа?",a:"Общаемся в мессенджерах, документы пересылаем сканами или через облако, подпись — электронная или у нотариуса. Суды принимают документы в электронном виде. Личная встреча нужна редко."},
             {q:"Как быстро вы отвечаете?",a:"Первичный ответ — в течение суток. В рабочие дни с 9:00 до 21:00 отвечаю быстрее, в выходные — могу ответить с задержкой. Для срочных вопросов лучше писать в MAX или WhatsApp."},
@@ -675,69 +721,17 @@
             {q:"Что делать, если у меня сложный случай?",a:"На первичной консультации я оцениваю перспективы дела. Если вижу, что нужен узкий специалист (например, адвокат по уголовным делам или международник) — честно скажу об этом и порекомендую проверенного коллегу. Не берусь за то, в чём не разбираюсь."}
         ];
         
-        function renderFaq(){ 
-            const container = document.getElementById('faqList'); 
-            container.innerHTML = faqItems.map((item, index) => `<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)"><span>${item.q}</span><div class="faq-icon"></div></button><div class="faq-answer"><p>${item.a}</p></div></div>`).join(''); 
-        }
-        
-        function toggleFaq(btn){ 
-            const item = btn.closest('.faq-item'); 
-            const active = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active')); 
-            if(!active) item.classList.add('active');
-        }
-        
-        const contacts = [
-            {icon:"💬", label:"Написать в MAX (основной)", value:"+7 (977) 42-32-473", color:"#9b59b6", url: CONFIG.CONTACTS.MAX, type:"max"},
-            {icon:"💬", label:"WhatsApp", value:"+7 (977) 42-32-473", color:"#25d366", url: CONFIG.CONTACTS.WHATSAPP, type:"whatsapp"},
-            {icon:"📞", label:"Позвонить", value:"+7 (977) 42-32-473", color:"", url: CONFIG.CONTACTS.PHONE, type:"phone"},
-            {icon:"✉️", label:"Email", value:"333742917@mail.ru", color:"", url: CONFIG.CONTACTS.EMAIL, type:"email"}
-        ];
-        
-        function renderContacts(){ 
-            const container = document.getElementById('contactGrid'); 
-            container.innerHTML = contacts.map(c => `<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type === 'phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); 
-        }
-        
-        const pricingPlans = [
-            {name:"Консультация", desc:"Первичная правовая оценка", price:"от 2 000 ₽", period:"30-60 минут онлайн / телефон", features:["Анализ ситуации","Правовая оценка рисков","Варианты решения","План действий"]},
-            {name:"Документ", desc:"Составление или проверка", price:"от 4 000 ₽", period:"Один документ", features:["Договор купли-продажи","Договор аренды / найма","Брачный договор","Проверка на риски"]},
-            {name:"Стартовый пакет", desc:"Консультация + Документ", price:"от 5 000 ₽", period:"Вместо 6 000 ₽ по отдельности", features:["Консультация 30 минут","Составление документа","Правовой анализ","Рекомендации по сделке"], popular:true},
-            {name:"Судебное ведение", desc:"Представительство в суде", price:"от 25 000 ₽", period:"За дело (одна инстанция)", features:["Составление искового заявления","Представительство в суде","Обжалование решений","Сопровождение исполнения"]}
-        ];
-        
-        function renderPricing(){ 
-            const container = document.getElementById('pricingGrid'); 
-            container.innerHTML = pricingPlans.map(p => `<article class="pricing-card ${p.popular ? 'popular' : ''} fade-in">${p.popular ? '<div class="popular-badge">Экономия 20%</div>' : ''}<h3 class="pricing-name">${p.name}</h3><div class="pricing-desc">${p.desc}</div><div class="pricing-price">${p.price}</div><div class="pricing-period">${p.period}</div><ul class="pricing-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><button class="btn" onclick="handleContactClick('${CONFIG.CONTACTS.MAX}', 'max')">Заказать</button></article>`).join(''); 
-        }
-        
-        function initCookieBanner(){ 
-            if(storageAvailable && !localStorage.getItem('cookie_consent')){ 
-                const banner = document.createElement('div'); 
-                banner.className = 'cookie-banner'; 
-                banner.innerHTML = `<p>Мы используем cookie для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>.</p><button class="btn" style="padding:8px 20px;" onclick="acceptCookies()">Принять</button>`; 
-                document.body.appendChild(banner); 
-                banner.style.display = 'block'; 
-            } 
-        }
-        
-        function acceptCookies(){ if(storageAvailable) localStorage.setItem('cookie_consent', 'true'); document.querySelector('.cookie-banner')?.remove(); }
-        
-        const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold: 0.1});
-        
-        document.addEventListener('DOMContentLoaded', () => { 
-            renderServices(); renderPricing(); renderTemplates(); renderFaq(); renderContacts(); 
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el)); 
-            initCookieBanner(); 
-            document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', (e) => filterTemplates(btn.dataset.filter, btn)); }); 
-            document.getElementById('templatesToggleBtn')?.addEventListener('click', toggleTemplates); 
-            document.getElementById('scrollTopBtn')?.addEventListener('click', scrollToTop);
-            document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
-            document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
-            checkAndOpenHiddenServices();
-        });
-        
-        document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeModal(); closeConsentModal(); } });
+        function renderFaq(){ const container=document.getElementById('faqList'); container.innerHTML=faqItems.map(item=>`<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)"><span>${item.q}</span><div class="faq-icon"></div></button><div class="faq-answer"><p>${item.a}</p></div></div>`).join(''); }
+        function toggleFaq(btn){ const item=btn.closest('.faq-item'); const active=item.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('active')); if(!active) item.classList.add('active'); }
+        const contacts=[{icon:"💬",label:"Написать в MAX (основной)",value:"+7 (977) 42-32-473",color:"#9b59b6",url:"https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g",type:"max"},{icon:"💬",label:"WhatsApp",value:"+7 (977) 42-32-473",color:"#25d366",url:"https://wa.me/79774232473",type:"whatsapp"},{icon:"📞",label:"Позвонить",value:"+7 (977) 42-32-473",color:"",url:"tel:+79774232473",type:"phone"},{icon:"✉️",label:"Email",value:"333742917@mail.ru",color:"",url:"mailto:333742917@mail.ru",type:"email"}];
+        function renderContacts(){ const container=document.getElementById('contactGrid'); container.innerHTML=contacts.map(c=>`<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type==='phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); }
+        const pricingPlans=[{name:"Консультация",desc:"Первичная правовая оценка",price:"от 2 000 ₽",period:"30-60 минут онлайн / телефон",features:["Анализ ситуации","Правовая оценка рисков","Варианты решения","План действий"]},{name:"Документ",desc:"Составление или проверка",price:"от 4 000 ₽",period:"Один документ",features:["Договор купли-продажи","Договор аренды / найма","Брачный договор","Проверка на риски"]},{name:"Стартовый пакет",desc:"Консультация + Документ",price:"от 5 000 ₽",period:"Вместо 6 000 ₽ по отдельности",features:["Консультация 30 минут","Составление документа","Правовой анализ","Рекомендации по сделке"],popular:true},{name:"Судебное ведение",desc:"Представительство в суде",price:"от 25 000 ₽",period:"За дело (одна инстанция)",features:["Составление искового заявления","Представительство в суде","Обжалование решений","Сопровождение исполнения"]}];
+        function renderPricing(){ const container=document.getElementById('pricingGrid'); container.innerHTML=pricingPlans.map(p=>`<article class="pricing-card ${p.popular ? 'popular' : ''} fade-in">${p.popular ? '<div class="popular-badge">Экономия 20%</div>' : ''}<h3 class="pricing-name">${p.name}</h3><div class="pricing-desc">${p.desc}</div><div class="pricing-price">${p.price}</div><div class="pricing-period">${p.period}</div><ul class="pricing-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max')">Заказать</button></article>`).join(''); }
+        function initCookieBanner(){ if(storageAvailable && !localStorage.getItem('cookie_consent')){ const banner=document.createElement('div'); banner.className='cookie-banner'; banner.innerHTML=`<p>Мы используем cookie для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>.</p><button class="btn" style="padding:8px 20px;" onclick="acceptCookies()">Принять</button>`; document.body.appendChild(banner); banner.style.display='block'; } }
+        function acceptCookies(){ if(storageAvailable) localStorage.setItem('cookie_consent','true'); document.querySelector('.cookie-banner')?.remove(); }
+        const observer=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.1});
+        document.addEventListener('DOMContentLoaded',()=>{ renderServices(); renderPricing(); renderTemplates(); renderFaq(); renderContacts(); document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el)); initCookieBanner(); document.querySelectorAll('.filter-btn').forEach(btn=>{ btn.addEventListener('click',(e)=>filterTemplates(btn.dataset.filter,btn)); }); document.getElementById('templatesToggleBtn')?.addEventListener('click',toggleTemplates); document.getElementById('scrollTopBtn')?.addEventListener('click',scrollToTop); checkAndOpenHiddenServices(); });
+        document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal(); closeConsentModal(); } });
         window.addEventListener('hashchange', checkAndOpenHiddenServices);
     </script>
 </body>
