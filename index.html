@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,7 +7,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса. Работаю удалённо.">
     <title>Серко — Юрист онлайн. Решаю вопросы удалённо</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z' fill='none' stroke='%23d4af37' stroke-width='3'/%3E%3Cpath d='M50 25 L50 65 M35 40 L50 55 L65 40' stroke='%23d4af37' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z' fill='%23d4af37' stroke='%23b8860b' stroke-width='2'/%3E%3Cpath d='M50 25 L50 65 M35 40 L50 55 L65 40' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -325,8 +326,15 @@
             <a href="#top" class="logo" id="scrollTopBtn">
                 <div class="logo-emblem">
                     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" stroke="#d4af37" stroke-width="3" fill="rgba(212,175,55,0.1)"/>
-                        <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#d4af37" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z" fill="url(#shieldGrad)" stroke="#b8860b" stroke-width="2"/>
+                        <path d="M50 25 L50 65 M35 40 L50 55 L65 40" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
                 <div class="logo-text"><div class="logo-title"><span class="small">мастерская права</span><span style="display: block; color: #d4af37; font-weight: 700;">СЕРКО</span></div></div>
@@ -373,8 +381,15 @@
                 <div class="hero-card-header">
                     <div class="hero-avatar-small">
                         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" stroke="#d4af37" stroke-width="4" fill="none"/>
-                            <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#d4af37" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="shieldGradSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" fill="url(#shieldGradSmall)" stroke="#b8860b" stroke-width="3"/>
+                            <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#0a0a0a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <div>
@@ -540,7 +555,7 @@
             biz_abon: { title: "Абонентское юридическое обслуживание", urgent: "Постоянная защита", steps: [{title:"Штатный юрист ушёл в отпуск — срочная сделка осталась без проверки",desc:"Убытки от непродуманного договора."},{title:"Налоговая проверка застала врасплох",desc:"Документы не собраны, объяснений нет — штраф 500 000 ₽."},{title:"Сотрудник украл коммерческую тайну, ушёл к конкуренту",desc:"Нет договора о конфиденциальности — безнаказанно."}], solution:["Постоянная поддержка: договоры, претензии, консультации, подготовка к проверкам","Фиксированная цена — нет сюрпризов","Кадровое сопровождение"] }
         };
 
-        // Сервисы
+        // Сервисы - все якоря прописаны
         const serviceGroups = [
             { title: "Недвижимость", desc: "Купили квартиру — а там сюрприз. Проверю перед сделкой, защищу от мошенников.", icon: "🏛️", number: "01", topics: ["check","realty","neighbors"], id: "nedvizhimost" },
             { title: "Семейные споры", desc: "Развод без потери квартиры, денег и нервов. Защищу ваши активы.", icon: "⚖️", number: "02", topics: ["divorce","alimony","prenup"], id: "semeynye" },
@@ -596,23 +611,23 @@
         document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
-        // ИСПРАВЛЕНО: пути к шаблонам — папка templates (английскими буквами)
+        // Шаблоны - PDF
         const fullTemplates = [
-            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'templates/alimony.doc'},
-            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'templates/divorce.doc'},
-            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'templates/fired.doc'},
-            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'templates/salary.doc'},
-            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'templates/realty.doc'},
-            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'templates/neighbors.doc'},
-            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'templates/court.doc'},
-            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'templates/prenup.doc'},
-            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'templates/court.doc'},
-            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'templates/realty.doc'},
-            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'templates/fired.doc'},
-            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'templates/alimony.doc'},
-            {id:13, category:'property', icon:'🏞️', title:'Соглашение о разделе земельного участка', desc:'Выдел долей в натуре', note:'⚠️ Требуется межевание и регистрация', file:'templates/land.doc'},
-            {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'templates/business.doc'},
-            {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'templates/tax.doc'}
+            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'templates/alimony.pdf'},
+            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'templates/divorce.pdf'},
+            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'templates/fired.pdf'},
+            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'templates/salary.pdf'},
+            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'templates/realty.pdf'},
+            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'templates/neighbors.pdf'},
+            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'templates/court.pdf'},
+            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'templates/prenup.pdf'},
+            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'templates/appeal.pdf'},
+            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'templates/rent.pdf'},
+            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'templates/resign.pdf'},
+            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'templates/alimony_agreement.pdf'},
+            {id:13, category:'property', icon:'🏞️', title:'Соглашение о разделе земельного участка', desc:'Выдел долей в натуре', note:'⚠️ Требуется межевание и регистрация', file:'templates/land.pdf'},
+            {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'templates/service.pdf'},
+            {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'templates/tax.pdf'}
         ];
         let currentFilter='all'; let showAllTemplates=false;
         function renderTemplates(){ 
@@ -620,14 +635,13 @@
             const btn=document.getElementById('templatesToggleBtn'); 
             let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
             const visible=showAllTemplates?filtered:filtered.slice(0,2); 
-            // Убран target="_blank" — мешает скачиванию .doc файлов
-            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать DOC</a></div>`).join(''); 
+            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать PDF</a></div>`).join(''); 
             if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
         }
         function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
         function toggleTemplates(){ showAllTemplates=!showAllTemplates; renderTemplates(); }
         
-        // FAQ — ДОБАВЛЕНО 2 НОВЫХ ОТВЕТА
+        // FAQ
         const faqItems=[
             {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Постоянно изучаю изменения в законодательстве. Если вопрос требует опыта, которого у меня пока нет — честно скажу и подскажу коллегу."},
             {q:"Как проходит удалённая работа?",a:"Общаемся в мессенджерах, документы пересылаем сканами или через облако, подпись — электронная или у нотариуса. Суды принимают документы в электронном виде. Личная встреча нужна редко."},
@@ -651,3 +665,4 @@
     </script>
 </body>
 </html>
+```
