@@ -533,7 +533,7 @@
             <div class="hero-visual fade-in">
                 <div class="hero-card">
                     <div class="hero-photo-large" id="heroPhotoContainer">
-                        <img src="foto5.png" alt="Иван Серко — юрист" id="heroPhoto" loading="eager" decoding="async">
+                        <img src="foto5.png" alt="Иван Серко — юрист" id="heroPhoto" loading="eager" decoding="async" onerror="this.onerror=null; this.parentElement.classList.add('error'); this.style.display='none';">
                     </div>
                     <div class="hero-card-header">
                         <div class="hero-avatar-small">
@@ -634,7 +634,7 @@
             <div class="support-box fade-in">
                 <div class="qr-container">
                     <div class="qr-code" id="qrContainer">
-                        <img src="qr-tbank.png" alt="QR код для перевода в Т-Банк" id="qrImage" loading="lazy" decoding="async">
+                        <img src="qr-tbank.png" alt="QR код для перевода в Т-Банк" id="qrImage" loading="lazy" decoding="async" onerror="this.onerror=null; this.parentElement.classList.add('error'); this.style.display='none';">
                     </div>
                     <p style="color: var(--text-muted); font-size: 14px;">Отсканируйте в Т-Банке или Сбере</p>
                 </div>
@@ -754,6 +754,7 @@
     <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');" role="button" aria-label="Позвонить">📞</div>
 
     <script>
+        // Конфигурация
         const CONFIG = {
             CONTACTS: {
                 MAX: 'https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g',
@@ -762,65 +763,10 @@
                 EMAIL: 'mailto:333742917@mail.ru',
                 SBER_DONATION: 'https://messenger.online.sberbank.ru/sl/f1uGrTg8JnJ9BN0G7'
             },
-            METRIKA_ID: 106860023,
-            IMAGES: {
-                HERO: 'foto5.png',
-                QR: 'qr-tbank.png'
-            }
+            METRIKA_ID: 106860023
         };
 
-        function initImageHandlers() {
-            const heroPhoto = document.getElementById('heroPhoto');
-            const heroContainer = document.getElementById('heroPhotoContainer');
-            
-            if (heroPhoto && heroContainer) {
-                heroPhoto.addEventListener('load', function() {
-                    heroContainer.classList.add('loaded');
-                    this.style.opacity = '1';
-                });
-                
-                heroPhoto.addEventListener('error', function() {
-                    console.warn('Не удалось загрузить фото:', CONFIG.IMAGES.HERO);
-                    heroContainer.classList.add('error');
-                    this.style.display = 'none';
-                });
-                
-                if (heroPhoto.complete) {
-                    if (heroPhoto.naturalWidth > 0) {
-                        heroContainer.classList.add('loaded');
-                        heroPhoto.style.opacity = '1';
-                    } else {
-                        heroContainer.classList.add('error');
-                        heroPhoto.style.display = 'none';
-                    }
-                }
-            }
-            
-            const qrImage = document.getElementById('qrImage');
-            const qrContainer = document.getElementById('qrContainer');
-            
-            if (qrImage && qrContainer) {
-                qrImage.addEventListener('load', function() {
-                    qrContainer.classList.add('loaded');
-                });
-                
-                qrImage.addEventListener('error', function() {
-                    console.warn('Не удалось загрузить QR код:', CONFIG.IMAGES.QR);
-                    qrContainer.classList.add('error');
-                    this.style.display = 'none';
-                });
-                
-                if (qrImage.complete) {
-                    if (qrImage.naturalWidth > 0) {
-                        qrContainer.classList.add('loaded');
-                    } else {
-                        qrContainer.classList.add('error');
-                        qrImage.style.display = 'none';
-                    }
-                }
-            }
-        }
-
+        // Проверка localStorage
         function isStorageAvailable() {
             try {
                 const test = '__storage_test__';
@@ -828,11 +774,11 @@
                 localStorage.removeItem(test);
                 return true;
             } catch(e) {
-                console.warn('localStorage недоступен');
                 return false;
             }
         }
         
+        // Модальные данные
         const modalContent = {
             check: { title: "Что скрывает продавец? Проверка перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Вы заплатите, а недвижимость уйдёт кредитору. Вы останетесь без денег и без жилья."},{title:"Прописанные «вечные жильцы» не выезжают",desc:"Суд по выселению — 1,5 года, и это если повезёт."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет в регистрации. Переделывайте за свой счёт или судитесь."}], solution:["Закажу выписку ЕГРН с тайной историей переходов прав","Проверю аресты и залоги через ФССП, найду «чёрных риелторов» по базам","Пропишу в договоре санкции за скрытые обременения"] },
             realty: { title: "Сопровождение сделки купли-продажи", urgent: "Безопасная сделка — ключ к сохранению средств", steps: [{title:"Продавец — фиктивный",desc:"Паспорт настоящий, но владелец давно продал квартиру мошенникам. Деньги уйдут, квартиры нет."},{title:"«Серая» схема оплаты",desc:"Риелтор берёт деньги в конверте. Исчезновение посредника = потеря всей суммы."},{title:"Подписали передаточный акт без юриста",desc:"Квартира сгорела/затопилась, а риск ещё на вас. Продавец умывает руки."}], solution:["Проверю личность продавца и полномочия","Пропишу в договоре условия приемки квартиры «как есть»","Организую безопасный расчёт: аккредитив или банковская ячейка"] },
@@ -885,7 +831,7 @@
         }
         
         function serviceCardHtml(g){ 
-            return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t => `<div class="service-topic" onclick="openModal('${t}')" role="button" tabindex="0" onkeypress="if(event.key==='Enter')openModal('${t}')">${modalContent[t].title}</div>`).join('')}</div></article>`; 
+            return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t => `<div class="service-topic" onclick="openModal('${t}')" role="button" tabindex="0">${modalContent[t].title}</div>`).join('')}</div></article>`; 
         }
         
         function toggleServices(){ 
@@ -903,13 +849,11 @@
             const solutionHtml = data.solution.map(s => `<li>${s}</li>`).join(''); 
             document.getElementById('modalBody').innerHTML = `<div class="urgency-warning">⚠️ ${data.urgent}</div><div class="scenario"><div class="scenario-title">⚠️ Что будет, если не действовать:</div>${stepsHtml}</div><div class="solution-box"><h4>✓ Как я помогу:</h4><ul>${solutionHtml}</ul></div><div class="modal-actions"><button class="btn" onclick="handleContactClick('${CONFIG.CONTACTS.MAX}', 'max'); closeModal();" type="button">⚡ Срочно в MAX</button><button class="btn btn-outline" onclick="handleContactClick('${CONFIG.CONTACTS.WHATSAPP}', 'whatsapp'); closeModal();" type="button">💬 WhatsApp</button></div><div class="disclaimer-box">⚠️ Результат зависит от конкретных обстоятельств дела и доказательной базы.</div>`; 
             document.getElementById('modalOverlay').classList.add('active'); 
-            document.getElementById('modalOverlay').setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden'; 
         }
         
         function closeModal(){ 
             document.getElementById('modalOverlay').classList.remove('active'); 
-            document.getElementById('modalOverlay').setAttribute('aria-hidden', 'true');
             document.body.style.overflow = ''; 
         }
         
@@ -920,7 +864,7 @@
             const isActive = menu.classList.toggle('active'); 
             overlay.classList.toggle('active'); 
             document.body.style.overflow = isActive ? 'hidden' : '';
-            btn.setAttribute('aria-expanded', isActive.toString());
+            if(btn) btn.setAttribute('aria-expanded', isActive.toString());
         }
         
         function scrollToTop(e){ 
@@ -937,23 +881,19 @@
             
             if (targetElement) {
                 const hiddenContainer = document.getElementById('servicesHidden');
-                if (hiddenContainer && hiddenContainer.classList) {
-                    if (!hiddenContainer.classList.contains('visible')) {
-                        hiddenContainer.classList.add('visible');
-                        const btn = document.querySelector('button[onclick="toggleServices()"]');
-                        if (btn) btn.textContent = 'Скрыть дополнительные услуги';
-                    }
+                if (hiddenContainer && !hiddenContainer.classList.contains('visible')) {
+                    hiddenContainer.classList.add('visible');
+                    const btn = document.querySelector('button[onclick="toggleServices()"]');
+                    if (btn) btn.textContent = 'Скрыть дополнительные услуги';
                 }
-                
-                requestAnimationFrame(() => {
+                setTimeout(() => {
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
+                }, 100);
             }
         }
 
         const storageAvailable = isStorageAvailable();
         let pendingContactUrl = null;
-        let pendingContactType = null;
 
         function handleContactClick(url, type) {
             if (typeof ym !== 'undefined') {
@@ -965,25 +905,19 @@
                 else window.open(url, '_blank', 'noopener,noreferrer');
             } else {
                 pendingContactUrl = url;
-                pendingContactType = type;
                 document.getElementById('consentOverlay').classList.add('active');
-                document.getElementById('consentOverlay').setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
             }
         }
 
         function closeConsentModal() {
             document.getElementById('consentOverlay').classList.remove('active');
-            document.getElementById('consentOverlay').setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
             pendingContactUrl = null;
-            pendingContactType = null;
         }
 
         function proceedContact() {
-            if (storageAvailable) {
-                localStorage.setItem('user_consent', 'true');
-            }
+            if (storageAvailable) localStorage.setItem('user_consent', 'true');
             if(pendingContactUrl) {
                 if(pendingContactUrl.startsWith('tel:')) window.location.href = pendingContactUrl;
                 else window.open(pendingContactUrl, '_blank', 'noopener,noreferrer');
@@ -991,6 +925,7 @@
             closeConsentModal();
         }
 
+        // Шаблоны
         const fullTemplates = [
             {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'templates/alimony.pdf'},
             {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'templates/divorce.pdf'},
@@ -1021,9 +956,7 @@
             if(filtered.length > 2){ 
                 btn.style.display = 'block'; 
                 btn.textContent = showAllTemplates ? 'Скрыть часть шаблонов' : 'Показать все шаблоны'; 
-            } else {
-                btn.style.display = 'none';
-            }
+            } else btn.style.display = 'none';
         }
         
         function filterTemplates(category, btn){ 
@@ -1058,20 +991,14 @@
         
         function renderFaq(){ 
             const container = document.getElementById('faqList'); 
-            container.innerHTML = faqItems.map((item, index) => `<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)" type="button" aria-expanded="false" aria-controls="faq-answer-${index}"><span>${item.q}</span><div class="faq-icon" aria-hidden="true"></div></button><div class="faq-answer" id="faq-answer-${index}"><p>${item.a}</p></div></div>`).join(''); 
+            container.innerHTML = faqItems.map((item, index) => `<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)" type="button"><span>${item.q}</span><div class="faq-icon" aria-hidden="true"></div></button><div class="faq-answer"><p>${item.a}</p></div></div>`).join(''); 
         }
         
         function toggleFaq(btn){ 
             const item = btn.closest('.faq-item'); 
             const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(f => {
-                f.classList.remove('active');
-                f.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-            }); 
-            if(!isActive) {
-                item.classList.add('active');
-                btn.setAttribute('aria-expanded', 'true');
-            }
+            document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active')); 
+            if(!isActive) item.classList.add('active');
         }
         
         const contacts = [
@@ -1083,7 +1010,7 @@
         
         function renderContacts(){ 
             const container = document.getElementById('contactGrid'); 
-            container.innerHTML = contacts.map(c => `<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}" role="button" tabindex="0" onkeypress="if(event.key==='Enter')handleContactClick('${c.url}', '${c.type}')"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type === 'phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); 
+            container.innerHTML = contacts.map(c => `<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type === 'phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); 
         }
         
         const pricingPlans = [
@@ -1119,14 +1046,7 @@
             }); 
         }, {threshold: 0.1});
         
-        let hashChangeTimeout;
-        function debouncedHashChange() {
-            clearTimeout(hashChangeTimeout);
-            hashChangeTimeout = setTimeout(checkAndOpenHiddenServices, 50);
-        }
-        
         document.addEventListener('DOMContentLoaded', () => { 
-            initImageHandlers();
             renderServices(); 
             renderPricing(); 
             renderTemplates(); 
@@ -1151,14 +1071,7 @@
             } 
         });
         
-        window.addEventListener('hashchange', debouncedHashChange);
-        
-        document.addEventListener('visibilitychange', () => {
-            const marquee = document.querySelector('.marquee-content');
-            if (marquee) {
-                marquee.style.animationPlayState = document.hidden ? 'paused' : 'running';
-            }
-        });
+        window.addEventListener('hashchange', checkAndOpenHiddenServices);
     </script>
 </body>
 </html>
