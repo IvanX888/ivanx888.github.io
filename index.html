@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -23,7 +23,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/106860023" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-    
+
     <style>
         :root {
             --wood-dark: #1a120b;
@@ -61,6 +61,10 @@
             .service-card { padding: 20px 16px; }
             .section-title { font-size: 28px; }
             .pricing-card { padding: 24px 16px; }
+            .hot-news-module { margin: 0 12px; }
+            .hot-news-content { padding: 16px; }
+            .support-box { padding: 24px 16px; }
+            .qr-code { width: 160px; height: 160px; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -152,6 +156,65 @@
         .hero-content h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 6vw, 32px); line-height: 1.2; font-weight: 400; margin-bottom: 20px; }
         .hero-content h1 strong { color: var(--gold); font-weight: 600; display: block; margin-top: 8px; font-size: clamp(28px, 7vw, 36px); }
         .hero-subtitle { font-size: clamp(14px, 4vw, 16px); color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+
+        /* Hot News Module Styles */
+        .hot-news-module {
+            background: linear-gradient(145deg, rgba(28,28,28,0.9) 0%, rgba(10,10,10,0.95) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 4px;
+            margin: 0 auto 24px;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(212,175,55,0.2);
+        }
+        .hot-news-module::before {
+            content: '🔥 АКТУАЛЬНО';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            color: var(--piano-black);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 12px;
+            text-align: center;
+        }
+        .hot-news-content {
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+        .hot-news-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            background: rgba(212,175,55,0.05);
+        }
+        .hot-news-text {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 18px;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .hot-news-date {
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hot-news-loading {
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 40px 20px;
+        }
+
         .hero-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; align-items: center; }
         .hero-feature { display: flex; align-items: center; gap: 10px; font-size: clamp(12px, 3.5vw, 14px); color: var(--text-secondary); background: rgba(212,175,55,0.05); padding: 12px 16px; border: 1px solid rgba(212,175,55,0.1); width: 100%; max-width: 400px; justify-content: center; border-radius: 4px; }
         .hero-cta { display: flex; flex-direction: column; gap: 12px; }
@@ -248,6 +311,17 @@
         .qr-code { width: 200px; height: 200px; background: white; padding: 12px; border-radius: 12px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; }
         .qr-code img { width: 100%; height: 100%; object-fit: contain; }
         .support-highlight { font-size: 18px; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 24px; }
+        .support-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            padding: 0 8px;
+        }
+        .support-description strong {
+            color: var(--gold);
+        }
         .support-methods { display: flex; flex-direction: column; gap: 16px; }
         .support-method { display: flex; align-items: center; gap: 12px; padding: 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; }
         .support-method strong { color: var(--gold); display: block; margin-bottom: 4px; }
@@ -322,6 +396,17 @@
         .chat-widget { right: 20px; }
         .call-widget { left: 20px; animation: pulseCall 2s infinite; }
         @keyframes pulseCall { 0%, 100% { box-shadow: 0 4px 15px rgba(212,175,55,0.4); } 50% { box-shadow: 0 4px 25px rgba(212,175,55,0.7); } }
+
+        /* Blink animation for anchored sections */
+        @keyframes blink-highlight {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+            50% { box-shadow: 0 0 30px 10px rgba(212,175,55,0.5); }
+        }
+        .blink-highlight {
+            animation: blink-highlight 0.6s ease-in-out 2;
+            border-color: var(--gold) !important;
+        }
+
         @media (min-width: 640px) {
             .trust-content { grid-template-columns: repeat(4, 1fr); }
             .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
@@ -330,6 +415,7 @@
             .templates-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-content { grid-template-columns: repeat(2, 1fr); text-align: left; }
             .support-box { grid-template-columns: 1fr 1fr; align-items: center; }
+            .hot-news-module { max-width: 600px; }
         }
         @media (min-width: 1024px) {
             .nav-desktop { display: flex; gap: 32px; }
@@ -399,12 +485,15 @@
     <section class="hero wood-bg" id="top">
         <div class="hero-content fade-in">
             <h1>Юрист <strong>для сложных задач</strong></h1>
-            <p class="hero-subtitle">Проверю документы, составлю договор, подготовлю иск, проконсультирую. Без лишних встреч — быстрее, дешевле, удобнее.</p>
-            <div class="hero-features">
-                <div class="hero-feature">⚡ Работаю по всей России</div>
-                <div class="hero-feature">🎯 Цена фиксируется до начала работы</div>
-                <div class="hero-feature">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
+            <p class="hero-subtitle">Проверю документы, составлю договор, подготовлю иск, проконсультирую. <strong>Работаю 90% удалённо</strong> — быстрее, дешевле, удобнее.</p>
+
+            <!-- Hot News Module -->
+            <div class="hot-news-module fade-in" id="hotNewsModule">
+                <div class="hot-news-content" id="hotNewsContent">
+                    <div class="hot-news-loading">Загрузка актуальной информации...</div>
+                </div>
             </div>
+
             <div class="hero-cta">
                 <a href="#" class="btn btn-large" onclick="event.preventDefault(); handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬 Написать в MAX</a>
                 <a href="#" class="btn btn-outline btn-large" onclick="event.preventDefault(); handleContactClick('https://wa.me/79774232473', 'whatsapp');">💬 WhatsApp</a>
@@ -443,6 +532,7 @@
     </section>
     <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю по всей России</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю по всей России</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
     <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>По всей России</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div><div class="trust-item"><div class="trust-icon">🤝</div><div><strong>Без посредников</strong></div></div></div></div>
+
     <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте последствия и решение</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
     <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
     <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button><button class="filter-btn" data-filter="business">Бизнес</button><button class="filter-btn" data-filter="tax">Налоговые</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
@@ -460,7 +550,13 @@
                 <p style="color: var(--text-muted); font-size: 14px;">Отсканируйте в Т-Банке или Сбере</p>
             </div>
             <div>
-                <div class="support-highlight">✨ Ваша поддержка поможет создавать больше бесплатных материалов ✨</div>
+                <div class="support-highlight">✨ Ваша поддержка — это новые бесплатные шаблоны для всех ✨</div>
+                <div class="support-description">
+                    <strong>Каждое пожертвование помогает создавать больше качественных шаблонов документов.</strong><br><br>
+                    Мы планируем расширить библиотеку: добавить образцы для ИП и малого бизнеса, договоры аренды и подряда, претензии по защите прав потребителей, шаблоны для судебных процессов. 
+                    <br><br>
+                    <em>Ваш вклад — это доступ к правовой помощи для тех, кто не может позволить себе юриста.</em>
+                </div>
                 <div class="support-methods">
                     <div class="support-method">
                         <div class="contact-method-icon">📞</div>
@@ -484,7 +580,7 @@
     </section>
     <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
     <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
-    
+
     <footer class="footer">
         <div class="footer-content">
             <div>
@@ -528,7 +624,7 @@
             <p style="margin-top: 8px; font-size: 11px;">Информация не является публичной офертой</p>
         </div>
     </footer>
-    
+
     <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();">
         <div class="modal">
             <div class="modal-header">
@@ -538,7 +634,7 @@
             <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
-    
+
     <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index: 2100;">
         <div class="modal consent-modal">
             <div class="modal-header">
@@ -554,7 +650,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
     <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>
 
@@ -571,8 +667,8 @@
                 return false;
             }
         }
-        
-        // ------------------ НОВЫЕ МОДАЛЬНЫЕ ДАННЫЕ ПО 10 КАТЕГОРИЯМ (СНИЖЕНО УПОМИНАНИЙ ОНЛАЙН) ------------------
+
+        // ------------------ НОВЫЕ МОДАЛЬНЫЕ ДАННЫЕ ПО 10 КАТЕГОРИЯМ ------------------
         const modalContent = {
             // 1. Семейные споры
             alimony_applied: { title: "Жена подала на алименты — что делать?", urgent: "Срок обжалования судебного приказа — 10 дней!", steps: [{title:"Арест счетов, списание 70% зарплаты",desc:"Автоматически — жить не на что."},{title:"Пеня 0,1% за каждый день просрочки",desc:"Долг растёт как снежный ком."},{title:"Уголовное дело по ст. 157 УК РФ",desc:"Реальный срок до 1 года."}], solution:["Срочно обжалую судебный приказ в 10-дневный срок — остановлю списания","Докажу реальные доходы и расходы на детей","Переведу алименты в твёрдую сумму меньшего размера"] },
@@ -638,20 +734,98 @@
         function toggleMenu(){ const menu=document.getElementById('mobileMenu'); const overlay=document.querySelector('.overlay'); menu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow=menu.classList.contains('active')?'hidden':''; }
         function scrollToTop(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }
 
+        // ------------------ HOT NEWS MODULE ------------------
+        function loadHotNews() {
+            const container = document.getElementById('hotNewsContent');
+            fetch('updates/hot-news.json?v=' + Date.now())
+                .then(response => {
+                    if (!response.ok) throw new Error('No hot news file');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.active && data.content) {
+                        renderHotNews(data);
+                    } else {
+                        showDefaultHotNews();
+                    }
+                })
+                .catch(() => {
+                    checkHotNewsImage();
+                });
+        }
+        
+        function checkHotNewsImage() {
+            const img = new Image();
+            const timestamp = Date.now();
+            img.src = `updates/hot-news.png?v=${timestamp}`;
+            img.onload = function() {
+                const container = document.getElementById('hotNewsContent');
+                container.innerHTML = `
+                    <img src="updates/hot-news.png?v=${timestamp}" alt="Актуальная информация" class="hot-news-image">
+                    <div class="hot-news-date">Обновлено: сегодня</div>
+                `;
+            };
+            img.onerror = function() {
+                showDefaultHotNews();
+            };
+        }
+        
+        function renderHotNews(data) {
+            const container = document.getElementById('hotNewsContent');
+            let html = '';
+            if (data.image) html += `<img src="${data.image}" alt="${data.title || 'Актуальная информация'}" class="hot-news-image">`;
+            if (data.content) html += `<div class="hot-news-text">${data.content}</div>`;
+            if (data.date) html += `<div class="hot-news-date">${data.date}</div>`;
+            container.innerHTML = html;
+        }
+        
+        function showDefaultHotNews() {
+            const container = document.getElementById('hotNewsContent');
+            container.innerHTML = `
+                <div class="hot-news-text">⚡ Работаю по всей России</div>
+                <div class="hot-news-text">🎯 Цена фиксируется до начала работы</div>
+                <div class="hot-news-text">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
+            `;
+        }
+
+        // ------------------ BLINK EFFECT FOR AD ANCHORS ------------------
+        function blinkTargetElement(element) {
+            if (!element) return;
+            element.classList.add('blink-highlight');
+            setTimeout(() => {
+                element.classList.remove('blink-highlight');
+            }, 1200);
+        }
+
         function checkAndOpenHiddenServices() {
             const hash = window.location.hash;
-            if (!hash) return;
+            if (!hash) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const isFromAd = urlParams.has('utm_source') || urlParams.has('yclid') || urlParams.has('gclid') || document.referrer.includes('yandex') || document.referrer.includes('google');
+                if (isFromAd && hash) {
+                    processHashTarget(hash);
+                }
+                return;
+            }
+            processHashTarget(hash);
+        }
+        
+        function processHashTarget(hash) {
             const targetId = hash.substring(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
                 const hiddenContainer = document.getElementById('servicesHidden');
-                if (hiddenContainer && !hiddenContainer.classList.contains('visible')) {
+                const isHiddenService = hiddenContainer && hiddenContainer.contains(targetElement);
+                if (isHiddenService && !hiddenContainer.classList.contains('visible')) {
                     hiddenContainer.classList.add('visible');
                     const btn = document.querySelector('button[onclick="toggleServices()"]');
                     if (btn) btn.textContent = 'Скрыть дополнительные услуги';
                 }
                 setTimeout(() => {
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setTimeout(() => {
+                        blinkTargetElement(targetElement);
+                    }, 500);
                 }, 100);
             }
         }
@@ -696,7 +870,7 @@
         document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
-        // Шаблоны - PDF (без изменений)
+        // Шаблоны - PDF
         const fullTemplates = [
             {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'templates/alimony.pdf'},
             {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'templates/divorce.pdf'},
@@ -726,8 +900,9 @@
         function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
         function toggleTemplates(){ showAllTemplates=!showAllTemplates; renderTemplates(); }
         
-        // FAQ
+        // FAQ - обновлен с уточнением о статусе
         const faqItems=[
+            {q:"Вы адвокат?",a:"<strong>Нет, я не являюсь адвокатом</strong> — я частный юрист-консультант. Это означает, что я не состою в адвокатской палате и не имею статуса адвоката. Однако в большинстве случаев это работает <strong>в вашу пользу</strong>: мои услуги дешевле, а результат такой же эффективный.<br><br>Я успешно решаю вопросы по составлению договоров, проверке документов, семейным и трудовым спорам, защите прав потребителей, налоговым консультациям. <strong>Если ваш вопрос требует именно адвокатской деятельности</strong> (например, уголовное дело или сложное арбитражное производство с участием адвоката обязательно) — я честно скажу об этом и порекомендую проверенного коллегу-адвоката."},
             {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Постоянно изучаю изменения в законодательстве. Если вопрос требует опыта, которого у меня пока нет — честно скажу и подскажу коллегу."},
             {q:"Как проходит работа?",a:"Общаемся в мессенджерах, документы пересылаем сканами или через облако, подпись — электронная или у нотариуса. Суды принимают документы в электронном виде. Личная встреча нужна редко."},
             {q:"Как быстро вы отвечаете?",a:"Первичный ответ — в течение суток. В рабочие дни с 9:00 до 21:00 отвечаю быстрее, в выходные — могу ответить с задержкой. Для срочных вопросов лучше писать в MAX или WhatsApp."},
@@ -745,7 +920,22 @@
         function initCookieBanner(){ if(storageAvailable && !localStorage.getItem('cookie_consent')){ const banner=document.createElement('div'); banner.className='cookie-banner'; banner.innerHTML=`<p>Мы используем cookie для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>.</p><button class="btn" style="padding:8px 20px;" onclick="acceptCookies()">Принять</button>`; document.body.appendChild(banner); banner.style.display='block'; } }
         function acceptCookies(){ if(storageAvailable) localStorage.setItem('cookie_consent','true'); document.querySelector('.cookie-banner')?.remove(); }
         const observer=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.1});
-        document.addEventListener('DOMContentLoaded',()=>{ renderServices(); renderPricing(); renderTemplates(); renderFaq(); renderContacts(); document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el)); initCookieBanner(); document.querySelectorAll('.filter-btn').forEach(btn=>{ btn.addEventListener('click',(e)=>filterTemplates(btn.dataset.filter,btn)); }); document.getElementById('templatesToggleBtn')?.addEventListener('click',toggleTemplates); document.getElementById('scrollTopBtn')?.addEventListener('click',scrollToTop); checkAndOpenHiddenServices(); });
+        
+        document.addEventListener('DOMContentLoaded',()=>{ 
+            renderServices(); 
+            renderPricing(); 
+            renderTemplates(); 
+            renderFaq(); 
+            renderContacts(); 
+            loadHotNews(); // Загружаем актуальные новости
+            document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el)); 
+            initCookieBanner(); 
+            document.querySelectorAll('.filter-btn').forEach(btn=>{ btn.addEventListener('click',(e)=>filterTemplates(btn.dataset.filter,btn)); }); 
+            document.getElementById('templatesToggleBtn')?.addEventListener('click',toggleTemplates); 
+            document.getElementById('scrollTopBtn')?.addEventListener('click',scrollToTop); 
+            checkAndOpenHiddenServices(); 
+        });
+        
         document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal(); closeConsentModal(); } });
         window.addEventListener('hashchange', checkAndOpenHiddenServices);
     </script>
