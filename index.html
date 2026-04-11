@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Юридические консультации. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса. Решаю вопросы профессионально.">
-    <title>Серко — Юридическая помощь. Решаю вопросы</title>
+    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса. Решаю вопросы профессионально удаленно по всей России.">
+    <title>Серко — Юридическая помощь онлайн. Решаю вопросы</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z' fill='%23d4af37' stroke='%23b8860b' stroke-width='2'/%3E%3Cpath d='M50 25 L50 65 M35 40 L50 55 L65 40' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +65,10 @@
             .hot-news-content { padding: 16px; }
             .support-box { padding: 24px 16px; flex-direction: column; }
             .qr-code { width: 160px; height: 160px; }
+            .modal-body { padding: 16px; }
+            .scenario-step { flex-direction: column; gap: 8px; }
+            .step-num { width: 28px; height: 28px; font-size: 12px; }
+            .btn-phone-number .phone-num { font-size: 11px; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -150,14 +154,64 @@
         .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
         .btn-outline { background: transparent; color: var(--gold); }
         .btn-outline:hover { background: var(--gold); color: var(--piano-black); }
+        .btn-phone-number {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+            padding: 10px 20px;
+        }
+        .btn-phone-number .phone-label {
+            font-size: 10px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        .btn-phone-number .phone-num {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 1024px) {
+            .btn-phone-number .phone-num { font-size: 12px; }
+            .btn-phone-number { padding: 8px 16px; }
+        }
         .nav-mobile-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 20px; cursor: pointer; color: var(--gold); z-index: 1002; }
         .hero { min-height: 100vh; padding: 100px 16px 40px; display: flex; flex-direction: column; gap: 32px; position: relative; }
         .hero-content { text-align: center; position: relative; z-index: 2; }
         .hero-content h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 6vw, 32px); line-height: 1.2; font-weight: 400; margin-bottom: 20px; }
         .hero-content h1 strong { color: var(--gold); font-weight: 600; display: block; margin-top: 8px; font-size: clamp(28px, 7vw, 36px); }
         .hero-subtitle { font-size: clamp(14px, 4vw, 16px); color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+        
+        .online-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212,175,55,0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .online-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
 
-        /* ===== HOT NEWS MODULE (красивое оформление) ===== */
+        /* ===== HOT NEWS MODULE ===== */
         .hot-news-module {
             background: linear-gradient(145deg, rgba(28,28,28,0.95) 0%, rgba(10,10,10,0.98) 100%);
             border: 2px solid rgba(212,175,55,0.6);
@@ -410,23 +464,24 @@
         .modal { background: #111; border: 1px solid var(--gold); max-width: 800px; width: 100%; max-height: 90vh; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transform: scale(0.9); transition: transform 0.3s; }
         .modal-overlay.active .modal { transform: scale(1); }
         .modal-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(212,175,55,0.05); }
-        .modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; color: var(--gold); }
+        .modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; color: var(--gold); line-height: 1.3; }
         .modal-close { background: rgba(255,255,255,0.05); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-size: 24px; cursor: pointer; color: var(--gold); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .modal-close:hover { background: var(--danger); color: white; border-color: var(--danger); }
         .modal-body { padding: 24px; overflow-y: auto; }
-        .urgency-warning { background: var(--danger-bg); border: 1px solid var(--danger); padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-weight: 500; color: var(--danger); }
+        .urgency-warning { background: var(--danger-bg); border: 1px solid var(--danger); padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: var(--danger); }
         .scenario { margin-bottom: 24px; }
         .scenario-title { font-size: 14px; color: var(--danger); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
         .scenario-step { display: flex; gap: 16px; margin-bottom: 16px; padding: 16px; background: rgba(239,68,68,0.05); border-radius: 8px; border-left: 3px solid var(--danger); }
         .step-num { width: 32px; height: 32px; background: var(--danger-bg); border: 1px solid var(--danger); color: var(--danger); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 50%; flex-shrink: 0; font-size: 14px; }
-        .step-content h4 { font-size: 16px; margin-bottom: 6px; color: var(--text-primary); }
+        .step-content h4 { font-size: 16px; margin-bottom: 6px; color: var(--text-primary); font-weight: 600; }
         .step-content p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
         .solution-box { background: var(--success-bg); border-left: 4px solid var(--success); padding: 20px; margin: 24px 0; border-radius: 0 12px 12px 0; }
         .solution-box h4 { color: var(--success); margin-bottom: 12px; font-size: 18px; }
         .solution-box ul { list-style: none; color: var(--text-secondary); font-size: 14px; }
-        .solution-box li { padding: 6px 0; padding-left: 20px; position: relative; }
+        .solution-box li { padding: 8px 0; padding-left: 24px; position: relative; line-height: 1.5; }
         .solution-box li::before { content: '→'; position: absolute; left: 0; color: var(--success); font-weight: bold; }
         .modal-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .modal-actions .btn { flex: 1; min-width: 140px; }
         .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin-top: 20px; font-size: 12px; color: var(--text-muted); font-style: italic; }
         .mobile-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh; background: linear-gradient(180deg, var(--piano-black) 0%, var(--wood-dark) 100%); z-index: 1001; padding: 80px 24px 32px; transition: right 0.4s ease; border-left: 1px solid rgba(212,175,55,0.2); }
         .mobile-menu.active { right: 0; }
@@ -509,27 +564,34 @@
                 <a href="#pricing" class="nav-link">Тарифы</a>
                 <a href="#templates" class="nav-link">Шаблоны</a>
                 <a href="#faq" class="nav-link">FAQ</a>
-                <a href="tel:+79774232473" class="btn" onclick="event.preventDefault(); handleContactClick('tel:+79774232473', 'phone');">📞 Позвонить</a>
+                <a href="tel:+79774232473" class="btn btn-phone-number" onclick="event.preventDefault(); handleContactClick('tel:+79774232473', 'phone');">
+                    <span class="phone-label">Позвонить</span>
+                    <span class="phone-num">+7 (977) 423-24-73</span>
+                </a>
             </nav>
-            <button class="nav-mobile-btn" onclick="toggleMenu()">☰</button>
+            <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
         </div>
     </header>
     <div class="overlay" onclick="toggleMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="toggleMenu()">×</button>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">×</button>
         <nav class="mobile-nav">
             <a href="#services" onclick="toggleMenu()">Услуги</a>
             <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
             <a href="#templates" onclick="toggleMenu()">Шаблоны</a>
             <a href="#faq" onclick="toggleMenu()">FAQ</a>
             <a href="#contact" onclick="toggleMenu()">Контакты</a>
-            <a href="tel:+79774232473" class="btn" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top: 20px;">📞 Позвонить</a>
+            <a href="tel:+79774232473" class="btn btn-phone-number" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top: 20px; width: 100%;">
+                <span class="phone-label">Позвонить</span>
+                <span class="phone-num">+7 (977) 423-24-73</span>
+            </a>
         </nav>
     </div>
     <section class="hero wood-bg" id="top">
         <div class="hero-content fade-in">
+            <div class="online-badge">Работаю онлайн по всей России</div>
             <h1>Юрист <strong>для сложных задач</strong></h1>
-            <p class="hero-subtitle">Проверю документы, составлю договор, подготовлю иск, проконсультирую. <strong>Работаю 90% удалённо</strong> — быстрее, дешевле, удобнее.</p>
+            <p class="hero-subtitle">Платные юридические консультации онлайн. Проверю документы, составлю договор, подготовлю иск, проконсультирую. <strong>Работаю 90% удалённо</strong> — быстрее, дешевле, удобнее. Точная стоимость известна до начала работ.</p>
 
             <!-- Hot News Module -->
             <div class="hot-news-module fade-in" id="hotNewsModule">
@@ -565,7 +627,7 @@
                         <div class="hero-card-subtitle">Частный юрист</div>
                     </div>
                 </div>
-                <blockquote class="hero-quote">"Беру дела, в которых уверен. Если вопрос сложный — разберусь, если вне моей компетенции — подскажу, к кому обратиться. Работаю без посредников: вы пишете мне — отвечаю я."</blockquote>
+                <blockquote class="hero-quote">"Беру дела, в которых уверен. Работаю только за оплату — консультации платные. Если вопрос сложный — разберусь, если вне моей компетенции — подскажу, к кому обратиться. Работаю без посредников: вы пишете мне — отвечаю я."</blockquote>
                 <div class="hero-stats">
                     <div class="hero-stat"><div class="hero-stat-value">127</div><div class="hero-stat-label">дел решено в 2025</div></div>
                     <div class="hero-stat"><div class="hero-stat-value">100%</div><div class="hero-stat-label">Лично</div></div>
@@ -574,11 +636,11 @@
             </div>
         </div>
     </section>
-    <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю по всей России</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю по всей России</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
-    <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>По всей России</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div><div class="trust-item"><div class="trust-icon">🤝</div><div><strong>Без посредников</strong></div></div></div></div>
+    <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю онлайн по всей России</span><span class="marquee-item">Платные консультации</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю онлайн по всей России</span><span class="marquee-item">Платные консультации</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
+    <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>По всей России</strong></div></div><div class="trust-item"><div class="trust-icon">💻</div><div><strong>Онлайн 90%</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div></div></div>
 
-    <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте последствия и решение</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
-    <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
+    <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте риски и решение. Консультация платная.</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
+    <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора. Оплата онлайн.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
     <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button><button class="filter-btn" data-filter="business">Бизнес</button><button class="filter-btn" data-filter="tax">Налоговые</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
     <section class="support" id="support">
         <div class="section-header fade-in">
@@ -623,13 +685,13 @@
         </div>
     </section>
     <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
-    <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
+    <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. Первая консультация платная (от 2000₽). За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
 
     <footer class="footer">
         <div class="footer-content">
             <div>
                 <div class="footer-logo">СЕРКО</div>
-                <p class="footer-desc">Решаю юридические вопросы. Индивидуальный подход, честные цены, прямая связь.</p>
+                <p class="footer-desc">Решаю юридические вопросы онлайн по всей России. Индивидуальный подход, честные цены, прямая связь. Консультации платные.</p>
             </div>
             <div>
                 <div class="footer-title">Услуги</div>
@@ -654,7 +716,7 @@
                 <ul class="footer-links">
                     <li style="color: var(--text-muted);">ИНН: 500918804320</li>
                     <li style="color: var(--text-muted);">Самозанятый</li>
-                    <li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li>
+                    <li><a href="tel:+79774232473">+7 (977) 423-24-73</a></li>
                 </ul>
             </div>
         </div>
@@ -673,7 +735,7 @@
         <div class="modal">
             <div class="modal-header">
                 <h3 class="modal-title" id="modalTitle"></h3>
-                <button class="modal-close" onclick="closeModal()">×</button>
+                <button class="modal-close" onclick="closeModal()" aria-label="Закрыть">×</button>
             </div>
             <div class="modal-body" id="modalBody"></div>
         </div>
@@ -683,7 +745,7 @@
         <div class="modal consent-modal">
             <div class="modal-header">
                 <h3 class="modal-title">Согласие на обработку данных</h3>
-                <button class="modal-close" onclick="closeConsentModal()">×</button>
+                <button class="modal-close" onclick="closeConsentModal()" aria-label="Закрыть">×</button>
             </div>
             <div class="modal-body">
                 <p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p>
@@ -695,11 +757,11 @@
         </div>
     </div>
 
-    <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬</div>
-    <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');">📞</div>
+    <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');" aria-label="Написать в MAX">💬</div>
+    <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');" aria-label="Позвонить">📞</div>
 
     <script>
-        // ------------------ ПРОВЕРКА ДОСТУПНОСТИ localStorage ------------------
+        // Проверка доступности localStorage
         function isStorageAvailable() {
             try {
                 const test = '__storage_test__';
@@ -712,54 +774,453 @@
             }
         }
 
-        // ------------------ МОДАЛЬНЫЕ ДАННЫЕ (полные) ------------------
+        // ------------------ ОБНОВЛЕННЫЙ И ЮРИДИЧЕСКИ ВЫВЕРЕННЫЙ MODALCONTENT (апрель 2026) ------------------
         const modalContent = {
             // 1. Семейные споры
-            alimony_applied: { title: "Жена подала на алименты — что делать?", urgent: "Срок обжалования судебного приказа — 10 дней!", steps: [{title:"Арест счетов, списание 70% зарплаты",desc:"Автоматически — жить не на что."},{title:"Пеня 0,1% за каждый день просрочки",desc:"Долг растёт как снежный ком."},{title:"Уголовное дело по ст. 157 УК РФ",desc:"Реальный срок до 1 года."}], solution:["Срочно обжалую судебный приказ в 10-дневный срок — остановлю списания","Докажу реальные доходы и расходы на детей","Переведу алименты в твёрдую сумму меньшего размера"] },
-            property_division: { title: "Раздел имущества при разводе", urgent: "Срок исковой давности — 3 года!", steps: [{title:"Супруг вывел 3 млн на «больную маму»",desc:"Деньги не вернуть."},{title:"Квартира на ваши деньги, но оформлена на супруга",desc:"Докажете или потеряете всё."},{title:"Суд 18 месяцев",desc:"Вы платите за аренду, супруг живёт в квартире."}], solution:["Запрошу выписки по счетам за 3 года — найду «фиктивные долги»","Наложу обеспечительные меры — запрет продажи имущества","Докажу личный вклад через документы"] },
-            prenup_contract: { title: "Брачный договор", urgent: "Защитить активы до и во время брака", steps: [{title:"Бизнес 10 лет поделят пополам",desc:"Партнёр получит 50% акций."},{title:"Квартира от родителей при разводе оспорена",desc:"6 месяцев судов."},{title:"Кредиты супруга = ваши кредиты",desc:"Долг 2 млн разделят."}], solution:["Составлю индивидуальный договор","Организую нотариальное удостоверение — неоспоримость в суде","Защищу бизнес через корпоративные механизмы"] },
+            alimony_applied: { 
+                title: "Жена подала на алименты — что делать?", 
+                urgent: "Срок обжалования судебного приказа — 10 дней! Пропустите — приказ вступит в силу.", 
+                steps: [
+                    {title:"Арест счетов и списание до 70% дохода (на детей)",desc:"Банк может заблокировать счета. При взыскании алиментов на несовершеннолетних детей допускается удержание до 70% заработка (ст. 99 ФЗ «Об исполнительном производстве»)."},
+                    {title:"Начисление неустойки по алиментам",desc:"При образовании задолженности по вине должника возможно взыскание неустойки (ст. 115 СК РФ), а также административная или уголовная ответственность."},
+                    {title:"Уголовное преследование по ст. 157 УК РФ",desc:"Неуплата алиментов без уважительных причин может повлечь уголовную ответственность при наличии вступившего в силу решения суда."}
+                ], 
+                solution: [
+                    "Срочно обжалую судебный приказ в 10-дневный срок — остановлю принудительное исполнение",
+                    "Проанализирую доходы и расходы, помогу снизить размер алиментов или изменить способ взыскания",
+                    "Проверю обоснованность требований: установление отцовства, сокрытие доходов истцом"
+                ] 
+            },
+            property_division: { 
+                title: "Раздел имущества при разводе", 
+                urgent: "Срок исковой давности — 3 года с момента, когда вы узнали или должны были узнать о нарушении права. Не ждите.", 
+                steps: [
+                    {title:"Супруг вывел денежные средства на «больных родственников»",desc:"По документам — займы. На деле — сокрытие 3-5 млн рублей от раздела."},
+                    {title:"Квартира куплена на ваши деньги, но оформлена на супруга",desc:"Имущество, приобретённое в браке, считается совместным. Доказывать личный вклад сложно — без подтверждений получите меньшую долю."},
+                    {title:"Затягивание процесса на 18-24 месяца",desc:"Пока идет суд, супруг проживает в квартире, вы платите за аренду + ипотеку."}
+                ], 
+                solution: [
+                    "Запрошу финансовые выписки по всем счетам супруга за 3 года — найду фиктивные долги и выводы",
+                    "Наложу обеспечительные меры — запрет на продажу, дарение или залог имущества на период раздела",
+                    "Докажу личный вклад через банковские документы, чеки, договоры — добьюсь справедливого раздела"
+                ] 
+            },
+            prenup_contract: { 
+                title: "Брачный договор — защита активов", 
+                urgent: "Защитить имущество можно до брака или в любой момент во время брака. Чем раньше, тем проще.", 
+                steps: [
+                    {title:"Бизнес, строившийся 10 лет, делится пополам",desc:"Без брачного договора бизнес-активы, созданные в браке, делятся поровну. Партнёр-бывший супруг получает 50% долей."},
+                    {title:"Квартира от родителей признаётся совместной",desc:"Если нет документов о дарении, имущество считается общим. При разделе бывший супруг может претендовать на долю."},
+                    {title:"Кредиты, оформленные супругом, становятся общими",desc:"Вы несёте солидарную ответственность по долгам, о которых не знали."}
+                ], 
+                solution: [
+                    "Составлю индивидуальный договор с учётом ваших активов: недвижимости, бизнеса, инвестиций",
+                    "Организую нотариальное удостоверение — договор получит юридическую силу и неоспоримость в суде",
+                    "Защищу бизнес через корпоративные механизмы: разделение личных и корпоративных активов"
+                ] 
+            },
+            
             // 2. Недвижимость
-            apartment_check: { title: "Проверка квартиры перед покупкой", urgent: "Проверка нужна ДО подписания договора!", steps: [{title:"Квартира в залоге у банка",desc:"Заплатите, а жильё уйдёт кредитору."},{title:"«Вечные жильцы» не выезжают",desc:"Суд по выселению 1,5 года."},{title:"Перепланировка не узаконена",desc:"Росреестр откажет, переделывайте за свой счёт."}], solution:["Закажу выписку ЕГРН — тайная история переходов прав","Проверю аресты и залоги через базы — найду «чёрных риелторов»","Пропишу санкции в договоре — защита до сделки"] },
-            transaction_support: { title: "Сопровождение сделки купли-продажи", urgent: "Безопасная сделка — ключ к сохранению средств", steps: [{title:"Продавец фиктивный",desc:"Паспорт настоящий, квартиры нет, деньги ушли."},{title:"«Серая» схема оплаты",desc:"Риелтор исчез, потеря всей суммы."},{title:"Подписали акт без юриста",desc:"Квартира сгорела, риск на вас."}], solution:["Проверю личность продавца — полномочия по доверенности","Организую безопасный расчёт — аккредитив/банковская ячейка","Подготовлю договор — условия приёмки «как есть»"] },
-            neighbor_disputes: { title: "Споры с соседями (залив, перепланировка)", urgent: "Срок исковой давности — 3 года", steps: [{title:"Залил сосед — «ничего не знает»",desc:"Экспертиза 50 000 ₽ за ваш счёт."},{title:"Сломал несущую стенку",desc:"Ваша квартира теряет 20–30% стоимости."},{title:"Суд 2 года",desc:"Жить невозможно, продать нельзя."}], solution:["Зафиксирую ущерб через независимую экспертизу","Подам встречный иск — запрет перепланировки до суда","Взыщу ущерб с компенсацией морального вреда"] },
+            apartment_check: { 
+                title: "Проверка квартиры перед покупкой", 
+                urgent: "Проверка нужна ДО подписания договора! После — риски ложатся на вас.", 
+                steps: [
+                    {title:"Квартира в залоге у банка или арестована",desc:"После покупки кредиторы обратят взыскание на жильё — вы останетесь без квартиры и денег."},
+                    {title:"Зарегистрированные лица не выезжают",desc:"Суд о выселении длится 1,5-2 года. Новоселье откладывается."},
+                    {title:"Незаконная перепланировка не узаконена",desc:"Росреестр откажет в регистрации права. Переделка за ваш счёт + штраф."}
+                ], 
+                solution: [
+                    "Закажу выписку ЕГРН с расширенными данными — проверю всю историю переходов права и обременение",
+                    "Проверю аресты и залоги через базы ФССП, ФНС — выявлю мошеннические схемы",
+                    "Пропишу в договоре условия о снижении цены/расторжении при выявлении обременений"
+                ] 
+            },
+            transaction_support: { 
+                title: "Сопровождение сделки купли-продажи", 
+                urgent: "Безопасная сделка — ключ к сохранению средств. Не экономьте на юристе.", 
+                steps: [
+                    {title:"Продавец оказывается номинальным лицом",desc:"Паспорт настоящий, полномочий нет. Деньги ушли, квартиры нет."},
+                    {title:"Серая схема оплаты через риелтора",desc:"Посредник исчезает с предоплатой 500 000 — 2 000 000 рублей."},
+                    {title:"Подписание акта без проверки состояния квартиры",desc:"После регистрации выясняется, что квартира повреждена. Риски на вас."}
+                ], 
+                solution: [
+                    "Проверю личность продавца и полномочия по доверенности — сверю с оригиналами у нотариуса",
+                    "Организую безопасный расчёт через аккредитив или банковскую ячейку — деньги перейдут только после регистрации",
+                    "Подготовлю договор с детальным описанием состояния квартиры"
+                ] 
+            },
+            neighbor_disputes: { 
+                title: "Споры с соседями (залив, перепланировка)", 
+                urgent: "Срок исковой давности — 3 года. Чем раньше начнёте, тем лучше.", 
+                steps: [
+                    {title:"Залив квартиры — сосед отказывается возмещать ущерб",desc:"Ремонт 300 000 — 800 000 рублей ложится на вас. Экспертиза ещё 50 000."},
+                    {title:"Сломана несущая стена соседом сверху",desc:"Ваша квартира обесценивается на 20-30%, возникает угроза безопасности."},
+                    {title:"Затягивание судебного процесса на 2+ года",desc:"Жить в разрушенной квартире невозможно, продать нельзя."}
+                ], 
+                solution: [
+                    "Зафиксирую ущерб через независимую экспертизу — создам доказательственную базу",
+                    "Подам иск о возмещении ущерба с взысканием морального вреда и расходов на экспертизу",
+                    "В случае незаконной перепланировки — добьюсь судебного запрета и восстановления конструкций"
+                ] 
+            },
+            
             // 3. Наследственные дела
-            inheritance_missed: { title: "Вступление в наследство пропустил срок", urgent: "6 месяцев на принятие наследства!", steps: [{title:"Пропустили 6 месяцев",desc:"Другие наследники поделили без вас."},{title:"Восстановление срока — лотерея",desc:"Не всегда разрешают."},{title:"Дядя живёт в квартире 5 лет",desc:"Считает её своей."}], solution:["Соберу уважительные причины — лечение, командировка, незнание","Подам в суд на восстановление срока","Защищу от «самозванцев» — доказательство родства"] },
-            will_dispute: { title: "Оспорить завещание", urgent: "Срок оспаривания — 1 год", steps: [{title:"Завещание поддельное, узнали через 5 лет",desc:"Оспорить нельзя."},{title:"Наследник продал долю постороннему",desc:"Инвестор в квартире."},{title:"Забыли про обязательную долю несовершеннолетнего",desc:"Завещание частично недействительно."}], solution:["Оспорю недействительное завещание — подделка, недееспособность","Выделю обязательную долю без потери квартиры","Заключу соглашение о разделе без суда"] },
-            debts_accept: { title: "Долги наследодателя принимать или нет", urgent: "Принимать наследство или отказаться?", steps: [{title:"Приняли наследство, а там долги 5 млн",desc:"Отдадите кредиторам всё."},{title:"Завещательный отказ",desc:"Посторонний живёт пожизненно, продать нельзя."},{title:"Приняли «по факту», не оформили",desc:"Другие оспорили, вы ничего не получите."}], solution:["Проверю долги перед принятием наследства","Ограничу ответственность только стоимостью имущества","Оформлю правильно через нотариуса"] },
+            inheritance_missed: { 
+                title: "Пропустил срок вступления в наследство", 
+                urgent: "Срок принятия наследства — 6 месяцев! Восстановление возможно только при уважительных причинах.", 
+                steps: [
+                    {title:"Другие наследники оформили имущество без вас",desc:"Квартира, дача, автомобиль — всё поделено. Вам достаются только долги."},
+                    {title:"Сложность восстановления срока",desc:"Суд восстанавливает срок, только если наследник не знал и не должен был знать об открытии наследства (ст. 1155 ГК РФ). Болезнь или командировка не гарантируют восстановления."},
+                    {title:"Фактическое принятие не подтверждено документально",desc:"Ухаживали за умершим 5 лет, но платежи были наличными. Доказать сложно."}
+                ], 
+                solution: [
+                    "Соберу доказательства уважительности причин пропуска: незнание о смерти, невозможность получения свидетельства о смерти",
+                    "Подам иск о восстановлении срока принятия наследства с приложением всех документов",
+                    "Докажу фактическое принятие наследства через квитанции, свидетелей, переписку"
+                ] 
+            },
+            will_dispute: { 
+                title: "Оспаривание завещания", 
+                urgent: "Срок оспаривания — 1 год для оспоримых завещаний, 3 года для ничтожных. Не тяните.", 
+                steps: [
+                    {title:"Завещание подделано, но срок оспаривания прошёл",desc:"Имущество достаётся мошеннику. Восстановить срок почти невозможно."},
+                    {title:"Продажа доли постороннему лицу",desc:"Инвестор скупает доли. Вы не сможете продать квартиру без его согласия."},
+                    {title:"Нарушение прав на обязательную долю",desc:"Несовершеннолетние или нетрудоспособные наследники лишены наследства. Завещание частично недействительно."}
+                ], 
+                solution: [
+                    "Оспорю недействительность завещания: докажу подделку, недееспособность завещателя, обман",
+                    "Выделю обязательную долю без потери квартиры для основного наследника",
+                    "Заключу мировое соглашение о разделе — сохраню имущество в семье без многолетних судов"
+                ] 
+            },
+            debts_accept: { 
+                title: "Долги наследодателя: принимать или отказываться?", 
+                urgent: "Решение принимается один раз. Ошибка может стоить дорого.", 
+                steps: [
+                    {title:"Приняли наследство, а долгов больше стоимости имущества",desc:"Вы отвечаете по долгам только в пределах стоимости перешедшего имущества (ст. 1175 ГК РФ). Но рискуете потерять наследство."},
+                    {title:"Завещательный отказ (пожизненное проживание постороннего)",desc:"Не можете продать квартиру, пока отказополучатель жив. Содержание ложится на вас."},
+                    {title:"Фактическое принятие без оформления",desc:"Другие наследники оспорили ваши права. Вы ничего не получили."}
+                ], 
+                solution: [
+                    "Проведу правовой анализ: сопоставлю стоимость имущества и долги",
+                    "Оформлю принятие наследства с ограничением ответственности только стоимостью имущества",
+                    "Подготовлю документы для нотариуса или суда — защищу от кредиторов и других наследников"
+                ] 
+            },
+            
             // 4. Трудовые споры
-            illegal_firing: { title: "Незаконное увольнение восстановление", urgent: "Срок иска — 1 месяц!", steps: [{title:"Написали «по собственному» под давлением",desc:"Потеряли 500 000 ₽ компенсаций."},{title:"Увольнение за прогулы с фальсификацией табеля",desc:"Не докажете без юриста."},{title:"Пропустили 1 месяц на суд",desc:"Восстановление невозможно."}], solution:["Восстановлю через суд","Взыщу средний заработок за вынужденный прогул","Изменю формулировку в трудовой"] },
-            salary_delay: { title: "Задержка зарплаты что делать", urgent: "Не ждите, действуйте!", steps: [{title:"Приостановили работу законно",desc:"Уволили за прогул."},{title:"Зарплата в конверте",desc:"Нет доказательств, суд откажет."},{title:"Работодатель банкротится",desc:"Вы в последней очереди, получите копейки."}], solution:["Докажу «серую» зарплату — переписка, свидетели","Взыщу с пеней 1/150 ставки ЦБ","Подам на банкротство работодателя — попаду в первую очередь"] },
-            mobbing: { title: "Моббинг на работе давление", urgent: "Исполнение решения суда", steps: [{title:"Восстановились, но коллеги не принимают",desc:"Вынуждены уволиться."},{title:"Запись «уволен по статье» портит карьеру",desc:"Отказы при трудоустройстве."},{title:"Работодатель не исполняет решение суда",desc:"Приставы «не могут» найти директора."}], solution:["Заставлю исполнить решение через приставов — арест счетов","Добьюсь изменения формулировки в трудовой","Защищу от моббинга — фиксация фактов, иск о прекращении"] },
+            illegal_firing: { 
+                title: "Незаконное увольнение: как восстановиться", 
+                urgent: "Срок подачи иска — 1 месяц! Пропустите — останетесь без работы и компенсаций.", 
+                steps: [
+                    {title:"Вынудили написать заявление «по собственному»",desc:"Под давлением, угрозами, обманом. Доказать сложно, компенсации упущены."},
+                    {title:"Увольнение за прогулы с фальсификацией табеля",desc:"Были на работе, но табель показывает отсутствие. Без доказательств — проигрыш."},
+                    {title:"Пропуск срока на обжалование",desc:"Прошёл месяц — восстановление на работе невозможно."}
+                ], 
+                solution: [
+                    "Восстановлю на работе через суд с выплатой среднего заработка за весь период вынужденного прогула",
+                    "Изменю формулировку в трудовой книжке с «по собственному» на «по соглашению» или «незаконное увольнение»",
+                    "Взыщу компенсацию морального вреда и расходы на юриста"
+                ] 
+            },
+            salary_delay: { 
+                title: "Задержка зарплаты: как взыскать", 
+                urgent: "Каждый день промедления — потерянные деньги. Действуйте немедленно.", 
+                steps: [
+                    {title:"Приостановка работы по ст. 142 ТК РФ привела к увольнению",desc:"Работодатель оформил как прогул. Вы без зарплаты и без работы."},
+                    {title:"Зарплата «в конверте» — нет доказательств",desc:"Суд может отказать в взыскании, так как официальная зарплата — минимальная."},
+                    {title:"Банкротство работодателя",desc:"Требования по зарплате относятся ко второй очереди текущих платежей или третьей очереди реестра. Риск неполучения высок."}
+                ], 
+                solution: [
+                    "Докажу размер реальной зарплаты через переписку, свидетелей, выписки с карт",
+                    "Взыщу неустойку 1/150 ставки ЦБ за каждый день задержки",
+                    "При банкротстве — добьюсь включения в реестр кредиторов в приоритетной очереди"
+                ] 
+            },
+            mobbing: { 
+                title: "Моббинг и давление на работе", 
+                urgent: "Психологический террор должен быть задокументирован. Иначе — ваше слово против слова начальника.", 
+                steps: [
+                    {title:"Восстановились на работе, но коллектив отвергает",desc:"Игнорирование, оскорбления, саботаж. Вынуждены уволиться."},
+                    {title:"Запись в трудовой «уволен по статье» портит карьеру",desc:"Отказы при трудоустройстве на нормальные должности."},
+                    {title:"Работодатель не исполняет решение суда",desc:"Не допускает к работе, не выдаёт документы."}
+                ], 
+                solution: [
+                    "Зафиксирую факты моббинга: переписка, аудио, свидетели, медицинские документы",
+                    "Подам иск о прекращении моббинга, взыщу компенсацию морального вреда",
+                    "Обеспечу исполнение решения через приставов: арест счетов компании, запрет на регистрационные действия"
+                ] 
+            },
+            
             // 5. Налоговые споры
-            tax_fine_appeal: { title: "Оспорить штраф ФНС", urgent: "Срок обжалования — 1 месяц!", steps: [{title:"Штраф 500 000 ₽ за «фиктивные» расходы",desc:"Заплатите всё + пеня."},{title:"Не обжаловали вовремя",desc:"Штраф удвоился, игра окончена."},{title:"Арест счетов без предупреждения",desc:"Бизнес остановлен, зарплата не выплачена."}], solution:["Обжалую в вышестоящую инспекцию — найду ошибки в акте","Оспорю в арбитражном суде","Сниму арест со счетов на время спора"] },
-            tax_deduction_return: { title: "Вернуть налоговый вычет", urgent: "Можно вернуть за 3 года", steps: [{title:"Отказали в вычете за квартиру",desc:"Переплата 260 000 ₽ зависла на 3 года."},{title:"Вычет «сгорел»",desc:"Вернуть можно только за 3 года."},{title:"Требуют вернуть уже полученный вычет",desc:"Долг перед бюджетом, пени."}], solution:["Подготовлю уточнённую декларацию","Добьюсь возврата через суд","Оспорю требование вернуть вычет"] },
-            tax_audit_support: { title: "Налоговая проверка сопровождение", urgent: "Подготовка к встрече с инспекцией", steps: [{title:"Проверка 6 месяцев",desc:"Бизнес «под колпаком», нельзя продать/реструктуризировать."},{title:"Доначисление по «аналогии»",desc:"Доказывайте обратное годами."},{title:"Уголовное дело ст. 199 УК РФ",desc:"Директор под арестом, бизнес разрушен."}], solution:["Подготовлю к проверке — документы, объяснения, стратегия","Буду присутствовать при выемках — оспорю незаконные требования","Защита по уголовному делу — исключу арест и обвинение"] },
+            tax_fine_appeal: { 
+                title: "Оспаривание штрафа ФНС", 
+                urgent: "Срок обжалования — 1 месяц! Потом штраф придётся платить с пенями.", 
+                steps: [
+                    {title:"Штраф 500 000 руб. за «фиктивные» расходы",desc:"Налоговая не признаёт расходы. Доначисление налогов + пени."},
+                    {title:"Не обжаловали акт вовремя",desc:"Решение вступило в силу. Счета арестованы, деньги списаны."},
+                    {title:"Уголовное дело по ст. 199 УК РФ",desc:"Возможно при крупном размере неуплаты. Директор под риском."}
+                ], 
+                solution: [
+                    "Обжалую акт проверки в вышестоящей инспекции — найду процессуальные нарушения",
+                    "Оспорю в арбитражном суде — добьюсь отмены штрафов и признания расходов",
+                    "Сниму арест со счетов на время спора"
+                ] 
+            },
+            tax_deduction_return: { 
+                title: "Возврат налогового вычета", 
+                urgent: "Можно вернуть за 3 года. Не упустите свои деньги.", 
+                steps: [
+                    {title:"Отказ в вычете за покупку квартиры",desc:"Переплата 260 000 руб. зависла в бюджете."},
+                    {title:"Вычет не использован полностью",desc:"Остаток имущественного вычета можно перенести на будущие покупки. Многие не знают и теряют деньги."},
+                    {title:"Требование вернуть уже полученный вычет",desc:"Налоговая считает, что вы неправомерно получили возврат. Долг + пени."}
+                ], 
+                solution: [
+                    "Подготовлю уточнённую декларацию 3-НДФЛ с правильным расчётом вычета",
+                    "Обжалую незаконный отказ в вычете через вышестоящую инспекцию или суд",
+                    "Оспорю требование о возврате вычета — докажу правомерность ваших действий"
+                ] 
+            },
+            tax_audit_support: { 
+                title: "Сопровождение налоговой проверки", 
+                urgent: "Подготовка к встрече с инспекцией — 80% успеха. Не ходите туда сами.", 
+                steps: [
+                    {title:"Проверка длится месяцами",desc:"Бизнес «под колпаком». Нельзя продать активы, получить кредит."},
+                    {title:"Доначисление по «аналогии»",desc:"Налоговая сравнивает с конкурентами. Доказывайте обратное."},
+                    {title:"Уголовное дело по результатам проверки",desc:"Материалы переданы в следственные органы."}
+                ], 
+                solution: [
+                    "Подготовлю к проверке: соберу документы, разработаю стратегию",
+                    "Присутствую при выемках — оспорю незаконные требования",
+                    "Защищу при возбуждении уголовного дела — добьюсь отказа в возбуждении или прекращения"
+                ] 
+            },
+            
             // 6. Административное право
-            traffic_fine: { title: "Обжаловать штраф ГИБДД", urgent: "Срок обжалования — 10 дней!", steps: [{title:"Оплатили со скидкой 50%",desc:"Признали вину, вернуть нельзя."},{title:"Автофиксация — знак закрыт, разметка стёрта",desc:"Штраф 5 000 ₽ пришёл."},{title:"Неуплата — штраф удвоился",desc:"Арест счетов, запрет регистрации авто."}], solution:["Обжалую в 10-дневный срок — докажу нарушения процедуры","Верну незаконно взысканные суммы","Отменю постановление"] },
-            license_revocation: { title: "Лишение прав пьянка оспорить", urgent: "Не теряйте время!", steps: [{title:"Лишили по ошибке",desc:"Медосвидетельствование с нарушениями."},{title:"Срок 1,5–2 года без прав",desc:"Работа водителем потеряна."},{title:"Повторное нарушение",desc:"Уголовное дело ст. 264.1 УК РФ, срок до 2 лет."}], solution:["Оспорю медосвидетельствование — нарушения процедуры","Добьюсь смягчения или отмены","Защита при повторном нарушении — исключу уголовное дело"] },
-            other_fines: { title: "Штраф таможни, Роспотребнадзора", urgent: "Срок обжалования зависит от органа", steps: [{title:"Таможенный штраф 100% стоимости товара",desc:"Конфискация, бизнес парализован."},{title:"Роспотребнадзор — 100 000 ₽ за отсутствие ценника",desc:"Репутация подорвана."},{title:"Административный арест 15 суток",desc:"Потеря работы, судимость."}], solution:["Оспорю классификацию товара — докажу отсутствие вины","Защищу от ареста и крупных штрафов","Уменьшу штраф при малозначительности"] },
+            traffic_fine: { 
+                title: "Обжалование штрафа ГИБДД", 
+                urgent: "Срок обжалования — 10 дней! Не платите сразу — спорьте.", 
+                steps: [
+                    {title:"Оплатили со скидкой 50% — признали вину",desc:"Вернуть деньги невозможно. Штраф остаётся в базе."},
+                    {title:"Автофиксация — знак закрыт, разметка стёрта",desc:"Штраф 5 000 руб. пришёл ошибочно."},
+                    {title:"Неуплата — штраф удвоился",desc:"Арест счетов, запрет регистрации ТС."}
+                ], 
+                solution: [
+                    "Обжалую в 10-дневный срок — докажу нарушения процедуры фиксации",
+                    "Верну незаконно взысканные суммы через суд",
+                    "Исключу штраф из базы ГИС ГМП"
+                ] 
+            },
+            license_revocation: { 
+                title: "Лишение прав за пьянку: как оспорить", 
+                urgent: "Срок обжалования — 10 дней! Не теряйте время.", 
+                steps: [
+                    {title:"Лишение по ошибке — алкоголя не было",desc:"Медосвидетельствование с нарушениями. Доказать без юриста сложно."},
+                    {title:"Срок лишения 1,5–2 года",desc:"Работа водителем потеряна."},
+                    {title:"Повторное нарушение в течение года",desc:"Уголовное дело по ст. 264.1 УК РФ."}
+                ], 
+                solution: [
+                    "Оспорю медосвидетельствование: нарушения процедуры, неисправность прибора",
+                    "Добьюсь смягчения наказания или полной отмены постановления",
+                    "При повторном нарушении — защита в уголовном процессе"
+                ] 
+            },
+            other_fines: { 
+                title: "Штрафы таможни, Роспотребнадзора", 
+                urgent: "Общий срок обжалования — 10 суток со дня вручения (ст. 30.3 КоАП РФ).", 
+                steps: [
+                    {title:"Таможенный штраф 100% стоимости товара + конфискация",desc:"Бизнес парализован."},
+                    {title:"Штраф Роспотребнадзора 100 000 руб.",desc:"Репутация подорвана."},
+                    {title:"Административный арест 15 суток",desc:"Потеря работы, судимость."}
+                ], 
+                solution: [
+                    "Оспорю классификацию товара таможней — докажу отсутствие состава правонарушения",
+                    "Защищу от административного ареста — смягчение до штрафа или предупреждения",
+                    "Уменьшу штраф при малозначительности (ст. 4.1 КоАП РФ)"
+                ] 
+            },
+            
             // 7. Защита прав потребителей
-            return_bad_quality: { title: "Вернуть товар ненадлежащего качества", urgent: "Срок возврата — 15 дней", steps: [{title:"Продавец отказывает «по техническим причинам»",desc:"Остались с браком за 80 000 ₽."},{title:"Требуют экспертизу за ваш счёт",desc:"20 000–50 000 ₽ — больше цены товара."},{title:"Тянут с возвратом 10 дней → 3 месяца",desc:"Деньги «зависли», пени не начислили."}], solution:["Заставлю принять товар и вернуть деньги в 10-дневный срок","Добьюсь бесплатной экспертизы за счёт продавца","Взыщу неустойку 1% за каждый день просрочки"] },
-            return_good_quality: { title: "Вернуть деньги за товар надлежащего качества", urgent: "14 дней на возврат", steps: [{title:"14 дней прошли — «не подлежит возврату»",desc:"Хотя закон не истёк."},{title:"Товар из «невозвратного» списка",desc:"Обманули, на самом деле можно вернуть."},{title:"Нет чека",desc:"Отказывают, хотя свидетели подтвердят покупку."}], solution:["Заставлю принять в 14-дневный срок без объяснений","Докажу, что товар не в перечне невозвратных","Подтвержу покупку без чека — свидетели, выписки, фото"] },
-            penalty_50: { title: "Штраф 50% за нарушение прав потребителей", urgent: "Взыскать штраф", steps: [{title:"Не знаете о штрафе 50%",desc:"Взыскали 100 000 ₽, потеряли ещё 50 000 ₽."},{title:"Не требовали неустойку 1% за день просрочки",desc:"Потеря 30% от цены товара."},{title:"Не взыскали моральный вред",desc:"Стресс остался, компенсации нет."}], solution:["Взыщу штраф 50% от суммы исковых требований","Начислю неустойку 1% за каждый день просрочки","Включу моральный вред и все расходы"] },
+            return_bad_quality: { 
+                title: "Возврат товара ненадлежащего качества", 
+                urgent: "Срок возврата — 15 дней для технически сложных товаров, в пределах гарантийного срока для остальных.", 
+                steps: [
+                    {title:"Продавец отказывает «по техническим причинам»",desc:"Остаётесь с бракованным товаром."},
+                    {title:"Требуют экспертизу за ваш счёт",desc:"Цена экспертизы может превышать стоимость товара."},
+                    {title:"Затягивание возврата",desc:"Деньги «зависли», неустойка не начислена."}
+                ], 
+                solution: [
+                    "Заставлю продавца принять товар и вернуть деньги в 10-дневный срок по ЗоЗПП",
+                    "Добьюсь бесплатной экспертизы за счёт продавца",
+                    "Взыщу неустойку 1% за каждый день просрочки + моральный вред"
+                ] 
+            },
+            return_good_quality: { 
+                title: "Возврат товара надлежащего качества", 
+                urgent: "14 дней на возврат без объяснения причин.", 
+                steps: [
+                    {title:"14 дней прошли — «не подлежит возврату»",desc:"Хотя закон даёт 14 дней."},
+                    {title:"Товар из «невозвратного» списка",desc:"Продавец обманул — на самом деле товар не входит в перечень."},
+                    {title:"Нет чека — отказывают",desc:"Хотя свидетели и выписки с карты подтверждают покупку."}
+                ], 
+                solution: [
+                    "Заставлю принять товар в 14-дневный срок без объяснения причин",
+                    "Докажу, что товар не входит в перечень невозвратных",
+                    "Подтвержу покупку без чека через свидетелей, банковские выписки, видео"
+                ] 
+            },
+            penalty_50: { 
+                title: "Штраф 50% за нарушение прав потребителей", 
+                urgent: "Можно взыскать с продавца дополнительно к основным требованиям.", 
+                steps: [
+                    {title:"Не знаете о праве на штраф 50%",desc:"Потеряли дополнительные деньги."},
+                    {title:"Не требовали неустойку 1% за день просрочки",desc:"За 30 дней — потеря 30% от цены товара."},
+                    {title:"Не взыскали моральный вред",desc:"Стресс остался, компенсации нет."}
+                ], 
+                solution: [
+                    "Взыщу штраф 50% от суммы удовлетворённых требований",
+                    "Начислю неустойку 1% за каждый день просрочки",
+                    "Включу в иск моральный вред и расходы на юриста"
+                ] 
+            },
+            
             // 8. Документы и договоры
-            contract_draft: { title: "Составить договор", urgent: "Договор — ваша страховка", steps: [{title:"«Стандартный» договор — неустойка 0,01%",desc:"Потеря 300 000 ₽."},{title:"Нет санкций за просрочку",desc:"Контрагент задерживает на 6 месяцев, вы беспомощны."},{title:"Подсудность в городе контрагента",desc:"Дороже и дольше, уступите."}], solution:["Пропишу ваши условия: сроки, неустойки, порядок приёмки","Зафиксирую подсудность в вашем городе","Защищу от «фиктивного форс-мажора»"] },
-            contract_review: { title: "Проверить договор перед подписанием", urgent: "Проверка перед подписанием", steps: [{title:"Автопродление аренды на 5 лет вместо 1",desc:"Выкупаться дорого."},{title:"Субсидиарная ответственность",desc:"Вы поручитель, хотя не знали."},{title:"«Мелкий шрифт» — комиссия 10%, автосписание",desc:"Передача данных третьим лицам."}], solution:["Разберу каждый пункт — объясню риски простым языком","Предложу правки, согласую с контрагентом","Дополнительное соглашение — отмена опасных пунктов"] },
-            prenup_draft: { title: "Брачный договор (составить)", urgent: "Защита активов", steps: [{title:"Шаблон из интернета не учитывает активы",desc:"Квартира до брака поделена."},{title:"Нет нотариального удостоверения",desc:"Супруг оспорит как «под давлением»."},{title:"Не защищает бизнес",desc:"Партнёр получит 50% компании при разводе."}], solution:["Составлю индивидуальный договор","Организую нотариальное удостоверение — неоспоримость в суде","Защищу бизнес через корпоративные механизмы"] },
+            contract_draft: { 
+                title: "Составление договора «под ключ»", 
+                urgent: "Договор — единственная защита в споре. Шаблоны из интернета опасны.", 
+                steps: [
+                    {title:"«Стандартный» договор — неустойка 0,01%",desc:"Партнёр задерживает оплату на 6 месяцев. Вы терпите убытки."},
+                    {title:"Нет санкций за просрочку поставки",desc:"Контрагент поставляет когда хочет."},
+                    {title:"Подсудность — город контрагента",desc:"Ездите на суд в другой конец страны."}
+                ], 
+                solution: [
+                    "Пропишу адекватные неустойки: 0,1-0,5% за день просрочки",
+                    "Зафиксирую подсудность в вашем городе",
+                    "Защищу от «фиктивного форс-мажора»"
+                ] 
+            },
+            contract_review: { 
+                title: "Проверка договора перед подписанием", 
+                urgent: "Проверка стоит 4000 руб. Ошибка в договоре — миллионы убытков.", 
+                steps: [
+                    {title:"Автопродление аренды на 5 лет вместо 1",desc:"Выкупаться дорого, съехать нельзя."},
+                    {title:"Субсидиарная ответственность поручителя",desc:"Вы отвечаете долгами компании своим имуществом."},
+                    {title:"«Мелкий шрифт» — комиссия 10%, автосписание",desc:"Подписали не читая. Потери десятки тысяч рублей в год."}
+                ], 
+                solution: [
+                    "Разберу каждый пункт договора — объясню риски простым языком",
+                    "Предложу правки, согласую с контрагентом",
+                    "Отменю опасные пункты: одностороннее изменение условий, отказ от гарантий"
+                ] 
+            },
+            prenup_draft: { 
+                title: "Брачный договор — индивидуальная разработка", 
+                urgent: "Шаблоны не учитывают ваши активы. Нужен персональный документ.", 
+                steps: [
+                    {title:"Шаблон из интернета не учитывает конкретные активы",desc:"Квартира до брака поделена, бизнес разрушен."},
+                    {title:"Нет нотариального удостоверения",desc:"Супруг оспорит как подписанное «под давлением»."},
+                    {title:"Не защищает бизнес и инвестиции",desc:"Партнёр получит 50% компании при разводе."}
+                ], 
+                solution: [
+                    "Разработаю индивидуальный договор с учётом всех активов",
+                    "Организую нотариальное удостоверение",
+                    "Защищу бизнес через корпоративные механизмы"
+                ] 
+            },
+            
             // 9. Представительство в суде
-            court_representation: { title: "Ведение дела в суде", urgent: "Процессуальные сроки", steps: [{title:"Пропустили срок подачи доказательств",desc:"Проиграли из-за формальности."},{title:"Судья не разбирается в вашей сфере",desc:"Без специалиста проигрыш."},{title:"Оппонент подал встречный иск",desc:"Не готовы, платите противнику."}], solution:["Соберу доказательства, привлеку экспертов","Подготовлю стратегию защиты","Представлю интересы в суде"] },
-            appeal_online: { title: "Апелляционное обжалование", urgent: "Срок апелляции — 1 месяц!", steps: [{title:"Решение вступило в силу",desc:"Счета арестованы, имущество описано."},{title:"Пропустили 1 месяц на апелляцию",desc:"Исправить ничего нельзя."},{title:"Апелляция отклонена",desc:"Не нашли ошибок первого суда."}], solution:["Найду ошибки в решении первого суда — нарушения процессуального права","Подготовлю апелляционную жалобу","Приостановлю исполнение решения"] },
-            enforcement_proceedings: { title: "Исполнительное производство взыскать долг", urgent: "Взыскание долга", steps: [{title:"Выиграли суд, но должник «нищий»",desc:"Приставы закрыли производство."},{title:"Должник продал имущество жене/сыну",desc:"Приставы «ничего не нашли»."},{title:"Исполнительский сбор 7%",desc:"Взыскали 100 000 ₽, приставы забрали 7 000 ₽."}], solution:["Найду скрытое имущество должника — банки, недвижимость, авто","Оспорю сделки с родственниками","Добьюсь уголовного преследования за неисполнение решения суда"] },
-            // 10. Юридические услуги для бизнеса
-            biz_registration: { title: "Регистрация ИП, ООО", urgent: "Правильно с первого раза", steps: [{title:"Ошибка в ОКВЭД",desc:"Налоговая отказывает в вычете, перерегистрация месяц."},{title:"Учредитель — номинал, продал доли",desc:"Вы потеряли компанию."},{title:"Неправильный адрес",desc:"Исключили из ЕГРЮЛ, счета заблокированы."}], solution:["Проверю адрес, подберу правильные ОКВЭД","Защищу от «чёрных» регистраторов — проверка контрагентов","Оформлю всё за 3 дня"] },
-            biz_contracts: { title: "Договоры с контрагентами проверить", urgent: "Проверка и защита", steps: [{title:"Контрагент — «фирма-однодневка»",desc:"Предоплата ушла, товара нет."},{title:"Товар приняли, качество плохое",desc:"Нет претензионного порядка, суд отказал."},{title:"Агент завысил комиссию в 10 раз",desc:"Доказать обратно сложно."}], solution:["Проверю контрагента по базам — ФНС, ФССП, Арбитраж","Составлю договор с претензионным порядком — ответственность пропишу","Взыщу задолженность"] },
-            biz_subscription: { title: "Абонентское юридическое обслуживание", urgent: "Постоянная защита", steps: [{title:"Штатный юрист ушёл в отпуск",desc:"Срочная сделка без проверки, убытки."},{title:"Налоговая проверка застала врасплох",desc:"Документы не собраны, штраф 500 000 ₽."},{title:"Сотрудник украл коммерческую тайну",desc:"Нет договора о конфиденциальности."}], solution:["Постоянная поддержка — договоры, претензии, консультации","Подготовка к проверкам — документы, объяснения, стратегия","Кадровое сопровождение — договоры о конфиденциальности, НДА"] }
+            court_representation: { 
+                title: "Представительство в суде", 
+                urgent: "Процессуальные сроки не ждут. Пропуск — проигрыш.", 
+                steps: [
+                    {title:"Пропустили срок подачи доказательств",desc:"Суд отказал в принятии ключевых документов."},
+                    {title:"Судья не разбирается в специфике",desc:"Без грамотного объяснения — отказ в иске."},
+                    {title:"Оппонент подал встречный иск",desc:"Не были готовы. Суд удовлетворил требования против вас."}
+                ], 
+                solution: [
+                    "Соберу полный комплект доказательств, привлеку экспертов",
+                    "Разработаю стратегию защиты с учётом практики конкретного суда",
+                    "Представлю интересы в суде всех инстанций"
+                ] 
+            },
+            appeal_online: { 
+                title: "Апелляционное обжалование", 
+                urgent: "Срок апелляции — 1 месяц! Не упустите шанс исправить ошибку.", 
+                steps: [
+                    {title:"Решение вступило в силу",desc:"Счета арестованы, имущество описано."},
+                    {title:"Пропустили 1 месяц на апелляцию",desc:"Исправить ничего нельзя."},
+                    {title:"Апелляция отклонена формально",desc:"Не нашли существенных нарушений."}
+                ], 
+                solution: [
+                    "Найду существенные нарушения материального и процессуального права",
+                    "Подготовлю мотивированную апелляционную жалобу",
+                    "Приостановлю исполнение решения на время рассмотрения апелляции"
+                ] 
+            },
+            enforcement_proceedings: { 
+                title: "Взыскание долга через приставов", 
+                urgent: "Выиграть суд — полдела. Главное — получить деньги.", 
+                steps: [
+                    {title:"Выиграли суд, но должник «нищий»",desc:"Приставы закрыли производство."},
+                    {title:"Должник продал имущество родственникам",desc:"Имущества нет, долг не взыскать."},
+                    {title:"Исполнительский сбор 7%",desc:"Приставы забрали 7 000 из 100 000."}
+                ], 
+                solution: [
+                    "Найду скрытое имущество должника: счета, недвижимость, авто",
+                    "Оспорю сделки с родственниками как недействительные",
+                    "Добьюсь уголовного преследования за неисполнение решения суда"
+                ] 
+            },
+            
+            // 10. Бизнес
+            biz_registration: { 
+                title: "Регистрация ИП и ООО", 
+                urgent: "Ошибки на старте обходятся дорого.", 
+                steps: [
+                    {title:"Ошибка в кодах ОКВЭД",desc:"Налоговая отказывает в вычетах. Перерегистрация — месяц."},
+                    {title:"Учредитель — номинал, продал доли без вас",desc:"Вы потеряли компанию."},
+                    {title:"Неправильный юридический адрес",desc:"Налоговая исключила из ЕГРЮЛ. Счета заблокированы."}
+                ], 
+                solution: [
+                    "Проверю адрес на «массовую регистрацию», подберу правильные ОКВЭД",
+                    "Защищу от «чёрных» регистраторов",
+                    "Оформлю регистрацию за 3 рабочих дня"
+                ] 
+            },
+            biz_contracts: { 
+                title: "Договоры для бизнеса", 
+                urgent: "Проверка контрагента и договора — страховка от убытков.", 
+                steps: [
+                    {title:"Контрагент — фирма-однодневка",desc:"Предоплата ушла, товара нет."},
+                    {title:"Товар приняли, качество плохое — нет претензионного порядка",desc:"Суд отказал в иске."},
+                    {title:"Агент завысил комиссию через допсоглашение",desc:"Подписали не глядя."}
+                ], 
+                solution: [
+                    "Проверю контрагента по базам ФНС, ФССП, Арбитраж",
+                    "Составлю договор с претензионным порядком и ответственностью",
+                    "Взыщу задолженность через суд и приставов"
+                ] 
+            },
+            biz_subscription: { 
+                title: "Абонентское юридическое обслуживание", 
+                urgent: "Постоянная правовая защита дешевле разовых консультаций.", 
+                steps: [
+                    {title:"Штатный юрист ушёл в отпуск/уволился",desc:"Срочная сделка без проверки."},
+                    {title:"Налоговая проверка застала врасплох",desc:"Документы не собраны. Штраф."},
+                    {title:"Сотрудник украл коммерческую тайну",desc:"Нет договора о конфиденциальности."}
+                ], 
+                solution: [
+                    "Постоянная поддержка: договоры, претензии, проверка контрагентов",
+                    "Подготовка к налоговым проверкам",
+                    "Кадровое сопровождение: договоры о конфиденциальности, НДА"
+                ] 
+            }
         };
 
-        // Сервисы - 10 категорий с правильными id и topics
+        // Сервисы - 10 категорий
         const serviceGroups = [
-            { title: "Семейные споры", desc: "Раздел имущества, алименты, брачный договор. Защищу ваши интересы.", icon: "⚖️", number: "01", topics: ["alimony_applied","property_division","prenup_contract"], id: "semeynye" },
-            { title: "Недвижимость", desc: "Проверка перед покупкой, сопровождение сделок, споры с соседями.", icon: "🏛️", number: "02", topics: ["apartment_check","transaction_support","neighbor_disputes"], id: "nedvizhimost" },
+            { title: "Семейные споры", desc: "Раздел имущества, алименты, брачный договор. Защищу ваши интересы удаленно.", icon: "⚖️", number: "01", topics: ["alimony_applied","property_division","prenup_contract"], id: "semeynye" },
+            { title: "Недвижимость", desc: "Проверка перед покупкой, сопровождение сделок, споры с соседями. Онлайн по всей России.", icon: "🏛️", number: "02", topics: ["apartment_check","transaction_support","neighbor_disputes"], id: "nedvizhimost" },
             { title: "Наследственные дела", desc: "Вступление в наследство, оспаривание завещания, долги наследодателя.", icon: "📜", number: "03", topics: ["inheritance_missed","will_dispute","debts_accept"], id: "nasledstvo" },
             { title: "Трудовые споры", desc: "Незаконное увольнение, задержка зарплаты, моббинг. Верну справедливость.", icon: "💼", number: "04", topics: ["illegal_firing","salary_delay","mobbing"], id: "trudovye" },
             { title: "Налоговые споры", desc: "Оспаривание штрафов, возврат вычетов, сопровождение проверок.", icon: "📊", number: "05", topics: ["tax_fine_appeal","tax_deduction_return","tax_audit_support"], id: "nalogovye" },
@@ -770,13 +1231,54 @@
             { title: "Юридические услуги для бизнеса", desc: "Регистрация, договоры, абонентское обслуживание. Защита бизнеса.", icon: "🏢", number: "10", topics: ["biz_registration","biz_contracts","biz_subscription"], id: "biznes" }
         ];
 
-        function renderServices() { const grid=document.getElementById('servicesGrid'); const hidden=document.getElementById('servicesHidden'); const firstFour=serviceGroups.slice(0,4); const rest=serviceGroups.slice(4); grid.innerHTML=firstFour.map(g=>serviceCardHtml(g)).join(''); hidden.innerHTML=rest.map(g=>serviceCardHtml(g)).join(''); }
-        function serviceCardHtml(g){ return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t=>`<div class="service-topic" onclick="openModal('${t}')">${modalContent[t].title}</div>`).join('')}</div></article>`; }
-        function toggleServices(){ const hidden=document.getElementById('servicesHidden'); const btn=document.querySelector('button[onclick="toggleServices()"]'); hidden.classList.toggle('visible'); btn.textContent=hidden.classList.contains('visible')?'Скрыть дополнительные услуги':'Показать все услуги'; }
-        function openModal(topic){ const data=modalContent[topic]; if(!data) return; document.getElementById('modalTitle').innerText=data.title; const stepsHtml=data.steps.map((s,i)=>`<div class="scenario-step"><div class="step-num">${i+1}</div><div class="step-content"><h4>${s.title}</h4><p>${s.desc}</p></div></div>`).join(''); const solutionHtml=data.solution.map(s=>`<li>${s}</li>`).join(''); document.getElementById('modalBody').innerHTML=`<div class="urgency-warning">⚠️ ${data.urgent}</div><div class="scenario"><div class="scenario-title">⚠️ Что будет, если не действовать:</div>${stepsHtml}</div><div class="solution-box"><h4>✓ Как я помогу:</h4><ul>${solutionHtml}</ul></div><div class="modal-actions"><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max'); closeModal();">⚡ Срочно в MAX</button><button class="btn btn-outline" onclick="handleContactClick('https://wa.me/79774232473', 'whatsapp'); closeModal();">💬 WhatsApp</button></div><div class="disclaimer-box">⚠️ Результат зависит от конкретных обстоятельств дела и доказательной базы.</div>`; document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow='hidden'; }
-        function closeModal(){ document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow=''; }
-        function toggleMenu(){ const menu=document.getElementById('mobileMenu'); const overlay=document.querySelector('.overlay'); menu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow=menu.classList.contains('active')?'hidden':''; }
-        function scrollToTop(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }
+        function renderServices() { 
+            const grid=document.getElementById('servicesGrid'); 
+            const hidden=document.getElementById('servicesHidden'); 
+            const firstFour=serviceGroups.slice(0,4); 
+            const rest=serviceGroups.slice(4); 
+            grid.innerHTML=firstFour.map(g=>serviceCardHtml(g)).join(''); 
+            hidden.innerHTML=rest.map(g=>serviceCardHtml(g)).join(''); 
+        }
+        
+        function serviceCardHtml(g){ 
+            return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t=>`<div class="service-topic" onclick="openModal('${t}')">${modalContent[t].title}</div>`).join('')}</div></article>`; 
+        }
+        
+        function toggleServices(){ 
+            const hidden=document.getElementById('servicesHidden'); 
+            const btn=document.querySelector('button[onclick="toggleServices()"]'); 
+            hidden.classList.toggle('visible'); 
+            btn.textContent=hidden.classList.contains('visible')?'Скрыть дополнительные услуги':'Показать все услуги'; 
+        }
+        
+        function openModal(topic){ 
+            const data=modalContent[topic]; 
+            if(!data) return; 
+            document.getElementById('modalTitle').innerText=data.title; 
+            const stepsHtml=data.steps.map((s,i)=>`<div class="scenario-step"><div class="step-num">${i+1}</div><div class="step-content"><h4>${s.title}</h4><p>${s.desc}</p></div></div>`).join(''); 
+            const solutionHtml=data.solution.map(s=>`<li>${s}</li>`).join(''); 
+            document.getElementById('modalBody').innerHTML=`<div class="urgency-warning">⚠️ ${data.urgent}</div><div class="scenario"><div class="scenario-title">⚠️ Что будет, если не действовать:</div>${stepsHtml}</div><div class="solution-box"><h4>✓ Как я помогу (работаю онлайн):</h4><ul>${solutionHtml}</ul></div><div class="modal-actions"><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max'); closeModal();">⚡ Срочно в MAX</button><button class="btn btn-outline" onclick="handleContactClick('https://wa.me/79774232473', 'whatsapp'); closeModal();">💬 WhatsApp</button></div><div class="disclaimer-box">⚠️ Консультации платные. Стоимость определяется индивидуально после анализа ситуации. Результат зависит от конкретных обстоятельств дела.</div>`; 
+            document.getElementById('modalOverlay').classList.add('active'); 
+            document.body.style.overflow='hidden'; 
+        }
+        
+        function closeModal(){ 
+            document.getElementById('modalOverlay').classList.remove('active'); 
+            document.body.style.overflow=''; 
+        }
+        
+        function toggleMenu(){ 
+            const menu=document.getElementById('mobileMenu'); 
+            const overlay=document.querySelector('.overlay'); 
+            menu.classList.toggle('active'); 
+            overlay.classList.toggle('active'); 
+            document.body.style.overflow=menu.classList.contains('active')?'hidden':''; 
+        }
+        
+        function scrollToTop(e){ 
+            e.preventDefault(); 
+            window.scrollTo({top:0,behavior:'smooth'}); 
+        }
 
         // ------------------ HOT NEWS MODULE ------------------
         function loadHotNews() {
@@ -811,13 +1313,13 @@
         function showDefaultHotNews() {
             const container = document.getElementById('hotNewsContent');
             container.innerHTML = `
-                <div class="hot-news-text">⚡ Работаю по всей России</div>
-                <div class="hot-news-text">🎯 Цена фиксируется до начала работы</div>
+                <div class="hot-news-text">⚡ Работаю онлайн по всей России — консультации удаленно</div>
+                <div class="hot-news-text">🎯 Цена фиксируется до начала работы — никаких скрытых платежей</div>
                 <div class="hot-news-text">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
             `;
         }
 
-        // ------------------ BLINK EFFECT FOR AD ANCHORS ------------------
+        // ------------------ ЯКОРЯ И ПЕРЕХОДЫ С РЕКЛАМЫ ------------------
         function blinkTargetElement(element) {
             if (!element) return;
             element.classList.add('blink-highlight');
@@ -828,33 +1330,38 @@
 
         function checkAndOpenHiddenServices() {
             const hash = window.location.hash;
-            if (!hash) {
-                const urlParams = new URLSearchParams(window.location.search);
-                const isFromAd = urlParams.has('utm_source') || urlParams.has('yclid') || urlParams.has('gclid') || document.referrer.includes('yandex') || document.referrer.includes('google');
-                if (isFromAd && hash) {
-                    processHashTarget(hash);
-                }
-                return;
-            }
+            if (!hash) return;
+            
             processHashTarget(hash);
         }
         
         function processHashTarget(hash) {
             const targetId = hash.substring(1);
             const targetElement = document.getElementById(targetId);
+            
             if (targetElement) {
                 const hiddenContainer = document.getElementById('servicesHidden');
                 const isHiddenService = hiddenContainer && hiddenContainer.contains(targetElement);
+                
                 if (isHiddenService && !hiddenContainer.classList.contains('visible')) {
                     hiddenContainer.classList.add('visible');
                     const btn = document.querySelector('button[onclick="toggleServices()"]');
                     if (btn) btn.textContent = 'Скрыть дополнительные услуги';
                 }
+                
                 setTimeout(() => {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
                     setTimeout(() => {
                         blinkTargetElement(targetElement);
-                    }, 500);
+                    }, 600);
                 }, 100);
             }
         }
@@ -867,14 +1374,22 @@
             if (typeof ym !== 'undefined') {
                 ym(106860023, 'reachGoal', 'contact_click', { contact_type: type });
             }
+            
             if (storageAvailable && localStorage.getItem('user_consent') === 'true') {
-                if(url.startsWith('tel:')) window.location.href = url;
-                else window.open(url, '_blank', 'noopener,noreferrer');
+                proceedWithContact(url);
             } else {
                 pendingContactUrl = url;
                 pendingContactType = type;
                 document.getElementById('consentOverlay').classList.add('active');
                 document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function proceedWithContact(url) {
+            if(url.startsWith('tel:')) {
+                window.location.href = url;
+            } else {
+                window.open(url, '_blank', 'noopener,noreferrer');
             }
         }
 
@@ -890,8 +1405,7 @@
                 localStorage.setItem('user_consent', 'true');
             }
             if(pendingContactUrl) {
-                if(pendingContactUrl.startsWith('tel:')) window.location.href = pendingContactUrl;
-                else window.open(pendingContactUrl, '_blank', 'noopener,noreferrer');
+                proceedWithContact(pendingContactUrl);
             }
             closeConsentModal();
         }
@@ -917,38 +1431,112 @@
             {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'templates/service.pdf'},
             {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'templates/tax.pdf'}
         ];
-        let currentFilter='all'; let showAllTemplates=false;
+        
+        let currentFilter='all'; 
+        let showAllTemplates=false;
+        
         function renderTemplates(){ 
             const grid=document.getElementById('templatesGrid'); 
             const btn=document.getElementById('templatesToggleBtn'); 
             let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
             const visible=showAllTemplates?filtered:filtered.slice(0,2); 
             grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать PDF</a></div>`).join(''); 
-            if(filtered.length>2){ btn.style.display='block'; btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; } else btn.style.display='none'; 
+            if(filtered.length>2){ 
+                btn.style.display='block'; 
+                btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; 
+            } else {
+                btn.style.display='none'; 
+            }
         }
-        function filterTemplates(category,btn){ currentFilter=category; showAllTemplates=false; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); renderTemplates(); }
-        function toggleTemplates(){ showAllTemplates=!showAllTemplates; renderTemplates(); }
         
-        // FAQ - обновлен с уточнением о статусе
+        function filterTemplates(category,btn){ 
+            currentFilter=category; 
+            showAllTemplates=false; 
+            document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); 
+            if(btn) btn.classList.add('active'); 
+            renderTemplates(); 
+        }
+        
+        function toggleTemplates(){ 
+            showAllTemplates=!showAllTemplates; 
+            renderTemplates(); 
+        }
+        
+        // FAQ
         const faqItems=[
-            {q:"Вы адвокат?",a:"<strong>Нет, я не являюсь адвокатом</strong> — я частный юрист-консультант. Это означает, что я не состою в адвокатской палате и не имею статуса адвоката. Однако в большинстве случаев это работает <strong>в вашу пользу</strong>: мои услуги дешевле, а результат такой же эффективный.<br><br>Я успешно решаю вопросы по составлению договоров, проверке документов, семейным и трудовым спорам, защите прав потребителей, налоговым консультациям. <strong>Если ваш вопрос требует именно адвокатской деятельности</strong> (например, уголовное дело или сложное арбитражное производство с участием адвоката обязательно) — я честно скажу об этом и порекомендую проверенного коллегу-адвоката."},
-            {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Постоянно изучаю изменения в законодательстве. Если вопрос требует опыта, которого у меня пока нет — честно скажу и подскажу коллегу."},
-            {q:"Как проходит работа?",a:"Общаемся в мессенджерах, документы пересылаем сканами или через облако, подпись — электронная или у нотариуса. Суды принимают документы в электронном виде. Личная встреча нужна редко."},
-            {q:"Как быстро вы отвечаете?",a:"Первичный ответ — в течение суток. В рабочие дни с 9:00 до 21:00 отвечаю быстрее, в выходные — могу ответить с задержкой. Для срочных вопросов лучше писать в MAX или WhatsApp."},
-            {q:"Какие гарантии?",a:"После разговора фиксирую стоимость и сроки. Работаю по договору (можно электронно). Если после консультации решите, что помощь не требуется — верну деньги. Оплата поэтапно или по результату."},
-            {q:"Работаете ли вы с регионами?",a:"Да, работаю со всеми регионами России. Современное законодательство позволяет решать большинство вопросов через электронное правосудие, электронную подпись и нотариусов. Не нужно приезжать в Москву."},
-            {q:"Что делать, если у меня сложный случай?",a:"На первичной консультации я оцениваю перспективы дела. Если вижу, что нужен узкий специалист (например, адвокат по уголовным делам или международник) — честно скажу об этом и порекомендую проверенного коллегу. Не берусь за то, в чём не разбираюсь."}
+            {q:"Вы адвокат?",a:"<strong>Нет, я не являюсь адвокатом</strong> — я частный юрист-консультант. Это означает, что я не состою в адвокатской палате и не имею статуса адвоката. Однако в большинстве случаев это работает <strong>в вашу пользу</strong>: мои услуги дешевле, а результат такой же эффективный.<br><br>Я успешно решаю вопросы по составлению договоров, проверке документов, семейным и трудовым спорам, защите прав потребителей, налоговым консультациям. Работаю онлайн по всей России.<br><br><strong>Если ваш вопрос требует именно адвокатской деятельности</strong> (например, уголовное дело или сложное арбитражное производство с участием адвоката обязательно) — я честно скажу об этом и порекомендую проверенного коллегу-адвоката."},
+            {q:"Как проходит консультация?",a:"Консультация <strong>платная</strong> (от 2000 руб. за 30-60 минут). Мы общаемся онлайн: в мессенджерах (MAX, WhatsApp), по телефону или видеосвязи. Документы пересылаем сканами или через облако, подпись — электронная или у нотариуса (тоже можно онлайн через Госуслуги).<br><br>Большинство вопросов решается удаленно без личных встреч. Это быстрее и дешевле. Если нужно присутствие в суде — оговаривается отдельно."},
+            {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Регулярно изучаю изменения в законодательстве и судебную практику.<br><br>Если вопрос требует узкой специализации, в которой я не эксперт — честно скажу и подскажу коллегу. Не берусь за то, в чем не уверен."},
+            {q:"Как быстро вы отвечаете?",a:"Первичный ответ на обращение — в течение суток. В рабочие дни с 9:00 до 21:00 отвечаю оперативно, в выходные — могу ответить с задержкой.<br><br>Для срочных вопросов лучше писать в MAX или WhatsApp — там быстрее всего."},
+            {q:"Какие гарантии?",a:"После первичной консультации (платной) фиксирую стоимость и сроки работы. Работаю по договору (можно в электронном виде).<br><br>Оплата поэтапная: часть — предоплата, часть — по результату. Если после консультации решите, что помощь не требуется — деньги за неиспользованное время верну."},
+            {q:"Работаете ли вы с регионами?",a:"Да, работаю со всеми регионами России онлайн. Современное законодательство позволяет решать большинство вопросов удаленно: через электронное правосудие, электронную подпись, нотариусов онлайн через Госуслуги.<br><br>Личное присутствие требуется крайне редко — в основном для участия в судебных заседаниях по сложным делам. Приезжать в Москву не нужно."},
+            {q:"Что делать, если у меня сложный случай?",a:"На первичной консультации я оцениваю перспективы дела. Если вижу, что нужен узкий специалист (например, адвокат по уголовным делам, международник или патентный поверенный) — честно скажу об этом и порекомендую проверенного коллегу.<br><br>Моя цель — решить ваш вопрос, а не продать услугу любой ценой."}
         ];
         
-        function renderFaq(){ const container=document.getElementById('faqList'); container.innerHTML=faqItems.map(item=>`<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)"><span>${item.q}</span><div class="faq-icon"></div></button><div class="faq-answer"><p>${item.a}</p></div></div>`).join(''); }
-        function toggleFaq(btn){ const item=btn.closest('.faq-item'); const active=item.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('active')); if(!active) item.classList.add('active'); }
-        const contacts=[{icon:"💬",label:"Написать в MAX (основной)",value:"+7 (977) 42-32-473",color:"#9b59b6",url:"https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g",type:"max"},{icon:"💬",label:"WhatsApp",value:"+7 (977) 42-32-473",color:"#25d366",url:"https://wa.me/79774232473",type:"whatsapp"},{icon:"📞",label:"Позвонить",value:"+7 (977) 42-32-473",color:"",url:"tel:+79774232473",type:"phone"},{icon:"✉️",label:"Email",value:"333742917@mail.ru",color:"",url:"mailto:333742917@mail.ru",type:"email"}];
-        function renderContacts(){ const container=document.getElementById('contactGrid'); container.innerHTML=contacts.map(c=>`<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type==='phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); }
-        const pricingPlans=[{name:"Консультация",desc:"Первичная правовая оценка",price:"от 2 000 ₽",period:"30-60 минут",features:["Анализ ситуации","Правовая оценка рисков","Варианты решения","План действий"]},{name:"Документ",desc:"Составление или проверка",price:"от 4 000 ₽",period:"Один документ",features:["Договор купли-продажи","Договор аренды / найма","Брачный договор","Проверка на риски"]},{name:"Стартовый пакет",desc:"Консультация + Документ",price:"от 5 000 ₽",period:"Вместо 6 000 ₽ по отдельности",features:["Консультация 30 минут","Составление документа","Правовой анализ","Рекомендации по сделке"],popular:true},{name:"Судебное ведение",desc:"Представительство в суде",price:"от 25 000 ₽",period:"За дело (одна инстанция)",features:["Составление искового заявления","Представительство в суде","Обжалование решений","Сопровождение исполнения"]}];
-        function renderPricing(){ const container=document.getElementById('pricingGrid'); container.innerHTML=pricingPlans.map(p=>`<article class="pricing-card ${p.popular ? 'popular' : ''} fade-in">${p.popular ? '<div class="popular-badge">Экономия 20%</div>' : ''}<h3 class="pricing-name">${p.name}</h3><div class="pricing-desc">${p.desc}</div><div class="pricing-price">${p.price}</div><div class="pricing-period">${p.period}</div><ul class="pricing-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max')">Заказать</button></article>`).join(''); }
-        function initCookieBanner(){ if(storageAvailable && !localStorage.getItem('cookie_consent')){ const banner=document.createElement('div'); banner.className='cookie-banner'; banner.innerHTML=`<p>Мы используем cookie для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>.</p><button class="btn" style="padding:8px 20px;" onclick="acceptCookies()">Принять</button>`; document.body.appendChild(banner); banner.style.display='block'; } }
-        function acceptCookies(){ if(storageAvailable) localStorage.setItem('cookie_consent','true'); document.querySelector('.cookie-banner')?.remove(); }
-        const observer=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.1});
+        function renderFaq(){ 
+            const container=document.getElementById('faqList'); 
+            container.innerHTML=faqItems.map((item, index)=>`<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-${index}"><span>${item.q}</span><div class="faq-icon"></div></button><div class="faq-answer" id="faq-answer-${index}"><p>${item.a}</p></div></div>`).join(''); 
+        }
+        
+        function toggleFaq(btn){ 
+            const item=btn.closest('.faq-item'); 
+            const isActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(f=>{
+                f.classList.remove('active');
+                f.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            }); 
+            
+            if(!isActive) {
+                item.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        const contacts=[
+            {icon:"💬",label:"Написать в MAX (основной)",value:"+7 (977) 423-24-73",color:"#9b59b6",url:"https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g",type:"max"},
+            {icon:"💬",label:"WhatsApp",value:"+7 (977) 423-24-73",color:"#25d366",url:"https://wa.me/79774232473",type:"whatsapp"},
+            {icon:"📞",label:"Позвонить",value:"+7 (977) 423-24-73",color:"",url:"tel:+79774232473",type:"phone"},
+            {icon:"✉️",label:"Email",value:"333742917@mail.ru",color:"",url:"mailto:333742917@mail.ru",type:"email"}
+        ];
+        
+        function renderContacts(){ 
+            const container=document.getElementById('contactGrid'); 
+            container.innerHTML=contacts.map(c=>`<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}" role="button" tabindex="0"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type==='phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); 
+        }
+        
+        const pricingPlans=[
+            {name:"Консультация",desc:"Первичная правовая оценка онлайн",price:"от 2 000 ₽",period:"30-60 минут",features:["Анализ ситуации","Правовая оценка рисков","Варианты решения","План действий"]},
+            {name:"Документ",desc:"Составление или проверка",price:"от 4 000 ₽",period:"Один документ",features:["Договор купли-продажи","Договор аренды / найма","Брачный договор","Проверка на риски"]},
+            {name:"Стартовый пакет",desc:"Консультация + Документ",price:"от 5 000 ₽",period:"Вместо 6 000 ₽ по отдельности",features:["Консультация 30 минут","Составление документа","Правовой анализ","Рекомендации по сделке"],popular:true},
+            {name:"Судебное ведение",desc:"Представительство в суде",price:"от 25 000 ₽",period:"За дело (одна инстанция)",features:["Составление искового заявления","Представительство в суде","Обжалование решений","Сопровождение исполнения"]}
+        ];
+        
+        function renderPricing(){ 
+            const container=document.getElementById('pricingGrid'); 
+            container.innerHTML=pricingPlans.map(p=>`<article class="pricing-card ${p.popular ? 'popular' : ''} fade-in">${p.popular ? '<div class="popular-badge">Экономия 20%</div>' : ''}<h3 class="pricing-name">${p.name}</h3><div class="pricing-desc">${p.desc}</div><div class="pricing-price">${p.price}</div><div class="pricing-period">${p.period}</div><ul class="pricing-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max')">Заказать</button></article>`).join(''); 
+        }
+        
+        function initCookieBanner(){ 
+            if(storageAvailable && !localStorage.getItem('cookie_consent')){
+                const banner=document.createElement('div'); 
+                banner.className='cookie-banner'; 
+                banner.innerHTML=`<p>Мы используем cookie для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>.</p><button class="btn" style="padding:8px 20px;" onclick="acceptCookies()">Принять</button>`; 
+                document.body.appendChild(banner); 
+                banner.style.display='block'; 
+            } 
+        }
+        
+        function acceptCookies(){ 
+            if(storageAvailable) localStorage.setItem('cookie_consent','true'); 
+            document.querySelector('.cookie-banner')?.remove(); 
+        }
+        
+        const observer=new IntersectionObserver(entries=>{ 
+            entries.forEach(e=>{ 
+                if(e.isIntersecting) e.target.classList.add('visible'); 
+            }); 
+        },{threshold:0.1});
         
         document.addEventListener('DOMContentLoaded',()=>{ 
             renderServices(); 
@@ -956,16 +1544,24 @@
             renderTemplates(); 
             renderFaq(); 
             renderContacts(); 
-            loadHotNews(); // Загружаем актуальные новости
+            loadHotNews();
             document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el)); 
             initCookieBanner(); 
-            document.querySelectorAll('.filter-btn').forEach(btn=>{ btn.addEventListener('click',(e)=>filterTemplates(btn.dataset.filter,btn)); }); 
+            document.querySelectorAll('.filter-btn').forEach(btn=>{ 
+                btn.addEventListener('click',(e)=>filterTemplates(btn.dataset.filter,btn)); 
+            }); 
             document.getElementById('templatesToggleBtn')?.addEventListener('click',toggleTemplates); 
             document.getElementById('scrollTopBtn')?.addEventListener('click',scrollToTop); 
             checkAndOpenHiddenServices(); 
         });
         
-        document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal(); closeConsentModal(); } });
+        document.addEventListener('keydown',e=>{ 
+            if(e.key==='Escape'){
+                closeModal(); 
+                closeConsentModal(); 
+            } 
+        });
+        
         window.addEventListener('hashchange', checkAndOpenHiddenServices);
     </script>
 </body>
