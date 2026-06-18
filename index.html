@@ -63,8 +63,6 @@
             .pricing-card { padding: 24px 16px; }
             .hot-news-module { margin: 0 12px; }
             .hot-news-content { padding: 16px; }
-            .support-box { padding: 24px 16px; flex-direction: column; }
-            .qr-code { width: 160px; height: 160px; }
             .modal-body { padding: 16px; }
             .scenario-step { flex-direction: column; gap: 8px; }
             .step-num { width: 28px; height: 28px; font-size: 12px; }
@@ -73,13 +71,12 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
-        a, .service-topic, .filter-btn, .show-more-btn, .faq-question, .contact-method, .footer-links a, .mobile-nav a, .nav-link, .btn, .logo {
+        a, .service-topic, .show-more-btn, .faq-question, .contact-method, .footer-links a, .mobile-nav a, .nav-link, .btn, .logo {
             transition: all 0.2s ease;
             position: relative;
         }
         a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a)::after,
         .service-topic::after,
-        .filter-btn::after,
         .show-more-btn::after,
         .faq-question::after,
         .contact-method::after,
@@ -98,7 +95,6 @@
         }
         a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a):hover::after,
         .service-topic:hover::after,
-        .filter-btn:hover::after,
         .show-more-btn:hover::after,
         .faq-question:hover::after,
         .contact-method:hover::after,
@@ -107,7 +103,7 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        a:hover, .service-topic:hover, .filter-btn:hover, .show-more-btn:hover, .faq-question:hover, .contact-method:hover, .footer-links a:hover, .mobile-nav a:hover, .nav-link:hover {
+        a:hover, .service-topic:hover, .show-more-btn:hover, .faq-question:hover, .contact-method:hover, .footer-links a:hover, .mobile-nav a:hover, .nav-link:hover {
             color: var(--gold);
         }
         .wood-bg { 
@@ -366,65 +362,8 @@
         .pricing-features { list-style: none; margin: 24px 0; text-align: left; }
         .pricing-features li { padding: 12px 0; border-bottom: 1px solid rgba(212,175,55,0.1); font-size: 14px; display: flex; align-items: center; gap: 10px; }
         .pricing-features li::before { content: '✓'; color: var(--gold); font-weight: bold; }
-        .templates { padding: 60px 16px; background: rgba(212,175,55,0.02); }
-        .templates-filter { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-        .filter-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 20px; cursor: pointer; transition: var(--transition); font-size: 13px; }
-        .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.1); }
-        .templates-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .template-card { background: rgba(20,20,20,0.8); border: 1px solid var(--border); padding: 24px; border-radius: 12px; transition: var(--transition); }
-        .template-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-        .template-icon { font-size: 36px; margin-bottom: 12px; }
-        .template-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; margin-bottom: 8px; }
-        .template-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
-        .template-note { font-size: 12px; color: var(--gold); background: rgba(212,175,55,0.1); padding: 8px 12px; border-radius: 6px; margin-bottom: 16px; display: inline-block; }
         .show-more-btn { display: block; margin: 40px auto 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 32px; cursor: pointer; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; transition: var(--transition); }
         .show-more-btn:hover { background: var(--gold); color: #000; }
-        .support { padding: 60px 16px; max-width: 1200px; margin: 0 auto; }
-        .support-handshake { text-align: center; font-size: 48px; margin-bottom: 24px; }
-        .support-box { 
-            background: linear-gradient(135deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); 
-            border: 1px solid var(--gold); 
-            border-radius: 16px; 
-            padding: 40px 24px; 
-            display: flex; 
-            flex-wrap: wrap;
-            gap: 32px;
-            align-items: center;
-            justify-content: center;
-        }
-        .qr-container { text-align: center; flex: 1 1 200px; }
-        .support-info {
-            flex: 2 1 300px;
-        }
-        .qr-code { 
-            width: 200px; 
-            height: 200px; 
-            background: white; 
-            padding: 12px; 
-            border-radius: 12px; 
-            margin: 0 auto 16px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-        }
-        .qr-code img { width: 100%; height: 100%; object-fit: contain; }
-        .support-highlight { font-size: 18px; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 24px; }
-        .support-description {
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-align: center;
-            line-height: 1.7;
-            margin-bottom: 24px;
-            padding: 0 8px;
-        }
-        .support-description strong {
-            color: var(--gold);
-        }
-        .support-methods { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
-        .support-method { display: flex; align-items: center; gap: 12px; padding: 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; }
-        .support-method strong { color: var(--gold); display: block; margin-bottom: 4px; }
-        .support-method span { font-size: 14px; color: var(--text-secondary); }
-        .legal-note { font-size: 11px; color: var(--text-muted); margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
         .faq { padding: 60px 16px; }
         .faq-list { max-width: 900px; margin: 40px auto 0; }
         .faq-item { border-bottom: 1px solid rgba(212,175,55,0.2); background: rgba(10,10,10,0.5); margin-bottom: 10px; border-radius: 4px; overflow: hidden; }
@@ -511,9 +450,7 @@
             .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
             .services-hidden { grid-template-columns: repeat(2, 1fr); }
             .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-            .templates-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-content { grid-template-columns: repeat(2, 1fr); text-align: left; }
-            .support-box { flex-direction: row; }
             .hot-news-module { max-width: 650px; }
         }
         @media (min-width: 1024px) {
@@ -527,7 +464,6 @@
             .services-hidden { grid-template-columns: repeat(3, 1fr); padding: 0 40px; }
             .pricing-grid { grid-template-columns: repeat(4, 1fr); padding: 0 40px; }
             .pricing-card.popular { transform: scale(1.05); }
-            .templates-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-content { grid-template-columns: 2fr 1fr 1fr 1fr; }
         }
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -539,6 +475,7 @@
         .consent-modal .modal-body { text-align: center; }
         .consent-actions { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
     </style>
+<base target="_blank">
 </head>
 <body>
     <header class="header">
@@ -562,7 +499,7 @@
             <nav class="nav-desktop">
                 <a href="#services" class="nav-link">Услуги</a>
                 <a href="#pricing" class="nav-link">Тарифы</a>
-                <a href="#templates" class="nav-link">Шаблоны</a>
+                
                 <a href="#faq" class="nav-link">FAQ</a>
                 <a href="tel:+79774232473" class="btn btn-phone-number" onclick="event.preventDefault(); handleContactClick('tel:+79774232473', 'phone');">
                     <span class="phone-label">Позвонить</span>
@@ -578,7 +515,7 @@
         <nav class="mobile-nav">
             <a href="#services" onclick="toggleMenu()">Услуги</a>
             <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
-            <a href="#templates" onclick="toggleMenu()">Шаблоны</a>
+            
             <a href="#faq" onclick="toggleMenu()">FAQ</a>
             <a href="#contact" onclick="toggleMenu()">Контакты</a>
             <a href="tel:+79774232473" class="btn btn-phone-number" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top: 20px; width: 100%;">
@@ -641,49 +578,7 @@
 
     <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте риски и решение. Консультация платная.</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
     <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора. Оплата онлайн.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
-    <section class="templates" id="templates"><div class="section-header fade-in"><div class="section-label">Библиотека</div><h2 class="section-title">Шаблоны документов</h2><p class="section-subtitle">Профессиональные образцы для скачивания. Постоянно пополняемая коллекция.</p></div><div class="templates-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="family">Семейное</button><button class="filter-btn" data-filter="labor">Трудовое</button><button class="filter-btn" data-filter="property">Недвижимость</button><button class="filter-btn" data-filter="court">Судебные</button><button class="filter-btn" data-filter="business">Бизнес</button><button class="filter-btn" data-filter="tax">Налоговые</button></div><div class="templates-grid" id="templatesGrid"></div><button class="show-more-btn" id="templatesToggleBtn">Показать все шаблоны</button></section>
-    <section class="support" id="support">
-        <div class="section-header fade-in">
-            <div class="section-label">Поддержать</div>
-            <h2 class="section-title">Помочь проекту</h2>
-        </div>
-        <div class="support-handshake fade-in">🤝</div>
-        <div class="support-box fade-in">
-            <div class="qr-container">
-                <div class="qr-code">
-                    <img src="qr-tbank.png" alt="QR код Т-Банк" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size: 80px;\'>💳</div>'">
-                </div>
-                <p style="color: var(--text-muted); font-size: 14px;">Отсканируйте в Т-Банке или Сбере</p>
-            </div>
-            <div class="support-info">
-                <div class="support-highlight">✨ Ваша поддержка — это новые бесплатные шаблоны для всех ✨</div>
-                <div class="support-description">
-                    <strong>Каждое пожертвование помогает создавать больше качественных шаблонов документов.</strong><br><br>
-                    Мы планируем расширить библиотеку: добавить образцы для ИП и малого бизнеса, договоры аренды и подряда, претензии по защите прав потребителей, шаблоны для судебных процессов. 
-                    <br><br>
-                    <em>Ваш вклад — это доступ к правовой помощи для тех, кто не может позволить себе юриста.</em>
-                </div>
-                <div class="support-methods">
-                    <div class="support-method">
-                        <div class="contact-method-icon">📞</div>
-                        <div>
-                            <strong>По номеру телефона</strong>
-                            <span>+7 (977) 423-24-73 (Т-Банк, СберПэй)</span>
-                        </div>
-                    </div>
-                    <div class="support-method">
-                        <div class="contact-method-icon">🏦</div>
-                        <div>
-                            <strong>Т-Банк (по договору)</strong>
-                            <span>8017435982</span>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.open('https://messenger.online.sberbank.ru/sl/f1uGrTg8JnJ9BN0G7', '_blank');">Открыть сбор в СберБанк Онлайн</button>
-                <div class="legal-note">Платеж является добровольным пожертвованием (ст. 582 ГК РФ). Не является оплатой услуг. По запросу — отчет о расходовании.</div>
-            </div>
-        </div>
-    </section>
+    
     <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
     <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. Первая консультация платная (от 2000₽). За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
 
@@ -707,7 +602,7 @@
                 <div class="footer-title">Информация</div>
                 <ul class="footer-links">
                     <li><a href="#pricing">Тарифы</a></li>
-                    <li><a href="#templates">Шаблоны</a></li>
+                    
                     <li><a href="#faq">Вопросы</a></li>
                 </ul>
             </div>
@@ -1414,54 +1309,6 @@
         document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
 
         // Шаблоны - PDF
-        const fullTemplates = [
-            {id:1, category:'family', icon:'⚖️', title:'Возражение на судебный приказ (алименты)', desc:'Судебный приказ № _____ от _____', note:'⚠️ Срок обжалования — 10 дней!', file:'templates/alimony.pdf'},
-            {id:2, category:'family', icon:'📋', title:'Исковое заявление о разделе имущества', desc:'Совместно нажитое имущество супругов', note:'⚠️ Срок исковой давности — 3 года', file:'templates/divorce.pdf'},
-            {id:3, category:'labor', icon:'📄', title:'Иск о восстановлении на работе', desc:'Незаконное увольнение', note:'⚠️ Срок иска — 1 месяц!', file:'templates/fired.pdf'},
-            {id:4, category:'labor', icon:'💰', title:'Жалоба в Трудовую инспекцию', desc:'Задержка зарплаты', note:'💡 Эффективно при системных нарушениях', file:'templates/salary.pdf'},
-            {id:5, category:'property', icon:'🏠', title:'Договор купли-продажи квартиры', desc:'С защитой покупателя', note:'💡 Обязательна регистрация в Росреестре', file:'templates/realty.pdf'},
-            {id:6, category:'property', icon:'🏢', title:'Претензия о возмещении ущерба (залив)', desc:'Залив, порча имущества', note:'💡 Досудебный порядок обязателен', file:'templates/neighbors.pdf'},
-            {id:7, category:'court', icon:'⚖️', title:'Исковое заявление о взыскании долга', desc:'По договору займа/расписке', note:'⚠️ Срок исковой давности — 3 года', file:'templates/court.pdf'},
-            {id:8, category:'family', icon:'📜', title:'Брачный договор (образец)', desc:'Режим имущества супругов', note:'⚠️ Требуется нотариальное удостоверение!', file:'templates/prenup.pdf'},
-            {id:9, category:'court', icon:'📝', title:'Апелляционная жалоба', desc:'Обжалование решения суда', note:'⚠️ Срок подачи — 1 месяц', file:'templates/appeal.pdf'},
-            {id:10, category:'property', icon:'🏛️', title:'Договор аренды квартиры', desc:'Защита прав арендатора', note:'💡 Рекомендуется регистрация', file:'templates/rent.pdf'},
-            {id:11, category:'labor', icon:'📋', title:'Заявление об увольнении по соглашению', desc:'С выплатой компенсации', note:'💡 Выгодно при спорах', file:'templates/resign.pdf'},
-            {id:12, category:'family', icon:'👶', title:'Соглашение об уплате алиментов', desc:'Фиксированная сумма', note:'⚠️ Нотариальное удостоверение обязательно', file:'templates/alimony_agreement.pdf'},
-            {id:13, category:'property', icon:'🏞️', title:'Соглашение о разделе земельного участка', desc:'Выдел долей в натуре', note:'⚠️ Требуется межевание и регистрация', file:'templates/land.pdf'},
-            {id:14, category:'business', icon:'🏢', title:'Договор оказания юридических услуг', desc:'Для бизнеса и частных лиц', note:'💡 Фиксированная стоимость', file:'templates/service.pdf'},
-            {id:15, category:'tax', icon:'📊', title:'Жалоба на решение налогового органа', desc:'Обжалование штрафов и доначислений', note:'⚠️ Срок 1 месяц!', file:'templates/tax.pdf'}
-        ];
-        
-        let currentFilter='all'; 
-        let showAllTemplates=false;
-        
-        function renderTemplates(){ 
-            const grid=document.getElementById('templatesGrid'); 
-            const btn=document.getElementById('templatesToggleBtn'); 
-            let filtered=currentFilter==='all'?fullTemplates:fullTemplates.filter(t=>t.category===currentFilter); 
-            const visible=showAllTemplates?filtered:filtered.slice(0,2); 
-            grid.innerHTML=visible.map(t=>`<div class="template-card"><div class="template-icon">${t.icon}</div><h3 class="template-title">${t.title}</h3><div class="template-desc">${t.desc}</div><div class="template-note">${t.note}</div><a href="${t.file}" class="btn btn-outline" style="width:100%; text-align:center; display:inline-block;" download>Скачать PDF</a></div>`).join(''); 
-            if(filtered.length>2){ 
-                btn.style.display='block'; 
-                btn.textContent=showAllTemplates?'Скрыть часть шаблонов':'Показать все шаблоны'; 
-            } else {
-                btn.style.display='none'; 
-            }
-        }
-        
-        function filterTemplates(category,btn){ 
-            currentFilter=category; 
-            showAllTemplates=false; 
-            document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); 
-            if(btn) btn.classList.add('active'); 
-            renderTemplates(); 
-        }
-        
-        function toggleTemplates(){ 
-            showAllTemplates=!showAllTemplates; 
-            renderTemplates(); 
-        }
-        
         // FAQ
         const faqItems=[
             {q:"Вы адвокат?",a:"<strong>Нет, я не являюсь адвокатом</strong> — я частный юрист-консультант. Это означает, что я не состою в адвокатской палате и не имею статуса адвоката. Однако в большинстве случаев это работает <strong>в вашу пользу</strong>: мои услуги дешевле, а результат такой же эффективный.<br><br>Я успешно решаю вопросы по составлению договоров, проверке документов, семейным и трудовым спорам, защите прав потребителей, налоговым консультациям. Работаю онлайн по всей России.<br><br><strong>Если ваш вопрос требует именно адвокатской деятельности</strong> (например, уголовное дело или сложное арбитражное производство с участием адвоката обязательно) — я честно скажу об этом и порекомендую проверенного коллегу-адвоката."},
@@ -1541,16 +1388,11 @@
         document.addEventListener('DOMContentLoaded',()=>{ 
             renderServices(); 
             renderPricing(); 
-            renderTemplates(); 
             renderFaq(); 
             renderContacts(); 
             loadHotNews();
             document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el)); 
             initCookieBanner(); 
-            document.querySelectorAll('.filter-btn').forEach(btn=>{ 
-                btn.addEventListener('click',(e)=>filterTemplates(btn.dataset.filter,btn)); 
-            }); 
-            document.getElementById('templatesToggleBtn')?.addEventListener('click',toggleTemplates); 
             document.getElementById('scrollTopBtn')?.addEventListener('click',scrollToTop); 
             checkAndOpenHiddenServices(); 
         });
