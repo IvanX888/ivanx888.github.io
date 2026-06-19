@@ -784,11 +784,75 @@
             .floating-blocks, .carousel-controls {
                 display: none !important;
             }
-            /* Панель без z-index чтобы не перекрывать карточки */
+            /* Панель без z-index чтобы не перекрывать */
             .panel {
                 position: relative;
                 z-index: 10;
             }
+        }
+
+        .consent-checkbox-block {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(80, 55, 35, 0.2);
+            border: 1px solid rgba(200, 160, 100, 0.15);
+            border-radius: 14px;
+            margin-top: 4px;
+        }
+        .consent-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .consent-checkbox {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: rgba(220, 180, 90, 0.8);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .consent-text {
+            font-size: 0.75em;
+            color: rgba(220, 195, 170, 0.7);
+            line-height: 1.5;
+        }
+        .consent-text a {
+            color: rgba(255, 215, 100, 0.85);
+            text-decoration: underline;
+        }
+        .consent-text a:hover {
+            color: rgba(255, 215, 100, 1);
+        }
+        .panel-btn.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(0.5);
+        }
+        .panel-btn.consent-required {
+            position: relative;
+        }
+        .panel-btn.consent-required::after {
+            content: '⚠️';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .panel-btn.consent-required.show-warning::after {
+            opacity: 1;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-4px); }
+            40% { transform: translateX(4px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
         }
 @media (max-width: 1100px) {
             .floating-blocks { width: 50%; }
@@ -811,7 +875,7 @@
         }
         @media (max-width: 768px) {
             html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
-            body { flex-direction: column; height: auto; }
+            body { flex-direction: column; height: auto; padding-bottom: 90px; }
             .photo-area { flex: none; height: 55vh; min-height: 280px; }
             .photo-area img { object-position: center 38%; }
             .floating-blocks { display: none; }
@@ -831,7 +895,7 @@
             .panel-header h2 { font-size: 1.2em; }
             .panel-divider { width: 40%; }
             .panel-btn { flex: 1 1 140px; max-width: 200px; padding: 14px 16px; font-size: 0.88em; }
-            .panel-footer-bar { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 15px; padding-top: 15px; }
+            .panel-footer-bar { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 15px; padding-top: 15px; padding-bottom: 20px; }
             .modal-card { width: 92vw; padding: 20px 18px; }
         }
         @media (max-width: 500px) {
@@ -1027,6 +1091,16 @@
         <a href="https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20семейным%20вопросам." class="panel-btn whatsapp" onclick="trackContact('whatsapp')">💬 WhatsApp</a>
         <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 Позвонить</a>
         <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
+
+        <div class="consent-checkbox-block">
+            <label class="consent-label">
+                <input type="checkbox" id="contactConsent" class="consent-checkbox">
+                <span class="consent-text">
+                    Согласен на обработку персональных данных и 
+                    <a href="privacy.html" target="_blank">политику конфиденциальности</a>
+                </span>
+            </label>
+        </div>
 
         <div class="panel-divider"></div>
 
@@ -1394,6 +1468,76 @@
         });
 
         console.log('✅ Карусель: горизонтальное вращение, внизу, не перекрывает лицо.');
+
+        // ════════════════════════════════════════════
+        // ЧЕКБОКС СОГЛАСИЯ НА КОНТАКТЫ
+        // ════════════════════════════════════════════
+        (function(){
+            const CONSENT_STORAGE_KEY = 'serko_contact_consent_v1';
+            const checkbox = document.getElementById('contactConsent');
+            const contactButtons = document.querySelectorAll('.panel-btn.max, .panel-btn.whatsapp, .panel-btn.primary, .panel-btn[href^="mailto:"]');
+
+            // Load saved consent
+            const savedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
+            if (savedConsent === 'true' && checkbox) {
+                checkbox.checked = true;
+                enableButtons();
+            }
+
+            function enableButtons() {
+                contactButtons.forEach(btn => {
+                    btn.classList.remove('disabled', 'consent-required', 'show-warning');
+                    btn.style.pointerEvents = '';
+                    btn.style.opacity = '';
+                });
+            }
+
+            function disableButtons() {
+                contactButtons.forEach(btn => {
+                    btn.classList.add('disabled', 'consent-required');
+                });
+            }
+
+            if (checkbox) {
+                // Initial state
+                if (!checkbox.checked) {
+                    disableButtons();
+                }
+
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        localStorage.setItem(CONSENT_STORAGE_KEY, 'true');
+                        enableButtons();
+                    } else {
+                        localStorage.removeItem(CONSENT_STORAGE_KEY);
+                        disableButtons();
+                    }
+                });
+
+                // Show warning on hover/click if not checked
+                contactButtons.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        if (!checkbox.checked) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            this.classList.add('show-warning');
+                            checkbox.parentElement.style.animation = 'shake 0.5s ease';
+                            setTimeout(() => {
+                                this.classList.remove('show-warning');
+                                checkbox.parentElement.style.animation = '';
+                            }, 1500);
+
+                            // Scroll to checkbox on mobile
+                            if (window.innerWidth <= 768) {
+                                checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                            return false;
+                        }
+                    });
+                });
+            }
+        })();
+
         console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
     </script>
 
@@ -1402,7 +1546,6 @@
         // ════════════════════════════════════════════
         (function(){
             const COOKIE_KEY = 'serko_cookie_consent';
-            const CONSENT_KEY = 'serko_contact_consent';
 
             function getCookie(name) {
                 const value = '; ' + document.cookie;
@@ -1441,107 +1584,6 @@
                     // Cookies и Метрика продолжают работать независимо от выбора
                 });
             }
-
-            // CONTACT CONSENT MODAL
-            function showConsentModal(onAgree) {
-                const existing = document.getElementById('consentModal');
-                if (existing) existing.remove();
-
-                const modal = document.createElement('div');
-                modal.id = 'consentModal';
-                modal.className = 'modal-overlay active';
-                modal.innerHTML = `
-                    <div class="modal-card" style="max-width: 460px;">
-                        <button class="modal-close" id="consentClose" aria-label="Закрыть">✕</button>
-                        <span class="modal-icon">🛡️</span>
-                        <span class="modal-tag">Согласие</span>
-                        <h3>Согласие на обработку данных</h3>
-                        <div class="modal-divider"></div>
-                        <p class="modal-desc" style="text-align:left; font-size:0.88em;">
-                            Перед связью необходимо согласие на обработку персональных данных.<br><br>
-                            Нажимая «Согласен», вы подтверждаете, что ознакомились с 
-                            <a href="privacy.html" target="_blank" style="color:rgba(255,215,100,0.9);">Политикой конфиденциальности</a> и 
-                            <a href="consent.html" target="_blank" style="color:rgba(255,215,100,0.9);">Согласием на обработку данных</a>, 
-                            и даёте согласие Оператору (Серко Иван Иванович, ИНН 773168746783, самозанятый) на обработку ваших персональных данных 
-                            (имя, телефон, email, содержание сообщений) для целей оказания консультаций и юридических услуг.
-                        </p>
-                        <div style="display:flex; gap:10px; margin-top:20px;">
-                            <button class="modal-btn modal-btn-primary" id="consentAgree" style="flex:1;">✓ Согласен</button>
-                            <button class="modal-btn" id="consentCancel" style="flex:1; background:rgba(255,255,255,0.04);">Отмена</button>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(modal);
-                document.body.style.overflow = 'hidden';
-
-                const consentClose = modal.querySelector('#consentClose');
-                if (consentClose) {
-                    consentClose.addEventListener('click', function(){
-                        modal.remove();
-                        document.body.style.overflow = '';
-                    });
-                }
-
-                const consentCancel = modal.querySelector('#consentCancel');
-                if (consentCancel) {
-                    consentCancel.addEventListener('click', function(){
-                        modal.remove();
-                        document.body.style.overflow = '';
-                    });
-                }
-
-                const consentAgree = modal.querySelector('#consentAgree');
-                if (consentAgree) {
-                    consentAgree.addEventListener('click', function(){
-                        setCookie(CONSENT_KEY, 'agreed', 365);
-                        modal.remove();
-                        document.body.style.overflow = '';
-                        if (onAgree) onAgree();
-                    });
-                }
-
-                modal.addEventListener('click', function(e){
-                    if (e.target === modal) {
-                        modal.remove();
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-            function checkConsentThen(action) {
-                const consent = getCookie(CONSENT_KEY);
-                if (consent === 'agreed') {
-                    action();
-                } else {
-                    showConsentModal(action);
-                }
-            }
-
-            function attachConsentHandler(selector, hrefGetter) {
-                // Cookies и Метрика работают всегда, согласие — информационное
-                // Блокировка кликов отключена по запросу владельца сайта
-                return;
-            }
-
-            // Hook panel buttons
-            document.querySelectorAll('.panel-btn').forEach(function(btn){
-                attachConsentHandler(btn);
-            });
-
-            // Hook sticky bar buttons
-            document.querySelectorAll('.sticky-btn').forEach(function(btn){
-                attachConsentHandler(btn);
-            });
-
-            // Hook modal CTA button
-            attachConsentHandler('#modalBtn');
-
-            // Hook modal Telegram button
-            attachConsentHandler('#modalTelegram');
-
-            // Hook phone link inside modal
-            attachConsentHandler('.modal-card a[href^="tel:"]', function(el){ return el.getAttribute('href'); });
-
         })();
 
     </script>
