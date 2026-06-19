@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
     <title>Серко Иван — Семейный юрист онлайн. Консультация 2 000 ₽, документы от 3 000 ₽</title>
-    <!-- v2.1 cache refresh -->
+    <!-- v2.2 mobile carousel + cookie info -->
     <meta name="description" content="Частный семейный юрист Серко Иван Иванович. Консультация 2 000 ₽, составление документов 4 000 ₽, проверка 3 000 ₽. Онлайн по всей России. Выезд в Москве — при острой необходимости.">
     <meta name="keywords" content="семейный юрист, алименты, развод, раздел имущества, брачный договор, юрист онлайн, консультация 2000">
 
@@ -722,9 +722,48 @@
         }
         @media (max-width: 768px) {
             body { flex-direction: column; overflow-y: auto; height: auto; }
-            .photo-area { flex: none; height: 55vh; min-height: 280px; }
+            .photo-area { flex: none; height: 55vh; min-height: 280px; position: relative; }
             .photo-area img { object-position: center 38%; }
-            .floating-blocks { display: none; }
+            /* Карусель на мобильном — горизонтальная прокрутка */
+            .floating-blocks { 
+                position: relative; 
+                top: auto; 
+                left: auto; 
+                width: 100%; 
+                height: auto; 
+                padding: 16px 0; 
+                z-index: 5; 
+                pointer-events: auto; 
+                perspective: none; 
+                overflow-x: auto; 
+                overflow-y: hidden; 
+                -webkit-overflow-scrolling: touch; 
+                scrollbar-width: none; 
+            }
+            .floating-blocks::-webkit-scrollbar { display: none; }
+            .float-carousel { 
+                position: relative; 
+                top: auto; 
+                left: auto; 
+                transform: none; 
+                width: max-content; 
+                height: auto; 
+                display: flex; 
+                gap: 12px; 
+                padding: 0 16px; 
+            }
+            .float-card { 
+                position: relative; 
+                width: 260px; 
+                flex-shrink: 0; 
+                transform: none !important; 
+                opacity: 1 !important; 
+                z-index: auto !important; 
+                pointer-events: auto; 
+            }
+            .float-card:hover { 
+                transform: translateY(-4px) scale(1.02) !important; 
+            }
             .carousel-controls { display: none; }
             .panel { 
                 width: 100%; 
@@ -751,6 +790,7 @@
         }
     </style>
     <base target="_blank">
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -1285,9 +1325,7 @@
                 cookieDeclineBtn.addEventListener('click', function(){
                     setCookie(COOKIE_KEY, 'declined', 365);
                     if (cookieBannerEl) cookieBannerEl.classList.remove('visible');
-                    if (typeof ym !== 'undefined') {
-                        ym(106860023, 'setUserID', null);
-                    }
+                    // Cookies и Метрика продолжают работать независимо от выбора
                 });
             }
 
@@ -1367,24 +1405,9 @@
             }
 
             function attachConsentHandler(selector, hrefGetter) {
-                const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
-                if (!el) return;
-
-                const originalHref = hrefGetter ? hrefGetter(el) : el.getAttribute('href');
-                const originalOnclick = el.getAttribute('onclick');
-
-                el.addEventListener('click', function(e){
-                    const consent = getCookie(CONSENT_KEY);
-                    if (consent !== 'agreed') {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        checkConsentThen(function(){
-                            if (originalOnclick) eval(originalOnclick);
-                            if (originalHref) window.open(originalHref, '_blank');
-                        });
-                        return false;
-                    }
-                });
+                // Cookies и Метрика работают всегда, согласие — информационное
+                // Блокировка кликов отключена по запросу владельца сайта
+                return;
             }
 
             // Hook panel buttons
@@ -1589,7 +1612,7 @@
     ════════════════════════════════════════════ -->
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-content">
-            <p>🍪 Мы используем cookies и Яндекс.Метрику для анализа посещаемости. Продолжая использовать сайт, вы соглашаетесь с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p>
+            <p>🍪 Мы используем cookies и Яндекс.Метрику для анализа посещаемости. Продолжая использовать сайт, вы автоматически соглашаетесь с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p>
             <div class="cookie-buttons">
                 <button class="cookie-btn cookie-accept" id="cookieAccept">Принять</button>
                 <button class="cookie-btn cookie-decline" id="cookieDecline">Отклонить</button>
