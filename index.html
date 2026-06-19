@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
     <title>Серко Иван — Семейный юрист онлайн. Консультация 2 000 ₽, документы от 3 000 ₽</title>
-    <!-- v2.2 mobile carousel + cookie info -->
+    <!-- v2.1 cache refresh -->
     <meta name="description" content="Частный семейный юрист Серко Иван Иванович. Консультация 2 000 ₽, составление документов 4 000 ₽, проверка 3 000 ₽. Онлайн по всей России. Выезд в Москве — при острой необходимости.">
     <meta name="keywords" content="семейный юрист, алименты, развод, раздел имущества, брачный договор, юрист онлайн, консультация 2000">
 
@@ -701,7 +701,96 @@
         }
 
         /* Адаптив */
-        @media (max-width: 1100px) {
+        
+        /* ════════════════════════════════════════════
+           МОБИЛЬНЫЕ КАРТОЧКИ (горизонтальная прокрутка)
+        ════════════════════════════════════════════ */
+        .mobile-cards {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .mobile-cards {
+                display: block;
+                width: 100%;
+                background: linear-gradient(180deg, #0d0d0d 0%, #1a120b 100%);
+                padding: 20px 0;
+                border-top: 1px solid rgba(200, 160, 100, 0.15);
+                position: relative;
+                z-index: 20;
+            }
+            .mobile-cards-scroll {
+                display: flex;
+                gap: 12px;
+                padding: 0 16px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .mobile-cards-scroll::-webkit-scrollbar {
+                display: none;
+            }
+            .mobile-card {
+                flex-shrink: 0;
+                width: 260px;
+                padding: 18px 18px 32px 18px;
+                background: rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(12px) saturate(1.2);
+                -webkit-backdrop-filter: blur(12px) saturate(1.2);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 18px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                position: relative;
+                overflow: hidden;
+            }
+            .mobile-card:active {
+                transform: scale(0.98);
+            }
+            .mobile-card h4 {
+                font-size: 0.95em;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.95);
+                margin-bottom: 8px;
+            }
+            .mobile-card p {
+                font-size: 0.78em;
+                color: rgba(255, 255, 255, 0.75);
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+            .mobile-price {
+                font-size: 0.88em;
+                font-weight: 600;
+                color: rgba(255, 215, 100, 0.95);
+                margin-bottom: 8px;
+            }
+            .mobile-tag {
+                display: inline-block;
+                font-size: 0.65em;
+                color: rgba(255, 255, 255, 0.55);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 3px 10px;
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+            }
+            .mobile-tag.urgent {
+                color: rgba(255, 120, 120, 0.95);
+                border-color: rgba(255, 120, 120, 0.35);
+                background: rgba(255,80,80,0.08);
+            }
+            /* Скрыть десктопную карусель на мобильном */
+            .floating-blocks, .carousel-controls {
+                display: none !important;
+            }
+            /* Панель без z-index чтобы не перекрывать карточки */
+            .panel {
+                position: relative;
+                z-index: 10;
+            }
+        }
+@media (max-width: 1100px) {
             .floating-blocks { width: 50%; }
             .float-card { width: 210px; padding: 16px 18px; }
             .float-card h4 { font-size: 0.88em; }
@@ -723,48 +812,9 @@
         @media (max-width: 768px) {
             html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
             body { flex-direction: column; height: auto; }
-            .photo-area { flex: none; height: auto; min-height: 240px; position: relative; overflow: visible; }
-            .photo-area img { object-position: center 38%; height: 45vh; min-height: 220px; object-fit: cover; width: 100%; display: block; }
-            /* Карусель на мобильном — горизонтальная прокрутка */
-            .floating-blocks { 
-                position: relative; 
-                top: auto; 
-                left: auto; 
-                width: 100%; 
-                height: auto; 
-                padding: 16px 0; 
-                z-index: 5; 
-                pointer-events: auto; 
-                perspective: none; 
-                overflow-x: auto; 
-                overflow-y: hidden; 
-                -webkit-overflow-scrolling: touch; 
-                scrollbar-width: none; 
-            }
-            .floating-blocks::-webkit-scrollbar { display: none; }
-            .float-carousel { 
-                position: relative; 
-                top: auto; 
-                left: auto; 
-                transform: none; 
-                width: max-content; 
-                height: auto; 
-                display: flex; 
-                gap: 12px; 
-                padding: 0 16px; 
-            }
-            .float-card { 
-                position: relative; 
-                width: 260px; 
-                flex-shrink: 0; 
-                transform: none !important; 
-                opacity: 1 !important; 
-                z-index: auto !important; 
-                pointer-events: auto; 
-            }
-            .float-card:hover { 
-                transform: translateY(-4px) scale(1.02) !important; 
-            }
+            .photo-area { flex: none; height: 55vh; min-height: 280px; }
+            .photo-area img { object-position: center 38%; }
+            .floating-blocks { display: none; }
             .carousel-controls { display: none; }
             .panel { 
                 width: 100%; 
@@ -883,6 +933,60 @@
 
     </div>
 
+        <!-- Мобильные карточки услуг (горизонтальная прокрутка) -->
+        <div class="mobile-cards" id="mobileCards">
+            <div class="mobile-cards-scroll">
+                <div class="mobile-card" data-modal="0">
+                    <h4>👨‍👩‍👧 Алименты</h4>
+                    <p>25% на 1 ребёнка, 33% на 2-х, 50% на 3-х</p>
+                    <div class="mobile-price">Консультация 2 000 ₽</div>
+                    <span class="mobile-tag">Семейное право</span>
+                </div>
+                <div class="mobile-card" data-modal="1">
+                    <h4>💔 Развод</h4>
+                    <p>Через ЗАГС или суд. Подготовка документов</p>
+                    <div class="mobile-price">Консультация 2 000 ₽</div>
+                    <span class="mobile-tag">Семейное право</span>
+                </div>
+                <div class="mobile-card" data-modal="2">
+                    <h4>🏠 Раздел имущества</h4>
+                    <p>Квартира, машина, вклады, кредиты</p>
+                    <div class="mobile-price">Консультация 2 000 ₽</div>
+                    <span class="mobile-tag">Семейное право</span>
+                </div>
+                <div class="mobile-card" data-modal="3">
+                    <h4>📋 Брачный договор</h4>
+                    <p>Защита недвижимости, бизнеса, инвестиций</p>
+                    <div class="mobile-price">От 4 000 ₽</div>
+                    <span class="mobile-tag">Документ</span>
+                </div>
+                <div class="mobile-card" data-modal="4">
+                    <h4>📝 Составление документов</h4>
+                    <p>Иски, жалобы, заявления, договоры</p>
+                    <div class="mobile-price">4 000 ₽ за документ</div>
+                    <span class="mobile-tag">Услуга</span>
+                </div>
+                <div class="mobile-card" data-modal="5">
+                    <h4>🔍 Проверка документов</h4>
+                    <p>Логика, формулировки, ссылки на законы</p>
+                    <div class="mobile-price">3 000 ₽ за проверку</div>
+                    <span class="mobile-tag">Услуга</span>
+                </div>
+                <div class="mobile-card" data-modal="6">
+                    <h4>📞 Онлайн-консультация</h4>
+                    <p>Zoom, Telegram, MAX, телефон</p>
+                    <div class="mobile-price">2 000 ₽ / 30–60 мин</div>
+                    <span class="mobile-tag">Формат</span>
+                </div>
+                <div class="mobile-card" data-modal="7">
+                    <h4>🚨 Выезд к клиенту</h4>
+                    <p>По всей России. Индивидуальная стоимость</p>
+                    <div class="mobile-price">По договорённости</div>
+                    <span class="mobile-tag urgent">Россия</span>
+                </div>
+            </div>
+        </div>
+
     <!-- Модальное окно — СТЕКЛЯННОЕ -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card" id="modalCard">
@@ -982,26 +1086,17 @@
         let updatePending = false;
         function updateCarousel() {
             if (updatePending) return;
-            // Skip 3D carousel on mobile — cards are in horizontal scroll
-            if (window.innerWidth <= 768) {
-                cards.forEach(card => {
-                    card.style.transform = '';
-                    card.style.opacity = '';
-                    card.style.zIndex = '';
-                });
-                updatePending = false;
-                return;
-            }
             updatePending = true;
             requestAnimationFrame(() => {
                 cards.forEach((card, i) => {
                     const cardAngle = (i * cardAngleStep + angle) * (Math.PI / 180);
-                    const x = Math.sin(cardAngle) * radiusX;
-                    const y = -Math.cos(cardAngle) * radiusZ * 0.3;
-                    const z = Math.cos(cardAngle) * radiusZ;
+                    // Горизонтальное вращение вокруг оси Y — карусель внизу экрана
+                    const x = Math.sin(cardAngle) * radiusX;     // горизонтальное движение
+                    const y = -Math.cos(cardAngle) * radiusZ * 0.3; // минимальный разлёт по вертикали
+                    const z = Math.cos(cardAngle) * radiusZ;      // глубина
                     const scale = 0.7 + (Math.cos(cardAngle) + 1) * 0.15;
                     const opacity = 0.4 + (Math.cos(cardAngle) + 1) * 0.3;
-                    const rotateY = -Math.sin(cardAngle) * 15;
+                    const rotateY = -Math.sin(cardAngle) * 15;   // поворот к центру
                     const rotateX = Math.cos(cardAngle) * 5;
 
                     const tilt = card.style.getPropertyValue('--tilt') || '0deg';
@@ -1043,7 +1138,6 @@
         // Скролл мышью — горизонтальное вращение
         let wheelPending = false;
         window.addEventListener('wheel', (e) => {
-            if (window.innerWidth <= 768) return; // skip on mobile
             if (!wheelPending) {
                 wheelPending = true;
                 requestAnimationFrame(() => {
@@ -1062,7 +1156,6 @@
             touchStartX = e.touches[0].clientX;
         }, { passive: true });
         window.addEventListener('touchmove', (e) => {
-            if (window.innerWidth <= 768) return; // skip on mobile — native scroll works
             if (!touchPending) {
                 touchPending = true;
                 requestAnimationFrame(() => {
@@ -1226,8 +1319,16 @@
             document.body.style.overflow = '';
         }
 
-        // Клик по карточкам
+        // Клик по карточкам (десктоп)
         cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const index = parseInt(card.dataset.modal);
+                openModal(index);
+            });
+        });
+
+        // Клик по мобильным карточкам
+        document.querySelectorAll('.mobile-card').forEach(card => {
             card.addEventListener('click', () => {
                 const index = parseInt(card.dataset.modal);
                 openModal(index);
@@ -1286,30 +1387,10 @@
         updateRadius();
         startAutoRotate();
 
-        // Mobile: clear inline styles so CSS takes over for horizontal scroll
-        if (window.innerWidth <= 768) {
-            cards.forEach(card => {
-                card.style.transform = '';
-                card.style.opacity = '';
-                card.style.zIndex = '';
-            });
-        }
-
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                updateRadius();
-                if (window.innerWidth <= 768) {
-                    cards.forEach(card => {
-                        card.style.transform = '';
-                        card.style.opacity = '';
-                        card.style.zIndex = '';
-                    });
-                } else {
-                    updateCarousel();
-                }
-            }, 150);
+            resizeTimeout = setTimeout(updateRadius, 150);
         });
 
         console.log('✅ Карусель: горизонтальное вращение, внизу, не перекрывает лицо.');
