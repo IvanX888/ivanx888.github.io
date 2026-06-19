@@ -721,9 +721,10 @@
             .photo-area img { object-position: center 40%; }
         }
         @media (max-width: 768px) {
-            body { flex-direction: column; overflow-y: auto; height: auto; }
-            .photo-area { flex: none; height: 55vh; min-height: 280px; position: relative; }
-            .photo-area img { object-position: center 38%; }
+            html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+            body { flex-direction: column; height: auto; }
+            .photo-area { flex: none; height: auto; min-height: 240px; position: relative; overflow: visible; }
+            .photo-area img { object-position: center 38%; height: 45vh; min-height: 220px; object-fit: cover; width: 100%; display: block; }
             /* Карусель на мобильном — горизонтальная прокрутка */
             .floating-blocks { 
                 position: relative; 
