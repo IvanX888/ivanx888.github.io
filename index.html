@@ -2,8 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
     <title>Серко Иван — Семейный юрист онлайн. Консультация 2 000 ₽, документы от 3 000 ₽</title>
+    <!-- v2.1 cache refresh -->
     <meta name="description" content="Частный семейный юрист Серко Иван Иванович. Консультация 2 000 ₽, составление документов 4 000 ₽, проверка 3 000 ₽. Онлайн по всей России. Выезд в Москве — при острой необходимости.">
     <meta name="keywords" content="семейный юрист, алименты, развод, раздел имущества, брачный договор, юрист онлайн, консультация 2000">
 
@@ -746,6 +751,7 @@
         }
     </style>
     <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -1259,29 +1265,34 @@
 
             // Show cookie banner if not decided
             const cookieConsent = getCookie(COOKIE_KEY);
-            if (!cookieConsent) {
+            const cookieBannerEl = document.getElementById('cookieBanner');
+            if (!cookieConsent && cookieBannerEl) {
                 setTimeout(function(){
-                    document.getElementById('cookieBanner').classList.add('visible');
+                    cookieBannerEl.classList.add('visible');
                 }, 1500);
             }
 
-            document.getElementById('cookieAccept').addEventListener('click', function(){
-                setCookie(COOKIE_KEY, 'accepted', 365);
-                document.getElementById('cookieBanner').classList.remove('visible');
-            });
+            const cookieAcceptBtn = document.getElementById('cookieAccept');
+            if (cookieAcceptBtn) {
+                cookieAcceptBtn.addEventListener('click', function(){
+                    setCookie(COOKIE_KEY, 'accepted', 365);
+                    if (cookieBannerEl) cookieBannerEl.classList.remove('visible');
+                });
+            }
 
-            document.getElementById('cookieDecline').addEventListener('click', function(){
-                setCookie(COOKIE_KEY, 'declined', 365);
-                document.getElementById('cookieBanner').classList.remove('visible');
-                // Disable Yandex Metrika if declined
-                if (typeof ym !== 'undefined') {
-                    ym(106860023, 'setUserID', null);
-                }
-            });
+            const cookieDeclineBtn = document.getElementById('cookieDecline');
+            if (cookieDeclineBtn) {
+                cookieDeclineBtn.addEventListener('click', function(){
+                    setCookie(COOKIE_KEY, 'declined', 365);
+                    if (cookieBannerEl) cookieBannerEl.classList.remove('visible');
+                    if (typeof ym !== 'undefined') {
+                        ym(106860023, 'setUserID', null);
+                    }
+                });
+            }
 
             // CONTACT CONSENT MODAL
             function showConsentModal(onAgree) {
-                // Remove existing if any
                 const existing = document.getElementById('consentModal');
                 if (existing) existing.remove();
 
@@ -1312,20 +1323,32 @@
                 document.body.appendChild(modal);
                 document.body.style.overflow = 'hidden';
 
-                modal.querySelector('#consentClose').addEventListener('click', function(){
-                    modal.remove();
-                    document.body.style.overflow = '';
-                });
-                modal.querySelector('#consentCancel').addEventListener('click', function(){
-                    modal.remove();
-                    document.body.style.overflow = '';
-                });
-                modal.querySelector('#consentAgree').addEventListener('click', function(){
-                    setCookie(CONSENT_KEY, 'agreed', 365);
-                    modal.remove();
-                    document.body.style.overflow = '';
-                    if (onAgree) onAgree();
-                });
+                const consentClose = modal.querySelector('#consentClose');
+                if (consentClose) {
+                    consentClose.addEventListener('click', function(){
+                        modal.remove();
+                        document.body.style.overflow = '';
+                    });
+                }
+
+                const consentCancel = modal.querySelector('#consentCancel');
+                if (consentCancel) {
+                    consentCancel.addEventListener('click', function(){
+                        modal.remove();
+                        document.body.style.overflow = '';
+                    });
+                }
+
+                const consentAgree = modal.querySelector('#consentAgree');
+                if (consentAgree) {
+                    consentAgree.addEventListener('click', function(){
+                        setCookie(CONSENT_KEY, 'agreed', 365);
+                        modal.remove();
+                        document.body.style.overflow = '';
+                        if (onAgree) onAgree();
+                    });
+                }
+
                 modal.addEventListener('click', function(e){
                     if (e.target === modal) {
                         modal.remove();
@@ -1343,98 +1366,45 @@
                 }
             }
 
-            // Hook panel buttons
-            const panelBtns = document.querySelectorAll('.panel-btn');
-            panelBtns.forEach(function(btn){
-                const originalHref = btn.getAttribute('href');
-                if (!originalHref) return;
-                const originalOnclick = btn.getAttribute('onclick');
+            function attachConsentHandler(selector, hrefGetter) {
+                const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+                if (!el) return;
 
-                btn.addEventListener('click', function(e){
+                const originalHref = hrefGetter ? hrefGetter(el) : el.getAttribute('href');
+                const originalOnclick = el.getAttribute('onclick');
+
+                el.addEventListener('click', function(e){
                     const consent = getCookie(CONSENT_KEY);
                     if (consent !== 'agreed') {
                         e.preventDefault();
                         e.stopPropagation();
                         checkConsentThen(function(){
                             if (originalOnclick) eval(originalOnclick);
-                            window.open(originalHref, '_blank');
+                            if (originalHref) window.open(originalHref, '_blank');
                         });
                         return false;
                     }
                 });
+            }
+
+            // Hook panel buttons
+            document.querySelectorAll('.panel-btn').forEach(function(btn){
+                attachConsentHandler(btn);
             });
 
             // Hook sticky bar buttons
-            const stickyBtns = document.querySelectorAll('.sticky-btn');
-            stickyBtns.forEach(function(btn){
-                const originalHref = btn.getAttribute('href');
-                if (!originalHref) return;
-
-                btn.addEventListener('click', function(e){
-                    const consent = getCookie(CONSENT_KEY);
-                    if (consent !== 'agreed') {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        checkConsentThen(function(){
-                            window.open(originalHref, '_blank');
-                        });
-                        return false;
-                    }
-                });
+            document.querySelectorAll('.sticky-btn').forEach(function(btn){
+                attachConsentHandler(btn);
             });
 
-            // Hook modal CTA buttons
-            const modalBtn = document.getElementById('modalBtn');
-            if (modalBtn) {
-                const originalHref = modalBtn.getAttribute('href');
-                const originalOnclick = modalBtn.getAttribute('onclick');
+            // Hook modal CTA button
+            attachConsentHandler('#modalBtn');
 
-                modalBtn.addEventListener('click', function(e){
-                    const consent = getCookie(CONSENT_KEY);
-                    if (consent !== 'agreed') {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        checkConsentThen(function(){
-                            if (originalOnclick) eval(originalOnclick);
-                            window.open(originalHref, '_blank');
-                        });
-                        return false;
-                    }
-                });
-            }
-
-            const modalTelegram = document.getElementById('modalTelegram');
-            if (modalTelegram) {
-                const originalTgHref = modalTelegram.getAttribute('href');
-
-                modalTelegram.addEventListener('click', function(e){
-                    const consent = getCookie(CONSENT_KEY);
-                    if (consent !== 'agreed') {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        checkConsentThen(function(){
-                            window.open(originalTgHref, '_blank');
-                        });
-                        return false;
-                    }
-                });
-            }
+            // Hook modal Telegram button
+            attachConsentHandler('#modalTelegram');
 
             // Hook phone link inside modal
-            const modalPhoneLink = document.querySelector('.modal-card a[href^="tel:"]');
-            if (modalPhoneLink) {
-                modalPhoneLink.addEventListener('click', function(e){
-                    const consent = getCookie(CONSENT_KEY);
-                    if (consent !== 'agreed') {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        checkConsentThen(function(){
-                            window.location.href = modalPhoneLink.getAttribute('href');
-                        });
-                        return false;
-                    }
-                });
-            }
+            attachConsentHandler('.modal-card a[href^="tel:"]', function(el){ return el.getAttribute('href'); });
 
         })();
 
