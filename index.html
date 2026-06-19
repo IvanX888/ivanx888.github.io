@@ -981,17 +981,26 @@
         let updatePending = false;
         function updateCarousel() {
             if (updatePending) return;
+            // Skip 3D carousel on mobile — cards are in horizontal scroll
+            if (window.innerWidth <= 768) {
+                cards.forEach(card => {
+                    card.style.transform = '';
+                    card.style.opacity = '';
+                    card.style.zIndex = '';
+                });
+                updatePending = false;
+                return;
+            }
             updatePending = true;
             requestAnimationFrame(() => {
                 cards.forEach((card, i) => {
                     const cardAngle = (i * cardAngleStep + angle) * (Math.PI / 180);
-                    // Горизонтальное вращение вокруг оси Y — карусель внизу экрана
-                    const x = Math.sin(cardAngle) * radiusX;     // горизонтальное движение
-                    const y = -Math.cos(cardAngle) * radiusZ * 0.3; // минимальный разлёт по вертикали
-                    const z = Math.cos(cardAngle) * radiusZ;      // глубина
+                    const x = Math.sin(cardAngle) * radiusX;
+                    const y = -Math.cos(cardAngle) * radiusZ * 0.3;
+                    const z = Math.cos(cardAngle) * radiusZ;
                     const scale = 0.7 + (Math.cos(cardAngle) + 1) * 0.15;
                     const opacity = 0.4 + (Math.cos(cardAngle) + 1) * 0.3;
-                    const rotateY = -Math.sin(cardAngle) * 15;   // поворот к центру
+                    const rotateY = -Math.sin(cardAngle) * 15;
                     const rotateX = Math.cos(cardAngle) * 5;
 
                     const tilt = card.style.getPropertyValue('--tilt') || '0deg';
@@ -1033,6 +1042,7 @@
         // Скролл мышью — горизонтальное вращение
         let wheelPending = false;
         window.addEventListener('wheel', (e) => {
+            if (window.innerWidth <= 768) return; // skip on mobile
             if (!wheelPending) {
                 wheelPending = true;
                 requestAnimationFrame(() => {
@@ -1051,6 +1061,7 @@
             touchStartX = e.touches[0].clientX;
         }, { passive: true });
         window.addEventListener('touchmove', (e) => {
+            if (window.innerWidth <= 768) return; // skip on mobile — native scroll works
             if (!touchPending) {
                 touchPending = true;
                 requestAnimationFrame(() => {
@@ -1274,10 +1285,30 @@
         updateRadius();
         startAutoRotate();
 
+        // Mobile: clear inline styles so CSS takes over for horizontal scroll
+        if (window.innerWidth <= 768) {
+            cards.forEach(card => {
+                card.style.transform = '';
+                card.style.opacity = '';
+                card.style.zIndex = '';
+            });
+        }
+
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(updateRadius, 150);
+            resizeTimeout = setTimeout(() => {
+                updateRadius();
+                if (window.innerWidth <= 768) {
+                    cards.forEach(card => {
+                        card.style.transform = '';
+                        card.style.opacity = '';
+                        card.style.zIndex = '';
+                    });
+                } else {
+                    updateCarousel();
+                }
+            }, 150);
         });
 
         console.log('✅ Карусель: горизонтальное вращение, внизу, не перекрывает лицо.');
