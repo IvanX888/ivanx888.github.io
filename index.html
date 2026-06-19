@@ -2,14 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Юридические консультации онлайн. Недвижимость, семейные споры, налоги, административное право, услуги для бизнеса. Решаю вопросы профессионально удаленно по всей России.">
-    <title>Серко — Юридическая помощь онлайн. Решаю вопросы</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z' fill='%23d4af37' stroke='%23b8860b' stroke-width='2'/%3E%3Cpath d='M50 25 L50 65 M35 40 L50 55 L65 40' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серко Иван — Семейный юрист онлайн. Консультация 2 000 ₽, документы от 3 000 ₽</title>
+    <meta name="description" content="Частный семейный юрист Серко Иван Иванович. Консультация 2 000 ₽, составление документов 4 000 ₽, проверка 3 000 ₽. Онлайн по всей России. Выезд в Москве — при острой необходимости.">
+    <meta name="keywords" content="семейный юрист, алименты, развод, раздел имущества, брачный договор, юрист онлайн, консультация 2000">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -19,1392 +15,1617 @@
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
-        ym(106860023, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true, ecommerce: "dataLayer" });
+        ym(106860023, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/106860023" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
 
     <style>
-        :root {
-            --wood-dark: #1a120b;
-            --wood-medium: #2c1810;
-            --piano-black: #0a0a0a;
-            --gold: #d4af37;
-            --gold-light: #f4d03f;
-            --gold-dark: #b8860b;
-            --text-primary: #f5f5f5;
-            --text-secondary: #c9b896;
-            --text-muted: #8b7355;
-            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.8);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --success: #4ade80;
-            --error: #f87171;
-            --danger: #ef4444;
-            --danger-bg: rgba(239,68,68,0.1);
-            --success-bg: rgba(34,197,94,0.08);
-            --border: rgba(212,175,55,0.25);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #fff; background: #0d0d0d; overflow: hidden; }
+        body { display: flex; }
+
+        .photo-area { flex: 1; height: 100vh; position: relative; overflow: hidden; background: #1a120b; }
+        .photo-area img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
+
+        /* ════════════════════════════════════════════
+           КАРУСЕЛЬ — СЛЕВА, НЕ ПЕРЕКРЫВАЕТ ЛИЦО
+        ════════════════════════════════════════════ */
+        .floating-blocks { 
+            position: absolute; 
+            top: 48%; 
+            left: 0; 
+            width: 100%; 
+            height: 42%; 
+            z-index: 5; 
+            pointer-events: none; 
+            perspective: 1200px; 
+            perspective-origin: 50% 50%; 
+            overflow: visible; 
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
-        body {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--piano-black);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-width: 320px;
+        .float-carousel { 
+            position: absolute; 
+            top: 40%;
+            left: 50%;
+            transform-style: preserve-3d; 
+            transform: translate(-50%, -50%); 
+            width: 0; 
+            height: 0; 
         }
-        @media (max-width: 640px) {
-            .hero { padding-top: 80px; }
-            .hero-card { margin: 0 12px; }
-            .hero-photo-large img { max-height: 220px; }
-            .service-card { padding: 20px 16px; }
-            .section-title { font-size: 28px; }
-            .pricing-card { padding: 24px 16px; }
-            .hot-news-module { margin: 0 12px; }
-            .hot-news-content { padding: 16px; }
-            .modal-body { padding: 16px; }
-            .scenario-step { flex-direction: column; gap: 8px; }
-            .step-num { width: 28px; height: 28px; font-size: 12px; }
-            .btn-phone-number .phone-num { font-size: 11px; }
+
+        .float-card { 
+            position: absolute; 
+            width: 220px; 
+            padding: 16px 18px 36px 18px; 
+            background: rgba(255, 255, 255, 0.04); 
+            backdrop-filter: blur(12px) saturate(1.2); 
+            -webkit-backdrop-filter: blur(12px) saturate(1.2); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 18px; 
+            pointer-events: auto; 
+            transform-style: preserve-3d; 
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
+            cursor: pointer; 
+            user-select: none; 
+            will-change: transform, opacity;
+            overflow: hidden;
         }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-        }
-        a, .service-topic, .show-more-btn, .faq-question, .contact-method, .footer-links a, .mobile-nav a, .nav-link, .btn, .logo {
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a)::after,
-        .service-topic::after,
-        .show-more-btn::after,
-        .faq-question::after,
-        .contact-method::after,
-        .footer-links a::after,
-        .mobile-nav a::after,
-        .nav-link::after {
+        .float-card::before {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-            box-shadow: 0 0 8px rgba(212,175,55,0.4);
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 40%,
+                rgba(255, 215, 100, 0.03) 45%,
+                rgba(255, 215, 100, 0.08) 50%,
+                rgba(255, 215, 100, 0.03) 55%,
+                transparent 60%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            pointer-events: none;
         }
-        a:not(.btn):not(.logo):not(.contact-method):not(.nav-link):not(.mobile-nav a):not(.footer-links a):hover::after,
-        .service-topic:hover::after,
-        .show-more-btn:hover::after,
-        .faq-question:hover::after,
-        .contact-method:hover::after,
-        .footer-links a:hover::after,
-        .mobile-nav a:hover::after,
-        .nav-link:hover::after {
-            width: 100%;
+        .float-card:hover::before {
+            transform: translateX(100%);
         }
-        a:hover, .service-topic:hover, .show-more-btn:hover, .faq-question:hover, .contact-method:hover, .footer-links a:hover, .mobile-nav a:hover, .nav-link:hover {
-            color: var(--gold);
+        .float-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, transparent 30%, transparent 70%, rgba(255,215,100,0.2) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.6;
         }
-        .wood-bg { 
-            background: linear-gradient(135deg, rgba(26,18,11,0.95) 0%, rgba(44,24,16,0.9) 50%, rgba(26,18,11,0.95) 100%); 
-            position: relative; 
+        .float-card:hover { 
+            background: rgba(255, 255, 255, 0.10); 
+            border-color: rgba(255, 215, 100, 0.8); 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,100,0.2); 
+            z-index: 200; 
+            transform: translate(var(--tx, 0), var(--ty, 0)) translateZ(var(--tz, 0)) scale(var(--sc, 1)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) rotateZ(var(--tilt, 0deg)) translateY(-8px);
         }
-        .wood-bg::before { 
+        .float-card:hover::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,215,100,0) 30%, rgba(255,215,100,0.4) 50%, rgba(255,215,100,0) 70%);
+            background-size: 200% 200%;
+            animation: shineSweep 1.2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        @keyframes shineSweep {
+            0% { background-position: 200% 200%; }
+            100% { background-position: -200% -200%; }
+        }
+        .float-card::before { 
             content: ''; 
             position: absolute; 
-            inset: 0; 
-            background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"); 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            height: 50%; 
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%); 
+            border-radius: 18px 18px 0 0; 
             pointer-events: none; 
         }
-        .piano-black { 
-            background: linear-gradient(180deg, var(--piano-black) 0%, #151515 50%, var(--piano-black) 100%); 
+        .float-card h4 { 
+            font-size: 0.95em; 
+            font-weight: 600; 
+            color: rgba(255, 255, 255, 0.95); 
+            margin-bottom: 8px; 
+            position: relative; 
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5); 
+        }
+        .float-card p { 
+            font-size: 0.78em; 
+            color: rgba(255, 255, 255, 0.8); 
+            line-height: 1.5; 
+            position: relative; 
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4); 
+        }
+        .float-card .price { 
+            font-size: 0.88em; 
+            font-weight: 600; 
+            color: rgba(255, 215, 100, 0.95); 
+            margin-top: 10px; 
+            position: relative; 
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4); 
+        }
+        .float-card .tag { 
+            display: inline-block; 
+            font-size: 0.65em; 
+            color: rgba(255, 255, 255, 0.55); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 3px 10px; 
+            border-radius: 12px; 
+            margin-top: 8px; 
+            background: rgba(255,255,255,0.05); 
             position: relative; 
         }
-        .header { 
-            position: fixed; top: 0; left: 0; right: 0; 
-            background: rgba(10,10,10,0.98); 
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid rgba(212,175,55,0.2); 
-            z-index: 1000; 
-            transition: var(--transition); 
-        }
-        @supports not (backdrop-filter: blur(10px)) {
-            .header { background: rgba(10,10,10,0.99); }
-            .modal-overlay { background: rgba(0,0,0,0.98); }
-        }
-        @supports (-webkit-backdrop-filter: blur(10px)) {
-            .header { -webkit-backdrop-filter: blur(20px); }
-            .modal-overlay { -webkit-backdrop-filter: blur(12px); }
-        }
-        .header-content { max-width: 1400px; margin: 0 auto; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; min-height: 60px; }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 1002; cursor: pointer; }
-        .logo-emblem { width: 40px; height: 40px; flex-shrink: 0; }
-        .logo-text { display: flex; flex-direction: column; }
-        .logo-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(16px, 4vw, 20px); font-weight: 600; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; }
-        .logo-title .small { color: var(--text-secondary); font-weight: 400; font-size: clamp(9px, 2.5vw, 10px); letter-spacing: 2px; text-transform: lowercase; display: block; }
-        .nav-desktop { display: none; }
-        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); padding: 8px 0; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; transition: var(--transition); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif; border-radius: 4px; min-height: 48px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); color: var(--piano-black); white-space: nowrap; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
-        .btn-outline { background: transparent; color: var(--gold); }
-        .btn-outline:hover { background: var(--gold); color: var(--piano-black); }
-        .btn-phone-number {
-            display: inline-flex;
-            flex-direction: column;
+        .float-card .card-arrow {
+            position: absolute;
+            bottom: 10px;
+            right: 14px;
+            font-size: 0.72em;
+            color: rgba(255, 215, 100, 0.7);
+            display: flex;
             align-items: center;
-            line-height: 1.2;
-            padding: 10px 20px;
+            gap: 4px;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
-        .btn-phone-number .phone-label {
-            font-size: 10px;
-            opacity: 0.9;
-            letter-spacing: 1px;
+        .float-card:hover .card-arrow {
+            color: rgba(255, 215, 100, 1);
+            transform: translateX(3px);
+            text-shadow: 0 0 10px rgba(255, 215, 100, 0.5);
         }
-        .btn-phone-number .phone-num {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        @media (max-width: 1024px) {
-            .btn-phone-number .phone-num { font-size: 12px; }
-            .btn-phone-number { padding: 8px 16px; }
-        }
-        .nav-mobile-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 20px; cursor: pointer; color: var(--gold); z-index: 1002; }
-        .hero { min-height: 100vh; padding: 100px 16px 40px; display: flex; flex-direction: column; gap: 32px; position: relative; }
-        .hero-content { text-align: center; position: relative; z-index: 2; }
-        .hero-content h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 6vw, 32px); line-height: 1.2; font-weight: 400; margin-bottom: 20px; }
-        .hero-content h1 strong { color: var(--gold); font-weight: 600; display: block; margin-top: 8px; font-size: clamp(28px, 7vw, 36px); }
-        .hero-subtitle { font-size: clamp(14px, 4vw, 16px); color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
-        
-        .online-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(212,175,55,0.1);
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-        .online-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .float-card .urgent-tag { 
+            display: inline-block; 
+            font-size: 0.65em; 
+            color: rgba(255, 120, 120, 0.95); 
+            border: 1px solid rgba(255, 120, 120, 0.35); 
+            padding: 3px 10px; 
+            border-radius: 12px; 
+            margin-top: 8px; 
+            background: rgba(255,80,80,0.08); 
+            position: relative; 
         }
 
-        /* ===== HOT NEWS MODULE ===== */
-        .hot-news-module {
-            background: linear-gradient(145deg, rgba(28,28,28,0.95) 0%, rgba(10,10,10,0.98) 100%);
-            border: 2px solid rgba(212,175,55,0.6);
-            border-radius: 24px;
-            margin: 0 auto 24px;
-            max-width: 650px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.2) inset;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Кнопки управления каруселью */
+
+
+                /* ════════════════════════════════════════════
+           МОДАЛЬНОЕ ОКНО — СТЕКЛЯННОЕ, КАК КАРТОЧКИ
+        ════════════════════════════════════════════ */
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.25); 
+            backdrop-filter: blur(20px) saturate(1.2); 
+            -webkit-backdrop-filter: blur(20px) saturate(1.2); 
+            z-index: 1000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.4s ease, visibility 0.4s ease; 
         }
-        .hot-news-module:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.4) inset;
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-card { 
+            width: 480px; 
+            max-width: 92vw; 
+            max-height: 88vh; 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(14px) saturate(1.3); 
+            -webkit-backdrop-filter: blur(14px) saturate(1.3); 
+            border: 1px solid rgba(255, 255, 255, 0.18); 
+            border-radius: 24px; 
+            padding: 36px 38px; 
+            position: relative; 
+            transform: scale(0.88) translateY(50px); 
+            opacity: 0; 
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; 
+            box-shadow: 
+                0 30px 80px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.06); 
+            overflow-y: auto; 
+            overflow-x: hidden;
         }
-        .hot-news-content {
-            padding: 28px 30px;
-            position: relative;
-            z-index: 2;
-        }
-        .hot-news-module::before {
+        .modal-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border-radius: 24px 24px 0 0;
+            pointer-events: none;
+            z-index: 0;
         }
-        .hot-news-title {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 16px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
-            letter-spacing: 0.5px;
+        .modal-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(
+                135deg,
+                rgba(255,215,100,0.35) 0%,
+                rgba(255,215,100,0.08) 30%,
+                transparent 50%,
+                rgba(255,215,100,0.08) 70%,
+                rgba(255,215,100,0.35) 100%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
         }
-        .hot-news-text {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            white-space: pre-line;
+        .modal-overlay.active .modal-card { 
+            transform: scale(1) translateY(0); 
+            opacity: 1; 
         }
-        .hot-news-text strong {
-            color: var(--gold-light);
+        .modal-card > * { position: relative; z-index: 2; }
+
+        .modal-close { 
+            position: absolute; 
+            top: 16px; right: 16px; 
+            width: 40px; height: 40px; 
+            border: 1.5px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.06); 
+            color: rgba(255, 255, 255, 0.8); 
+            font-size: 1.2em; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: all 0.3s ease; 
+            backdrop-filter: blur(8px);
+            z-index: 10;
         }
-        .hot-news-date {
-            font-size: 12px;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 12px;
-            display: inline-block;
-            border-top: 1px dashed rgba(212,175,55,0.4);
-            padding-top: 10px;
+        .modal-close:hover { 
+            background: rgba(255, 100, 100, 0.3); 
+            border-color: rgba(255, 100, 100, 0.5); 
+            color: #fff; 
+            transform: rotate(90deg) scale(1.1); 
         }
-        .hot-news-image {
-            width: 100%;
-            max-height: 180px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(212,175,55,0.3);
+        .modal-icon { 
+            font-size: 3em; 
+            margin-bottom: 8px; 
+            display: block; 
+            text-align: center; 
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.7)); 
         }
-        @media (max-width: 640px) {
-            .hot-news-content {
-                padding: 20px 18px;
+        .modal-tag { 
+            display: table;
+            font-size: 0.75em; 
+            color: rgba(255, 215, 100, 0.85); 
+            border: 1px solid rgba(255, 215, 100, 0.3); 
+            padding: 5px 16px; 
+            border-radius: 16px; 
+            background: rgba(255,215,100,0.06); 
+            margin: 0 auto 14px; 
+            backdrop-filter: blur(4px); 
+        }
+        .modal-card h3 { 
+            font-size: 1.4em; 
+            font-weight: 500; 
+            letter-spacing: 2px; 
+            color: rgba(255, 255, 255, 0.95); 
+            text-align: center; 
+            margin-bottom: 12px; 
+            text-shadow: 0 2px 12px rgba(0,0,0,0.7); 
+        }
+        .modal-divider { 
+            width: 70px; 
+            height: 2px; 
+            background: linear-gradient(90deg, transparent, rgba(255,215,100,0.5), transparent); 
+            margin: 0 auto 20px; 
+            box-shadow: 0 0 10px rgba(255,215,100,0.2);
+        }
+        .modal-desc { 
+            font-size: 0.92em; 
+            color: rgba(255, 255, 255, 0.9); 
+            line-height: 1.7; 
+            margin-bottom: 18px; 
+            text-align: center; 
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5); 
+        }
+        .modal-features { 
+            list-style: none; 
+            margin-bottom: 20px; 
+            padding: 0;
+        }
+        .modal-features li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            font-size: 0.88em; 
+            color: rgba(255, 255, 255, 0.85); 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4); 
+        }
+        .modal-features li::before { 
+            content: '✓'; 
+            color: rgba(255, 215, 100, 0.95); 
+            font-weight: bold; 
+            font-size: 1.3em; 
+            text-shadow: 0 0 12px rgba(255, 215, 100, 0.5); 
+            flex-shrink: 0;
+        }
+        .modal-features li:last-child { 
+            border-bottom: none; 
+        }
+        .modal-price-row { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 18px 22px; 
+            background: rgba(255, 255, 255, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.12); 
+            border-radius: 18px; 
+            margin-bottom: 20px; 
+            backdrop-filter: blur(4px); 
+        }
+        .modal-price-label { 
+            font-size: 0.85em; 
+            color: rgba(255, 255, 255, 0.6); 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4); 
+        }
+        .modal-price-value { 
+            font-size: 1.4em; 
+            font-weight: 700; 
+            color: rgba(255, 215, 100, 0.95); 
+            text-shadow: 0 0 20px rgba(255, 215, 100, 0.4); 
+        }
+        .modal-btn { 
+            width: 100%; 
+            padding: 18px; 
+            background: rgba(255, 255, 255, 0.04); 
+            border: 1.5px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 16px; 
+            color: rgba(255, 255, 255, 0.95); 
+            font-size: 0.95em; 
+            font-weight: 600; 
+            letter-spacing: 0.5px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            text-align: center; 
+            text-decoration: none; 
+            display: block; 
+            backdrop-filter: blur(4px); 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4); 
+            position: relative;
+            overflow: hidden;
+        }
+        .modal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            transition: left 0.6s ease;
+        }
+        .modal-btn:hover::before {
+            left: 100%;
+        }
+        .modal-btn:hover { 
+            background: rgba(255, 255, 255, 0.10); 
+            border-color: rgba(255, 255, 255, 0.3); 
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3); 
+            transform: translateY(-2px); 
+            color: #fff; 
+        }
+        .modal-btn-primary { 
+            background: linear-gradient(135deg, rgba(160,120,60,0.20) 0%, rgba(220,180,90,0.12) 100%); 
+            border-color: rgba(220, 180, 90, 0.35); 
+            color: rgba(255, 240, 180, 1); 
+        }
+        .modal-btn-primary:hover { 
+            background: linear-gradient(135deg, rgba(180,140,70,0.35) 0%, rgba(240,200,100,0.22) 100%); 
+            border-color: rgba(240, 200, 100, 0.5); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 30px rgba(240, 200, 100, 0.1); 
+        }
+        .modal-btn-telegram {
+            background: rgba(0, 136, 204, 0.12) !important;
+            border-color: rgba(0, 136, 204, 0.35) !important;
+            color: rgba(100, 200, 255, 0.95) !important;
+        }
+        .modal-btn-telegram:hover {
+            background: rgba(0, 136, 204, 0.3) !important;
+            border-color: rgba(0, 136, 204, 0.6) !important;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(0, 136, 204, 0.15) !important;
+            transform: translateY(-2px);
+        }
+        .modal-urgency { 
+            font-size: 0.88em; 
+            color: rgba(255, 160, 160, 0.95); 
+            text-align: center; 
+            margin-bottom: 18px; 
+            padding: 16px; 
+            background: rgba(255, 60, 60, 0.06); 
+            border: 1px solid rgba(255, 100, 100, 0.25); 
+            border-radius: 16px; 
+            line-height: 1.5;
+            backdrop-filter: blur(4px);
+        }
+        .modal-contacts {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.86em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .modal-contacts a {
+            color: rgba(255,215,100,0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .modal-contacts a:hover {
+            color: rgba(255,215,100,1);
+            text-shadow: 0 0 12px rgba(255,215,100,0.4);
+        }
+        .modal-sep {
+            color: rgba(255,255,255,0.3);
+        }
+
+/* ════════════════════════════════════════════
+           ПАНЕЛЬ (без изменений, только улучшения)
+        ════════════════════════════════════════════ */
+        .panel { 
+            width: 380px; 
+            min-width: 380px; 
+            height: 100vh; 
+            background: rgba(60, 38, 22, 0.6); 
+            backdrop-filter: blur(20px) saturate(1.1); 
+            -webkit-backdrop-filter: blur(20px) saturate(1.1); 
+            border-left: 1px solid rgba(200, 160, 100, 0.2); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            align-items: center; 
+            padding: 100px 25px 30px 25px; 
+            gap: 14px; 
+            overflow-y: auto; 
+            position: relative; 
+            z-index: 10; 
+        }
+        .panel::after { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            height: 120px; 
+            background: linear-gradient(180deg, rgba(220, 180, 120, 0.1) 0%, transparent 100%); 
+            pointer-events: none; 
+            z-index: 0; 
+        }
+        .panel > * { position: relative; z-index: 1; }
+        .panel-header { 
+            text-align: center; 
+            margin-bottom: 8px; 
+            padding: 24px 20px; 
+            background: rgba(80, 55, 35, 0.35); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            border: 1px solid rgba(200, 160, 100, 0.25); 
+            border-radius: 20px; 
+            width: 100%; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); 
+        }
+        .panel-header h2 { 
+            font-size: 1.4em; 
+            font-weight: 300; 
+            letter-spacing: 4px; 
+            color: rgba(255,240,220,0.95); 
+            margin-bottom: 8px; 
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6); 
+        }
+        .panel-header p { 
+            font-size: 0.82em; 
+            color: rgba(220, 195, 170, 0.8); 
+            line-height: 1.6; 
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5); 
+        }
+        .panel-header .price-highlight { 
+            font-size: 1.2em; 
+            color: rgba(255, 215, 100, 0.95); 
+            font-weight: 700; 
+            margin-top: 10px; 
+            display: block; 
+            text-shadow: 0 0 12px rgba(255, 215, 100, 0.4); 
+        }
+        .panel-divider { 
+            width: 60%; 
+            height: 1px; 
+            background: linear-gradient(90deg, transparent, rgba(200, 160, 100, 0.35), transparent); 
+            margin: 6px 0; 
+        }
+        .panel-btn { 
+            width: 100%; 
+            padding: 18px 20px; 
+            background: rgba(80, 55, 35, 0.25); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+            border: 1px solid rgba(200, 160, 100, 0.22); 
+            border-radius: 16px; 
+            color: rgba(255, 245, 230, 0.95); 
+            text-decoration: none; 
+            font-size: 0.95em; 
+            font-weight: 600; 
+            text-align: center; 
+            transition: all 0.4s ease; 
+            cursor: pointer; 
+            letter-spacing: 0.5px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            flex-shrink: 0; 
+            transform-style: preserve-3d; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+        }
+        .panel-btn:hover { 
+            background: rgba(100, 70, 45, 0.4); 
+            border-color: rgba(220, 180, 110, 0.45); 
+            transform: translateX(-6px) translateZ(20px) scale(1.04); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(220, 180, 110, 0.1); 
+            color: #fff; 
+        }
+        .panel-btn.primary { 
+            background: linear-gradient(135deg, rgba(160,120,60,0.3) 0%, rgba(220,180,90,0.2) 100%); 
+            border-color: rgba(220, 180, 90, 0.45); 
+            color: rgba(255, 240, 180, 1); 
+        }
+        .panel-btn.primary:hover { 
+            background: linear-gradient(135deg, rgba(180,140,70,0.45) 0%, rgba(240,200,100,0.3) 100%); 
+            border-color: rgba(240, 200, 100, 0.6); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(240, 200, 100, 0.15); 
+        }
+        .panel-btn.whatsapp { 
+            background: rgba(37, 211, 102, 0.12); 
+            border-color: rgba(37, 211, 102, 0.3); 
+            color: rgba(37, 211, 102, 0.95); 
+        }
+        .panel-btn.whatsapp:hover { 
+            background: rgba(37, 211, 102, 0.3); 
+            border-color: rgba(37, 211, 102, 0.6); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(37, 211, 102, 0.15); 
+        }
+        .panel-btn.max { 
+            background: rgba(155, 89, 182, 0.12); 
+            border-color: rgba(155, 89, 182, 0.3); 
+            color: rgba(200, 160, 255, 0.95); 
+        }
+        .panel-btn.max:hover { 
+            background: rgba(155, 89, 182, 0.3); 
+            border-color: rgba(155, 89, 182, 0.6); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(155, 89, 182, 0.15); 
+        }
+        .panel-info-block { 
+            width: 100%; 
+            padding: 18px 20px; 
+            background: rgba(80, 55, 35, 0.25); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            border: 1px solid rgba(200, 160, 100, 0.18); 
+            border-radius: 16px; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .panel-info-block:hover { 
+            background: rgba(100, 70, 45, 0.35); 
+            border-color: rgba(220, 180, 110, 0.35); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); 
+        }
+        .panel-info-block p { 
+            font-size: 0.78em; 
+            color: rgba(220, 195, 170, 0.75); 
+            line-height: 1.6; 
+        }
+        .panel-info-block .stars { 
+            color: rgba(255, 215, 100, 0.95); 
+            font-size: 1.15em; 
+            margin-bottom: 6px; 
+            text-shadow: 0 0 10px rgba(255, 215, 100, 0.3); 
+        }
+        .panel-info-block .stat { 
+            font-size: 1.4em; 
+            font-weight: 700; 
+            color: rgba(255, 240, 220, 0.95); 
+            margin-bottom: 4px; 
+            text-shadow: 0 0 15px rgba(255, 215, 100, 0.2);
+        }
+        .panel-footer-bar { 
+            width: 100%; 
+            margin-top: auto; 
+            padding-top: 18px; 
+            border-top: 1px solid rgba(200, 160, 100, 0.15); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 8px; 
+            font-size: 0.78em; 
+            color: rgba(200, 175, 150, 0.6); 
+        }
+        .panel-footer-bar a { 
+            color: rgba(200, 175, 150, 0.6); 
+            text-decoration: none; 
+            transition: color 0.2s; 
+        }
+        .panel-footer-bar a:hover { 
+            color: rgba(255, 215, 100, 0.9); 
+        }
+
+        .particle { 
+            position: fixed; 
+            width: 2px; 
+            height: 2px; 
+            background: rgba(255, 215, 100, 0.15); 
+            border-radius: 50%; 
+            pointer-events: none; 
+            z-index: 100; 
+            animation: floatUp linear infinite; 
+        }
+        @keyframes floatUp { 
+            0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; } 
+            10% { opacity: 0.5; } 
+            90% { opacity: 0.5; } 
+            100% { transform: translateY(-20vh) translateX(30px) scale(1); opacity: 0; } 
+        }
+
+        /* Адаптив */
+        @media (max-width: 1100px) {
+            .floating-blocks { width: 50%; }
+            .float-card { width: 210px; padding: 16px 18px; }
+            .float-card h4 { font-size: 0.88em; }
+            .float-card p { font-size: 0.74em; }
+            .float-carousel { left: 15%; }
+            .carousel-controls { left: 5%; }
+        }
+        @media (max-width: 900px) {
+            .panel { width: 340px; min-width: 340px; padding: 25px 20px; }
+            .floating-blocks { width: 45%; }
+            .float-card { width: 180px; padding: 14px 16px; }
+            .float-card h4 { font-size: 0.82em; }
+            .float-card p { font-size: 0.7em; }
+            .float-carousel { left: 10%; }
+            .carousel-controls { left: 2%; }
+            .panel-btn { padding: 16px 18px; font-size: 0.9em; }
+            .photo-area img { object-position: center 40%; }
+        }
+        @media (max-width: 768px) {
+            body { flex-direction: column; overflow-y: auto; height: auto; }
+            .photo-area { flex: none; height: 55vh; min-height: 280px; }
+            .photo-area img { object-position: center 38%; }
+            .floating-blocks { display: none; }
+            .carousel-controls { display: none; }
+            .panel { 
+                width: 100%; 
+                min-width: auto; 
+                height: auto; 
+                min-height: auto; 
+                border-left: none; 
+                border-top: 1px solid rgba(200, 160, 100, 0.15); 
+                padding: 25px 20px; 
+                gap: 12px; 
+                background: rgba(50, 32, 18, 0.75); 
             }
-            .hot-news-title {
-                font-size: 20px;
-            }
-            .hot-news-text {
-                font-size: 13px;
+            .panel-header { width: 100%; }
+            .panel-header h2 { font-size: 1.2em; }
+            .panel-divider { width: 40%; }
+            .panel-btn { flex: 1 1 140px; max-width: 200px; padding: 14px 16px; font-size: 0.88em; }
+            .panel-footer-bar { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 15px; padding-top: 15px; }
+            .modal-card { width: 92vw; padding: 20px 18px; }
+        }
+        @media (max-width: 500px) {
+            .photo-area { height: 50vh; min-height: 240px; }
+            .panel-btn { flex: 1 1 100%; max-width: none; }
+            .panel-footer-bar { flex-direction: column; gap: 5px; }
+        }
+    </style>
+    <base target="_blank">
+</head>
+<body>
+
+    <!-- Частицы (золотые) -->
+    <div class="particle" style="left: 8%;  animation-duration: 22s; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 18%; animation-duration: 26s; animation-delay: 3s; width: 3px; height: 3px;"></div>
+    <div class="particle" style="left: 28%; animation-duration: 20s; animation-delay: 7s;"></div>
+    <div class="particle" style="left: 38%; animation-duration: 24s; animation-delay: 1s; width: 3px; height: 3px;"></div>
+    <div class="particle" style="left: 48%; animation-duration: 18s; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 58%; animation-duration: 21s; animation-delay: 9s; width: 2px; height: 2px;"></div>
+    <div class="particle" style="left: 68%; animation-duration: 23s; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 78%; animation-duration: 19s; animation-delay: 6s; width: 3px; height: 3px;"></div>
+    <div class="particle" style="left: 88%; animation-duration: 25s; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 95%; animation-duration: 17s; animation-delay: 8s; width: 2px; height: 2px;"></div>
+
+    <!-- Основная зона -->
+    <div class="photo-area" id="photoArea">
+        <img src="my-photo.jpg" alt="Иван Серко — семейный юрист" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg, #1f140e 0%, #0a0705 100%)';">
+
+        <div class="floating-blocks" id="floatBlocks">
+            <div class="float-carousel" id="floatCarousel">
+                <div class="float-card" data-modal="0" style="--tilt:-3deg;" id="alimony">
+                    <h4>👨‍👩‍👧 Алименты</h4>
+                    <p>25% на 1 ребёнка, 33% на 2-х, 50% на 3-х. Присуждаются с момента подачи иска. Не знаете с чего начать?</p>
+                    <div class="price">Консультация 2 000 ₽</div>
+                    <span class="tag">Семейное право</span>
+                    <div class="card-arrow">↗ Разберём ваш случай</div>
+                </div>
+
+                <div class="float-card" data-modal="1" style="--tilt:2deg;" id="divorce">
+                    <h4>💔 Развод</h4>
+                    <p>Без детей — через ЗАГС за 1 месяц. С детьми — только через суд. По умолчанию 50/50, но суд учитывает вклад каждого.</p>
+                    <div class="price">Консультация 2 000 ₽</div>
+                    <span class="tag">Семейное право</span>
+                    <div class="card-arrow">↗ Подготовим документы</div>
+                </div>
+
+                <div class="float-card" data-modal="2" style="--tilt:-1deg;" id="property">
+                    <h4>🏠 Раздел имущества</h4>
+                    <p>Квартира в ипотеке, машина, вклады — всё делится с учётом вклада каждого. Кредиты тоже распределяются.</p>
+                    <div class="price">Консультация 2 000 ₽</div>
+                    <span class="tag">Семейное право</span>
+                    <div class="card-arrow">↗ Защитим ваши интересы</div>
+                </div>
+
+                <div class="float-card" data-modal="3" style="--tilt:3deg;" id="prenup">
+                    <h4>📋 Брачный договор</h4>
+                    <p>Можно заключить до брака и во время. Защищает недвижимость, бизнес, инвестиции. Стоимость от 4 000 ₽.</p>
+                    <div class="price">От 4 000 ₽</div>
+                    <span class="tag">Документ</span>
+                    <div class="card-arrow">↗ Составим под вас</div>
+                </div>
+
+                <div class="float-card" data-modal="4" style="--tilt:-2deg;" id="documents">
+                    <h4>📝 Составление документов</h4>
+                    <p>Иски, жалобы, заявления, договоры. Одна ошибка = отказ в суде. Грамотно оформлю под вашу ситуацию.</p>
+                    <div class="price">4 000 ₽ за документ</div>
+                    <span class="tag">Услуга</span>
+                    <div class="card-arrow">↗ Заказать составление</div>
+                </div>
+
+                <div class="float-card" data-modal="5" style="--tilt:1deg;" id="review">
+                    <h4>🔍 Проверка документов</h4>
+                    <p>Проверю до подачи: логика, формулировки, ссылки на законы. Консультация + проверка = 5 000 ₽.</p>
+                    <div class="price">3 000 ₽ за проверку</div>
+                    <span class="tag">Услуга</span>
+                    <div class="card-arrow">↗ Проверить документ</div>
+                </div>
+
+                <div class="float-card" data-modal="6" style="--tilt:-4deg;" id="consult">
+                    <h4>📞 Онлайн-консультация</h4>
+                    <p>Zoom, Telegram, MAX, телефон. 30–60 минут. Запись предоставлю. Работаю со всеми регионами России.</p>
+                    <div class="price">2 000 ₽ / 30–60 мин</div>
+                    <span class="tag">Формат</span>
+                    <div class="card-arrow">↗ Записаться</div>
+                </div>
+
+                <div class="float-card" data-modal="7" style="--tilt:2deg;" id="urgent">
+                    <h4>🚨 Выезд к клиенту</h4>
+                    <p>Только при острой необходимости. По всей России. Стоимость высокая — обсуждаем индивидуально.</p>
+                    <div class="price">По договорённости</div>
+                    <span class="urgent-tag">Россия</span>
+                    <div class="card-arrow">↗ Обсудить выезд</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Модальное окно — СТЕКЛЯННОЕ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card" id="modalCard">
+            <button class="modal-close" id="modalClose" aria-label="Закрыть модальное окно">✕</button>
+            <span class="modal-icon" id="modalIcon">👨‍👩‍👧</span>
+            <span class="modal-tag" id="modalTag">Семейное право</span>
+            <h3 id="modalTitle">Алименты</h3>
+            <div class="modal-divider"></div>
+            <p class="modal-desc" id="modalDesc">Описание услуги</p>
+            <div class="modal-urgency" id="modalUrgency" style="display:none"></div>
+            <ul class="modal-features" id="modalFeatures">
+                <li>Пункт 1</li>
+            </ul>
+            <div class="modal-price-row">
+                <span class="modal-price-label">Стоимость</span>
+                <span class="modal-price-value" id="modalPrice">2 000 ₽</span>
+            </div>
+            <a href="#" class="modal-btn modal-btn-primary" id="modalBtn">💬 Написать в WhatsApp</a>
+            <a href="https://t.me/BYIvanko" class="modal-btn" id="modalTelegram" style="margin-top:10px; background: rgba(0, 136, 204, 0.12); border-color: rgba(0, 136, 204, 0.35); color: rgba(100, 200, 255, 0.95);" target="_blank">✈️ Написать в Telegram</a>
+            <div style="margin-top:10px; text-align:center;">
+                <a href="tel:+79774232473" style="color:#8b6914; font-size:0.82em; text-decoration:none; font-weight:600;" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Боковая панель -->
+    <aside class="panel">
+        <div class="panel-header">
+            <h2>👨‍⚖️ СЕРКО</h2>
+            <p>Семейный юрист онлайн<br>Алименты · Развод · Раздел имущества</p>
+            <span class="price-highlight">Консультация 2 000 ₽</span>
+            <p style="font-size:0.75em; color:rgba(220,195,170,0.7); margin-top:8px;">📍 Работаю удалённо по всей России<br>🚗 Выезд к клиенту — при острой необходимости (по России)</p>
+        </div>
+
+        <div class="panel-divider"></div>
+
+        <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" class="panel-btn max" onclick="trackContact('max')">💬 Написать в MAX</a>
+        <a href="https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20семейным%20вопросам." class="panel-btn whatsapp" onclick="trackContact('whatsapp')">💬 WhatsApp</a>
+        <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 Позвонить</a>
+        <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
+
+        <div class="panel-divider"></div>
+
+        <div class="panel-info-block">
+            <div class="stat">127+</div>
+            <p>Дел решено в 2025<br>Семейные споры, алименты, разводы</p>
+        </div>
+
+        <div class="panel-info-block">
+            <p style="font-size:0.85em; color:rgba(255,240,220,0.9); font-weight:600; margin-bottom:6px;">Частный юрист</p>
+            <p style="font-size:0.78em; color:rgba(220,195,170,0.75);">Серко Иван Иванович<br>ИНН 773168746783<br>Самозанятый · Онлайн по всей России</p>
+        </div>
+
+        <div class="panel-footer-bar">
+            <span>📞 <a href="tel:+79774232473">+7 (977) 423-24-73</a></span>
+            <span>✉️ <a href="mailto:333742917@mail.ru">333742917@mail.ru</a></span>
+            <span><a href="privacy.html">Политика конфиденциальности</a></span>
+            <span><a href="consent.html">Согласие на обработку данных</a></span>
+            <span><a href="offer.html">Договор оферты</a></span>
+            <span>© 2026 СЕРКО</span>
+        </div>
+    </aside>
+
+    <script>
+        // ════════════════════════════════════════════
+        // МЕТРИКА
+        // ════════════════════════════════════════════
+        function trackContact(type) {
+            if (typeof ym !== 'undefined') {
+                ym(106860023, 'reachGoal', 'contact_click', { contact_type: type });
+                if (type === 'phone') ym(106860023, 'reachGoal', 'phone_click');
+                if (type === 'email') ym(106860023, 'reachGoal', 'email_click');
+                if (type === 'max') ym(106860023, 'reachGoal', 'max_click');
+                if (type === 'whatsapp') ym(106860023, 'reachGoal', 'whatsapp_click');
             }
         }
 
-        .hero-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; align-items: center; }
-        .hero-feature { display: flex; align-items: center; gap: 10px; font-size: clamp(12px, 3.5vw, 14px); color: var(--text-secondary); background: rgba(212,175,55,0.05); padding: 12px 16px; border: 1px solid rgba(212,175,55,0.1); width: 100%; max-width: 400px; justify-content: center; border-radius: 4px; }
-        .hero-cta { display: flex; flex-direction: column; gap: 12px; }
-        .hero-visual { position: relative; perspective: 1000px; }
-        .hero-card { background: linear-gradient(145deg, rgba(28,28,28,0.9) 0%, rgba(10,10,10,0.95) 100%); border: 1px solid rgba(212,175,55,0.3); padding: 20px; border-radius: 8px; position: relative; }
-        .hero-photo-large { 
-            width: 100%; 
-            max-height: 300px; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            border: 2px solid rgba(212,175,55,0.3); 
-            margin-bottom: 16px; 
-            background: var(--wood-dark);
+        // ════════════════════════════════════════════
+        // ВЕРТИКАЛЬНАЯ КАРУСЕЛЬ (КОЛЕСО ОБОЗРЕНИЯ)
+        // ════════════════════════════════════════════
+        const carousel = document.getElementById('floatCarousel');
+        const cards = document.querySelectorAll('.float-card');
+        const totalCards = cards.length;
+        let angle = 0;
+        let radiusX = 380;   // горизонтальный разлёт
+        let radiusZ = 100;   // глубина
+        const cardAngleStep = 360 / totalCards;
+
+        function updateRadius() {
+            const w = window.innerWidth;
+            if (w < 768) { radiusX = 0; radiusZ = 0; }
+            else if (w < 1100) { radiusX = 260; radiusZ = 70; }
+            else { radiusX = 380; radiusZ = 100; }
+            updateCarousel();
+        }
+
+        let updatePending = false;
+        function updateCarousel() {
+            if (updatePending) return;
+            updatePending = true;
+            requestAnimationFrame(() => {
+                cards.forEach((card, i) => {
+                    const cardAngle = (i * cardAngleStep + angle) * (Math.PI / 180);
+                    // Горизонтальное вращение вокруг оси Y — карусель внизу экрана
+                    const x = Math.sin(cardAngle) * radiusX;     // горизонтальное движение
+                    const y = -Math.cos(cardAngle) * radiusZ * 0.3; // минимальный разлёт по вертикали
+                    const z = Math.cos(cardAngle) * radiusZ;      // глубина
+                    const scale = 0.7 + (Math.cos(cardAngle) + 1) * 0.15;
+                    const opacity = 0.4 + (Math.cos(cardAngle) + 1) * 0.3;
+                    const rotateY = -Math.sin(cardAngle) * 15;   // поворот к центру
+                    const rotateX = Math.cos(cardAngle) * 5;
+
+                    const tilt = card.style.getPropertyValue('--tilt') || '0deg';
+                    card.style.setProperty('--tx', x + 'px');
+                    card.style.setProperty('--ty', y + 'px');
+                    card.style.setProperty('--tz', z + 'px');
+                    card.style.setProperty('--sc', scale);
+                    card.style.setProperty('--rx', rotateX + 'deg');
+                    card.style.setProperty('--ry', rotateY + 'deg');
+                    card.style.transform = `translate(${x}px, ${y}px) translateZ(${z}px) scale(${scale}) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${tilt})`;
+                    card.style.opacity = opacity;
+                    card.style.zIndex = Math.round(z + 300);
+                });
+                updatePending = false;
+            });
+        }
+
+        // Автовращение
+        let autoRotate = true;
+        let rotSpeed = 0.12;
+        let rotInterval;
+
+        function startAutoRotate() {
+            if (rotInterval) clearInterval(rotInterval);
+            rotInterval = setInterval(() => {
+                if (autoRotate) {
+                    angle += rotSpeed;
+                    updateCarousel();
+                }
+            }, 40);
+        }
+
+        // Остановка при наведении
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => { autoRotate = false; });
+            card.addEventListener('mouseleave', () => { autoRotate = true; });
+        });
+
+        // Скролл мышью — горизонтальное вращение
+        let wheelPending = false;
+        window.addEventListener('wheel', (e) => {
+            if (!wheelPending) {
+                wheelPending = true;
+                requestAnimationFrame(() => {
+                    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                    angle += delta * 0.15;
+                    updateCarousel();
+                    wheelPending = false;
+                });
+            }
+        }, { passive: true });
+
+        // Свайп — горизонтальный
+        let touchStartX = 0;
+        let touchPending = false;
+        window.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        window.addEventListener('touchmove', (e) => {
+            if (!touchPending) {
+                touchPending = true;
+                requestAnimationFrame(() => {
+                    const deltaX = touchStartX - e.touches[0].clientX;
+                    angle += deltaX * 0.25;
+                    touchStartX = e.touches[0].clientX;
+                    updateCarousel();
+                    touchPending = false;
+                });
+            }
+        }, { passive: true });
+
+
+
+        // ════════════════════════════════════════════
+        // МОДАЛЬНЫЕ ОКНА
+        // ════════════════════════════════════════════
+        const modalData = [
+            {
+                icon: '👨‍👩‍👧', title: 'Алименты', tag: 'Семейное право',
+                desc: 'Профессиональная помощь по взысканию алиментов на детей и супругов. Работаю с задолженностями, изменением размера, индексацией.',
+                urgency: '⏰ Срок обжалования судебного приказа — 10 дней! Не упустите.',
+                features: ['Расчёт размера алиментов', 'Подготовка соглашения или искового заявления', 'Взыскание задолженности', 'Изменение размера алиментов', 'Индексация и неустойка'],
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать про алименты',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20алиментам.',
+                trackType: 'whatsapp_alimony',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20алиментам.'
+            },
+            {
+                icon: '💔', title: 'Развод', tag: 'Семейное право',
+                desc: 'Расторжение брака через ЗАГС или суд. Подготовка всех документов удалённо. Сопровождение на каждом этапе.',
+                urgency: '⚠️ При наличии несовершеннолетних детей — только через суд.',
+                features: ['Развод через ЗАГС (без детей)', 'Развод через суд (с детями)', 'Подготовка искового заявления', 'Согласование условий', 'Представление интересов в суде'],
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать про развод',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20разводу.',
+                trackType: 'whatsapp_divorce',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20разводу.'
+            },
+            {
+                icon: '🏠', title: 'Раздел имущества', tag: 'Семейное право',
+                desc: 'Справедливый раздел квартир, машин, вкладов, кредитов и бизнеса при разводе. Защита ваших интересов.',
+                urgency: '⏰ Срок исковой давности — 3 года. Не ждите.',
+                features: ['Оценка совместного имущества', 'Выделение личного имущества', 'Раздел квартир и машин', 'Распределение кредитов', 'Мировое соглашение или суд'],
+                price: 'От 5 000 ₽',
+                btn: '💬 Написать про раздел',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20раздел%20имущества%20при%20разводе.',
+                trackType: 'whatsapp_property',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20раздел%20имущества.'
+            },
+            {
+                icon: '📋', title: 'Брачный договор', tag: 'Документ',
+                desc: 'Индивидуальная разработка брачного договора для защиты активов до и во время брака. Нотариальное удостоверение.',
+                urgency: '✅ Защитить имущество можно в любой момент — до брака или во время.',
+                features: ['Защита недвижимости', 'Защита бизнеса и инвестиций', 'Разделение кредитов', 'Нотариальное удостоверение', 'Корпоративные механизмы'],
+                price: 'От 4 000 ₽',
+                btn: '💬 Заказать договор',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20брачный%20договор.',
+                trackType: 'whatsapp_prenup',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20брачный%20договор.'
+            },
+            {
+                icon: '📞', title: 'Онлайн-консультация', tag: 'Формат',
+                desc: 'Консультация по видеосвязи, телефону или в мессенджерах. Удобное время, без очередей. Работаю со всеми регионами.',
+                urgency: '',
+                features: ['Видеозвонок (Zoom, Telegram, MAX)', 'Телефонная консультация', 'Переписка в мессенджерах', 'Отправка документов онлайн', 'Запись консультации'],
+                price: '2 000 ₽ / 30–60 мин',
+                btn: '💬 Записаться на консультацию',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.',
+                trackType: 'whatsapp_consult',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.'
+            },
+            {
+                icon: '🎯', title: 'Срочная помощь', tag: 'Срочно',
+                desc: 'Экстренная юридическая помощь по семейным вопросам в день обращения. Ответ за несколько часов.',
+                urgency: '🔥 Срочные случаи: арест счетов, судебный приказ, ограничение выезда.',
+                features: ['Консультация в течение 2–4 часов', 'Срочная подготовка документов', 'Анализ ситуации и план действий', 'Сопровождение в суде', 'Работа 7 дней в неделю'],
+                price: 'От 3 000 ₽',
+                btn: '💬 Срочная помощь',
+                btnLink: 'https://wa.me/79774232473?text=Срочно!%20Нужна%20помощь%20по%20семейному%20вопросу.',
+                trackType: 'whatsapp_urgent',
+                telegramLink: 'https://t.me/BYIvanko?text=Срочно!%20Нужна%20помощь%20по%20семейному%20вопросу.'
+            },
+            {
+                icon: '⚖️', title: 'Семейные споры', tag: 'Суд',
+                desc: 'Помощь в подготовке к сложным семейным делам: определение места жительства детей, порядок общения, лишение родительских прав. Документы и стратегия.',
+                urgency: '⚠️ Судебные сроки не ждут. Пропуск — проигрыш.',
+                features: ['Определение места жительства детей', 'Порядок общения с ребёнком', 'Лишение / восстановление родительских прав', 'Усыновление', 'Подготовка к суду: документы и стратегия'],
+                price: 'От 10 000 ₽',
+                btn: '💬 Обсудить дело',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20У%20меня%20сложный%20семейный%20спор.',
+                trackType: 'whatsapp_court',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20У%20меня%20сложный%20семейный%20спор.'
+            },
+            {
+                icon: '📍', title: 'Москва и регионы', tag: 'География',
+                desc: 'Работаю онлайн по всей России. Основные города: Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург.',
+                urgency: '',
+                features: ['Онлайн-консультации по всей России', 'Электронное правосудие', 'Электронная подпись', 'Нотариусы онлайн через Госуслуги', 'Личное присутствие — крайне редко'],
+                price: 'Удалённо — без доплат',
+                btn: '💬 Написать из региона',
+                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Я%20из%20регона,%20интересует%20консультация.',
+                trackType: 'whatsapp_region',
+                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Я%20из%20региона,%20интересует%20консультация.'
+            }
+        ];
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalCard = document.getElementById('modalCard');
+        const modalClose = document.getElementById('modalClose');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTag = document.getElementById('modalTag');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalUrgency = document.getElementById('modalUrgency');
+        const modalFeatures = document.getElementById('modalFeatures');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalBtn = document.getElementById('modalBtn');
+
+        function openModal(index) {
+            const data = modalData[index];
+            modalIcon.textContent = data.icon;
+            modalTag.textContent = data.tag;
+            modalTitle.textContent = data.title;
+            modalDesc.textContent = data.desc;
+            modalPrice.textContent = data.price;
+            modalBtn.textContent = data.btn;
+            modalBtn.href = data.btnLink;
+            modalBtn.onclick = function(e) {
+                trackContact(data.trackType);
+            };
+
+            // Update Telegram button
+            const modalTelegram = document.getElementById('modalTelegram');
+            if (modalTelegram && data.telegramLink) {
+                modalTelegram.href = data.telegramLink;
+            }
+
+            if (data.urgency) {
+                modalUrgency.style.display = 'block';
+                modalUrgency.textContent = data.urgency;
+            } else {
+                modalUrgency.style.display = 'none';
+            }
+
+            modalFeatures.innerHTML = '';
+            data.features.forEach(f => {
+                const li = document.createElement('li');
+                li.textContent = f;
+                modalFeatures.appendChild(li);
+            });
+
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            modalCard.scrollTop = 0;
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Клик по карточкам
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const index = parseInt(card.dataset.modal);
+                openModal(index);
+            });
+        });
+
+        // КРЕСТИК — исправлено: position absolute вместо sticky/float
+        modalClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+        });
+
+        // Клик по оверлею
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // 3D-наклон модалки
+        let isModalScrolling = false;
+        modalCard.addEventListener('scroll', () => {
+            if (modalCard.scrollTop > 10) {
+                if (!isModalScrolling) {
+                    isModalScrolling = true;
+                    modalCard.style.transition = 'transform 0.3s ease';
+                    modalCard.style.transform = 'scale(1) translateY(0)';
+                }
+            } else {
+                isModalScrolling = false;
+                modalCard.style.transition = 'transform 0.15s ease-out';
+            }
+        });
+
+        modalCard.addEventListener('mousemove', (e) => {
+            if (isModalScrolling || modalCard.scrollTop > 10) return;
+            const rect = modalCard.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+            const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+            modalCard.style.transform = `scale(1) translateY(0) rotateY(${x * 3}deg) rotateX(${-y * 3}deg)`;
+        });
+        modalCard.addEventListener('mouseleave', () => {
+            if (!isModalScrolling) {
+                modalCard.style.transition = 'transform 0.3s ease';
+                modalCard.style.transform = 'scale(1) translateY(0)';
+            }
+        });
+
+        // ════════════════════════════════════════════
+        // ИНИЦИАЛИЗАЦИЯ
+        // ════════════════════════════════════════════
+        updateRadius();
+        startAutoRotate();
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(updateRadius, 150);
+        });
+
+        console.log('✅ Карусель: горизонтальное вращение, внизу, не перекрывает лицо.');
+        console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
+    </script>
+
+    <script>
+        // COOKIE CONSENT & CONTACT CONSENT CHECK
+        // ════════════════════════════════════════════
+        (function(){
+            const COOKIE_KEY = 'serko_cookie_consent';
+            const CONSENT_KEY = 'serko_contact_consent';
+
+            function getCookie(name) {
+                const value = '; ' + document.cookie;
+                const parts = value.split('; ' + name + '=');
+                if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
+                return null;
+            }
+
+            function setCookie(name, value, days) {
+                const expires = new Date(Date.now() + days * 864e5).toUTCString();
+                document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+            }
+
+            // Show cookie banner if not decided
+            const cookieConsent = getCookie(COOKIE_KEY);
+            if (!cookieConsent) {
+                setTimeout(function(){
+                    document.getElementById('cookieBanner').classList.add('visible');
+                }, 1500);
+            }
+
+            document.getElementById('cookieAccept').addEventListener('click', function(){
+                setCookie(COOKIE_KEY, 'accepted', 365);
+                document.getElementById('cookieBanner').classList.remove('visible');
+            });
+
+            document.getElementById('cookieDecline').addEventListener('click', function(){
+                setCookie(COOKIE_KEY, 'declined', 365);
+                document.getElementById('cookieBanner').classList.remove('visible');
+                // Disable Yandex Metrika if declined
+                if (typeof ym !== 'undefined') {
+                    ym(106860023, 'setUserID', null);
+                }
+            });
+
+            // CONTACT CONSENT MODAL
+            function showConsentModal(onAgree) {
+                // Remove existing if any
+                const existing = document.getElementById('consentModal');
+                if (existing) existing.remove();
+
+                const modal = document.createElement('div');
+                modal.id = 'consentModal';
+                modal.className = 'modal-overlay active';
+                modal.innerHTML = `
+                    <div class="modal-card" style="max-width: 460px;">
+                        <button class="modal-close" id="consentClose" aria-label="Закрыть">✕</button>
+                        <span class="modal-icon">🛡️</span>
+                        <span class="modal-tag">Согласие</span>
+                        <h3>Согласие на обработку данных</h3>
+                        <div class="modal-divider"></div>
+                        <p class="modal-desc" style="text-align:left; font-size:0.88em;">
+                            Перед связью необходимо согласие на обработку персональных данных.<br><br>
+                            Нажимая «Согласен», вы подтверждаете, что ознакомились с 
+                            <a href="privacy.html" target="_blank" style="color:rgba(255,215,100,0.9);">Политикой конфиденциальности</a> и 
+                            <a href="consent.html" target="_blank" style="color:rgba(255,215,100,0.9);">Согласием на обработку данных</a>, 
+                            и даёте согласие Оператору (Серко Иван Иванович, ИНН 773168746783, самозанятый) на обработку ваших персональных данных 
+                            (имя, телефон, email, содержание сообщений) для целей оказания консультаций и юридических услуг.
+                        </p>
+                        <div style="display:flex; gap:10px; margin-top:20px;">
+                            <button class="modal-btn modal-btn-primary" id="consentAgree" style="flex:1;">✓ Согласен</button>
+                            <button class="modal-btn" id="consentCancel" style="flex:1; background:rgba(255,255,255,0.04);">Отмена</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                document.body.style.overflow = 'hidden';
+
+                modal.querySelector('#consentClose').addEventListener('click', function(){
+                    modal.remove();
+                    document.body.style.overflow = '';
+                });
+                modal.querySelector('#consentCancel').addEventListener('click', function(){
+                    modal.remove();
+                    document.body.style.overflow = '';
+                });
+                modal.querySelector('#consentAgree').addEventListener('click', function(){
+                    setCookie(CONSENT_KEY, 'agreed', 365);
+                    modal.remove();
+                    document.body.style.overflow = '';
+                    if (onAgree) onAgree();
+                });
+                modal.addEventListener('click', function(e){
+                    if (e.target === modal) {
+                        modal.remove();
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            function checkConsentThen(action) {
+                const consent = getCookie(CONSENT_KEY);
+                if (consent === 'agreed') {
+                    action();
+                } else {
+                    showConsentModal(action);
+                }
+            }
+
+            // Hook panel buttons
+            const panelBtns = document.querySelectorAll('.panel-btn');
+            panelBtns.forEach(function(btn){
+                const originalHref = btn.getAttribute('href');
+                if (!originalHref) return;
+                const originalOnclick = btn.getAttribute('onclick');
+
+                btn.addEventListener('click', function(e){
+                    const consent = getCookie(CONSENT_KEY);
+                    if (consent !== 'agreed') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        checkConsentThen(function(){
+                            if (originalOnclick) eval(originalOnclick);
+                            window.open(originalHref, '_blank');
+                        });
+                        return false;
+                    }
+                });
+            });
+
+            // Hook sticky bar buttons
+            const stickyBtns = document.querySelectorAll('.sticky-btn');
+            stickyBtns.forEach(function(btn){
+                const originalHref = btn.getAttribute('href');
+                if (!originalHref) return;
+
+                btn.addEventListener('click', function(e){
+                    const consent = getCookie(CONSENT_KEY);
+                    if (consent !== 'agreed') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        checkConsentThen(function(){
+                            window.open(originalHref, '_blank');
+                        });
+                        return false;
+                    }
+                });
+            });
+
+            // Hook modal CTA buttons
+            const modalBtn = document.getElementById('modalBtn');
+            if (modalBtn) {
+                const originalHref = modalBtn.getAttribute('href');
+                const originalOnclick = modalBtn.getAttribute('onclick');
+
+                modalBtn.addEventListener('click', function(e){
+                    const consent = getCookie(CONSENT_KEY);
+                    if (consent !== 'agreed') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        checkConsentThen(function(){
+                            if (originalOnclick) eval(originalOnclick);
+                            window.open(originalHref, '_blank');
+                        });
+                        return false;
+                    }
+                });
+            }
+
+            const modalTelegram = document.getElementById('modalTelegram');
+            if (modalTelegram) {
+                const originalTgHref = modalTelegram.getAttribute('href');
+
+                modalTelegram.addEventListener('click', function(e){
+                    const consent = getCookie(CONSENT_KEY);
+                    if (consent !== 'agreed') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        checkConsentThen(function(){
+                            window.open(originalTgHref, '_blank');
+                        });
+                        return false;
+                    }
+                });
+            }
+
+            // Hook phone link inside modal
+            const modalPhoneLink = document.querySelector('.modal-card a[href^="tel:"]');
+            if (modalPhoneLink) {
+                modalPhoneLink.addEventListener('click', function(e){
+                    const consent = getCookie(CONSENT_KEY);
+                    if (consent !== 'agreed') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        checkConsentThen(function(){
+                            window.location.href = modalPhoneLink.getAttribute('href');
+                        });
+                        return false;
+                    }
+                });
+            }
+
+        })();
+
+    </script>
+
+    <!-- ════════════════════════════════════════════
+         STICKY КОНТАКТ-БАР (всегда виден)
+    ════════════════════════════════════════════ -->
+    <div class="sticky-contact-bar" id="stickyBar">
+        <a href="https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация." class="sticky-btn sticky-whatsapp" onclick="trackContact('whatsapp')">
+            <span>💬</span> WhatsApp
+        </a>
+        <a href="tel:+79774232473" class="sticky-btn sticky-phone" onclick="trackContact('phone')">
+            <span>📞</span> +7 (977) 423-24-73
+        </a>
+        <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" class="sticky-btn sticky-max" onclick="trackContact('max')">
+            <span>💬</span> MAX
+        </a>
+    </div>
+
+    <style>
+        .sticky-contact-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(40,28,16,0.95) 0%, rgba(30,20,10,0.98) 100%);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(200, 160, 100, 0.25);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        .sticky-contact-bar.visible {
+            transform: translateY(0);
+        }
+        .sticky-btn {
+            flex: 1;
+            max-width: 160px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 600;
+            color: rgba(255, 245, 230, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .hero-photo-large img { 
-            width: auto;
-            max-width: 100%;
-            height: auto;
-            max-height: 300px;
-            object-fit: contain;
+        .sticky-whatsapp { background: rgba(37, 211, 102, 0.15); border-color: rgba(37, 211, 102, 0.3); }
+        .sticky-whatsapp:hover { background: rgba(37, 211, 102, 0.3); }
+        .sticky-phone { background: rgba(220, 180, 90, 0.15); border-color: rgba(220, 180, 90, 0.3); }
+        .sticky-phone:hover { background: rgba(220, 180, 90, 0.3); }
+        .sticky-max { background: rgba(155, 89, 182, 0.15); border-color: rgba(155, 89, 182, 0.3); }
+        .sticky-max:hover { background: rgba(155, 89, 182, 0.3); }
+        @media (min-width: 769px) {
+            .sticky-contact-bar { display: none; }
         }
-        .hero-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.2); }
-        .hero-avatar-small { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); }
-        .hero-avatar-small svg { width: 32px; height: 32px; }
-        .hero-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 600; }
-        .hero-card-subtitle { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-        .hero-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; line-height: 1.6; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; padding-left: 12px; border-left: 2px solid var(--gold); }
-        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .hero-stat { text-align: center; padding: 12px 4px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.1); border-radius: 4px; }
-        .hero-stat-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 700; color: var(--gold); }
-        .hero-stat-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
-        .marquee { background: var(--wood-dark); border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2); padding: 16px 0; overflow: hidden; }
-        .marquee-content { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
-        .marquee-item { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; padding: 0 24px; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .trust-bar { background: linear-gradient(90deg, var(--wood-dark) 0%, var(--wood-medium) 50%, var(--wood-dark) 100%); padding: 24px 16px; border-top: 1px solid rgba(212,175,55,0.2); }
-        .trust-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); text-align: center; }
-        .trust-item strong { color: var(--gold); font-size: 16px; font-family: 'Cormorant Garamond', Georgia, serif; }
-        .trust-icon { width: 40px; height: 40px; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; border-radius: 4px; }
-        .section-header { text-align: center; margin-bottom: 40px; padding: 0 16px; }
-        .section-label { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; background: rgba(212,175,55,0.05); border-radius: 4px; }
-        .section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(26px, 6vw, 32px); font-weight: 400; margin-bottom: 12px; }
-        .section-title strong { color: var(--gold); font-weight: 600; }
-        .section-subtitle { font-size: clamp(14px, 3.5vw, 16px); color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
-        .services { padding: 60px 0; }
-        .services-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; }
-        .services-hidden { display: none; grid-template-columns: 1fr; gap: 20px; padding: 0 16px; margin-top: 20px; }
-        .services-hidden.visible { display: grid; }
-        .service-card { background: linear-gradient(145deg, rgba(28,28,28,0.6) 0%, rgba(10,10,10,0.8) 100%); border: 1px solid rgba(212,175,55,0.15); padding: 28px 24px; position: relative; overflow: hidden; transition: var(--transition); border-radius: 8px; scroll-margin-top: 80px; }
-        .service-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .service-number { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 48px; font-weight: 300; color: rgba(212,175,55,0.1); position: absolute; top: 12px; right: 16px; line-height: 1; }
-        .service-icon { width: 56px; height: 56px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; border-radius: 8px; }
-        .service-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
-        .service-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
-        .service-topics { display: flex; flex-direction: column; gap: 10px; }
-        .service-topic { padding: 14px 16px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 6px; cursor: pointer; font-size: 14px; color: var(--text-secondary); transition: var(--transition); display: flex; align-items: center; gap: 10px; position: relative; }
-        .service-topic::before { content: '→'; color: var(--gold); font-weight: bold; transition: var(--transition); }
-        .service-topic:hover { background: rgba(212,175,55,0.1); border-color: var(--gold); color: var(--text-primary); transform: translateX(5px); padding-left: 20px; }
-        .service-topic:hover::before { transform: translateX(3px); }
-        .pricing { padding: 60px 0; }
-        .pricing-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 16px; margin-top: 40px; }
-        .pricing-card { background: linear-gradient(180deg, rgba(28,28,28,0.8) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid rgba(212,175,55,0.2); padding: 32px 24px; text-align: center; position: relative; border-radius: 8px; transition: var(--transition); }
-        .pricing-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-5px); }
-        .pricing-card.popular { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, rgba(10,10,10,0.95) 100%); }
-        .popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--piano-black); padding: 6px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 0 4px 4px; }
-        .pricing-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .pricing-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-        .pricing-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-        .pricing-period { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
-        .pricing-features { list-style: none; margin: 24px 0; text-align: left; }
-        .pricing-features li { padding: 12px 0; border-bottom: 1px solid rgba(212,175,55,0.1); font-size: 14px; display: flex; align-items: center; gap: 10px; }
-        .pricing-features li::before { content: '✓'; color: var(--gold); font-weight: bold; }
-        .show-more-btn { display: block; margin: 40px auto 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 32px; cursor: pointer; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; transition: var(--transition); }
-        .show-more-btn:hover { background: var(--gold); color: #000; }
-        .faq { padding: 60px 16px; }
-        .faq-list { max-width: 900px; margin: 40px auto 0; }
-        .faq-item { border-bottom: 1px solid rgba(212,175,55,0.2); background: rgba(10,10,10,0.5); margin-bottom: 10px; border-radius: 4px; overflow: hidden; }
-        .faq-question { width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-size: 15px; font-weight: 500; text-align: left; cursor: pointer; color: var(--text-primary); font-family: 'Montserrat', sans-serif; gap: 12px; }
-        .faq-question:hover { color: var(--gold); }
-        .faq-icon { width: 36px; height: 36px; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; transition: all 0.3s; border-radius: 4px; flex-shrink: 0; position: relative; }
-        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--gold); transition: all 0.3s; }
-        .faq-icon::before { width: 14px; height: 2px; }
-        .faq-icon::after { width: 2px; height: 14px; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-        .faq-item.active .faq-answer { max-height: 500px; }
-        .faq-answer p { padding: 0 20px 20px; color: var(--text-secondary); line-height: 1.7; font-size: 14px; }
-        .contact { padding: 60px 16px; }
-        .contact-grid { max-width: 600px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 16px; }
-        .contact-method { display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; text-decoration: none; color: var(--text-primary); transition: var(--transition); cursor: pointer; }
-        .contact-method:hover { border-color: var(--gold); transform: translateX(10px); background: rgba(212,175,55,0.1); }
-        .contact-method-icon { width: 48px; height: 48px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 8px; flex-shrink: 0; }
-        .contact-method-content { flex: 1; }
-        .contact-method-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-        .contact-method-value { font-size: 16px; font-weight: 600; color: var(--text-primary); }
-        .footer { background: var(--piano-black); border-top: 1px solid rgba(212,175,55,0.2); padding: 48px 16px 24px; }
-        .footer-content { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; }
-        .footer-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: var(--gold); }
-        .footer-desc { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
-        .footer-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; color: var(--gold); }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 8px; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: var(--transition); position: relative; display: inline-block; }
-        .footer-links a:hover { color: var(--gold); }
-        .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(212,175,55,0.1); text-align: center; font-size: 12px; color: var(--text-muted); max-width: 1200px; margin: 0 auto; }
-        .footer-legal-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-legal-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; cursor: pointer; }
-        .footer-legal-links a:hover { color: var(--gold); text-decoration: underline; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal { background: #111; border: 1px solid var(--gold); max-width: 800px; width: 100%; max-height: 90vh; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transform: scale(0.9); transition: transform 0.3s; }
-        .modal-overlay.active .modal { transform: scale(1); }
-        .modal-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(212,175,55,0.05); }
-        .modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; color: var(--gold); line-height: 1.3; }
-        .modal-close { background: rgba(255,255,255,0.05); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-size: 24px; cursor: pointer; color: var(--gold); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-        .modal-close:hover { background: var(--danger); color: white; border-color: var(--danger); }
-        .modal-body { padding: 24px; overflow-y: auto; }
-        .urgency-warning { background: var(--danger-bg); border: 1px solid var(--danger); padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: var(--danger); }
-        .scenario { margin-bottom: 24px; }
-        .scenario-title { font-size: 14px; color: var(--danger); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
-        .scenario-step { display: flex; gap: 16px; margin-bottom: 16px; padding: 16px; background: rgba(239,68,68,0.05); border-radius: 8px; border-left: 3px solid var(--danger); }
-        .step-num { width: 32px; height: 32px; background: var(--danger-bg); border: 1px solid var(--danger); color: var(--danger); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 50%; flex-shrink: 0; font-size: 14px; }
-        .step-content h4 { font-size: 16px; margin-bottom: 6px; color: var(--text-primary); font-weight: 600; }
-        .step-content p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
-        .solution-box { background: var(--success-bg); border-left: 4px solid var(--success); padding: 20px; margin: 24px 0; border-radius: 0 12px 12px 0; }
-        .solution-box h4 { color: var(--success); margin-bottom: 12px; font-size: 18px; }
-        .solution-box ul { list-style: none; color: var(--text-secondary); font-size: 14px; }
-        .solution-box li { padding: 8px 0; padding-left: 24px; position: relative; line-height: 1.5; }
-        .solution-box li::before { content: '→'; position: absolute; left: 0; color: var(--success); font-weight: bold; }
-        .modal-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
-        .modal-actions .btn { flex: 1; min-width: 140px; }
-        .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin-top: 20px; font-size: 12px; color: var(--text-muted); font-style: italic; }
-        .mobile-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh; background: linear-gradient(180deg, var(--piano-black) 0%, var(--wood-dark) 100%); z-index: 1001; padding: 80px 24px 32px; transition: right 0.4s ease; border-left: 1px solid rgba(212,175,55,0.2); }
-        .mobile-menu.active { right: 0; }
-        .mobile-menu-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; font-size: 28px; cursor: pointer; color: var(--gold); }
-        .mobile-nav { display: flex; flex-direction: column; gap: 4px; }
-        .mobile-nav a { font-size: 16px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(212,175,55,0.1); text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
-        .mobile-nav a:hover { color: var(--gold); padding-left: 10px; }
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s; }
-        .overlay.active { opacity: 1; visibility: visible; }
-        .chat-widget, .call-widget { position: fixed; bottom: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%); color: var(--piano-black); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212,175,55,0.4); cursor: pointer; transition: var(--transition); border: 2px solid var(--gold); font-size: 24px; z-index: 999; }
-        .chat-widget { right: 20px; }
-        .call-widget { left: 20px; animation: pulseCall 2s infinite; }
-        @keyframes pulseCall { 0%, 100% { box-shadow: 0 4px 15px rgba(212,175,55,0.4); } 50% { box-shadow: 0 4px 25px rgba(212,175,55,0.7); } }
-
-        /* Blink animation for anchored sections */
-        @keyframes blink-highlight {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
-            50% { box-shadow: 0 0 30px 10px rgba(212,175,55,0.5); }
-        }
-        .blink-highlight {
-            animation: blink-highlight 0.6s ease-in-out 2;
-            border-color: var(--gold) !important;
-        }
-
-        @media (min-width: 640px) {
-            .trust-content { grid-template-columns: repeat(4, 1fr); }
-            .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-            .services-hidden { grid-template-columns: repeat(2, 1fr); }
-            .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-            .footer-content { grid-template-columns: repeat(2, 1fr); text-align: left; }
-            .hot-news-module { max-width: 650px; }
-        }
-        @media (min-width: 1024px) {
-            .nav-desktop { display: flex; gap: 32px; }
-            .nav-mobile-btn { display: none; }
-            .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 140px 40px 100px; max-width: 1400px; margin: 0 auto; }
-            .hero-content { text-align: left; }
-            .hero-features { align-items: flex-start; }
-            .hero-cta { flex-direction: row; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); padding: 0 40px; }
-            .services-hidden { grid-template-columns: repeat(3, 1fr); padding: 0 40px; }
-            .pricing-grid { grid-template-columns: repeat(4, 1fr); padding: 0 40px; }
-            .pricing-card.popular { transform: scale(1.05); }
-            .footer-content { grid-template-columns: 2fr 1fr 1fr 1fr; }
-        }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.98); border-top: 1px solid var(--gold); padding: 16px; z-index: 9999; display: none; text-align: center; }
-        .cookie-banner p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
-        .cookie-banner a { color: var(--gold); text-decoration: underline; cursor: pointer; }
-        .consent-modal .modal { max-width: 500px; }
-        .consent-modal .modal-body { text-align: center; }
-        .consent-actions { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
-    </style>
-<base target="_blank">
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <a href="#top" class="logo" id="scrollTopBtn">
-                <div class="logo-emblem">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M50 5 L85 20 L85 45 C85 70 50 95 50 95 C50 95 15 70 15 45 L15 20 Z" fill="url(#shieldGrad)" stroke="#b8860b" stroke-width="2"/>
-                        <path d="M50 25 L50 65 M35 40 L50 55 L65 40" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="logo-text"><div class="logo-title"><span class="small">мастерская права</span><span style="display: block; color: #d4af37; font-weight: 700;">СЕРКО</span></div></div>
-            </a>
-            <nav class="nav-desktop">
-                <a href="#services" class="nav-link">Услуги</a>
-                <a href="#pricing" class="nav-link">Тарифы</a>
-                
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="tel:+79774232473" class="btn btn-phone-number" onclick="event.preventDefault(); handleContactClick('tel:+79774232473', 'phone');">
-                    <span class="phone-label">Позвонить</span>
-                    <span class="phone-num">+7 (977) 423-24-73</span>
-                </a>
-            </nav>
-            <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
-        </div>
-    </header>
-    <div class="overlay" onclick="toggleMenu()"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">×</button>
-        <nav class="mobile-nav">
-            <a href="#services" onclick="toggleMenu()">Услуги</a>
-            <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
-            
-            <a href="#faq" onclick="toggleMenu()">FAQ</a>
-            <a href="#contact" onclick="toggleMenu()">Контакты</a>
-            <a href="tel:+79774232473" class="btn btn-phone-number" onclick="toggleMenu(); handleContactClick('tel:+79774232473', 'phone');" style="margin-top: 20px; width: 100%;">
-                <span class="phone-label">Позвонить</span>
-                <span class="phone-num">+7 (977) 423-24-73</span>
-            </a>
-        </nav>
-    </div>
-    <section class="hero wood-bg" id="top">
-        <div class="hero-content fade-in">
-            <div class="online-badge">Работаю онлайн по всей России</div>
-            <h1>Юрист <strong>для сложных задач</strong></h1>
-            <p class="hero-subtitle">Платные юридические консультации онлайн. Проверю документы, составлю договор, подготовлю иск, проконсультирую. <strong>Работаю 90% удалённо</strong> — быстрее, дешевле, удобнее. Точная стоимость известна до начала работ.</p>
-
-            <!-- Hot News Module -->
-            <div class="hot-news-module fade-in" id="hotNewsModule">
-                <div class="hot-news-content" id="hotNewsContent">
-                    <div class="hot-news-loading">Загрузка актуальной информации...</div>
-                </div>
-            </div>
-
-            <div class="hero-cta">
-                <a href="#" class="btn btn-large" onclick="event.preventDefault(); handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');">💬 Написать в MAX</a>
-                <a href="#" class="btn btn-outline btn-large" onclick="event.preventDefault(); handleContactClick('https://wa.me/79774232473', 'whatsapp');">💬 WhatsApp</a>
-            </div>
-        </div>
-        <div class="hero-visual fade-in">
-            <div class="hero-card">
-                <div class="hero-photo-large"><img src="фото5.png" alt="Иван Серко" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%231a120b%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23d4af37%22 font-family=%22serif%22 font-size=%2224%22%3EИС%3C/text%3E%3C/svg%3E'"></div>
-                <div class="hero-card-header">
-                    <div class="hero-avatar-small">
-                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="shieldGradSmall" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M50 10 L85 25 L85 50 C85 70 50 90 50 90 C50 90 15 70 15 50 L15 25 Z" fill="url(#shieldGradSmall)" stroke="#b8860b" stroke-width="3"/>
-                            <path d="M50 35 L50 65 M35 48 L50 63 L65 48" stroke="#0a0a0a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="hero-card-title">Иван Серко</div>
-                        <div class="hero-card-subtitle">Частный юрист</div>
-                    </div>
-                </div>
-                <blockquote class="hero-quote">"Беру дела, в которых уверен. Работаю только за оплату — консультации платные. Если вопрос сложный — разберусь, если вне моей компетенции — подскажу, к кому обратиться. Работаю без посредников: вы пишете мне — отвечаю я."</blockquote>
-                <div class="hero-stats">
-                    <div class="hero-stat"><div class="hero-stat-value">127</div><div class="hero-stat-label">дел решено в 2025</div></div>
-                    <div class="hero-stat"><div class="hero-stat-value">100%</div><div class="hero-stat-label">Лично</div></div>
-                    <div class="hero-stat"><div class="hero-stat-value">24ч</div><div class="hero-stat-label">Ответ</div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="marquee"><div class="marquee-content"><span class="marquee-item">Работаю онлайн по всей России</span><span class="marquee-item">Платные консультации</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span><span class="marquee-item">Работаю онлайн по всей России</span><span class="marquee-item">Платные консультации</span><span class="marquee-item">Честная оценка ситуации</span><span class="marquee-item">Фиксированные цены</span><span class="marquee-item">Прямая связь 24/7</span></div></div>
-    <div class="trust-bar"><div class="trust-content"><div class="trust-item"><div class="trust-icon">🎯</div><div><strong>По всей России</strong></div></div><div class="trust-item"><div class="trust-icon">💻</div><div><strong>Онлайн 90%</strong></div></div><div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Конфиденциально</strong></div></div><div class="trust-item"><div class="trust-icon">⚡</div><div><strong>Ответ за день</strong></div></div></div></div>
-
-    <section class="services piano-black" id="services"><div class="section-header fade-in"><div class="section-label">Практика</div><h2 class="section-title">С чем <strong>обращаются</strong></h2><p class="section-subtitle">Кликните на конкретную проблему — узнайте риски и решение. Консультация платная.</p></div><div class="services-grid" id="servicesGrid"></div><div class="services-hidden" id="servicesHidden"></div><button class="show-more-btn" onclick="toggleServices()">Показать все услуги</button></section>
-    <section class="pricing wood-bg" id="pricing"><div class="section-header fade-in"><div class="section-label">Стоимость</div><h2 class="section-title">Тарифы на <strong>услуги</strong></h2><p class="section-subtitle">Прозрачные расценки без скрытых платежей. Точная сумма после разговора. Оплата онлайн.</p></div><div class="pricing-grid" id="pricingGrid"></div></section>
     
-    <section class="faq piano-black" id="faq"><div class="section-header fade-in"><div class="section-label">Вопросы</div><h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2></div><div class="faq-list" id="faqList"></div></section>
-    <section class="contact wood-bg" id="contact"><div class="section-header fade-in"><div class="section-label">Контакты</div><h2 class="section-title">Начните с <strong>разговора</strong></h2><p class="section-subtitle">Напишите, что случилось. Первая консультация платная (от 2000₽). За 15-20 минут разберу ситуацию и назову точную стоимость.</p></div><div class="contact-grid fade-in" id="contactGrid"></div></section>
+        /* ════════════════════════════════════════════
+           COOKIE CONSENT BANNER
+        ════════════════════════════════════════════ */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 20, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(200, 160, 100, 0.25);
+            padding: 16px 24px;
+            z-index: 2000;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cookie-banner.visible {
+            transform: translateY(0);
+        }
+        .cookie-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .cookie-banner p {
+            font-size: 0.85em;
+            color: rgba(220, 195, 170, 0.85);
+            line-height: 1.5;
+            flex: 1;
+            min-width: 250px;
+        }
+        .cookie-banner a {
+            color: rgba(255, 215, 100, 0.9);
+            text-decoration: underline;
+        }
+        .cookie-banner a:hover {
+            color: rgba(255, 215, 100, 1);
+        }
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .cookie-btn {
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: inherit;
+        }
+        .cookie-accept {
+            background: linear-gradient(135deg, rgba(160,120,60,0.3) 0%, rgba(220,180,90,0.2) 100%);
+            border: 1px solid rgba(220, 180, 90, 0.45);
+            color: rgba(255, 240, 180, 1);
+        }
+        .cookie-accept:hover {
+            background: linear-gradient(135deg, rgba(180,140,70,0.45) 0%, rgba(240,200,100,0.3) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .cookie-decline {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .cookie-decline:hover {
+            background: rgba(255, 100, 100, 0.15);
+            border-color: rgba(255, 100, 100, 0.3);
+            color: rgba(255, 160, 160, 0.9);
+        }
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            .cookie-btn {
+                flex: 1;
+                max-width: 140px;
+            }
+        }
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div>
-                <div class="footer-logo">СЕРКО</div>
-                <p class="footer-desc">Решаю юридические вопросы онлайн по всей России. Индивидуальный подход, честные цены, прямая связь. Консультации платные.</p>
-            </div>
-            <div>
-                <div class="footer-title">Услуги</div>
-                <ul class="footer-links">
-                    <li><a href="#nedvizhimost">Недвижимость</a></li>
-                    <li><a href="#semeynye">Семейные споры</a></li>
-                    <li><a href="#nasledstvo">Наследство</a></li>
-                    <li><a href="#trudovye">Трудовое право</a></li>
-                    <li><a href="#nalogovye">Налоговые споры</a></li>
-                </ul>
-            </div>
-            <div>
-                <div class="footer-title">Информация</div>
-                <ul class="footer-links">
-                    <li><a href="#pricing">Тарифы</a></li>
-                    
-                    <li><a href="#faq">Вопросы</a></li>
-                </ul>
-            </div>
-            <div>
-                <div class="footer-title">Реквизиты</div>
-                <ul class="footer-links">
-                    <li style="color: var(--text-muted);">ИНН: 500918804320</li>
-                    <li style="color: var(--text-muted);">Самозанятый</li>
-                    <li><a href="tel:+79774232473">+7 (977) 423-24-73</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Мастерская права СЕРКО. Все права защищены.</p>
-            <div class="footer-legal-links">
-                <a href="privacy.html">Политика конфиденциальности</a>
-                <a href="contract.html">Типовой договор</a>
-                <a href="personal-data.html">Обработка персональных данных</a>
-            </div>
-            <p style="margin-top: 8px; font-size: 11px;">Информация не является публичной офертой</p>
-        </div>
-    </footer>
-
-    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle"></h3>
-                <button class="modal-close" onclick="closeModal()" aria-label="Закрыть">×</button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
-    </div>
-
-    <div class="modal-overlay consent-overlay" id="consentOverlay" style="z-index: 2100;">
-        <div class="modal consent-modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Согласие на обработку данных</h3>
-                <button class="modal-close" onclick="closeConsentModal()" aria-label="Закрыть">×</button>
-            </div>
-            <div class="modal-body">
-                <p>Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p>
-                <div class="consent-actions">
-                    <button class="btn" id="consentConfirmBtn">Согласен</button>
-                    <button class="btn btn-outline" id="consentCancelBtn">Отмена</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="chat-widget" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max');" aria-label="Написать в MAX">💬</div>
-    <div class="call-widget" onclick="handleContactClick('tel:+79774232473', 'phone');" aria-label="Позвонить">📞</div>
-
+</style>
     <script>
-        // Проверка доступности localStorage
-        function isStorageAvailable() {
-            try {
-                const test = '__storage_test__';
-                localStorage.setItem(test, test);
-                localStorage.removeItem(test);
-                return true;
-            } catch(e) {
-                console.warn('localStorage недоступен (приватный режим или блокировка)');
-                return false;
-            }
-        }
-
-        // ------------------ ОБНОВЛЕННЫЙ И ЮРИДИЧЕСКИ ВЫВЕРЕННЫЙ MODALCONTENT (апрель 2026) ------------------
-        const modalContent = {
-            // 1. Семейные споры
-            alimony_applied: { 
-                title: "Жена подала на алименты — что делать?", 
-                urgent: "Срок обжалования судебного приказа — 10 дней! Пропустите — приказ вступит в силу.", 
-                steps: [
-                    {title:"Арест счетов и списание до 70% дохода (на детей)",desc:"Банк может заблокировать счета. При взыскании алиментов на несовершеннолетних детей допускается удержание до 70% заработка (ст. 99 ФЗ «Об исполнительном производстве»)."},
-                    {title:"Начисление неустойки по алиментам",desc:"При образовании задолженности по вине должника возможно взыскание неустойки (ст. 115 СК РФ), а также административная или уголовная ответственность."},
-                    {title:"Уголовное преследование по ст. 157 УК РФ",desc:"Неуплата алиментов без уважительных причин может повлечь уголовную ответственность при наличии вступившего в силу решения суда."}
-                ], 
-                solution: [
-                    "Срочно обжалую судебный приказ в 10-дневный срок — остановлю принудительное исполнение",
-                    "Проанализирую доходы и расходы, помогу снизить размер алиментов или изменить способ взыскания",
-                    "Проверю обоснованность требований: установление отцовства, сокрытие доходов истцом"
-                ] 
-            },
-            property_division: { 
-                title: "Раздел имущества при разводе", 
-                urgent: "Срок исковой давности — 3 года с момента, когда вы узнали или должны были узнать о нарушении права. Не ждите.", 
-                steps: [
-                    {title:"Супруг вывел денежные средства на «больных родственников»",desc:"По документам — займы. На деле — сокрытие 3-5 млн рублей от раздела."},
-                    {title:"Квартира куплена на ваши деньги, но оформлена на супруга",desc:"Имущество, приобретённое в браке, считается совместным. Доказывать личный вклад сложно — без подтверждений получите меньшую долю."},
-                    {title:"Затягивание процесса на 18-24 месяца",desc:"Пока идет суд, супруг проживает в квартире, вы платите за аренду + ипотеку."}
-                ], 
-                solution: [
-                    "Запрошу финансовые выписки по всем счетам супруга за 3 года — найду фиктивные долги и выводы",
-                    "Наложу обеспечительные меры — запрет на продажу, дарение или залог имущества на период раздела",
-                    "Докажу личный вклад через банковские документы, чеки, договоры — добьюсь справедливого раздела"
-                ] 
-            },
-            prenup_contract: { 
-                title: "Брачный договор — защита активов", 
-                urgent: "Защитить имущество можно до брака или в любой момент во время брака. Чем раньше, тем проще.", 
-                steps: [
-                    {title:"Бизнес, строившийся 10 лет, делится пополам",desc:"Без брачного договора бизнес-активы, созданные в браке, делятся поровну. Партнёр-бывший супруг получает 50% долей."},
-                    {title:"Квартира от родителей признаётся совместной",desc:"Если нет документов о дарении, имущество считается общим. При разделе бывший супруг может претендовать на долю."},
-                    {title:"Кредиты, оформленные супругом, становятся общими",desc:"Вы несёте солидарную ответственность по долгам, о которых не знали."}
-                ], 
-                solution: [
-                    "Составлю индивидуальный договор с учётом ваших активов: недвижимости, бизнеса, инвестиций",
-                    "Организую нотариальное удостоверение — договор получит юридическую силу и неоспоримость в суде",
-                    "Защищу бизнес через корпоративные механизмы: разделение личных и корпоративных активов"
-                ] 
-            },
-            
-            // 2. Недвижимость
-            apartment_check: { 
-                title: "Проверка квартиры перед покупкой", 
-                urgent: "Проверка нужна ДО подписания договора! После — риски ложатся на вас.", 
-                steps: [
-                    {title:"Квартира в залоге у банка или арестована",desc:"После покупки кредиторы обратят взыскание на жильё — вы останетесь без квартиры и денег."},
-                    {title:"Зарегистрированные лица не выезжают",desc:"Суд о выселении длится 1,5-2 года. Новоселье откладывается."},
-                    {title:"Незаконная перепланировка не узаконена",desc:"Росреестр откажет в регистрации права. Переделка за ваш счёт + штраф."}
-                ], 
-                solution: [
-                    "Закажу выписку ЕГРН с расширенными данными — проверю всю историю переходов права и обременение",
-                    "Проверю аресты и залоги через базы ФССП, ФНС — выявлю мошеннические схемы",
-                    "Пропишу в договоре условия о снижении цены/расторжении при выявлении обременений"
-                ] 
-            },
-            transaction_support: { 
-                title: "Сопровождение сделки купли-продажи", 
-                urgent: "Безопасная сделка — ключ к сохранению средств. Не экономьте на юристе.", 
-                steps: [
-                    {title:"Продавец оказывается номинальным лицом",desc:"Паспорт настоящий, полномочий нет. Деньги ушли, квартиры нет."},
-                    {title:"Серая схема оплаты через риелтора",desc:"Посредник исчезает с предоплатой 500 000 — 2 000 000 рублей."},
-                    {title:"Подписание акта без проверки состояния квартиры",desc:"После регистрации выясняется, что квартира повреждена. Риски на вас."}
-                ], 
-                solution: [
-                    "Проверю личность продавца и полномочия по доверенности — сверю с оригиналами у нотариуса",
-                    "Организую безопасный расчёт через аккредитив или банковскую ячейку — деньги перейдут только после регистрации",
-                    "Подготовлю договор с детальным описанием состояния квартиры"
-                ] 
-            },
-            neighbor_disputes: { 
-                title: "Споры с соседями (залив, перепланировка)", 
-                urgent: "Срок исковой давности — 3 года. Чем раньше начнёте, тем лучше.", 
-                steps: [
-                    {title:"Залив квартиры — сосед отказывается возмещать ущерб",desc:"Ремонт 300 000 — 800 000 рублей ложится на вас. Экспертиза ещё 50 000."},
-                    {title:"Сломана несущая стена соседом сверху",desc:"Ваша квартира обесценивается на 20-30%, возникает угроза безопасности."},
-                    {title:"Затягивание судебного процесса на 2+ года",desc:"Жить в разрушенной квартире невозможно, продать нельзя."}
-                ], 
-                solution: [
-                    "Зафиксирую ущерб через независимую экспертизу — создам доказательственную базу",
-                    "Подам иск о возмещении ущерба с взысканием морального вреда и расходов на экспертизу",
-                    "В случае незаконной перепланировки — добьюсь судебного запрета и восстановления конструкций"
-                ] 
-            },
-            
-            // 3. Наследственные дела
-            inheritance_missed: { 
-                title: "Пропустил срок вступления в наследство", 
-                urgent: "Срок принятия наследства — 6 месяцев! Восстановление возможно только при уважительных причинах.", 
-                steps: [
-                    {title:"Другие наследники оформили имущество без вас",desc:"Квартира, дача, автомобиль — всё поделено. Вам достаются только долги."},
-                    {title:"Сложность восстановления срока",desc:"Суд восстанавливает срок, только если наследник не знал и не должен был знать об открытии наследства (ст. 1155 ГК РФ). Болезнь или командировка не гарантируют восстановления."},
-                    {title:"Фактическое принятие не подтверждено документально",desc:"Ухаживали за умершим 5 лет, но платежи были наличными. Доказать сложно."}
-                ], 
-                solution: [
-                    "Соберу доказательства уважительности причин пропуска: незнание о смерти, невозможность получения свидетельства о смерти",
-                    "Подам иск о восстановлении срока принятия наследства с приложением всех документов",
-                    "Докажу фактическое принятие наследства через квитанции, свидетелей, переписку"
-                ] 
-            },
-            will_dispute: { 
-                title: "Оспаривание завещания", 
-                urgent: "Срок оспаривания — 1 год для оспоримых завещаний, 3 года для ничтожных. Не тяните.", 
-                steps: [
-                    {title:"Завещание подделано, но срок оспаривания прошёл",desc:"Имущество достаётся мошеннику. Восстановить срок почти невозможно."},
-                    {title:"Продажа доли постороннему лицу",desc:"Инвестор скупает доли. Вы не сможете продать квартиру без его согласия."},
-                    {title:"Нарушение прав на обязательную долю",desc:"Несовершеннолетние или нетрудоспособные наследники лишены наследства. Завещание частично недействительно."}
-                ], 
-                solution: [
-                    "Оспорю недействительность завещания: докажу подделку, недееспособность завещателя, обман",
-                    "Выделю обязательную долю без потери квартиры для основного наследника",
-                    "Заключу мировое соглашение о разделе — сохраню имущество в семье без многолетних судов"
-                ] 
-            },
-            debts_accept: { 
-                title: "Долги наследодателя: принимать или отказываться?", 
-                urgent: "Решение принимается один раз. Ошибка может стоить дорого.", 
-                steps: [
-                    {title:"Приняли наследство, а долгов больше стоимости имущества",desc:"Вы отвечаете по долгам только в пределах стоимости перешедшего имущества (ст. 1175 ГК РФ). Но рискуете потерять наследство."},
-                    {title:"Завещательный отказ (пожизненное проживание постороннего)",desc:"Не можете продать квартиру, пока отказополучатель жив. Содержание ложится на вас."},
-                    {title:"Фактическое принятие без оформления",desc:"Другие наследники оспорили ваши права. Вы ничего не получили."}
-                ], 
-                solution: [
-                    "Проведу правовой анализ: сопоставлю стоимость имущества и долги",
-                    "Оформлю принятие наследства с ограничением ответственности только стоимостью имущества",
-                    "Подготовлю документы для нотариуса или суда — защищу от кредиторов и других наследников"
-                ] 
-            },
-            
-            // 4. Трудовые споры
-            illegal_firing: { 
-                title: "Незаконное увольнение: как восстановиться", 
-                urgent: "Срок подачи иска — 1 месяц! Пропустите — останетесь без работы и компенсаций.", 
-                steps: [
-                    {title:"Вынудили написать заявление «по собственному»",desc:"Под давлением, угрозами, обманом. Доказать сложно, компенсации упущены."},
-                    {title:"Увольнение за прогулы с фальсификацией табеля",desc:"Были на работе, но табель показывает отсутствие. Без доказательств — проигрыш."},
-                    {title:"Пропуск срока на обжалование",desc:"Прошёл месяц — восстановление на работе невозможно."}
-                ], 
-                solution: [
-                    "Восстановлю на работе через суд с выплатой среднего заработка за весь период вынужденного прогула",
-                    "Изменю формулировку в трудовой книжке с «по собственному» на «по соглашению» или «незаконное увольнение»",
-                    "Взыщу компенсацию морального вреда и расходы на юриста"
-                ] 
-            },
-            salary_delay: { 
-                title: "Задержка зарплаты: как взыскать", 
-                urgent: "Каждый день промедления — потерянные деньги. Действуйте немедленно.", 
-                steps: [
-                    {title:"Приостановка работы по ст. 142 ТК РФ привела к увольнению",desc:"Работодатель оформил как прогул. Вы без зарплаты и без работы."},
-                    {title:"Зарплата «в конверте» — нет доказательств",desc:"Суд может отказать в взыскании, так как официальная зарплата — минимальная."},
-                    {title:"Банкротство работодателя",desc:"Требования по зарплате относятся ко второй очереди текущих платежей или третьей очереди реестра. Риск неполучения высок."}
-                ], 
-                solution: [
-                    "Докажу размер реальной зарплаты через переписку, свидетелей, выписки с карт",
-                    "Взыщу неустойку 1/150 ставки ЦБ за каждый день задержки",
-                    "При банкротстве — добьюсь включения в реестр кредиторов в приоритетной очереди"
-                ] 
-            },
-            mobbing: { 
-                title: "Моббинг и давление на работе", 
-                urgent: "Психологический террор должен быть задокументирован. Иначе — ваше слово против слова начальника.", 
-                steps: [
-                    {title:"Восстановились на работе, но коллектив отвергает",desc:"Игнорирование, оскорбления, саботаж. Вынуждены уволиться."},
-                    {title:"Запись в трудовой «уволен по статье» портит карьеру",desc:"Отказы при трудоустройстве на нормальные должности."},
-                    {title:"Работодатель не исполняет решение суда",desc:"Не допускает к работе, не выдаёт документы."}
-                ], 
-                solution: [
-                    "Зафиксирую факты моббинга: переписка, аудио, свидетели, медицинские документы",
-                    "Подам иск о прекращении моббинга, взыщу компенсацию морального вреда",
-                    "Обеспечу исполнение решения через приставов: арест счетов компании, запрет на регистрационные действия"
-                ] 
-            },
-            
-            // 5. Налоговые споры
-            tax_fine_appeal: { 
-                title: "Оспаривание штрафа ФНС", 
-                urgent: "Срок обжалования — 1 месяц! Потом штраф придётся платить с пенями.", 
-                steps: [
-                    {title:"Штраф 500 000 руб. за «фиктивные» расходы",desc:"Налоговая не признаёт расходы. Доначисление налогов + пени."},
-                    {title:"Не обжаловали акт вовремя",desc:"Решение вступило в силу. Счета арестованы, деньги списаны."},
-                    {title:"Уголовное дело по ст. 199 УК РФ",desc:"Возможно при крупном размере неуплаты. Директор под риском."}
-                ], 
-                solution: [
-                    "Обжалую акт проверки в вышестоящей инспекции — найду процессуальные нарушения",
-                    "Оспорю в арбитражном суде — добьюсь отмены штрафов и признания расходов",
-                    "Сниму арест со счетов на время спора"
-                ] 
-            },
-            tax_deduction_return: { 
-                title: "Возврат налогового вычета", 
-                urgent: "Можно вернуть за 3 года. Не упустите свои деньги.", 
-                steps: [
-                    {title:"Отказ в вычете за покупку квартиры",desc:"Переплата 260 000 руб. зависла в бюджете."},
-                    {title:"Вычет не использован полностью",desc:"Остаток имущественного вычета можно перенести на будущие покупки. Многие не знают и теряют деньги."},
-                    {title:"Требование вернуть уже полученный вычет",desc:"Налоговая считает, что вы неправомерно получили возврат. Долг + пени."}
-                ], 
-                solution: [
-                    "Подготовлю уточнённую декларацию 3-НДФЛ с правильным расчётом вычета",
-                    "Обжалую незаконный отказ в вычете через вышестоящую инспекцию или суд",
-                    "Оспорю требование о возврате вычета — докажу правомерность ваших действий"
-                ] 
-            },
-            tax_audit_support: { 
-                title: "Сопровождение налоговой проверки", 
-                urgent: "Подготовка к встрече с инспекцией — 80% успеха. Не ходите туда сами.", 
-                steps: [
-                    {title:"Проверка длится месяцами",desc:"Бизнес «под колпаком». Нельзя продать активы, получить кредит."},
-                    {title:"Доначисление по «аналогии»",desc:"Налоговая сравнивает с конкурентами. Доказывайте обратное."},
-                    {title:"Уголовное дело по результатам проверки",desc:"Материалы переданы в следственные органы."}
-                ], 
-                solution: [
-                    "Подготовлю к проверке: соберу документы, разработаю стратегию",
-                    "Присутствую при выемках — оспорю незаконные требования",
-                    "Защищу при возбуждении уголовного дела — добьюсь отказа в возбуждении или прекращения"
-                ] 
-            },
-            
-            // 6. Административное право
-            traffic_fine: { 
-                title: "Обжалование штрафа ГИБДД", 
-                urgent: "Срок обжалования — 10 дней! Не платите сразу — спорьте.", 
-                steps: [
-                    {title:"Оплатили со скидкой 50% — признали вину",desc:"Вернуть деньги невозможно. Штраф остаётся в базе."},
-                    {title:"Автофиксация — знак закрыт, разметка стёрта",desc:"Штраф 5 000 руб. пришёл ошибочно."},
-                    {title:"Неуплата — штраф удвоился",desc:"Арест счетов, запрет регистрации ТС."}
-                ], 
-                solution: [
-                    "Обжалую в 10-дневный срок — докажу нарушения процедуры фиксации",
-                    "Верну незаконно взысканные суммы через суд",
-                    "Исключу штраф из базы ГИС ГМП"
-                ] 
-            },
-            license_revocation: { 
-                title: "Лишение прав за пьянку: как оспорить", 
-                urgent: "Срок обжалования — 10 дней! Не теряйте время.", 
-                steps: [
-                    {title:"Лишение по ошибке — алкоголя не было",desc:"Медосвидетельствование с нарушениями. Доказать без юриста сложно."},
-                    {title:"Срок лишения 1,5–2 года",desc:"Работа водителем потеряна."},
-                    {title:"Повторное нарушение в течение года",desc:"Уголовное дело по ст. 264.1 УК РФ."}
-                ], 
-                solution: [
-                    "Оспорю медосвидетельствование: нарушения процедуры, неисправность прибора",
-                    "Добьюсь смягчения наказания или полной отмены постановления",
-                    "При повторном нарушении — защита в уголовном процессе"
-                ] 
-            },
-            other_fines: { 
-                title: "Штрафы таможни, Роспотребнадзора", 
-                urgent: "Общий срок обжалования — 10 суток со дня вручения (ст. 30.3 КоАП РФ).", 
-                steps: [
-                    {title:"Таможенный штраф 100% стоимости товара + конфискация",desc:"Бизнес парализован."},
-                    {title:"Штраф Роспотребнадзора 100 000 руб.",desc:"Репутация подорвана."},
-                    {title:"Административный арест 15 суток",desc:"Потеря работы, судимость."}
-                ], 
-                solution: [
-                    "Оспорю классификацию товара таможней — докажу отсутствие состава правонарушения",
-                    "Защищу от административного ареста — смягчение до штрафа или предупреждения",
-                    "Уменьшу штраф при малозначительности (ст. 4.1 КоАП РФ)"
-                ] 
-            },
-            
-            // 7. Защита прав потребителей
-            return_bad_quality: { 
-                title: "Возврат товара ненадлежащего качества", 
-                urgent: "Срок возврата — 15 дней для технически сложных товаров, в пределах гарантийного срока для остальных.", 
-                steps: [
-                    {title:"Продавец отказывает «по техническим причинам»",desc:"Остаётесь с бракованным товаром."},
-                    {title:"Требуют экспертизу за ваш счёт",desc:"Цена экспертизы может превышать стоимость товара."},
-                    {title:"Затягивание возврата",desc:"Деньги «зависли», неустойка не начислена."}
-                ], 
-                solution: [
-                    "Заставлю продавца принять товар и вернуть деньги в 10-дневный срок по ЗоЗПП",
-                    "Добьюсь бесплатной экспертизы за счёт продавца",
-                    "Взыщу неустойку 1% за каждый день просрочки + моральный вред"
-                ] 
-            },
-            return_good_quality: { 
-                title: "Возврат товара надлежащего качества", 
-                urgent: "14 дней на возврат без объяснения причин.", 
-                steps: [
-                    {title:"14 дней прошли — «не подлежит возврату»",desc:"Хотя закон даёт 14 дней."},
-                    {title:"Товар из «невозвратного» списка",desc:"Продавец обманул — на самом деле товар не входит в перечень."},
-                    {title:"Нет чека — отказывают",desc:"Хотя свидетели и выписки с карты подтверждают покупку."}
-                ], 
-                solution: [
-                    "Заставлю принять товар в 14-дневный срок без объяснения причин",
-                    "Докажу, что товар не входит в перечень невозвратных",
-                    "Подтвержу покупку без чека через свидетелей, банковские выписки, видео"
-                ] 
-            },
-            penalty_50: { 
-                title: "Штраф 50% за нарушение прав потребителей", 
-                urgent: "Можно взыскать с продавца дополнительно к основным требованиям.", 
-                steps: [
-                    {title:"Не знаете о праве на штраф 50%",desc:"Потеряли дополнительные деньги."},
-                    {title:"Не требовали неустойку 1% за день просрочки",desc:"За 30 дней — потеря 30% от цены товара."},
-                    {title:"Не взыскали моральный вред",desc:"Стресс остался, компенсации нет."}
-                ], 
-                solution: [
-                    "Взыщу штраф 50% от суммы удовлетворённых требований",
-                    "Начислю неустойку 1% за каждый день просрочки",
-                    "Включу в иск моральный вред и расходы на юриста"
-                ] 
-            },
-            
-            // 8. Документы и договоры
-            contract_draft: { 
-                title: "Составление договора «под ключ»", 
-                urgent: "Договор — единственная защита в споре. Шаблоны из интернета опасны.", 
-                steps: [
-                    {title:"«Стандартный» договор — неустойка 0,01%",desc:"Партнёр задерживает оплату на 6 месяцев. Вы терпите убытки."},
-                    {title:"Нет санкций за просрочку поставки",desc:"Контрагент поставляет когда хочет."},
-                    {title:"Подсудность — город контрагента",desc:"Ездите на суд в другой конец страны."}
-                ], 
-                solution: [
-                    "Пропишу адекватные неустойки: 0,1-0,5% за день просрочки",
-                    "Зафиксирую подсудность в вашем городе",
-                    "Защищу от «фиктивного форс-мажора»"
-                ] 
-            },
-            contract_review: { 
-                title: "Проверка договора перед подписанием", 
-                urgent: "Проверка стоит 4000 руб. Ошибка в договоре — миллионы убытков.", 
-                steps: [
-                    {title:"Автопродление аренды на 5 лет вместо 1",desc:"Выкупаться дорого, съехать нельзя."},
-                    {title:"Субсидиарная ответственность поручителя",desc:"Вы отвечаете долгами компании своим имуществом."},
-                    {title:"«Мелкий шрифт» — комиссия 10%, автосписание",desc:"Подписали не читая. Потери десятки тысяч рублей в год."}
-                ], 
-                solution: [
-                    "Разберу каждый пункт договора — объясню риски простым языком",
-                    "Предложу правки, согласую с контрагентом",
-                    "Отменю опасные пункты: одностороннее изменение условий, отказ от гарантий"
-                ] 
-            },
-            prenup_draft: { 
-                title: "Брачный договор — индивидуальная разработка", 
-                urgent: "Шаблоны не учитывают ваши активы. Нужен персональный документ.", 
-                steps: [
-                    {title:"Шаблон из интернета не учитывает конкретные активы",desc:"Квартира до брака поделена, бизнес разрушен."},
-                    {title:"Нет нотариального удостоверения",desc:"Супруг оспорит как подписанное «под давлением»."},
-                    {title:"Не защищает бизнес и инвестиции",desc:"Партнёр получит 50% компании при разводе."}
-                ], 
-                solution: [
-                    "Разработаю индивидуальный договор с учётом всех активов",
-                    "Организую нотариальное удостоверение",
-                    "Защищу бизнес через корпоративные механизмы"
-                ] 
-            },
-            
-            // 9. Представительство в суде
-            court_representation: { 
-                title: "Представительство в суде", 
-                urgent: "Процессуальные сроки не ждут. Пропуск — проигрыш.", 
-                steps: [
-                    {title:"Пропустили срок подачи доказательств",desc:"Суд отказал в принятии ключевых документов."},
-                    {title:"Судья не разбирается в специфике",desc:"Без грамотного объяснения — отказ в иске."},
-                    {title:"Оппонент подал встречный иск",desc:"Не были готовы. Суд удовлетворил требования против вас."}
-                ], 
-                solution: [
-                    "Соберу полный комплект доказательств, привлеку экспертов",
-                    "Разработаю стратегию защиты с учётом практики конкретного суда",
-                    "Представлю интересы в суде всех инстанций"
-                ] 
-            },
-            appeal_online: { 
-                title: "Апелляционное обжалование", 
-                urgent: "Срок апелляции — 1 месяц! Не упустите шанс исправить ошибку.", 
-                steps: [
-                    {title:"Решение вступило в силу",desc:"Счета арестованы, имущество описано."},
-                    {title:"Пропустили 1 месяц на апелляцию",desc:"Исправить ничего нельзя."},
-                    {title:"Апелляция отклонена формально",desc:"Не нашли существенных нарушений."}
-                ], 
-                solution: [
-                    "Найду существенные нарушения материального и процессуального права",
-                    "Подготовлю мотивированную апелляционную жалобу",
-                    "Приостановлю исполнение решения на время рассмотрения апелляции"
-                ] 
-            },
-            enforcement_proceedings: { 
-                title: "Взыскание долга через приставов", 
-                urgent: "Выиграть суд — полдела. Главное — получить деньги.", 
-                steps: [
-                    {title:"Выиграли суд, но должник «нищий»",desc:"Приставы закрыли производство."},
-                    {title:"Должник продал имущество родственникам",desc:"Имущества нет, долг не взыскать."},
-                    {title:"Исполнительский сбор 7%",desc:"Приставы забрали 7 000 из 100 000."}
-                ], 
-                solution: [
-                    "Найду скрытое имущество должника: счета, недвижимость, авто",
-                    "Оспорю сделки с родственниками как недействительные",
-                    "Добьюсь уголовного преследования за неисполнение решения суда"
-                ] 
-            },
-            
-            // 10. Бизнес
-            biz_registration: { 
-                title: "Регистрация ИП и ООО", 
-                urgent: "Ошибки на старте обходятся дорого.", 
-                steps: [
-                    {title:"Ошибка в кодах ОКВЭД",desc:"Налоговая отказывает в вычетах. Перерегистрация — месяц."},
-                    {title:"Учредитель — номинал, продал доли без вас",desc:"Вы потеряли компанию."},
-                    {title:"Неправильный юридический адрес",desc:"Налоговая исключила из ЕГРЮЛ. Счета заблокированы."}
-                ], 
-                solution: [
-                    "Проверю адрес на «массовую регистрацию», подберу правильные ОКВЭД",
-                    "Защищу от «чёрных» регистраторов",
-                    "Оформлю регистрацию за 3 рабочих дня"
-                ] 
-            },
-            biz_contracts: { 
-                title: "Договоры для бизнеса", 
-                urgent: "Проверка контрагента и договора — страховка от убытков.", 
-                steps: [
-                    {title:"Контрагент — фирма-однодневка",desc:"Предоплата ушла, товара нет."},
-                    {title:"Товар приняли, качество плохое — нет претензионного порядка",desc:"Суд отказал в иске."},
-                    {title:"Агент завысил комиссию через допсоглашение",desc:"Подписали не глядя."}
-                ], 
-                solution: [
-                    "Проверю контрагента по базам ФНС, ФССП, Арбитраж",
-                    "Составлю договор с претензионным порядком и ответственностью",
-                    "Взыщу задолженность через суд и приставов"
-                ] 
-            },
-            biz_subscription: { 
-                title: "Абонентское юридическое обслуживание", 
-                urgent: "Постоянная правовая защита дешевле разовых консультаций.", 
-                steps: [
-                    {title:"Штатный юрист ушёл в отпуск/уволился",desc:"Срочная сделка без проверки."},
-                    {title:"Налоговая проверка застала врасплох",desc:"Документы не собраны. Штраф."},
-                    {title:"Сотрудник украл коммерческую тайну",desc:"Нет договора о конфиденциальности."}
-                ], 
-                solution: [
-                    "Постоянная поддержка: договоры, претензии, проверка контрагентов",
-                    "Подготовка к налоговым проверкам",
-                    "Кадровое сопровождение: договоры о конфиденциальности, НДА"
-                ] 
-            }
-        };
-
-        // Сервисы - 10 категорий
-        const serviceGroups = [
-            { title: "Семейные споры", desc: "Раздел имущества, алименты, брачный договор. Защищу ваши интересы удаленно.", icon: "⚖️", number: "01", topics: ["alimony_applied","property_division","prenup_contract"], id: "semeynye" },
-            { title: "Недвижимость", desc: "Проверка перед покупкой, сопровождение сделок, споры с соседями. Онлайн по всей России.", icon: "🏛️", number: "02", topics: ["apartment_check","transaction_support","neighbor_disputes"], id: "nedvizhimost" },
-            { title: "Наследственные дела", desc: "Вступление в наследство, оспаривание завещания, долги наследодателя.", icon: "📜", number: "03", topics: ["inheritance_missed","will_dispute","debts_accept"], id: "nasledstvo" },
-            { title: "Трудовые споры", desc: "Незаконное увольнение, задержка зарплаты, моббинг. Верну справедливость.", icon: "💼", number: "04", topics: ["illegal_firing","salary_delay","mobbing"], id: "trudovye" },
-            { title: "Налоговые споры", desc: "Оспаривание штрафов, возврат вычетов, сопровождение проверок.", icon: "📊", number: "05", topics: ["tax_fine_appeal","tax_deduction_return","tax_audit_support"], id: "nalogovye" },
-            { title: "Административное право", desc: "Штрафы ГИБДД, лишение прав, таможенные споры. Обжалую постановления.", icon: "🚗", number: "06", topics: ["traffic_fine","license_revocation","other_fines"], id: "administrativnoe" },
-            { title: "Защита прав потребителей", desc: "Возврат товара, неустойка, штраф 50% за нарушение прав.", icon: "🛡️", number: "07", topics: ["return_bad_quality","return_good_quality","penalty_50"], id: "potrebiteli" },
-            { title: "Документы и договоры", desc: "Составлю договор, проверю риски, защищу от «подводных камней».", icon: "📄", number: "08", topics: ["contract_draft","contract_review","prenup_draft"], id: "dokumenty" },
-            { title: "Представительство в суде", desc: "Ведение дел в судах всех инстанций, обжалование, исполнительное производство.", icon: "⚔️", number: "09", topics: ["court_representation","appeal_online","enforcement_proceedings"], id: "sud" },
-            { title: "Юридические услуги для бизнеса", desc: "Регистрация, договоры, абонентское обслуживание. Защита бизнеса.", icon: "🏢", number: "10", topics: ["biz_registration","biz_contracts","biz_subscription"], id: "biznes" }
-        ];
-
-        function renderServices() { 
-            const grid=document.getElementById('servicesGrid'); 
-            const hidden=document.getElementById('servicesHidden'); 
-            const firstFour=serviceGroups.slice(0,4); 
-            const rest=serviceGroups.slice(4); 
-            grid.innerHTML=firstFour.map(g=>serviceCardHtml(g)).join(''); 
-            hidden.innerHTML=rest.map(g=>serviceCardHtml(g)).join(''); 
-        }
-        
-        function serviceCardHtml(g){ 
-            return `<article class="service-card fade-in" id="${g.id}"><div class="service-number">${g.number}</div><div class="service-icon">${g.icon}</div><h3 class="service-title">${g.title}</h3><p class="service-desc">${g.desc}</p><div class="service-topics">${g.topics.map(t=>`<div class="service-topic" onclick="openModal('${t}')">${modalContent[t].title}</div>`).join('')}</div></article>`; 
-        }
-        
-        function toggleServices(){ 
-            const hidden=document.getElementById('servicesHidden'); 
-            const btn=document.querySelector('button[onclick="toggleServices()"]'); 
-            hidden.classList.toggle('visible'); 
-            btn.textContent=hidden.classList.contains('visible')?'Скрыть дополнительные услуги':'Показать все услуги'; 
-        }
-        
-        function openModal(topic){ 
-            const data=modalContent[topic]; 
-            if(!data) return; 
-            document.getElementById('modalTitle').innerText=data.title; 
-            const stepsHtml=data.steps.map((s,i)=>`<div class="scenario-step"><div class="step-num">${i+1}</div><div class="step-content"><h4>${s.title}</h4><p>${s.desc}</p></div></div>`).join(''); 
-            const solutionHtml=data.solution.map(s=>`<li>${s}</li>`).join(''); 
-            document.getElementById('modalBody').innerHTML=`<div class="urgency-warning">⚠️ ${data.urgent}</div><div class="scenario"><div class="scenario-title">⚠️ Что будет, если не действовать:</div>${stepsHtml}</div><div class="solution-box"><h4>✓ Как я помогу (работаю онлайн):</h4><ul>${solutionHtml}</ul></div><div class="modal-actions"><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max'); closeModal();">⚡ Срочно в MAX</button><button class="btn btn-outline" onclick="handleContactClick('https://wa.me/79774232473', 'whatsapp'); closeModal();">💬 WhatsApp</button></div><div class="disclaimer-box">⚠️ Консультации платные. Стоимость определяется индивидуально после анализа ситуации. Результат зависит от конкретных обстоятельств дела.</div>`; 
-            document.getElementById('modalOverlay').classList.add('active'); 
-            document.body.style.overflow='hidden'; 
-        }
-        
-        function closeModal(){ 
-            document.getElementById('modalOverlay').classList.remove('active'); 
-            document.body.style.overflow=''; 
-        }
-        
-        function toggleMenu(){ 
-            const menu=document.getElementById('mobileMenu'); 
-            const overlay=document.querySelector('.overlay'); 
-            menu.classList.toggle('active'); 
-            overlay.classList.toggle('active'); 
-            document.body.style.overflow=menu.classList.contains('active')?'hidden':''; 
-        }
-        
-        function scrollToTop(e){ 
-            e.preventDefault(); 
-            window.scrollTo({top:0,behavior:'smooth'}); 
-        }
-
-        // ------------------ HOT NEWS MODULE ------------------
-        function loadHotNews() {
-            const container = document.getElementById('hotNewsContent');
-            fetch('updates/hot-news.json?v=' + Date.now())
-                .then(response => {
-                    if (!response.ok) throw new Error('No hot news file');
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.active) {
-                        renderHotNews(data);
-                    } else {
-                        showDefaultHotNews();
-                    }
-                })
-                .catch(() => {
-                    showDefaultHotNews();
-                });
-        }
-        
-        function renderHotNews(data) {
-            const container = document.getElementById('hotNewsContent');
-            let html = '';
-            if (data.image) html += `<img src="${data.image}" alt="Актуальная информация" class="hot-news-image">`;
-            if (data.title) html += `<div class="hot-news-title">${data.title}</div>`;
-            if (data.content) html += `<div class="hot-news-text">${data.content}</div>`;
-            if (data.date) html += `<div class="hot-news-date">${data.date}</div>`;
-            container.innerHTML = html;
-        }
-        
-        function showDefaultHotNews() {
-            const container = document.getElementById('hotNewsContent');
-            container.innerHTML = `
-                <div class="hot-news-text">⚡ Работаю онлайн по всей России — консультации удаленно</div>
-                <div class="hot-news-text">🎯 Цена фиксируется до начала работы — никаких скрытых платежей</div>
-                <div class="hot-news-text">🛡️ Не адвокат, но помогу. При сложных делах — подскажу проверенного специалиста</div>
-            `;
-        }
-
-        // ------------------ ЯКОРЯ И ПЕРЕХОДЫ С РЕКЛАМЫ ------------------
-        function blinkTargetElement(element) {
-            if (!element) return;
-            element.classList.add('blink-highlight');
-            setTimeout(() => {
-                element.classList.remove('blink-highlight');
-            }, 1200);
-        }
-
-        function checkAndOpenHiddenServices() {
-            const hash = window.location.hash;
-            if (!hash) return;
-            
-            processHashTarget(hash);
-        }
-        
-        function processHashTarget(hash) {
-            const targetId = hash.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const hiddenContainer = document.getElementById('servicesHidden');
-                const isHiddenService = hiddenContainer && hiddenContainer.contains(targetElement);
-                
-                if (isHiddenService && !hiddenContainer.classList.contains('visible')) {
-                    hiddenContainer.classList.add('visible');
-                    const btn = document.querySelector('button[onclick="toggleServices()"]');
-                    if (btn) btn.textContent = 'Скрыть дополнительные услуги';
+        // Показывать sticky bar при скролле на мобильных
+        (function(){
+            const bar = document.getElementById('stickyBar');
+            let shown = false;
+            window.addEventListener('scroll', function(){
+                if (window.innerWidth < 769 && window.scrollY > 100 && !shown) {
+                    bar.classList.add('visible');
+                    shown = true;
                 }
-                
-                setTimeout(() => {
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    setTimeout(() => {
-                        blinkTargetElement(targetElement);
-                    }, 600);
-                }, 100);
-            }
-        }
-
-        const storageAvailable = isStorageAvailable();
-        let pendingContactUrl = null;
-        let pendingContactType = null;
-
-        function handleContactClick(url, type) {
-            if (typeof ym !== 'undefined') {
-                ym(106860023, 'reachGoal', 'contact_click', { contact_type: type });
-            }
-            
-            if (storageAvailable && localStorage.getItem('user_consent') === 'true') {
-                proceedWithContact(url);
-            } else {
-                pendingContactUrl = url;
-                pendingContactType = type;
-                document.getElementById('consentOverlay').classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function proceedWithContact(url) {
-            if(url.startsWith('tel:')) {
-                window.location.href = url;
-            } else {
-                window.open(url, '_blank', 'noopener,noreferrer');
-            }
-        }
-
-        function closeConsentModal() {
-            document.getElementById('consentOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-            pendingContactUrl = null;
-            pendingContactType = null;
-        }
-
-        function proceedContact() {
-            if (storageAvailable) {
-                localStorage.setItem('user_consent', 'true');
-            }
-            if(pendingContactUrl) {
-                proceedWithContact(pendingContactUrl);
-            }
-            closeConsentModal();
-        }
-
-        document.getElementById('consentConfirmBtn')?.addEventListener('click', proceedContact);
-        document.getElementById('consentCancelBtn')?.addEventListener('click', closeConsentModal);
-
-        // Шаблоны - PDF
-        // FAQ
-        const faqItems=[
-            {q:"Вы адвокат?",a:"<strong>Нет, я не являюсь адвокатом</strong> — я частный юрист-консультант. Это означает, что я не состою в адвокатской палате и не имею статуса адвоката. Однако в большинстве случаев это работает <strong>в вашу пользу</strong>: мои услуги дешевле, а результат такой же эффективный.<br><br>Я успешно решаю вопросы по составлению договоров, проверке документов, семейным и трудовым спорам, защите прав потребителей, налоговым консультациям. Работаю онлайн по всей России.<br><br><strong>Если ваш вопрос требует именно адвокатской деятельности</strong> (например, уголовное дело или сложное арбитражное производство с участием адвоката обязательно) — я честно скажу об этом и порекомендую проверенного коллегу-адвоката."},
-            {q:"Как проходит консультация?",a:"Консультация <strong>платная</strong> (от 2000 руб. за 30-60 минут). Мы общаемся онлайн: в мессенджерах (MAX, WhatsApp), по телефону или видеосвязи. Документы пересылаем сканами или через облако, подпись — электронная или у нотариуса (тоже можно онлайн через Госуслуги).<br><br>Большинство вопросов решается удаленно без личных встреч. Это быстрее и дешевле. Если нужно присутствие в суде — оговаривается отдельно."},
-            {q:"У вас большой опыт работы?",a:"Специализируюсь на гражданском праве: недвижимость, семейные и трудовые споры, наследство, налоги. Регулярно изучаю изменения в законодательстве и судебную практику.<br><br>Если вопрос требует узкой специализации, в которой я не эксперт — честно скажу и подскажу коллегу. Не берусь за то, в чем не уверен."},
-            {q:"Как быстро вы отвечаете?",a:"Первичный ответ на обращение — в течение суток. В рабочие дни с 9:00 до 21:00 отвечаю оперативно, в выходные — могу ответить с задержкой.<br><br>Для срочных вопросов лучше писать в MAX или WhatsApp — там быстрее всего."},
-            {q:"Какие гарантии?",a:"После первичной консультации (платной) фиксирую стоимость и сроки работы. Работаю по договору (можно в электронном виде).<br><br>Оплата поэтапная: часть — предоплата, часть — по результату. Если после консультации решите, что помощь не требуется — деньги за неиспользованное время верну."},
-            {q:"Работаете ли вы с регионами?",a:"Да, работаю со всеми регионами России онлайн. Современное законодательство позволяет решать большинство вопросов удаленно: через электронное правосудие, электронную подпись, нотариусов онлайн через Госуслуги.<br><br>Личное присутствие требуется крайне редко — в основном для участия в судебных заседаниях по сложным делам. Приезжать в Москву не нужно."},
-            {q:"Что делать, если у меня сложный случай?",a:"На первичной консультации я оцениваю перспективы дела. Если вижу, что нужен узкий специалист (например, адвокат по уголовным делам, международник или патентный поверенный) — честно скажу об этом и порекомендую проверенного коллегу.<br><br>Моя цель — решить ваш вопрос, а не продать услугу любой ценой."}
-        ];
-        
-        function renderFaq(){ 
-            const container=document.getElementById('faqList'); 
-            container.innerHTML=faqItems.map((item, index)=>`<div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-${index}"><span>${item.q}</span><div class="faq-icon"></div></button><div class="faq-answer" id="faq-answer-${index}"><p>${item.a}</p></div></div>`).join(''); 
-        }
-        
-        function toggleFaq(btn){ 
-            const item=btn.closest('.faq-item'); 
-            const isActive = item.classList.contains('active');
-            
-            document.querySelectorAll('.faq-item').forEach(f=>{
-                f.classList.remove('active');
-                f.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-            }); 
-            
-            if(!isActive) {
-                item.classList.add('active');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        }
-        
-        const contacts=[
-            {icon:"💬",label:"Написать в MAX (основной)",value:"+7 (977) 423-24-73",color:"#9b59b6",url:"https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g",type:"max"},
-            {icon:"💬",label:"WhatsApp",value:"+7 (977) 423-24-73",color:"#25d366",url:"https://wa.me/79774232473",type:"whatsapp"},
-            {icon:"📞",label:"Позвонить",value:"+7 (977) 423-24-73",color:"",url:"tel:+79774232473",type:"phone"},
-            {icon:"✉️",label:"Email",value:"333742917@mail.ru",color:"",url:"mailto:333742917@mail.ru",type:"email"}
-        ];
-        
-        function renderContacts(){ 
-            const container=document.getElementById('contactGrid'); 
-            container.innerHTML=contacts.map(c=>`<div class="contact-method" onclick="handleContactClick('${c.url}', '${c.type}')" style="${c.color ? `border-left-color: ${c.color};` : ''}" role="button" tabindex="0"><div class="contact-method-icon" style="${c.color ? `background: ${c.color}20;` : ''}">${c.icon}</div><div class="contact-method-content"><div class="contact-method-label" style="${c.color ? `color: ${c.color};` : ''}">${c.label}</div><div class="contact-method-value">${c.value}</div>${c.type==='phone' ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">9:00 — 21:00, ежедневно</div>' : ''}</div></div>`).join(''); 
-        }
-        
-        const pricingPlans=[
-            {name:"Консультация",desc:"Первичная правовая оценка онлайн",price:"от 2 000 ₽",period:"30-60 минут",features:["Анализ ситуации","Правовая оценка рисков","Варианты решения","План действий"]},
-            {name:"Документ",desc:"Составление или проверка",price:"от 4 000 ₽",period:"Один документ",features:["Договор купли-продажи","Договор аренды / найма","Брачный договор","Проверка на риски"]},
-            {name:"Стартовый пакет",desc:"Консультация + Документ",price:"от 5 000 ₽",period:"Вместо 6 000 ₽ по отдельности",features:["Консультация 30 минут","Составление документа","Правовой анализ","Рекомендации по сделке"],popular:true},
-            {name:"Судебное ведение",desc:"Представительство в суде",price:"от 25 000 ₽",period:"За дело (одна инстанция)",features:["Составление искового заявления","Представительство в суде","Обжалование решений","Сопровождение исполнения"]}
-        ];
-        
-        function renderPricing(){ 
-            const container=document.getElementById('pricingGrid'); 
-            container.innerHTML=pricingPlans.map(p=>`<article class="pricing-card ${p.popular ? 'popular' : ''} fade-in">${p.popular ? '<div class="popular-badge">Экономия 20%</div>' : ''}<h3 class="pricing-name">${p.name}</h3><div class="pricing-desc">${p.desc}</div><div class="pricing-price">${p.price}</div><div class="pricing-period">${p.period}</div><ul class="pricing-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul><button class="btn" onclick="handleContactClick('https://max.ru/u/f9LHodD0cOJN9gg81ChXMBVVJJuG2k4b8CKLNk8vQQ3oy_Q5cFcC5TduD_g', 'max')">Заказать</button></article>`).join(''); 
-        }
-        
-        function initCookieBanner(){ 
-            if(storageAvailable && !localStorage.getItem('cookie_consent')){
-                const banner=document.createElement('div'); 
-                banner.className='cookie-banner'; 
-                banner.innerHTML=`<p>Мы используем cookie для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>.</p><button class="btn" style="padding:8px 20px;" onclick="acceptCookies()">Принять</button>`; 
-                document.body.appendChild(banner); 
-                banner.style.display='block'; 
-            } 
-        }
-        
-        function acceptCookies(){ 
-            if(storageAvailable) localStorage.setItem('cookie_consent','true'); 
-            document.querySelector('.cookie-banner')?.remove(); 
-        }
-        
-        const observer=new IntersectionObserver(entries=>{ 
-            entries.forEach(e=>{ 
-                if(e.isIntersecting) e.target.classList.add('visible'); 
-            }); 
-        },{threshold:0.1});
-        
-        document.addEventListener('DOMContentLoaded',()=>{ 
-            renderServices(); 
-            renderPricing(); 
-            renderFaq(); 
-            renderContacts(); 
-            loadHotNews();
-            document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el)); 
-            initCookieBanner(); 
-            document.getElementById('scrollTopBtn')?.addEventListener('click',scrollToTop); 
-            checkAndOpenHiddenServices(); 
-        });
-        
-        document.addEventListener('keydown',e=>{ 
-            if(e.key==='Escape'){
-                closeModal(); 
-                closeConsentModal(); 
-            } 
-        });
-        
-        window.addEventListener('hashchange', checkAndOpenHiddenServices);
+            }, { passive: true });
+            // Also show after 3 seconds on mobile
+            setTimeout(function(){
+                if (window.innerWidth < 769) bar.classList.add('visible');
+            }, 3000);
+        })();
     </script>
+
+    <!-- ════════════════════════════════════════════
+         COOKIE CONSENT BANNER
+    ════════════════════════════════════════════ -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>🍪 Мы используем cookies и Яндекс.Метрику для анализа посещаемости. Продолжая использовать сайт, вы соглашаетесь с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-accept" id="cookieAccept">Принять</button>
+                <button class="cookie-btn cookie-decline" id="cookieDecline">Отклонить</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
