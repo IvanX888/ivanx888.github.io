@@ -748,6 +748,24 @@
             .mobile-card:active {
                 transform: scale(0.98);
             }
+            /* Scroll hint indicator */
+            .mobile-cards::after {
+                content: '← свайп →';
+                position: absolute;
+                bottom: 4px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.7em;
+                color: rgba(255, 215, 100, 0.4);
+                letter-spacing: 2px;
+                animation: fadeOutHint 4s ease forwards;
+                animation-delay: 3s;
+                pointer-events: none;
+            }
+            @keyframes fadeOutHint {
+                0% { opacity: 1; }
+                100% { opacity: 0; }
+            }
             .mobile-card h4 {
                 font-size: 0.95em;
                 font-weight: 600;
@@ -907,6 +925,7 @@
     <base target="_blank">
 <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -999,7 +1018,7 @@
 
         <!-- Мобильные карточки услуг (горизонтальная прокрутка) -->
         <div class="mobile-cards" id="mobileCards">
-            <div class="mobile-cards-scroll">
+            <div class="mobile-cards-scroll" id="mobileCardsScroll">
                 <div class="mobile-card" data-modal="0">
                     <h4>👨‍👩‍👧 Алименты</h4>
                     <p>25% на 1 ребёнка, 33% на 2-х, 50% на 3-х</p>
@@ -1190,7 +1209,7 @@
 
         // Автовращение
         let autoRotate = true;
-        let rotSpeed = 0.12;
+        let rotSpeed = 0.18;
         let rotInterval;
 
         function startAutoRotate() {
@@ -1539,6 +1558,63 @@
         })();
 
         console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
+
+        // ════════════════════════════════════════════
+        // МОБИЛЬНЫЕ КАРТОЧКИ: АНИМАЦИЯ ПРОКРУТКИ ПРИ ВХОДЕ
+        // ════════════════════════════════════════════
+        (function(){
+            const scrollContainer = document.getElementById('mobileCardsScroll');
+            if (!scrollContainer) return;
+
+            // Check if mobile
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) return;
+
+            // Wait for layout to settle, then animate scroll
+            setTimeout(function(){
+                const cardWidth = 272; // 260px card + 12px gap
+                const scrollAmount = cardWidth * 2.5; // scroll past 2.5 cards
+                const startScroll = scrollContainer.scrollLeft;
+                const targetScroll = Math.min(scrollAmount, scrollContainer.scrollWidth - scrollContainer.clientWidth);
+                const duration = 1800; // ms - smooth, noticeable but not too fast
+                const startTime = performance.now();
+
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+
+                function animateScroll(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = easeOutCubic(progress);
+
+                    scrollContainer.scrollLeft = startScroll + (targetScroll - startScroll) * eased;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateScroll);
+                    } else {
+                        // After reaching the end, slowly scroll back a bit to show it's scrollable
+                        setTimeout(function(){
+                            const backDuration = 1200;
+                            const backStart = scrollContainer.scrollLeft;
+                            const backTarget = cardWidth * 0.5;
+                            const backStartTime = performance.now();
+
+                            function animateBack(currentTime) {
+                                const elapsed = currentTime - backStartTime;
+                                const progress = Math.min(elapsed / backDuration, 1);
+                                const eased = easeOutCubic(progress);
+                                scrollContainer.scrollLeft = backStart - (backStart - backTarget) * eased;
+                                if (progress < 1) requestAnimationFrame(animateBack);
+                            }
+                            requestAnimationFrame(animateBack);
+                        }, 400);
+                    }
+                }
+
+                requestAnimationFrame(animateScroll);
+            }, 800); // Start after 800ms (after page load visual)
+        })();
     </script>
 
     <script>
