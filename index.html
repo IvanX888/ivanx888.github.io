@@ -46,6 +46,12 @@
             perspective: 1200px; 
             perspective-origin: 50% 50%; 
             overflow: visible; 
+            transition: opacity 0.4s ease, transform 0.4s ease; 
+        }
+        .floating-blocks.modal-hidden {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            pointer-events: none;
         }
         .float-carousel { 
             position: absolute; 
@@ -692,6 +698,12 @@
         ════════════════════════════════════════════ */
         .mobile-cards {
             display: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .mobile-cards.modal-hidden {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+            pointer-events: none;
         }
         @media (max-width: 768px) {
             .mobile-cards {
@@ -1437,6 +1449,12 @@
         const modalBtn = document.getElementById('modalBtn');
 
         function openModal(index) {
+            // Hide carousel when modal opens
+            const floatBlocksEl = document.getElementById('floatBlocks');
+            const mobileCardsEl = document.getElementById('mobileCards');
+            if (floatBlocksEl) floatBlocksEl.classList.add('modal-hidden');
+            if (mobileCardsEl) mobileCardsEl.classList.add('modal-hidden');
+
             const data = modalData[index];
             modalIcon.textContent = data.icon;
             modalTag.textContent = data.tag;
@@ -1477,6 +1495,12 @@
         function closeModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
+
+            // Show carousel back
+            const floatBlocksEl = document.getElementById('floatBlocks');
+            const mobileCardsEl = document.getElementById('mobileCards');
+            if (floatBlocksEl) floatBlocksEl.classList.remove('modal-hidden');
+            if (mobileCardsEl) mobileCardsEl.classList.remove('modal-hidden');
         }
 
         // Клик по карточкам (десктоп)
