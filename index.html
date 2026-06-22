@@ -629,6 +629,17 @@
             transition: all 0.3s ease; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
+        .panel-btn.telegram { 
+            background: rgba(0, 136, 204, 0.12); 
+            border-color: rgba(0, 136, 204, 0.3); 
+            color: rgba(100, 200, 255, 0.95); 
+        }
+        .panel-btn.telegram:hover { 
+            background: rgba(0, 136, 204, 0.3); 
+            border-color: rgba(0, 136, 204, 0.6); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(0, 136, 204, 0.15); 
+        }
+
         .panel-info-block:hover { 
             background: rgba(100, 70, 45, 0.35); 
             border-color: rgba(220, 180, 110, 0.35); 
@@ -869,7 +880,309 @@
             60% { transform: translateX(-4px); }
             80% { transform: translateX(4px); }
         }
-@media (max-width: 1100px) {
+
+        /* ════════════════════════════════════════════
+           ПАНЕЛЬ — РАЗВОРАЧИВАЕМЫЕ БЛОКИ
+        ════════════════════════════════════════════ */
+        .panel-section {
+            width: 100%;
+            background: rgba(80, 55, 35, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 160, 100, 0.18);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .panel-section:hover {
+            background: rgba(100, 70, 45, 0.35);
+            border-color: rgba(220, 180, 110, 0.35);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .panel-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 18px;
+            position: relative;
+            user-select: none;
+        }
+        .panel-section-icon {
+            font-size: 1.4em;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .panel-section-title-wrap {
+            flex: 1;
+            min-width: 0;
+        }
+        .panel-section-title {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: rgba(255, 240, 220, 0.95);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            line-height: 1.3;
+        }
+        .panel-section-subtitle {
+            font-size: 0.72em;
+            color: rgba(220, 195, 170, 0.65);
+            display: block;
+            margin-top: 2px;
+        }
+        .panel-section-chevron {
+            font-size: 0.75em;
+            color: rgba(255, 215, 100, 0.6);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex-shrink: 0;
+        }
+        .panel-section.expanded .panel-section-chevron {
+            transform: rotate(180deg);
+        }
+        .panel-section-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.35s ease;
+            padding: 0 18px;
+        }
+        .panel-section.expanded .panel-section-body {
+            max-height: 800px;
+            padding: 0 18px 18px 18px;
+        }
+
+        /* Обо мне */
+        .about-short {
+            font-size: 0.82em;
+            color: rgba(255, 215, 100, 0.85);
+            margin-bottom: 10px;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .about-details p {
+            font-size: 0.8em;
+            color: rgba(220, 195, 170, 0.8);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .about-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .about-badge {
+            font-size: 0.72em;
+            color: rgba(255, 240, 220, 0.85);
+            background: rgba(255, 215, 100, 0.08);
+            border: 1px solid rgba(255, 215, 100, 0.2);
+            padding: 4px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* Контакты */
+        .contacts-body {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .contacts-body .panel-btn {
+            padding: 14px 16px;
+            font-size: 0.88em;
+        }
+        .contacts-body .consent-checkbox-block {
+            margin-top: 4px;
+        }
+
+        /* Решённые дела */
+        .cases-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .case-card {
+            background: rgba(60, 40, 22, 0.4);
+            border: 1px solid rgba(200, 160, 100, 0.12);
+            border-radius: 14px;
+            padding: 14px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background: linear-gradient(180deg, rgba(255,215,100,0.5), rgba(255,215,100,0.1));
+            border-radius: 14px 0 0 14px;
+        }
+        .case-card:hover {
+            background: rgba(80, 55, 35, 0.5);
+            border-color: rgba(255, 215, 100, 0.25);
+            transform: translateX(4px);
+        }
+        .case-sum {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: rgba(255, 215, 100, 0.95);
+            text-shadow: 0 0 12px rgba(255, 215, 100, 0.3);
+            margin-bottom: 4px;
+        }
+        .case-theme {
+            font-size: 0.82em;
+            font-weight: 600;
+            color: rgba(255, 240, 220, 0.9);
+            margin-bottom: 3px;
+        }
+        .case-client {
+            font-size: 0.75em;
+            color: rgba(220, 195, 170, 0.65);
+            margin-bottom: 8px;
+        }
+        .case-desc {
+            font-size: 0.76em;
+            color: rgba(220, 195, 170, 0.7);
+            line-height: 1.5;
+            padding-left: 8px;
+            border-left: 1px solid rgba(255, 215, 100, 0.15);
+        }
+
+        /* Документы */
+        .docs-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .doc-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(60, 40, 22, 0.4);
+            border-radius: 12px;
+            border: 1px solid rgba(200, 160, 100, 0.12);
+        }
+        .doc-label {
+            font-size: 0.78em;
+            color: rgba(220, 195, 170, 0.6);
+            flex-shrink: 0;
+            min-width: 50px;
+        }
+        .doc-value {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: rgba(255, 240, 220, 0.95);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5px;
+            flex: 1;
+        }
+        .doc-copy {
+            background: rgba(255, 215, 100, 0.1);
+            border: 1px solid rgba(255, 215, 100, 0.2);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: rgba(255, 215, 100, 0.8);
+        }
+        .doc-copy:hover {
+            background: rgba(255, 215, 100, 0.25);
+            border-color: rgba(255, 215, 100, 0.4);
+            transform: scale(1.1);
+        }
+        .doc-copy.copied {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: rgba(37, 211, 102, 0.4);
+        }
+        .doc-check p {
+            font-size: 0.78em;
+            color: rgba(220, 195, 170, 0.75);
+            line-height: 1.5;
+        }
+        .doc-hint {
+            font-size: 0.72em !important;
+            color: rgba(220, 195, 170, 0.5) !important;
+            margin-top: 8px;
+            padding: 8px 10px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .panel-footer-bar {
+            width: 100%;
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(200, 160, 100, 0.12);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 4px 10px;
+            font-size: 0.72em;
+            color: rgba(200, 175, 150, 0.5);
+        }
+        .panel-footer-bar a {
+            color: rgba(200, 175, 150, 0.55);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .panel-footer-bar a:hover {
+            color: rgba(255, 215, 100, 0.85);
+        }
+        .panel-footer-sep {
+            color: rgba(200, 175, 150, 0.25);
+        }
+
+        /* Price highlight in about section */
+        .price-highlight-inline {
+            display: inline-block;
+            font-size: 0.9em;
+            color: rgba(255, 215, 100, 0.95);
+            font-weight: 700;
+            margin-top: 8px;
+            text-shadow: 0 0 12px rgba(255, 215, 100, 0.3);
+        }
+
+                .gov-links-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: rgba(60, 40, 22, 0.4);
+            border: 1px solid rgba(200, 160, 100, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: rgba(255, 215, 100, 0.85);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            user-select: none;
+        }
+        .gov-links-toggle:hover {
+            background: rgba(80, 55, 35, 0.5);
+            border-color: rgba(255, 215, 100, 0.3);
+        }
+        .gov-chevron {
+            font-size: 0.75em;
+            color: rgba(255, 215, 100, 0.6);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .gov-links-toggle.open .gov-chevron {
+            transform: rotate(180deg);
+        }
+        .gov-links-content {
+            padding: 0 4px;
+        }
+        .gov-links-content.open {
+            max-height: 400px !important;
+            padding: 8px 4px 4px 4px;
+        }
+
+        @media (max-width: 1100px) {
             .floating-blocks { width: 50%; }
             .float-card { width: 210px; padding: 16px 18px; }
             .float-card h4 { font-size: 0.88em; }
@@ -920,6 +1233,7 @@
         }
     </style>
     <base target="_blank">
+<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 <base target="_blank">
@@ -1084,7 +1398,7 @@
                 <span class="modal-price-label">Стоимость</span>
                 <span class="modal-price-value" id="modalPrice">2 000 ₽</span>
             </div>
-            <a href="#" class="modal-btn modal-btn-primary" id="modalBtn">💬 Написать в WhatsApp</a>
+            <a href="#" class="modal-btn modal-btn-primary" id="modalBtn">✈️ Написать в Telegram</a>
             <a href="https://t.me/BYIvanko" class="modal-btn" id="modalTelegram" style="margin-top:10px; background: rgba(0, 136, 204, 0.12); border-color: rgba(0, 136, 204, 0.35); color: rgba(100, 200, 255, 0.95);" target="_blank">✈️ Написать в Telegram</a>
             <div style="margin-top:10px; text-align:center;">
                 <a href="tel:+79774232473" style="color:#8b6914; font-size:0.82em; text-decoration:none; font-weight:600;" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
@@ -1094,48 +1408,154 @@
 
     <!-- Боковая панель -->
     <aside class="panel">
-        <div class="panel-header">
-            <h2>👨‍⚖️ СЕРКО</h2>
-            <p>Семейный юрист онлайн<br>Алименты · Развод · Раздел имущества</p>
-            <span class="price-highlight">Консультация 2 000 ₽</span>
-            <p style="font-size:0.75em; color:rgba(220,195,170,0.7); margin-top:8px;">📍 Работаю удалённо по всей России<br>🚗 Выезд к клиенту — при острой необходимости (по России)</p>
+        <!-- БЛОК 1: Обо мне -->
+        <div class="panel-section about-section" data-expandable>
+            <div class="panel-section-header">
+                <span class="panel-section-icon">👨‍⚖️</span>
+                <div class="panel-section-title-wrap">
+                    <h2 class="panel-section-title">Серко Иван</h2>
+                    <span class="panel-section-subtitle">Юрист онлайн</span>
+                </div>
+                <span class="panel-section-chevron">▼</span>
+            </div>
+            <div class="panel-section-body">
+                <p class="about-short">🌐 Онлайн по всей России · Алименты · Развод · Раздел имущества</p>
+                <div class="about-details">
+                    <p>Работаю удалённо — это экономит ваше время и деньги. Всё официально по договору, безопасно и прозрачно. При острой необходимости выезжаю к клиенту. Консультирую по семейным, гражданским и потребительским вопросам.</p>
+                    <div class="about-badges">
+                        <span class="about-badge">🌐 Вся Россия</span>
+                        <span class="about-badge">📝 По договору</span>
+                        <span class="about-badge">🚗 Выезд при нужде</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="panel-divider"></div>
 
-        <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" class="panel-btn max" onclick="trackContact('max')">💬 Написать в MAX</a>
-        <a href="https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20семейным%20вопросам." class="panel-btn whatsapp" onclick="trackContact('whatsapp')">💬 WhatsApp</a>
-        <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 Позвонить</a>
-        <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
-
-        <div class="consent-checkbox-block">
-            <label class="consent-label">
-                <input type="checkbox" id="contactConsent" class="consent-checkbox">
-                <span class="consent-text">
-                    Согласен на обработку персональных данных и 
-                    <a href="privacy.html" target="_blank">политику конфиденциальности</a>
-                </span>
-            </label>
+        <!-- БЛОК 2: Контакты -->
+        <div class="panel-section contacts-section" data-expandable>
+            <div class="panel-section-header">
+                <span class="panel-section-icon">📞</span>
+                <div class="panel-section-title-wrap">
+                    <span class="panel-section-title">Контакты</span>
+                    <span class="panel-section-subtitle">Написать или позвонить</span>
+                </div>
+                <span class="panel-section-chevron">▼</span>
+            </div>
+            <div class="panel-section-body contacts-body">
+                <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" class="panel-btn max" onclick="trackContact('max')">💬 Написать в MAX</a>
+                <a href="https://t.me/BYIvanko" class="panel-btn telegram" onclick="trackContact('telegram')" target="_blank">✈️ Telegram</a>
+                <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 Позвонить</a>
+                <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
+                <div class="contact-note" style="font-size:0.75em; color:rgba(220,195,170,0.6); text-align:center; padding:6px 0;">🚗 Выезд при острой необходимости — по договорённости</div>
+                <div class="consent-checkbox-block">
+                    <label class="consent-label">
+                        <input type="checkbox" id="contactConsent" class="consent-checkbox">
+                        <span class="consent-text">
+                            Согласен на обработку персональных данных и 
+                            <a href="privacy.html" target="_blank">политику конфиденциальности</a>
+                        </span>
+                    </label>
+                </div>
+            </div>
         </div>
 
         <div class="panel-divider"></div>
 
-        <div class="panel-info-block">
-            <div class="stat">127+</div>
-            <p>Дел решено в 2025<br>Семейные споры, алименты, разводы</p>
+        <!-- БЛОК 3: Решённые дела -->
+        <div class="panel-section cases-section" data-expandable>
+            <div class="panel-section-header">
+                <span class="panel-section-icon">🏆</span>
+                <div class="panel-section-title-wrap">
+                    <span class="panel-section-title">Решённые дела</span>
+                    <span class="panel-section-subtitle">127+ дел в 2025</span>
+                </div>
+                <span class="panel-section-chevron">▼</span>
+            </div>
+            <div class="panel-section-body cases-body">
+                <div class="case-card">
+                    <div class="case-sum">175 000 ₽</div>
+                    <div class="case-theme">Возврат зарплаты и компенсация</div>
+                    <div class="case-client">Сергей Алексеевич</div>
+                    <div class="case-desc">Работодатель задерживал зарплату 4 месяца. Подготовил иск, взыскали долг и компенсацию морального вреда. Деньги перечислили в течение 10 дней после решения суда.</div>
+                </div>
+                <div class="case-card">
+                    <div class="case-sum">225 000 ₽</div>
+                    <div class="case-theme">Потребительский спор</div>
+                    <div class="case-client">Елена Викторовна</div>
+                    <div class="case-desc">Купила некачественный товар за 150 тыс. руб. Продавец отказывался возвращать деньги. Составил претензию и иск. Суд присудил стоимость товара, неустойку и штраф — итого 225 тыс.</div>
+                </div>
+                <div class="case-card">
+                    <div class="case-sum">180 000 ₽</div>
+                    <div class="case-theme">Алименты на двоих детей</div>
+                    <div class="case-client">Анна Павловна</div>
+                    <div class="case-desc">Бывший муж не платил алименты полтора года. Взыскали задолженность за 18 месяцев + пени. Теперь выплаты поступают регулярно через приставов.</div>
+                </div>
+                <div class="case-card">
+                    <div class="case-sum">320 000 ₽</div>
+                    <div class="case-theme">Раздел имущества при разводе</div>
+                    <div class="case-client">Дмитрий Сергеевич</div>
+                    <div class="case-desc">При разводе жена требовала половину квартиры, купленной до брака. Доказал в суде личный вклад. Квартира осталась с клиентом, компенсация — минимальная.</div>
+                </div>
+                <div class="case-card">
+                    <div class="case-sum">95 000 ₽</div>
+                    <div class="case-theme">Брачный договор</div>
+                    <div class="case-client">Мария Игоревна</div>
+                    <div class="case-desc">Перед вторым браком нужно было защитить бизнес и квартиру. Составил договор, учёл все нюансы. Нотариально заверен. Спокойствие на годы вперёд.</div>
+                </div>
+            </div>
         </div>
 
-        <div class="panel-info-block">
-            <p style="font-size:0.85em; color:rgba(255,240,220,0.9); font-weight:600; margin-bottom:6px;">Частный юрист</p>
-            <p style="font-size:0.78em; color:rgba(220,195,170,0.75);">Серко Иван Иванович<br>ИНН 773168746783<br>Самозанятый · Онлайн по всей России</p>
+        <div class="panel-divider"></div>
+
+        <!-- БЛОК 4: Документы и статус -->
+        <div class="panel-section docs-section" data-expandable>
+            <div class="panel-section-header">
+                <span class="panel-section-icon">📋</span>
+                <div class="panel-section-title-wrap">
+                    <span class="panel-section-title">Документы</span>
+                    <span class="panel-section-subtitle">Проверить статус</span>
+                </div>
+                <span class="panel-section-chevron">▼</span>
+            </div>
+            <div class="panel-section-body docs-body">
+                <div class="doc-row">
+                    <span class="doc-label">ИНН</span>
+                    <span class="doc-value">773168746783</span>
+                    <button class="doc-copy" onclick="copyToClipboard('773168746783', this)" title="Копировать">📋</button>
+                </div>
+                <div class="doc-row">
+                    <span class="doc-label">Статус</span>
+                    <span class="doc-value">Самозанятый (НПД)</span>
+                </div>
+                <div class="doc-check">
+                    <p>Проверьте мой статус на сайте ФНС:</p>
+                    <a href="https://npd.nalog.ru/check-status/" target="_blank" class="panel-btn" style="margin-top:8px; font-size:0.82em;">🔍 Проверить на npd.nalog.ru</a>
+                    <p class="doc-hint">Введите ИНН и текущую дату — сервис покажет, что я официально зарегистрирован как плательщик налога на профессиональный доход.</p>
+                </div>
+            </div>
+                <div class="doc-check gov-links-wrap">
+                    <div class="gov-links-toggle" onclick="toggleGovLinks(this)">
+                        <span>🔗 Полезные ссылки</span>
+                        <span class="gov-chevron">▼</span>
+                    </div>
+                    <div class="gov-links-content" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.3s ease;">
+                        <a href="https://www.gosuslugi.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">🏛️ Госуслуги — портал государственных услуг</a>
+                        <a href="https://sudrf.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">⚖️ ГАС «Правосудие» — судебные дела</a>
+                        <a href="https://fssp.gov.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">🔍 ФССП — проверка исполнительных производств</a>
+                        <a href="https://kad.arbitr.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">📋 Картотека арбитражных дел</a>
+                    </div>
+                </div>
         </div>
 
         <div class="panel-footer-bar">
-            <span>📞 <a href="tel:+79774232473">+7 (977) 423-24-73</a></span>
-            <span>✉️ <a href="mailto:333742917@mail.ru">333742917@mail.ru</a></span>
             <span><a href="privacy.html">Политика конфиденциальности</a></span>
+            <span class="panel-footer-sep">·</span>
             <span><a href="consent.html">Согласие на обработку данных</a></span>
+            <span class="panel-footer-sep">·</span>
             <span><a href="offer.html">Договор оферты</a></span>
+            <span class="panel-footer-sep">·</span>
             <span>© 2026 СЕРКО</span>
         </div>
     </aside>
@@ -1150,6 +1570,7 @@
                 if (type === 'phone') ym(106860023, 'reachGoal', 'phone_click');
                 if (type === 'email') ym(106860023, 'reachGoal', 'email_click');
                 if (type === 'max') ym(106860023, 'reachGoal', 'max_click');
+                if (type === 'telegram') ym(106860023, 'reachGoal', 'telegram_click');
                 if (type === 'whatsapp') ym(106860023, 'reachGoal', 'whatsapp_click');
             }
         }
@@ -1352,9 +1773,9 @@
                 urgency: '⏰ Срок обжалования судебного приказа — 10 дней! Не упустите.',
                 features: ['Расчёт размера алиментов', 'Подготовка соглашения или искового заявления', 'Взыскание задолженности', 'Изменение размера алиментов', 'Индексация и неустойка'],
                 price: 'Консультация 2 000 ₽',
-                btn: '💬 Написать про алименты',
-                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20алиментам.',
-                trackType: 'whatsapp_alimony',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_alimony',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20алиментам.'
             },
             {
@@ -1363,9 +1784,9 @@
                 urgency: '⚠️ При наличии несовершеннолетних детей — только через суд.',
                 features: ['Развод через ЗАГС (без детей)', 'Развод через суд (с детями)', 'Подготовка искового заявления', 'Согласование условий', 'Представление интересов в суде'],
                 price: 'Консультация 2 000 ₽',
-                btn: '💬 Написать про развод',
-                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация%20по%20разводу.',
-                trackType: 'whatsapp_divorce',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_divorce',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20разводу.'
             },
             {
@@ -1374,9 +1795,9 @@
                 urgency: '⏰ Срок исковой давности — 3 года. Не ждите.',
                 features: ['Оценка совместного имущества', 'Выделение личного имущества', 'Раздел квартир и машин', 'Распределение кредитов', 'Мировое соглашение или суд'],
                 price: 'От 5 000 ₽',
-                btn: '💬 Написать про раздел',
-                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20раздел%20имущества%20при%20разводе.',
-                trackType: 'whatsapp_property',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_property',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20раздел%20имущества.'
             },
             {
@@ -1385,9 +1806,9 @@
                 urgency: '✅ Защитить имущество можно в любой момент — до брака или во время.',
                 features: ['Защита недвижимости', 'Защита бизнеса и инвестиций', 'Разделение кредитов', 'Нотариальное удостоверение', 'Корпоративные механизмы'],
                 price: 'От 4 000 ₽',
-                btn: '💬 Заказать договор',
-                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20брачный%20договор.',
-                trackType: 'whatsapp_prenup',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_prenup',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20брачный%20договор.'
             },
             {
@@ -1396,9 +1817,9 @@
                 urgency: '',
                 features: ['Видеозвонок (Zoom, Telegram, MAX)', 'Телефонная консультация', 'Переписка в мессенджерах', 'Отправка документов онлайн', 'Запись консультации'],
                 price: '2 000 ₽ / 30–60 мин',
-                btn: '💬 Записаться на консультацию',
-                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.',
-                trackType: 'whatsapp_consult',
+                btn: '✈️ Записаться в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_consult',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.'
             },
             {
@@ -1407,9 +1828,9 @@
                 urgency: '🔥 Срочные случаи: арест счетов, судебный приказ, ограничение выезда.',
                 features: ['Консультация в течение 2–4 часов', 'Срочная подготовка документов', 'Анализ ситуации и план действий', 'Сопровождение в суде', 'Работа 7 дней в неделю'],
                 price: 'От 3 000 ₽',
-                btn: '💬 Срочная помощь',
-                btnLink: 'https://wa.me/79774232473?text=Срочно!%20Нужна%20помощь%20по%20семейному%20вопросу.',
-                trackType: 'whatsapp_urgent',
+                btn: '✈️ Срочно в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_urgent',
                 telegramLink: 'https://t.me/BYIvanko?text=Срочно!%20Нужна%20помощь%20по%20семейному%20вопросу.'
             },
             {
@@ -1418,9 +1839,9 @@
                 urgency: '⚠️ Судебные сроки не ждут. Пропуск — проигрыш.',
                 features: ['Определение места жительства детей', 'Порядок общения с ребёнком', 'Лишение / восстановление родительских прав', 'Усыновление', 'Подготовка к суду: документы и стратегия'],
                 price: 'От 10 000 ₽',
-                btn: '💬 Обсудить дело',
-                btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20У%20меня%20сложный%20семейный%20спор.',
-                trackType: 'whatsapp_court',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko',
+                trackType: 'telegram_court',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20У%20меня%20сложный%20семейный%20спор.'
             },
             {
@@ -1431,7 +1852,7 @@
                 price: 'Удалённо — без доплат',
                 btn: '💬 Написать из региона',
                 btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Я%20из%20регона,%20интересует%20консультация.',
-                trackType: 'whatsapp_region',
+                trackType: 'telegram_region',
                 telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Я%20из%20региона,%20интересует%20консультация.'
             }
         ];
@@ -1585,7 +2006,7 @@
         (function(){
             const CONSENT_STORAGE_KEY = 'serko_contact_consent_v1';
             const checkbox = document.getElementById('contactConsent');
-            const contactButtons = document.querySelectorAll('.panel-btn.max, .panel-btn.whatsapp, .panel-btn.primary, .panel-btn[href^="mailto:"]');
+            const contactButtons = document.querySelectorAll('.panel-btn.max, .panel-btn.telegram, .panel-btn.primary, .panel-btn[href^="mailto:"]');
 
             // Load saved consent
             const savedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
@@ -1627,6 +2048,8 @@
                 // Show warning on hover/click if not checked
                 contactButtons.forEach(btn => {
                     btn.addEventListener('click', function(e) {
+                        // Telegram works without consent
+                        if (btn.classList.contains('telegram')) return;
                         if (!checkbox.checked) {
                             e.preventDefault();
                             e.stopPropagation();
@@ -1706,7 +2129,79 @@
                 requestAnimationFrame(animateScroll);
             }, 800); // Start after 800ms (after page load visual)
         })();
-    </script>
+    
+
+        // ════════════════════════════════════════════
+        // РАЗВОРАЧИВАЕМЫЕ БЛОКИ НА ПАНЕЛИ
+        // ════════════════════════════════════════════
+        (function(){
+            const sections = document.querySelectorAll('.panel-section[data-expandable]');
+            sections.forEach(section => {
+                const header = section.querySelector('.panel-section-header');
+                header.addEventListener('click', function(e) {
+                    // Don't toggle if clicking a link or button inside
+                    if (e.target.closest('a') || e.target.closest('button') || e.target.closest('input')) return;
+                    section.classList.toggle('expanded');
+                });
+            });
+            // Expand "Обо мне" by default
+            const aboutSection = document.querySelector('.about-section');
+            if (aboutSection) aboutSection.classList.add('expanded');
+        })();
+
+        // ════════════════════════════════════════════
+        // КОПИРОВАНИЕ В БУФЕР ОБМЕНА
+        // ════════════════════════════════════════════
+        function copyToClipboard(text, btn) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showCopied(btn);
+                }).catch(function() {
+                    fallbackCopy(text, btn);
+                });
+            } else {
+                fallbackCopy(text, btn);
+            }
+        }
+        function fallbackCopy(text, btn) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showCopied(btn);
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textarea);
+        }
+        function showCopied(btn) {
+            const original = btn.textContent;
+            btn.textContent = '✅';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = original;
+                btn.classList.remove('copied');
+            }, 1500);
+
+        function toggleGovLinks(el) {
+            el.classList.toggle('open');
+            const content = el.nextElementSibling;
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                content.style.maxHeight = '0';
+            } else {
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        }
+
+        </script>
 
     <script>
         // COOKIE CONSENT & CONTACT CONSENT CHECK
@@ -1759,8 +2254,8 @@
          STICKY КОНТАКТ-БАР (всегда виден)
     ════════════════════════════════════════════ -->
     <div class="sticky-contact-bar" id="stickyBar">
-        <a href="https://wa.me/79774232473?text=Здравствуйте!%20Интересует%20консультация." class="sticky-btn sticky-whatsapp" onclick="trackContact('whatsapp')">
-            <span>💬</span> WhatsApp
+        <a href="https://t.me/BYIvanko" class="sticky-btn sticky-telegram" onclick="trackContact('telegram')" target="_blank">
+            <span>✈️</span> Telegram
         </a>
         <a href="tel:+79774232473" class="sticky-btn sticky-phone" onclick="trackContact('phone')">
             <span>📞</span> +7 (977) 423-24-73
@@ -1807,8 +2302,8 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .sticky-whatsapp { background: rgba(37, 211, 102, 0.15); border-color: rgba(37, 211, 102, 0.3); }
-        .sticky-whatsapp:hover { background: rgba(37, 211, 102, 0.3); }
+        .sticky-telegram { background: rgba(0, 136, 204, 0.15); border-color: rgba(0, 136, 204, 0.3); color: rgba(100, 200, 255, 0.95); }
+        .sticky-telegram:hover { background: rgba(0, 136, 204, 0.3); }
         .sticky-phone { background: rgba(220, 180, 90, 0.15); border-color: rgba(220, 180, 90, 0.3); }
         .sticky-phone:hover { background: rgba(220, 180, 90, 0.3); }
         .sticky-max { background: rgba(155, 89, 182, 0.15); border-color: rgba(155, 89, 182, 0.3); }
