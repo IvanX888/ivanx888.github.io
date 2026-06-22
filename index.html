@@ -245,6 +245,43 @@
             transition: opacity 0.4s ease, visibility 0.4s ease; 
         }
         .modal-overlay.active { opacity: 1; visibility: visible; }
+        /* Mobile fixed close button - always visible */
+        .modal-mobile-close {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .modal-mobile-close {
+                display: flex;
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background: rgba(40, 28, 16, 0.95);
+                border: 2px solid rgba(255, 100, 100, 0.6);
+                color: #fff;
+                font-size: 1.3em;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                z-index: 1002;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            }
+            .modal-mobile-close:active {
+                transform: scale(0.95);
+                background: rgba(255, 60, 60, 0.3);
+            }
+        }
+        /* Hide panel and sticky bar when modal is open on mobile */
+        @media (max-width: 768px) {
+            .modal-overlay.active ~ .panel,
+            .modal-overlay.active ~ .sticky-contact-bar,
+            .modal-overlay.active ~ .mobile-cards {
+                display: none !important;
+            }
+        }
 
         .modal-card { 
             width: 480px; 
@@ -1215,7 +1252,24 @@
             .panel-divider { width: 40%; }
             .panel-btn { flex: 1 1 140px; max-width: 200px; padding: 14px 16px; font-size: 0.88em; }
             .panel-footer-bar { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 15px; padding-top: 15px; padding-bottom: 20px; }
-            .modal-card { width: 92vw; padding: 20px 18px; }
+            .modal-card { 
+                width: 92vw; 
+                max-width: 92vw;
+                max-height: 85vh;
+                padding: 20px 18px; 
+            }
+            /* Modal header always visible */
+            .modal-card .modal-close {
+                position: fixed;
+                top: calc(50% - 42vh + 10px);
+                right: calc(4vw + 6px);
+                z-index: 1001;
+                background: rgba(40, 28, 16, 0.9);
+                border-color: rgba(255, 100, 100, 0.5);
+            }
+            .modal-card .modal-icon {
+                margin-top: 30px;
+            }
         }
         @media (max-width: 500px) {
             .photo-area { height: 50vh; min-height: 240px; }
@@ -1609,6 +1663,7 @@
 
     <!-- Модальное окно -->
     <div class="modal-overlay" id="modalOverlay">
+        <button class="modal-mobile-close" id="modalMobileClose" aria-label="Закрыть">✕</button>
         <div class="modal-card" id="modalCard">
             <button class="modal-close" id="modalClose" aria-label="Закрыть модальное окно">✕</button>
             <span class="modal-icon" id="modalIcon">👨‍👩‍👧</span>
@@ -2132,8 +2187,12 @@
 
             const floatBlocksEl = document.getElementById('floatBlocks');
             const mobileCardsEl = document.getElementById('mobileCards');
+            const panelEl = document.querySelector('.panel');
+            const stickyBarEl = document.getElementById('stickyBar');
             if (floatBlocksEl) floatBlocksEl.classList.add('modal-hidden');
             if (mobileCardsEl) mobileCardsEl.classList.add('modal-hidden');
+            if (panelEl) panelEl.style.display = 'none';
+            if (stickyBarEl) stickyBarEl.style.display = 'none';
 
             const data = modalData[index];
             modalIcon.textContent = data.icon;
@@ -2175,8 +2234,12 @@
 
             const floatBlocksEl = document.getElementById('floatBlocks');
             const mobileCardsEl = document.getElementById('mobileCards');
+            const panelEl = document.querySelector('.panel');
+            const stickyBarEl = document.getElementById('stickyBar');
             if (floatBlocksEl) floatBlocksEl.classList.remove('modal-hidden');
             if (mobileCardsEl) mobileCardsEl.classList.remove('modal-hidden');
+            if (panelEl) panelEl.style.display = '';
+            if (stickyBarEl) stickyBarEl.style.display = '';
         }
 
         cards.forEach(card => {
@@ -2198,6 +2261,16 @@
             e.stopPropagation();
             closeModal();
         });
+
+        // Mobile fixed close button
+        const modalMobileClose = document.getElementById('modalMobileClose');
+        if (modalMobileClose) {
+            modalMobileClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeModal();
+            });
+        }
 
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) closeModal();
