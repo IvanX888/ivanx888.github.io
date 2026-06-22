@@ -497,8 +497,8 @@
             flex-direction: column; 
             justify-content: flex-start; 
             align-items: center; 
-            padding: 100px 25px 30px 25px; 
-            gap: 14px; 
+            padding: 30px 22px 30px 22px; 
+            gap: 16px; 
             overflow-y: auto; 
             position: relative; 
             z-index: 10; 
@@ -550,10 +550,11 @@
             text-shadow: 0 0 12px rgba(255, 215, 100, 0.4); 
         }
         .panel-divider { 
-            width: 60%; 
+            width: 40%; 
             height: 1px; 
-            background: linear-gradient(90deg, transparent, rgba(200, 160, 100, 0.35), transparent); 
-            margin: 6px 0; 
+            background: linear-gradient(90deg, transparent, rgba(200, 160, 100, 0.2), transparent); 
+            margin: 2px 0; 
+            flex-shrink: 0;
         }
         .panel-btn { 
             width: 100%; 
@@ -895,6 +896,8 @@
             transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 4px;
+            flex-shrink: 0;
         }
         .panel-section:hover {
             background: rgba(100, 70, 45, 0.35);
@@ -905,7 +908,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 16px 18px;
+            padding: 14px 18px;
             position: relative;
             user-select: none;
         }
@@ -949,16 +952,17 @@
         }
         .panel-section.expanded .panel-section-body {
             max-height: 800px;
-            padding: 0 18px 18px 18px;
+            padding: 4px 18px 16px 18px;
         }
 
         /* Обо мне */
         .about-short {
-            font-size: 0.82em;
-            color: rgba(255, 215, 100, 0.85);
+            font-size: 0.78em;
+            color: rgba(255, 215, 100, 0.75);
             margin-bottom: 10px;
             font-weight: 500;
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            line-height: 1.4;
         }
         .about-details p {
             font-size: 0.8em;
@@ -1399,7 +1403,7 @@
                 <span class="modal-price-value" id="modalPrice">2 000 ₽</span>
             </div>
             <a href="#" class="modal-btn modal-btn-primary" id="modalBtn">✈️ Написать в Telegram</a>
-            <a href="https://t.me/BYIvanko" class="modal-btn" id="modalTelegram" style="margin-top:10px; background: rgba(0, 136, 204, 0.12); border-color: rgba(0, 136, 204, 0.35); color: rgba(100, 200, 255, 0.95);" target="_blank">✈️ Написать в Telegram</a>
+            <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" class="modal-btn" id="modalMax" style="margin-top:10px; background: rgba(155, 89, 182, 0.12); border-color: rgba(155, 89, 182, 0.35); color: rgba(200, 160, 255, 0.95);" target="_blank" onclick="trackContact('max')">💬 Написать в MAX</a>
             <div style="margin-top:10px; text-align:center;">
                 <a href="tel:+79774232473" style="color:#8b6914; font-size:0.82em; text-decoration:none; font-weight:600;" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
             </div>
@@ -1476,33 +1480,33 @@
             <div class="panel-section-body cases-body">
                 <div class="case-card">
                     <div class="case-sum">175 000 ₽</div>
-                    <div class="case-theme">Возврат зарплаты и компенсация</div>
+                    <div class="case-theme">Вернул зарплату за 4 месяца + компенсацию</div>
                     <div class="case-client">Сергей Алексеевич</div>
-                    <div class="case-desc">Работодатель задерживал зарплату 4 месяца. Подготовил иск, взыскали долг и компенсацию морального вреда. Деньги перечислили в течение 10 дней после решения суда.</div>
+                    <div class="case-desc">«Уволили и не заплатили. Ходил к работодателю — посылали. Иван подготовил документы, подал в суд. Через месяц решение вынесли, через неделю деньги пришли на карту.»</div>
                 </div>
                 <div class="case-card">
                     <div class="case-sum">225 000 ₽</div>
-                    <div class="case-theme">Потребительский спор</div>
+                    <div class="case-theme">Вернули деньги за бракованный товар</div>
                     <div class="case-client">Елена Викторовна</div>
-                    <div class="case-desc">Купила некачественный товар за 150 тыс. руб. Продавец отказывался возвращать деньги. Составил претензию и иск. Суд присудил стоимость товара, неустойку и штраф — итого 225 тыс.</div>
+                    <div class="case-desc">«Купила технику за 150 тысяч — сломалась на третий день. Магазин отказывался возвращать, говорили «сами сломали». Иван составил претензию, потом иск. Суд встал на мою сторону — вернули всё + штраф.»</div>
                 </div>
                 <div class="case-card">
                     <div class="case-sum">180 000 ₽</div>
-                    <div class="case-theme">Алименты на двоих детей</div>
+                    <div class="case-theme">Алименты за полтора года + пени</div>
                     <div class="case-client">Анна Павловна</div>
-                    <div class="case-desc">Бывший муж не платил алименты полтора года. Взыскали задолженность за 18 месяцев + пени. Теперь выплаты поступают регулярно через приставов.</div>
+                    <div class="case-desc">«Бывший платил когда хотел. На детей не давал уже год с лишним. Иван посчитал долг, подал в суд. Взыскали 180 тысяч задолженности. Теперь приставы снимают с зарплаты — регулярно.»</div>
                 </div>
                 <div class="case-card">
                     <div class="case-sum">320 000 ₽</div>
-                    <div class="case-theme">Раздел имущества при разводе</div>
+                    <div class="case-theme">Сохранил квартиру при разводе</div>
                     <div class="case-client">Дмитрий Сергеевич</div>
-                    <div class="case-desc">При разводе жена требовала половину квартиры, купленной до брака. Доказал в суде личный вклад. Квартира осталась с клиентом, компенсация — минимальная.</div>
+                    <div class="case-desc">«Жена требовала половину квартиры, хотя я её до брака купил. Думал, всё потеряно. Иван нашёл документы, доказал в суде, что это личное имущество. Квартира осталась мне.»</div>
                 </div>
                 <div class="case-card">
                     <div class="case-sum">95 000 ₽</div>
-                    <div class="case-theme">Брачный договор</div>
+                    <div class="case-theme">Защитил бизнес перед вторым браком</div>
                     <div class="case-client">Мария Игоревна</div>
-                    <div class="case-desc">Перед вторым браком нужно было защитить бизнес и квартиру. Составил договор, учёл все нюансы. Нотариально заверен. Спокойствие на годы вперёд.</div>
+                    <div class="case-desc">«Перед свадьбой решила подстраховаться — есть свой бизнес и квартира. Иван составил брачный договор, всё чётко расписали. Нотариус заверил. Теперь сплю спокойно.»</div>
                 </div>
             </div>
         </div>
@@ -1776,7 +1780,7 @@
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_alimony',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20алиментам.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20алиментам.'
             },
             {
                 icon: '💔', title: 'Развод', tag: 'Семейное право',
@@ -1787,7 +1791,7 @@
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_divorce',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20разводу.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20консультация%20по%20разводу.'
             },
             {
                 icon: '🏠', title: 'Раздел имущества', tag: 'Семейное право',
@@ -1798,7 +1802,7 @@
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_property',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20раздел%20имущества.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20раздел%20имущества.'
             },
             {
                 icon: '📋', title: 'Брачный договор', tag: 'Документ',
@@ -1809,7 +1813,7 @@
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_prenup',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20брачный%20договор.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Интересует%20брачный%20договор.'
             },
             {
                 icon: '📞', title: 'Онлайн-консультация', tag: 'Формат',
@@ -1820,7 +1824,7 @@
                 btn: '✈️ Записаться в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_consult',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.'
             },
             {
                 icon: '🎯', title: 'Срочная помощь', tag: 'Срочно',
@@ -1831,7 +1835,7 @@
                 btn: '✈️ Срочно в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_urgent',
-                telegramLink: 'https://t.me/BYIvanko?text=Срочно!%20Нужна%20помощь%20по%20семейному%20вопросу.'
+                maxLink: 'https://t.me/BYIvanko?text=Срочно!%20Нужна%20помощь%20по%20семейному%20вопросу.'
             },
             {
                 icon: '⚖️', title: 'Семейные споры', tag: 'Суд',
@@ -1842,7 +1846,7 @@
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko',
                 trackType: 'telegram_court',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20У%20меня%20сложный%20семейный%20спор.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20У%20меня%20сложный%20семейный%20спор.'
             },
             {
                 icon: '📍', title: 'Москва и регионы', tag: 'География',
@@ -1853,7 +1857,7 @@
                 btn: '💬 Написать из региона',
                 btnLink: 'https://wa.me/79774232473?text=Здравствуйте!%20Я%20из%20регона,%20интересует%20консультация.',
                 trackType: 'telegram_region',
-                telegramLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Я%20из%20региона,%20интересует%20консультация.'
+                maxLink: 'https://t.me/BYIvanko?text=Здравствуйте!%20Я%20из%20региона,%20интересует%20консультация.'
             }
         ];
 
@@ -1889,9 +1893,9 @@
             };
 
             // Update Telegram button
-            const modalTelegram = document.getElementById('modalTelegram');
-            if (modalTelegram && data.telegramLink) {
-                modalTelegram.href = data.telegramLink;
+            const modalMax = document.getElementById('modalMax');
+            if (modalMax && data.maxLink) {
+                modalMax.href = data.maxLink;
             }
 
             if (data.urgency) {
