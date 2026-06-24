@@ -6,11 +6,18 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ivanx888.github.io/">
+    <meta property="og:title" content="Юрист по алиментам онлайн в Москве и России | Серко Иван">
+    <meta property="og:description" content="Взыскание алиментов, развод, раздел имущества. Консультация 2 000 ₽. Работаю удалённо по всей России.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ivanx888.github.io/">
+    <meta property="og:locale" content="ru_RU">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 
-    <title>Юрист по алиментам онлайн — консультация 2 000 ₽ | Серко Иван</title>
-    <meta name="description" content="Юрист по алиментам онлайн. Взыскание алиментов, развод, раздел имущества. Консультация 2 000 ₽. Работаю по всей России: Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов, Екатеринбург.">
-    <meta name="keywords" content="юрист по алиментам, консультация юриста алименты, взыскание алиментов, развод, раздел имущества, семейный юрист онлайн">
+    <title>Юрист по алиментам онлайн в Москве и России — консультация 2 000 ₽ | Серко Иван</title>
+    <meta name="description" content="Юрист по алиментам онлайн в Москве и по всей России. Взыскание алиментов, развод, раздел имущества. Консультация 2 000 ₽. Работаю удалённо: Москва, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов, Екатеринбург.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="юрист по алиментам Москва, консультация юриста алименты, взыскание алиментов, развод Москва, раздел имущества, семейный юрист онлайн, юрист Москва">
 
     <script type="application/ld+json">
     {
@@ -28,6 +35,8 @@
         "addressLocality": "Москва"
       },
       "areaServed": [
+        {"@type": "City", "name": "Москва"},
+        {"@type": "City", "name": "Московская область"},
         {"@type": "City", "name": "Нижний Новгород"},
         {"@type": "City", "name": "Пермь"},
         {"@type": "City", "name": "Казань"},
@@ -757,87 +766,46 @@
             .mobile-cards {
                 display: block;
                 width: 100%;
-                height: 280px;
-                position: relative;
-                perspective: 1000px;
-                perspective-origin: 50% 50%;
-                overflow: hidden;
                 background: linear-gradient(180deg, #0d0d0d 0%, #1a120b 100%);
+                padding: 20px 0;
                 border-top: 1px solid rgba(200, 160, 100, 0.15);
+                position: relative;
                 z-index: 20;
-                touch-action: pan-y;
-                user-select: none;
-                -webkit-user-select: none;
             }
-            .mobile-wheel {
-                position: absolute;
-                width: 0;
-                height: 0;
-                left: 50%;
-                top: 160px;
-                transform-style: preserve-3d;
-                transition: transform 0.05s linear;
+            .mobile-cards-scroll {
+                display: flex;
+                gap: 12px;
+                padding: 0 16px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
             }
-            .mobile-card-3d {
-                position: absolute;
-                width: 230px;
-                height: 150px;
-                left: -115px;
-                top: -75px;
-                padding: 14px 16px;
+            .mobile-cards-scroll::-webkit-scrollbar {
+                display: none;
+            }
+            .mobile-card {
+                flex-shrink: 0;
+                width: 260px;
+                padding: 18px 18px 32px 18px;
                 background: rgba(255, 255, 255, 0.04);
                 backdrop-filter: blur(12px) saturate(1.2);
                 -webkit-backdrop-filter: blur(12px) saturate(1.2);
                 border: 1px solid rgba(255, 255, 255, 0.15);
                 border-radius: 18px;
                 cursor: pointer;
+                transition: all 0.3s ease;
                 box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-                backface-visibility: hidden;
-                -webkit-backface-visibility: hidden;
-                transform-style: preserve-3d;
-                will-change: transform;
-                transition: box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+                position: relative;
+                overflow: hidden;
             }
-            .mobile-card-3d.active {
-                border-color: rgba(255, 215, 100, 0.6);
-                box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,100,0.15);
-                opacity: 1 !important;
+            .mobile-card:active {
+                transform: scale(0.98);
             }
-            .mobile-card-3d h4 {
-                font-size: 0.9em;
-                font-weight: 600;
-                color: rgba(255, 255, 255, 0.95);
-                margin-bottom: 6px;
-            }
-            .mobile-card-3d p {
-                font-size: 0.74em;
-                color: rgba(255, 255, 255, 0.75);
-                line-height: 1.5;
-                margin-bottom: 8px;
-            }
-            .mobile-price {
-                font-size: 0.85em;
-                font-weight: 600;
-                color: rgba(255, 215, 100, 0.95);
-                margin-bottom: 6px;
-            }
-            .mobile-tag {
-                display: inline-block;
-                font-size: 0.62em;
-                color: rgba(255, 255, 255, 0.55);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                padding: 2px 8px;
-                border-radius: 10px;
-                background: rgba(255,255,255,0.05);
-            }
-            .mobile-tag.urgent {
-                color: rgba(255, 120, 120, 0.95);
-                border-color: rgba(255, 120, 120, 0.35);
-                background: rgba(255,80,80,0.08);
-            }
-            .mobile-hint {
+            .mobile-cards::after {
+                content: '← свайп →';
                 position: absolute;
-                bottom: 8px;
+                bottom: 4px;
                 left: 50%;
                 transform: translateX(-50%);
                 font-size: 0.7em;
@@ -851,15 +819,37 @@
                 0% { opacity: 1; }
                 100% { opacity: 0; }
             }
-            @keyframes cardWobble {
-                0% { transform: translateX(var(--tx)) translateZ(var(--tz)) rotateY(var(--ry)) scale(var(--sc)); }
-                25% { transform: translateX(var(--tx)) translateZ(var(--tz)) rotateY(var(--ry)) scale(calc(var(--sc) * 1.03)); }
-                50% { transform: translateX(var(--tx)) translateZ(var(--tz)) rotateY(var(--ry)) scale(calc(var(--sc) * 0.97)); }
-                75% { transform: translateX(var(--tx)) translateZ(var(--tz)) rotateY(var(--ry)) scale(calc(var(--sc) * 1.01)); }
-                100% { transform: translateX(var(--tx)) translateZ(var(--tz)) rotateY(var(--ry)) scale(var(--sc)); }
+            .mobile-card h4 {
+                font-size: 0.95em;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.95);
+                margin-bottom: 8px;
             }
-            .mobile-card-3d.wobble {
-                animation: cardWobble 0.4s ease-out;
+            .mobile-card p {
+                font-size: 0.78em;
+                color: rgba(255, 255, 255, 0.75);
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+            .mobile-price {
+                font-size: 0.88em;
+                font-weight: 600;
+                color: rgba(255, 215, 100, 0.95);
+                margin-bottom: 8px;
+            }
+            .mobile-tag {
+                display: inline-block;
+                font-size: 0.65em;
+                color: rgba(255, 255, 255, 0.55);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 3px 10px;
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+            }
+            .mobile-tag.urgent {
+                color: rgba(255, 120, 120, 0.95);
+                border-color: rgba(255, 120, 120, 0.35);
+                background: rgba(255,80,80,0.08);
             }
             .floating-blocks, .carousel-controls {
                 display: none !important;
@@ -1535,12 +1525,11 @@
     </style>
 <base target="_blank">
 <base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
     <!-- SEO H1 -->
-    <h1 class="seo-h1">Юрист по алиментам онлайн — консультация 2 000 ₽. Взыскание алиментов, развод, раздел имущества. Работаю по всей России.</h1>
+    <h1 class="seo-h1">Юрист по алиментам онлайн в Москве и России — консультация 2 000 ₽. Взыскание алиментов, развод, раздел имущества. Работаю удалённо по всей России.</h1>
 
     <!-- Частицы (золотые) -->
     <div class="particle" style="left: 8%;  animation-duration: 22s; animation-delay: 0s;"></div>
@@ -1629,57 +1618,56 @@
 
         <!-- Мобильные карточки услуг (горизонтальная прокрутка) -->
         <div class="mobile-cards" id="mobileCards">
-            <div class="mobile-wheel" id="mobileWheel">
-                <div class="mobile-card-3d" data-modal="0" data-index="0">
+            <div class="mobile-cards-scroll" id="mobileCardsScroll">
+                <div class="mobile-card" data-modal="0">
                     <h4>👨‍👩‍👧 Алименты</h4>
                     <p>25% на 1 ребёнка, 33% на 2-х, 50% на 3-х</p>
                     <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Семейное право</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="1" data-index="1">
+                <div class="mobile-card" data-modal="1">
                     <h4>💔 Развод</h4>
                     <p>Через ЗАГС или суд. Подготовка документов</p>
                     <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Семейное право</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="2" data-index="2">
+                <div class="mobile-card" data-modal="2">
                     <h4>🏠 Раздел имущества</h4>
                     <p>Квартира, машина, вклады, кредиты</p>
                     <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Семейное право</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="3" data-index="3">
+                <div class="mobile-card" data-modal="3">
                     <h4>📋 Брачный договор</h4>
                     <p>Защита недвижимости, бизнеса, инвестиций</p>
                     <div class="mobile-price">От 4 000 ₽</div>
                     <span class="mobile-tag">Документ</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="4" data-index="4">
+                <div class="mobile-card" data-modal="4">
                     <h4>📝 Составление документов</h4>
                     <p>Иски, жалобы, заявления, договоры</p>
                     <div class="mobile-price">4 000 ₽ за документ</div>
                     <span class="mobile-tag">Услуга</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="5" data-index="5">
+                <div class="mobile-card" data-modal="5">
                     <h4>🔍 Проверка документов</h4>
                     <p>Логика, формулировки, ссылки на законы</p>
                     <div class="mobile-price">3 000 ₽ за проверку</div>
                     <span class="mobile-tag">Услуга</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="6" data-index="6">
+                <div class="mobile-card" data-modal="6">
                     <h4>📞 Онлайн-консультация</h4>
                     <p>Zoom, Telegram, MAX, телефон</p>
                     <div class="mobile-price">2 000 ₽ / 30–60 мин</div>
                     <span class="mobile-tag">Формат</span>
                 </div>
-                <div class="mobile-card-3d" data-modal="7" data-index="7">
+                <div class="mobile-card" data-modal="7">
                     <h4>🚨 Выезд к клиенту</h4>
                     <p>По всей России. Индивидуальная стоимость</p>
                     <div class="mobile-price">По договорённости</div>
                     <span class="mobile-tag urgent">Россия</span>
                 </div>
             </div>
-            <div class="mobile-hint">← крути →</div>
         </div>
 
     <!-- Модальное окно -->
@@ -1716,12 +1704,12 @@
                 <span class="panel-section-icon">👨‍⚖️</span>
                 <div class="panel-section-title-wrap">
                     <h2 class="panel-section-title">Серко Иван</h2>
-                    <span class="panel-section-subtitle">Юрист онлайн</span>
+                    <span class="panel-section-subtitle">Юрист онлайн · Москва и вся Россия</span>
                 </div>
                 <span class="panel-section-chevron">▼</span>
             </div>
             <div class="panel-section-body">
-                <p class="about-short">🌐 Онлайн по всей России · Алименты · Развод · Раздел имущества</p>
+                <p class="about-short">🌐 Москва и вся Россия · Алименты · Развод · Раздел имущества · Работаю онлайн</p>
                 <div class="about-details">
                     <p>Работаю удалённо — это экономит ваше время и деньги. Всё официально по договору, безопасно и прозрачно. При острой необходимости выезжаю к клиенту. Консультирую по семейным, гражданским и потребительским вопросам.</p>
                     <div class="about-badges">
@@ -2179,7 +2167,7 @@
             },
             {
                 icon: '📍', title: 'Москва и регионы', tag: 'География',
-                desc: 'Работаю онлайн по всей России. Основные города: Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург.',
+                desc: 'Работаю онлайн по всей России. Москва, Московская область, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург и другие города.',
                 urgency: '',
                 features: ['Онлайн-консультации по всей России', 'Электронное правосудие', 'Электронная подпись', 'Нотариусы онлайн через Госуслуги', 'Личное присутствие — крайне редко'],
                 price: 'Удалённо — без доплат',
@@ -2270,7 +2258,7 @@
             });
         });
 
-        document.querySelectorAll('.mobile-card, .mobile-card-3d').forEach(card => {
+        document.querySelectorAll('.mobile-card').forEach(card => {
             card.addEventListener('click', () => {
                 const index = parseInt(card.dataset.modal);
                 openModal(index);
@@ -2409,200 +2397,57 @@
         console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
 
         // ════════════════════════════════════════════
-        // 3D MOBILE WHEEL CAROUSEL
+        // МОБИЛЬНЫЕ КАРТОЧКИ: АНИМАЦИЯ ПРОКРУТКИ ПРИ ВХОДЕ
         // ════════════════════════════════════════════
         (function(){
-            const wheel = document.getElementById('mobileWheel');
-            if (!wheel) return;
+            const scrollContainer = document.getElementById('mobileCardsScroll');
+            if (!scrollContainer) return;
 
-            const cards = wheel.querySelectorAll('.mobile-card-3d');
-            const total = cards.length;
-            const radius = 260;
-            const angleStep = 360 / total;
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) return;
 
-            let currentAngle = 0;
-            let velocity = 0;
-            let isDragging = false;
-            let startX = 0;
-            let lastX = 0;
-            let lastTime = 0;
-            let rafId = null;
-            let snapTarget = null;
-            let lastActiveIndex = -1;
+            setTimeout(function(){
+                const cardWidth = 272;
+                const scrollAmount = cardWidth * 2.5;
+                const startScroll = scrollContainer.scrollLeft;
+                const targetScroll = Math.min(scrollAmount, scrollContainer.scrollWidth - scrollContainer.clientWidth);
+                const duration = 1800;
+                const startTime = performance.now();
 
-            // Position cards in 3D circle
-            function positionCards() {
-                cards.forEach((card, i) => {
-                    const angle = (i * angleStep) * (Math.PI / 180);
-                    const x = Math.sin(angle) * radius;
-                    const z = Math.cos(angle) * radius;
-                    const rotateY = -i * angleStep;
-                    const scale = 0.85 + (Math.cos(angle) + 1) * 0.075;
-                    const opacity = 0.5 + (Math.cos(angle) + 1) * 0.25;
-                    card.style.setProperty('--tx', x + 'px');
-                    card.style.setProperty('--tz', z + 'px');
-                    card.style.setProperty('--ry', rotateY + 'deg');
-                    card.style.setProperty('--sc', scale);
-                    card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`;
-                    card.style.opacity = opacity;
-                });
-            }
-
-            // Update wheel rotation
-            function updateWheel() {
-                wheel.style.transform = `rotateY(${currentAngle}deg)`;
-
-                // Highlight active card (closest to front)
-                const normalizedAngle = ((currentAngle % 360) + 360) % 360;
-                const activeIndex = Math.round(normalizedAngle / angleStep) % total;
-
-                if (activeIndex !== lastActiveIndex) {
-                    if (lastActiveIndex >= 0) cards[lastActiveIndex].classList.remove('active');
-                    cards[activeIndex].classList.add('active');
-                    lastActiveIndex = activeIndex;
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
                 }
 
-                // Update opacity based on distance from front
-                cards.forEach((card, i) => {
-                    const cardAngle = ((i * angleStep - currentAngle) % 360 + 360) % 360;
-                    const dist = Math.min(cardAngle, 360 - cardAngle);
-                    const opacity = 0.4 + Math.max(0, 1 - dist / 120) * 0.6;
-                    card.style.opacity = opacity;
-                });
-            }
+                function animateScroll(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = easeOutCubic(progress);
 
-            // Physics animation loop
-            function animate() {
-                if (!isDragging) {
-                    // Apply friction
-                    velocity *= 0.94;
-
-                    // Snap to nearest card if velocity is low
-                    if (Math.abs(velocity) < 0.5 && snapTarget !== null) {
-                        const diff = snapTarget - currentAngle;
-                        currentAngle += diff * 0.12;
-                        if (Math.abs(diff) < 0.3) {
-                            currentAngle = snapTarget;
-                            velocity = 0;
-                            snapTarget = null;
-                        }
-                    } else {
-                        currentAngle += velocity;
-                    }
-
-                    // Calculate snap target
-                    if (Math.abs(velocity) < 1.5 && snapTarget === null) {
-                        const normalized = ((currentAngle % 360) + 360) % 360;
-                        const nearest = Math.round(normalized / angleStep) * angleStep;
-                        snapTarget = currentAngle + (nearest - normalized);
-                    }
-                }
-
-                updateWheel();
-
-                if (Math.abs(velocity) > 0.01 || snapTarget !== null || isDragging) {
-                    rafId = requestAnimationFrame(animate);
-                } else {
-                    rafId = null;
-                }
-            }
-
-            function startAnimation() {
-                if (!rafId) rafId = requestAnimationFrame(animate);
-            }
-
-            // Touch events
-            wheel.addEventListener('touchstart', function(e) {
-                isDragging = true;
-                startX = e.touches[0].clientX;
-                lastX = startX;
-                lastTime = performance.now();
-                velocity = 0;
-                snapTarget = null;
-                startAnimation();
-            }, { passive: true });
-
-            wheel.addEventListener('touchmove', function(e) {
-                if (!isDragging) return;
-                const x = e.touches[0].clientX;
-                const delta = x - lastX;
-                const now = performance.now();
-                const dt = now - lastTime;
-
-                currentAngle += delta * 0.5;
-                if (dt > 0) velocity = delta * 0.5;
-
-                lastX = x;
-                lastTime = now;
-            }, { passive: true });
-
-            wheel.addEventListener('touchend', function(e) {
-                isDragging = false;
-
-                const speed = Math.abs(velocity);
-
-                if (speed < 1.5) {
-                    // Small flick = wobble back (spring/bounce effect)
-                    velocity = -velocity * 0.6;
-                    // Add wobble animation class
-                    const normalizedAngle = ((currentAngle % 360) + 360) % 360;
-                    const activeIndex = Math.round(normalizedAngle / angleStep) % total;
-                    cards[activeIndex].classList.add('wobble');
-                    setTimeout(() => cards[activeIndex].classList.remove('wobble'), 400);
-                    // Haptic feedback - light tap
-                    if (navigator.vibrate) navigator.vibrate(10);
-                } else if (speed < 4) {
-                    // Medium flick = continue with inertia + light haptic
-                    if (navigator.vibrate) navigator.vibrate(15);
-                } else {
-                    // Big flick = strong roll + haptic feedback
-                    if (navigator.vibrate) navigator.vibrate([20, 30, 15]);
-                }
-
-                snapTarget = null;
-                startAnimation();
-            }, { passive: true });
-
-            // Click to open modal
-            cards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (Math.abs(velocity) > 0.5) return; // Don't open if still spinning
-                    const index = parseInt(this.dataset.modal);
-                    openModal(index);
-                });
-            });
-
-            // Initial positioning
-            positionCards();
-            updateWheel();
-
-            // Auto-rotate intro animation
-            setTimeout(() => {
-                let introAngle = 0;
-                const introTarget = angleStep * 2.5;
-                const introStart = performance.now();
-                const introDuration = 2000;
-
-                function introAnimate(now) {
-                    const elapsed = now - introStart;
-                    const progress = Math.min(elapsed / introDuration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 4); // ease out quart
-
-                    currentAngle = introAngle + (introTarget - introAngle) * eased;
-                    updateWheel();
+                    scrollContainer.scrollLeft = startScroll + (targetScroll - startScroll) * eased;
 
                     if (progress < 1) {
-                        requestAnimationFrame(introAnimate);
+                        requestAnimationFrame(animateScroll);
                     } else {
-                        // Settle with small wobble
-                        velocity = -0.8;
-                        // Light haptic on settle
-                        if (navigator.vibrate) navigator.vibrate(8);
-                        startAnimation();
+                        setTimeout(function(){
+                            const backDuration = 1200;
+                            const backStart = scrollContainer.scrollLeft;
+                            const backTarget = cardWidth * 0.5;
+                            const backStartTime = performance.now();
+
+                            function animateBack(currentTime) {
+                                const elapsed = currentTime - backStartTime;
+                                const progress = Math.min(elapsed / backDuration, 1);
+                                const eased = easeOutCubic(progress);
+                                scrollContainer.scrollLeft = backStart - (backStart - backTarget) * eased;
+                                if (progress < 1) requestAnimationFrame(animateBack);
+                            }
+                            requestAnimationFrame(animateBack);
+                        }, 400);
                     }
                 }
-                requestAnimationFrame(introAnimate);
-            }, 600);
+
+                requestAnimationFrame(animateScroll);
+            }, 800);
         })();
 
         // ════════════════════════════════════════════
