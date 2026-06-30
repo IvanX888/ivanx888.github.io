@@ -261,139 +261,145 @@
         
         /* ===== ENHANCED MOBILE CARDS ===== */
         @media (max-width: 768px) {
+            /* ===== VERTICAL MOBILE CARDS ===== */
             .mobile-cards {
                 display: block;
                 width: 100%;
                 background: linear-gradient(180deg, #0d0d0d 0%, #1a120b 100%);
-                padding: 16px 0 8px 0;
+                padding: 16px 14px 20px 14px;
                 border-top: 1px solid rgba(200, 160, 100, 0.15);
                 position: relative;
                 z-index: 20;
+            }
+            .mobile-card-v {
+                width: 100%;
+                margin-bottom: 12px;
+                background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+                backdrop-filter: blur(16px) saturate(1.2);
+                -webkit-backdrop-filter: blur(16px) saturate(1.2);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 18px;
                 overflow: hidden;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+                transition: all 0.25s ease;
             }
-            .mobile-cards-scroll {
+            .mobile-card-v:active {
+                transform: scale(0.98);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            }
+            .mobile-card-v-main {
                 display: flex;
-                gap: 12px;
-                padding: 4px 16px 20px 16px;
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                scroll-snap-type: x mandatory;
-                scroll-padding-left: 16px;
-                scroll-padding-right: 16px;
-            }
-            .mobile-cards-scroll::-webkit-scrollbar {
-                display: none;
-            }
-            .mobile-card {
-                flex-shrink: 0;
-                width: 85vw;
-                max-width: 320px;
-                min-height: 180px;
-                padding: 20px 20px 28px 20px;
-                background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
-                backdrop-filter: blur(16px) saturate(1.3);
-                -webkit-backdrop-filter: blur(16px) saturate(1.3);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                border-radius: 20px;
+                align-items: center;
+                gap: 14px;
+                padding: 16px 18px;
                 cursor: pointer;
-                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
                 position: relative;
-                overflow: hidden;
-                scroll-snap-align: center;
-                display: flex;
-                flex-direction: column;
             }
-            .mobile-card::before {
+            .mobile-card-v-main::after {
                 content: '';
                 position: absolute;
                 top: 0; left: 0; right: 0;
-                height: 3px;
-                background: linear-gradient(90deg, transparent, rgba(255,215,100,0.4), transparent);
-                opacity: 0.6;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, rgba(255,215,100,0.3), transparent);
+                opacity: 0.5;
             }
-            .mobile-card:active {
-                transform: scale(0.97);
+            .mobile-card-v-icon {
+                font-size: 2em;
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 215, 100, 0.08);
+                border: 1px solid rgba(255, 215, 100, 0.15);
+                border-radius: 14px;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
             }
-            .mobile-card h4 {
-                font-size: 1.05em;
+            .mobile-card-v-info {
+                flex: 1;
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .mobile-card-v-title {
+                font-size: 1.1em;
                 font-weight: 700;
                 color: rgba(255, 255, 255, 0.98);
-                margin-bottom: 10px;
                 text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+                line-height: 1.2;
             }
-            .mobile-card p {
-                font-size: 0.85em;
-                color: rgba(255, 255, 255, 0.75);
-                line-height: 1.55;
-                margin-bottom: 12px;
-                flex: 1;
+            .mobile-card-v-desc {
+                font-size: 0.82em;
+                color: rgba(220, 195, 170, 0.75);
+                line-height: 1.45;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
-            .mobile-price {
-                font-size: 0.95em;
+            .mobile-card-v-price {
+                font-size: 0.88em;
                 font-weight: 700;
-                color: rgba(255, 215, 100, 0.98);
-                margin-bottom: 10px;
-                text-shadow: 0 0 10px rgba(255, 215, 100, 0.25);
+                color: rgba(255, 215, 100, 0.95);
+                text-shadow: 0 0 8px rgba(255, 215, 100, 0.2);
             }
-            .mobile-tag {
-                display: inline-block;
-                font-size: 0.7em;
-                color: rgba(255, 255, 255, 0.6);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                padding: 4px 12px;
-                border-radius: 14px;
-                background: rgba(255,255,255,0.06);
-                align-self: flex-start;
+            .mobile-card-v-chevron {
+                font-size: 1.4em;
+                color: rgba(255, 215, 100, 0.5);
+                font-weight: 300;
+                flex-shrink: 0;
+                transition: transform 0.2s ease;
             }
-            .mobile-tag.urgent {
-                color: rgba(255, 120, 120, 0.95);
-                border-color: rgba(255, 120, 120, 0.35);
-                background: rgba(255,80,80,0.08);
+            .mobile-card-v-main:active .mobile-card-v-chevron {
+                transform: translateX(4px);
+                color: rgba(255, 215, 100, 0.9);
             }
-            /* Swipe hint - smaller, less intrusive */
-            .mobile-cards::after {
-                content: '← свайп →';
-                position: absolute;
-                bottom: 2px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 0.65em;
-                color: rgba(255, 215, 100, 0.35);
-                letter-spacing: 2px;
-                animation: fadeOutHint 4s ease forwards;
-                animation-delay: 3s;
-                pointer-events: none;
-            }
-            @keyframes fadeOutHint {
-                0% { opacity: 1; }
-                100% { opacity: 0; }
-            }
-            /* Dot indicators */
-            .mobile-cards-dots {
+            .mobile-card-v-actions {
                 display: flex;
-                justify-content: center;
-                gap: 8px;
-                padding: 4px 0 8px 0;
-                position: relative;
-                z-index: 2;
+                gap: 10px;
+                padding: 0 18px 14px 18px;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+                padding-top: 12px;
             }
-            .mobile-dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.15);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                transition: all 0.3s ease;
+            .mobile-card-v-btn {
+                flex: 1;
+                padding: 12px 14px;
+                border-radius: 14px;
+                font-size: 0.88em;
+                font-weight: 600;
+                text-align: center;
+                text-decoration: none;
                 cursor: pointer;
+                transition: all 0.25s ease;
+                border: none;
+                font-family: inherit;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                letter-spacing: 0.3px;
             }
-            .mobile-dot.active {
-                background: rgba(255, 215, 100, 0.9);
-                border-color: rgba(255, 215, 100, 0.5);
-                box-shadow: 0 0 8px rgba(255, 215, 100, 0.3);
-                transform: scale(1.2);
+            .mobile-card-v-btn.primary {
+                background: linear-gradient(135deg, rgba(160,120,60,0.35) 0%, rgba(220,180,90,0.22) 100%);
+                border: 1px solid rgba(220, 180, 90, 0.4);
+                color: rgba(255, 240, 180, 1);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .mobile-card-v-btn.primary:active {
+                background: linear-gradient(135deg, rgba(180,140,70,0.5) 0%, rgba(240,200,100,0.35) 100%);
+                transform: scale(0.97);
+            }
+            .mobile-card-v-btn.secondary {
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: rgba(255, 255, 255, 0.85);
+            }
+            .mobile-card-v-btn.secondary:active {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.25);
+                transform: scale(0.97);
             }
             .floating-blocks, .carousel-controls {
                 display: none !important;
@@ -402,6 +408,10 @@
                 position: relative;
                 z-index: 10;
             }
+            /* Swipe hint - smaller, less intrusive */
+                100% { opacity: 0; }
+            }
+            /* Dot indicators */
         }
 
 @media (max-width: 768px) {
@@ -441,9 +451,6 @@
             opacity: 0;
             transform: scale(0.95) translateY(10px);
             pointer-events: none;
-        }
-        .mobile-cards-dots {
-            display: none;
         }
         }
 
@@ -927,84 +934,7 @@
                 position: relative;
                 z-index: 20;
             }
-            .mobile-cards-scroll {
-                display: flex;
-                gap: 12px;
-                padding: 0 16px;
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-            .mobile-cards-scroll::-webkit-scrollbar {
-                display: none;
-            }
-            .mobile-card {
-                flex-shrink: 0;
-                width: 260px;
-                padding: 18px 18px 32px 18px;
-                background: rgba(255, 255, 255, 0.04);
-                backdrop-filter: blur(12px) saturate(1.2);
-                -webkit-backdrop-filter: blur(12px) saturate(1.2);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 18px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-                position: relative;
-                overflow: hidden;
-            }
-            .mobile-card:active {
-                transform: scale(0.98);
-            }
-            .mobile-cards::after {
-                content: '← свайп →';
-                position: absolute;
-                bottom: 4px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 0.7em;
-                color: rgba(255, 215, 100, 0.4);
-                letter-spacing: 2px;
-                animation: fadeOutHint 4s ease forwards;
-                animation-delay: 3s;
-                pointer-events: none;
-            }
-            @keyframes fadeOutHint {
-                0% { opacity: 1; }
                 100% { opacity: 0; }
-            }
-            .mobile-card h4 {
-                font-size: 0.95em;
-                font-weight: 600;
-                color: rgba(255, 255, 255, 0.95);
-                margin-bottom: 8px;
-            }
-            .mobile-card p {
-                font-size: 0.78em;
-                color: rgba(255, 255, 255, 0.75);
-                line-height: 1.5;
-                margin-bottom: 10px;
-            }
-            .mobile-price {
-                font-size: 0.88em;
-                font-weight: 600;
-                color: rgba(255, 215, 100, 0.95);
-                margin-bottom: 8px;
-            }
-            .mobile-tag {
-                display: inline-block;
-                font-size: 0.65em;
-                color: rgba(255, 255, 255, 0.55);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                padding: 3px 10px;
-                border-radius: 12px;
-                background: rgba(255,255,255,0.05);
-            }
-            .mobile-tag.urgent {
-                color: rgba(255, 120, 120, 0.95);
-                border-color: rgba(255, 120, 120, 0.35);
-                background: rgba(255,80,80,0.08);
             }
             .floating-blocks, .carousel-controls {
                 display: none !important;
@@ -1787,54 +1717,131 @@
 
         <!-- Мобильные карточки услуг (горизонтальная прокрутка) -->
         <div class="mobile-cards" id="mobileCards">
-            <div class="mobile-cards-scroll" id="mobileCardsScroll">
-                <div class="mobile-card" data-modal="0">
-                    <h4>👨‍👩‍👧 Алименты</h4>
-                    <p>25% на 1 ребёнка, 33% на 2-х, 50% на 3-х</p>
-                    <div class="mobile-price">Консультация 2 000 ₽</div>
-                    <span class="mobile-tag">Семейное право</span>
+            <div class="mobile-card-v" data-modal="0">
+                <div class="mobile-card-v-main" onclick="openModal(0)">
+                    <div class="mobile-card-v-icon">👨‍👩‍👧</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Алименты</div>
+                        <div class="mobile-card-v-desc">25% на 1 ребёнка, 33% на 2-х, 50% на 3-х. Присуждаются с момента подачи иска.</div>
+                        <div class="mobile-card-v-price">Консультация 2 000 ₽</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
                 </div>
-                <div class="mobile-card" data-modal="1">
-                    <h4>💔 Развод</h4>
-                    <p>Через ЗАГС или суд. Подготовка документов</p>
-                    <div class="mobile-price">Консультация 2 000 ₽</div>
-                    <span class="mobile-tag">Семейное право</span>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="mobile-card-v-btn primary" onclick="trackContact('telegram_alimony')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(0)">Подробнее</button>
                 </div>
-                <div class="mobile-card" data-modal="2">
-                    <h4>🏠 Раздел имущества</h4>
-                    <p>Квартира, машина, вклады, кредиты</p>
-                    <div class="mobile-price">Консультация 2 000 ₽</div>
-                    <span class="mobile-tag">Семейное право</span>
+            </div>
+
+            <div class="mobile-card-v" data-modal="1">
+                <div class="mobile-card-v-main" onclick="openModal(1)">
+                    <div class="mobile-card-v-icon">💔</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Развод</div>
+                        <div class="mobile-card-v-desc">Без детей — через ЗАГС за 1 мес. С детьми — только через суд.</div>
+                        <div class="mobile-card-v-price">Консультация 2 000 ₽</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
                 </div>
-                <div class="mobile-card" data-modal="3">
-                    <h4>📋 Брачный договор</h4>
-                    <p>Защита недвижимости, бизнеса, инвестиций</p>
-                    <div class="mobile-price">От 4 000 ₽</div>
-                    <span class="mobile-tag">Документ</span>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=razvod" class="mobile-card-v-btn primary" onclick="trackContact('telegram_divorce')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(1)">Подробнее</button>
                 </div>
-                <div class="mobile-card" data-modal="4">
-                    <h4>📝 Составление документов</h4>
-                    <p>Иски, жалобы, заявления, договоры</p>
-                    <div class="mobile-price">4 000 ₽ за документ</div>
-                    <span class="mobile-tag">Услуга</span>
+            </div>
+
+            <div class="mobile-card-v" data-modal="2">
+                <div class="mobile-card-v-main" onclick="openModal(2)">
+                    <div class="mobile-card-v-icon">🏠</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Раздел имущества</div>
+                        <div class="mobile-card-v-desc">Квартира, машина, вклады, кредиты — делим с учётом вклада каждого.</div>
+                        <div class="mobile-card-v-price">От 5 000 ₽</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
                 </div>
-                <div class="mobile-card" data-modal="5">
-                    <h4>🔍 Проверка документов</h4>
-                    <p>Логика, формулировки, ссылки на законы</p>
-                    <div class="mobile-price">3 000 ₽ за проверку</div>
-                    <span class="mobile-tag">Услуга</span>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=imushchestvo" class="mobile-card-v-btn primary" onclick="trackContact('telegram_property')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(2)">Подробнее</button>
                 </div>
-                <div class="mobile-card" data-modal="6">
-                    <h4>📞 Онлайн-консультация</h4>
-                    <p>Zoom, Telegram, MAX, телефон</p>
-                    <div class="mobile-price">2 000 ₽ / 30–60 мин</div>
-                    <span class="mobile-tag">Формат</span>
+            </div>
+
+            <div class="mobile-card-v" data-modal="3">
+                <div class="mobile-card-v-main" onclick="openModal(3)">
+                    <div class="mobile-card-v-icon">📋</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Брачный договор</div>
+                        <div class="mobile-card-v-desc">Защита недвижимости, бизнеса и инвестиций. Нотариальное удостоверение.</div>
+                        <div class="mobile-card-v-price">От 4 000 ₽</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
                 </div>
-                <div class="mobile-card" data-modal="7">
-                    <h4>🚨 Выезд к клиенту</h4>
-                    <p>По всей России. Индивидуальная стоимость</p>
-                    <div class="mobile-price">По договорённости</div>
-                    <span class="mobile-tag urgent">Россия</span>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=brachdogovor" class="mobile-card-v-btn primary" onclick="trackContact('telegram_prenup')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(3)">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="mobile-card-v" data-modal="4">
+                <div class="mobile-card-v-main" onclick="openModal(4)">
+                    <div class="mobile-card-v-icon">📝</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Составление документов</div>
+                        <div class="mobile-card-v-desc">Иски, жалобы, заявления, договоры. Грамотно оформлю под вашу ситуацию.</div>
+                        <div class="mobile-card-v-price">4 000 ₽ за документ</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
+                </div>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=documents" class="mobile-card-v-btn primary" onclick="trackContact('telegram_docs')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(4)">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="mobile-card-v" data-modal="5">
+                <div class="mobile-card-v-main" onclick="openModal(5)">
+                    <div class="mobile-card-v-icon">🔍</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Проверка документов</div>
+                        <div class="mobile-card-v-desc">Проверю логику, формулировки, ссылки на законы перед подачей.</div>
+                        <div class="mobile-card-v-price">3 000 ₽ за проверку</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
+                </div>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=review" class="mobile-card-v-btn primary" onclick="trackContact('telegram_review')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(5)">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="mobile-card-v" data-modal="6">
+                <div class="mobile-card-v-main" onclick="openModal(6)">
+                    <div class="mobile-card-v-icon">📞</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Онлайн-консультация</div>
+                        <div class="mobile-card-v-desc">Zoom, Telegram, MAX, телефон. 30–60 мин. Запись предоставлю.</div>
+                        <div class="mobile-card-v-price">2 000 ₽ / 30–60 мин</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
+                </div>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=consult" class="mobile-card-v-btn primary" onclick="trackContact('telegram_consult')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(6)">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="mobile-card-v" data-modal="7">
+                <div class="mobile-card-v-main" onclick="openModal(7)">
+                    <div class="mobile-card-v-icon">🚨</div>
+                    <div class="mobile-card-v-info">
+                        <div class="mobile-card-v-title">Выезд к клиенту</div>
+                        <div class="mobile-card-v-desc">Только при острой необходимости. По всей России. Индивидуально.</div>
+                        <div class="mobile-card-v-price">По договорённости</div>
+                    </div>
+                    <div class="mobile-card-v-chevron">›</div>
+                </div>
+                <div class="mobile-card-v-actions">
+                    <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=urgent" class="mobile-card-v-btn primary" onclick="trackContact('telegram_urgent')" target="_blank">✈️ Telegram</a>
+                    <button class="mobile-card-v-btn secondary" onclick="openModal(7)">Подробнее</button>
                 </div>
             </div>
         </div>
@@ -2386,13 +2393,6 @@
             });
         });
 
-        document.querySelectorAll('.mobile-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const index = parseInt(card.dataset.modal);
-                openModal(index);
-            });
-        });
-
         modalClose.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -2459,173 +2459,8 @@
         // ════════════════════════════════════════════
         // ЧЕКБОКС СОГЛАСИЯ НА КОНТАКТЫ
         // ════════════════════════════════════════════
-        (function(){
-            const CONSENT_STORAGE_KEY = 'serko_contact_consent_v1';
-            const checkbox = document.getElementById('contactConsent');
-            const contactButtons = document.querySelectorAll('.panel-btn.max, .panel-btn.telegram, .panel-btn.primary, .panel-btn[href^="mailto:"]');
-
-            const savedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
-            if (savedConsent === 'true' && checkbox) {
-                checkbox.checked = true;
-                enableButtons();
-            }
-
-            function enableButtons() {
-                contactButtons.forEach(btn => {
-                    btn.classList.remove('disabled', 'consent-required', 'show-warning');
-                    btn.style.pointerEvents = '';
-                    btn.style.opacity = '';
-                });
-            }
-
-            function disableButtons() {
-                contactButtons.forEach(btn => {
-                    btn.classList.add('disabled', 'consent-required');
-                });
-            }
-
-            if (checkbox) {
-                if (!checkbox.checked) {
-                    disableButtons();
-                }
-
-                checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                        localStorage.setItem(CONSENT_STORAGE_KEY, 'true');
-                        enableButtons();
-                    } else {
-                        localStorage.removeItem(CONSENT_STORAGE_KEY);
-                        disableButtons();
-                    }
-                });
-
-                contactButtons.forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        if (btn.classList.contains('telegram')) return;
-                        if (!checkbox.checked) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            this.classList.add('show-warning');
-                            checkbox.parentElement.style.animation = 'shake 0.5s ease';
-                            setTimeout(() => {
-                                this.classList.remove('show-warning');
-                                checkbox.parentElement.style.animation = '';
-                            }, 1500);
-
-                            if (window.innerWidth <= 768) {
-                                checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }
-                            return false;
-                        }
-                    });
-                });
-            }
-        });
-
-        console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
 
         // ════════════════════════════════════════════
-        // МОБИЛЬНЫЕ КАРТОЧКИ: АНИМАЦИЯ ПРОКРУТКИ ПРИ ВХОДЕ
-        // ════════════════════════════════════════════
-        (function(){
-            const scrollContainer = document.getElementById('mobileCardsScroll');
-            if (!scrollContainer) return;
-
-            const isMobile = window.innerWidth <= 768;
-            if (!isMobile) return;
-
-            setTimeout(function(){
-                const cardWidth = 272;
-                const scrollAmount = cardWidth * 2.5;
-                const startScroll = scrollContainer.scrollLeft;
-                const targetScroll = Math.min(scrollAmount, scrollContainer.scrollWidth - scrollContainer.clientWidth);
-                const duration = 1800;
-                const startTime = performance.now();
-
-                function easeOutCubic(t) {
-                    return 1 - Math.pow(1 - t, 3);
-                }
-
-                function animateScroll(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = easeOutCubic(progress);
-
-                    scrollContainer.scrollLeft = startScroll + (targetScroll - startScroll) * eased;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateScroll);
-                    } else {
-                        setTimeout(function(){
-                            const backDuration = 1200;
-                            const backStart = scrollContainer.scrollLeft;
-                            const backTarget = cardWidth * 0.5;
-                            const backStartTime = performance.now();
-
-                            function animateBack(currentTime) {
-                                const elapsed = currentTime - backStartTime;
-                                const progress = Math.min(elapsed / backDuration, 1);
-                                const eased = easeOutCubic(progress);
-                                scrollContainer.scrollLeft = backStart - (backStart - backTarget) * eased;
-                                if (progress < 1) requestAnimationFrame(animateBack);
-                            }
-                            requestAnimationFrame(animateBack);
-                        }, 400);
-                    }
-                }
-
-                requestAnimationFrame(animateScroll);
-            }, 800);
-        })();
-
-        // ════════════════════════════════════════════
-        // MOBILE CARDS: DOT INDICATORS & SCROLL SNAP
-        // ════════════════════════════════════════════
-        (function(){
-            const scrollContainer = document.getElementById('mobileCardsScroll');
-            const dotsContainer = document.getElementById('mobileCardsDots');
-            if (!scrollContainer || !dotsContainer) return;
-
-            const cards = scrollContainer.querySelectorAll('.mobile-card');
-            if (cards.length === 0) return;
-
-            // Create dots
-            cards.forEach((_, i) => {
-                const dot = document.createElement('div');
-                dot.className = 'mobile-dot' + (i === 0 ? ' active' : '');
-                dot.addEventListener('click', () => {
-                    cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                });
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = dotsContainer.querySelectorAll('.mobile-dot');
-
-            // Update active dot on scroll
-            let scrollTimeout;
-            scrollContainer.addEventListener('scroll', () => {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    const scrollLeft = scrollContainer.scrollLeft;
-                    const center = scrollLeft + scrollContainer.clientWidth / 2;
-                    let activeIndex = 0;
-                    let minDistance = Infinity;
-                    cards.forEach((card, i) => {
-                        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                        const dist = Math.abs(cardCenter - center);
-                        if (dist < minDistance) {
-                            minDistance = dist;
-                            activeIndex = i;
-                        }
-                    });
-                    dots.forEach((d, i) => {
-                        d.classList.toggle('active', i === activeIndex);
-                    });
-                }, 50);
-            }, { passive: true });
-        })();
-
-
         // ════════════════════════════════════════════
         // РАЗВОРАЧИВАЕМЫЕ БЛОКИ НА ПАНЕЛИ
         // ════════════════════════════════════════════
