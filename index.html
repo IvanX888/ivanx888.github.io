@@ -767,26 +767,29 @@
                 display: block;
                 width: 100%;
                 background: linear-gradient(180deg, #0d0d0d 0%, #1a120b 100%);
-                padding: 20px 0;
+                padding: 16px 0;
                 border-top: 1px solid rgba(200, 160, 100, 0.15);
                 position: relative;
                 z-index: 20;
             }
             .mobile-cards-scroll {
                 display: flex;
+                flex-direction: column;
                 gap: 12px;
                 padding: 0 16px;
-                overflow-x: auto;
-                overflow-y: hidden;
+                overflow-y: auto;
+                overflow-x: hidden;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
+                max-height: 420px;
+                scroll-snap-type: y mandatory;
             }
             .mobile-cards-scroll::-webkit-scrollbar {
                 display: none;
             }
             .mobile-card {
                 flex-shrink: 0;
-                width: 260px;
+                width: 100%;
                 padding: 18px 18px 32px 18px;
                 background: rgba(255, 255, 255, 0.04);
                 backdrop-filter: blur(12px) saturate(1.2);
@@ -798,12 +801,13 @@
                 box-shadow: 0 8px 32px rgba(0,0,0,0.3);
                 position: relative;
                 overflow: hidden;
+                scroll-snap-align: start;
             }
             .mobile-card:active {
                 transform: scale(0.98);
             }
             .mobile-cards::after {
-                content: '← свайп →';
+                content: '↑ свайп ↑';
                 position: absolute;
                 bottom: 4px;
                 left: 50%;
@@ -858,7 +862,7 @@
                 position: relative;
                 z-index: 10;
             }
-        }
+        }}
 
         .consent-checkbox-block {
             width: 100%;
@@ -2367,10 +2371,10 @@
             if (!isMobile) return;
 
             setTimeout(function(){
-                const cardWidth = 272;
-                const scrollAmount = cardWidth * 2.5;
-                const startScroll = scrollContainer.scrollLeft;
-                const targetScroll = Math.min(scrollAmount, scrollContainer.scrollWidth - scrollContainer.clientWidth);
+                const cardHeight = 180; // approximate card height + gap
+                const scrollAmount = cardHeight * 2.5;
+                const startScroll = scrollContainer.scrollTop;
+                const targetScroll = Math.min(scrollAmount, scrollContainer.scrollHeight - scrollContainer.clientHeight);
                 const duration = 1800;
                 const startTime = performance.now();
 
@@ -2383,22 +2387,22 @@
                     const progress = Math.min(elapsed / duration, 1);
                     const eased = easeOutCubic(progress);
 
-                    scrollContainer.scrollLeft = startScroll + (targetScroll - startScroll) * eased;
+                    scrollContainer.scrollTop = startScroll + (targetScroll - startScroll) * eased;
 
                     if (progress < 1) {
                         requestAnimationFrame(animateScroll);
                     } else {
                         setTimeout(function(){
                             const backDuration = 1200;
-                            const backStart = scrollContainer.scrollLeft;
-                            const backTarget = cardWidth * 0.5;
+                            const backStart = scrollContainer.scrollTop;
+                            const backTarget = cardHeight * 0.5;
                             const backStartTime = performance.now();
 
                             function animateBack(currentTime) {
                                 const elapsed = currentTime - backStartTime;
                                 const progress = Math.min(elapsed / backDuration, 1);
                                 const eased = easeOutCubic(progress);
-                                scrollContainer.scrollLeft = backStart - (backStart - backTarget) * eased;
+                                scrollContainer.scrollTop = backStart - (backStart - backTarget) * eased;
                                 if (progress < 1) requestAnimationFrame(animateBack);
                             }
                             requestAnimationFrame(animateBack);
@@ -2410,8 +2414,7 @@
             }, 800);
         })();
 
-        // ════════════════════════════════════════════
-        // РАЗВОРАЧИВАЕМЫЕ БЛОКИ НА ПАНЕЛИ
+        // ════════════════════════════════════════════// РАЗВОРАЧИВАЕМЫЕ БЛОКИ НА ПАНЕЛИ
         // ════════════════════════════════════════════
         (function(){
             const sections = document.querySelectorAll('.panel-section[data-expandable], .faq-section[data-expandable]');
