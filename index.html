@@ -1537,7 +1537,7 @@
             }
         }
     </style>
-<base target="_blank">
+    <base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -1750,7 +1750,7 @@
             <div class="panel-section-body contacts-body">
                 <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn max" onclick="trackContact('max')">💬 Написать в MAX</a>
                 <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn telegram" onclick="trackContact('telegram')" target="_blank">✈️ Telegram</a>
-                <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 Позвонить</a>
+                <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
                 <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
                 <div class="contact-note" style="font-size:0.75em; color:rgba(220,195,170,0.6); text-align:center; padding:6px 0;">🚗 Выезд при острой необходимости — по договорённости</div>
                 <div class="consent-checkbox-block">
@@ -2522,9 +2522,14 @@
             const cookieConsent = getCookie(COOKIE_KEY);
             const cookieBannerEl = document.getElementById('cookieBanner');
             if (!cookieConsent && cookieBannerEl) {
-                setTimeout(function(){
-                    cookieBannerEl.classList.add('visible');
-                }, 1500);
+                // On mobile, cookie banner is handled by sticky bar script (5s delay)
+                // On desktop, show after 1.5s
+                if (window.innerWidth >= 769) {
+                    setTimeout(function(){
+                        cookieBannerEl.classList.add('visible');
+                    }, 1500);
+                }
+                // Mobile: delayed by sticky bar script to 5s
             }
 
             const cookieAcceptBtn = document.getElementById('cookieAccept');
@@ -2547,9 +2552,32 @@
     </script>
 
     <script>
-        // Показывать sticky bar при скролле на мобильных
+        // Показывать sticky bar СРАЗУ на мобильных, cookie banner — через 5 сек
         document.addEventListener('DOMContentLoaded', function(){
             const bar = document.getElementById('stickyBar');
+            const cookieBanner = document.getElementById('cookieBanner');
+            const isMobile = window.innerWidth < 769;
+
+            // Mobile: show contacts immediately, delay cookie banner
+            if (isMobile) {
+                // Show sticky bar immediately
+                bar.classList.add('visible');
+
+                // Delay cookie banner by 5 seconds so user sees contacts first
+                if (cookieBanner) {
+                    // Override the original 1.5s timeout
+                    setTimeout(function(){
+                        cookieBanner.classList.add('visible');
+                    }, 5000);
+                }
+            } else {
+                // Desktop: original behavior
+                setTimeout(function(){
+                    if (cookieBanner) cookieBanner.classList.add('visible');
+                }, 1500);
+            }
+
+            // Also show sticky bar on scroll (desktop or if hidden)
             let shown = false;
             window.addEventListener('scroll', function(){
                 if (window.innerWidth < 769 && window.scrollY > 100 && !shown) {
@@ -2557,9 +2585,6 @@
                     shown = true;
                 }
             }, { passive: true });
-            setTimeout(function(){
-                if (window.innerWidth < 769) bar.classList.add('visible');
-            }, 3000);
         });
     </script>
 
