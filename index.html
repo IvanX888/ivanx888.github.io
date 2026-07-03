@@ -2548,44 +2548,42 @@
                 });
             }
 
-            // Auto-hide cookie banner after 10 seconds if user ignores it
-            // User has seen the notice — this is sufficient under Russian law
-            setTimeout(function(){
-                if (cookieBannerEl && cookieBannerEl.classList.contains('visible')) {
-                    cookieBannerEl.classList.remove('visible');
-                }
-            }, 10000);
+
         });
 
     </script>
 
     <script>
-        // Показывать sticky bar СРАЗУ на мобильных, cookie banner — через 5 сек
+        // Unified mobile UX: contacts first, then cookie banner
         document.addEventListener('DOMContentLoaded', function(){
             const bar = document.getElementById('stickyBar');
-            const cookieBanner = document.getElementById('cookieBanner');
+            const cookieBannerEl = document.getElementById('cookieBanner');
             const isMobile = window.innerWidth < 769;
+            var cookieShown = false;
 
-            // Mobile: show contacts immediately, delay cookie banner
-            if (isMobile) {
-                // Show sticky bar immediately
-                bar.classList.add('visible');
-
-                // Delay cookie banner by 5 seconds so user sees contacts first
-                if (cookieBanner) {
-                    // Override the original 1.5s timeout
+            function showCookieBanner() {
+                if (cookieBannerEl && !cookieShown) {
+                    cookieShown = true;
+                    cookieBannerEl.classList.add('visible');
+                    // Auto-hide after 10 seconds
                     setTimeout(function(){
-                        cookieBanner.classList.add('visible');
-                    }, 5000);
+                        if (cookieBannerEl && cookieBannerEl.classList.contains('visible')) {
+                            cookieBannerEl.classList.remove('visible');
+                        }
+                    }, 10000);
                 }
-            } else {
-                // Desktop: original behavior
-                setTimeout(function(){
-                    if (cookieBanner) cookieBanner.classList.add('visible');
-                }, 1500);
             }
 
-            // Also show sticky bar on scroll (desktop or if hidden)
+            // Mobile: show sticky bar immediately, cookie banner after 5s
+            if (isMobile) {
+                bar.classList.add('visible');
+                setTimeout(showCookieBanner, 5000);
+            } else {
+                // Desktop: cookie banner after 1.5s
+                setTimeout(showCookieBanner, 1500);
+            }
+
+            // Show sticky bar on scroll (desktop fallback)
             let shown = false;
             window.addEventListener('scroll', function(){
                 if (window.innerWidth < 769 && window.scrollY > 100 && !shown) {
