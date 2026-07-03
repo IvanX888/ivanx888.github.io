@@ -2547,6 +2547,14 @@
                     if (cookieBannerEl) cookieBannerEl.classList.remove('visible');
                 });
             }
+
+            // Auto-hide cookie banner after 10 seconds if user ignores it
+            // User has seen the notice — this is sufficient under Russian law
+            setTimeout(function(){
+                if (cookieBannerEl && cookieBannerEl.classList.contains('visible')) {
+                    cookieBannerEl.classList.remove('visible');
+                }
+            }, 10000);
         });
 
     </script>
