@@ -809,6 +809,22 @@
             .mobile-card:active {
                 transform: scale(0.98);
             }
+            .mobile-cta-card {
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .mobile-cta-card:hover {
+                background: rgba(155, 89, 182, 0.15) !important;
+                border-color: rgba(155, 89, 182, 0.7) !important;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(155, 89, 182, 0.15) !important;
+            }
+            .mobile-cta-card:active {
+                transform: scale(0.97);
+            }
+            @media (min-width: 769px) {
+                .mobile-cta-card { display: none !important; }
+                .desktop-only-cta { display: block !important; }
+            }
             .mobile-cards::after {
                 content: '↑ свайп ↑';
                 position: absolute;
@@ -1538,7 +1554,6 @@
         }
     </style>
     <base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
@@ -1633,7 +1648,18 @@
         <!-- Мобильные карточки услуг -->
         <div class="mobile-cards" id="mobileCards">
             <div class="mobile-cards-scroll" id="mobileCardsScroll">
-                <div class="mobile-card" data-modal="0">
+                <!-- CTA: прямой переход в MAX на мобильных -->
+                <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=mobile_cta" 
+                   class="mobile-card mobile-cta-card" 
+                   onclick="trackContact('max_cta')"
+                   style="text-decoration:none; display:block; border-color:rgba(155,89,182,0.5); background:rgba(155,89,182,0.08);">
+                    <h4>🚀 Бесплатная оценка дела</h4>
+                    <p>Расскажите ситуацию — я оценю шансы и скажу, что делать</p>
+                    <div class="mobile-price" style="color:rgba(200,160,255,0.95);">Бесплатно · 5–10 мин</div>
+                    <span class="mobile-tag cta-tag" style="background:rgba(155,89,182,0.15); border-color:rgba(155,89,182,0.4); color:rgba(200,160,255,0.95);">💬 Написать в MAX</span>
+                </a>
+                <!-- Оригинальная карточка остаётся для десктопа (скрыта на мобильных) -->
+                <div class="mobile-card desktop-only-cta" data-modal="0" style="display:none;">
                     <h4>🚀 Бесплатная оценка дела</h4>
                     <p>Расскажите ситуацию — я оценю шансы и скажу, что делать</p>
                     <div class="mobile-price">Бесплатно · 5–10 мин</div>
@@ -2368,6 +2394,8 @@
 
         // ════════════════════════════════════════════
         // МОБИЛЬНЫЕ КАРТОЧКИ: АНИМАЦИЯ ПРОКРУТКИ ПРИ ВХОДЕ
+        // Показываем пользователю, что карточки листаются,
+        // но возвращаем на первую (CTA) карточку
         // ════════════════════════════════════════════
         (function(){
             const scrollContainer = document.getElementById('mobileCardsScroll');
@@ -2378,10 +2406,11 @@
 
             setTimeout(function(){
                 const cardHeight = 180;
-                const scrollAmount = cardHeight * 2.5;
+                // Scroll down just 1 card to hint at more content
+                const scrollAmount = cardHeight * 1.2;
                 const startScroll = scrollContainer.scrollTop;
                 const targetScroll = Math.min(scrollAmount, scrollContainer.scrollHeight - scrollContainer.clientHeight);
-                const duration = 1800;
+                const duration = 1200;
                 const startTime = performance.now();
 
                 function easeOutCubic(t) {
@@ -2398,10 +2427,11 @@
                     if (progress < 1) {
                         requestAnimationFrame(animateScroll);
                     } else {
+                        // Return to first card (CTA) after short pause
                         setTimeout(function(){
-                            const backDuration = 1200;
+                            const backDuration = 1000;
                             const backStart = scrollContainer.scrollTop;
-                            const backTarget = cardHeight * 0.5;
+                            const backTarget = 0; // Back to top (first card)
                             const backStartTime = performance.now();
 
                             function animateBack(currentTime) {
@@ -2412,7 +2442,7 @@
                                 if (progress < 1) requestAnimationFrame(animateBack);
                             }
                             requestAnimationFrame(animateBack);
-                        }, 400);
+                        }, 600);
                     }
                 }
 
