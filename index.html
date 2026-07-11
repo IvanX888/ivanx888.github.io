@@ -74,10 +74,16 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/106860023" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <style>
+        <link rel="preconnect" href="https://mc.yandex.ru">
+    <link rel="preconnect" href="https://t.me">
+    <link rel="dns-prefetch" href="https://max.ru">
+<style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #fff; background: #0d0d0d; overflow: hidden; }
-        body { display: flex; }
+        html, body { height: 100%; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #fff; background: #0d0d0d; }
+        body { display: flex; overflow: hidden; }
+@media (max-width: 768px) {
+    body { overflow-x: hidden; overflow-y: auto; }
+}
 
         .photo-area { flex: 1; height: 100vh; position: relative; overflow: hidden; background: #1a120b; }
         .photo-area img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
@@ -262,6 +268,9 @@
         .modal-mobile-close {
             display: none;
         }
+
+        .hidden-modal { display: none !important; }
+
         @media (max-width: 768px) {
             .modal-mobile-close {
                 display: flex;
@@ -293,6 +302,10 @@
             .modal-overlay.active ~ .mobile-cards {
                 display: none !important;
             }
+        }
+        .modal-overlay.active ~ .panel.hidden-modal,
+        .modal-overlay.active ~ .sticky-contact-bar.hidden-modal {
+            display: none !important;
         }
 
         .modal-card { 
@@ -922,28 +935,6 @@
         .consent-text a:hover {
             color: rgba(255, 215, 100, 1);
         }
-        .panel-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            filter: grayscale(0.5);
-        }
-        .panel-btn.consent-required {
-            position: relative;
-        }
-        .panel-btn.consent-required::after {
-            content: '⚠️';
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.8em;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .panel-btn.consent-required.show-warning::after {
-            opacity: 1;
-        }
-
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             20% { transform: translateX(-4px); }
@@ -1554,6 +1545,7 @@
         }
     </style>
     <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -1574,7 +1566,7 @@
 
     <!-- Основная зона -->
     <div class="photo-area" id="photoArea">
-        <img src="my-photo.jpg" alt="Иван Серко — семейный юрист" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg, #1f140e 0%, #0a0705 100%)';">
+        <img src="my-photo.jpg" width="1200" height="1600" alt="Иван Серко — семейный юрист" loading="lazy" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; object-position:center 42%;" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg, #1f140e 0%, #0a0705 100%)'; this.parentElement.style.backgroundSize='cover'; this.parentElement.style.backgroundPosition='center';">
 
         <div class="floating-blocks" id="floatBlocks">
             <div class="float-carousel" id="floatCarousel">
@@ -1605,7 +1597,7 @@
                 <div class="float-card" data-modal="3" style="--tilt:3deg;" id="property">
                     <h4>🏠 Раздел имущества</h4>
                     <p>Квартира в ипотеке, машина, вклады — всё делится с учётом вклада каждого. Кредиты тоже распределяются. Справедливо и по закону.</p>
-                    <div class="price">От 5 000 ₽</div>
+                    <div class="price">Консультация 2 000 ₽</div>
                     <span class="tag">Семейное право</span>
                     <div class="card-arrow">↗ Защитим ваши интересы</div>
                 </div>
@@ -1613,7 +1605,7 @@
                 <div class="float-card" data-modal="4" style="--tilt:-2deg;" id="family-disputes">
                     <h4>⚖️ Семейные споры</h4>
                     <p>Место жительства детей, порядок общения, лишение/восстановление родительских прав, усыновление. Документы и стратегия.</p>
-                    <div class="price">От 10 000 ₽</div>
+                    <div class="price">Консультация 2 000 ₽</div>
                     <span class="tag">Суд</span>
                     <div class="card-arrow">↗ Подготовим к суду</div>
                 </div>
@@ -1637,7 +1629,7 @@
                 <div class="float-card" data-modal="7" style="--tilt:2deg;" id="regions">
                     <h4>📍 Ваш город</h4>
                     <p>Москва, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург. Работаю онлайн — без доплат за регион.</p>
-                    <div class="price">Удалённо — без доплат</div>
+                    <div class="price">Консультация 2 000 ₽</div>
                     <span class="tag">Регионы</span>
                     <div class="card-arrow">↗ Написать из региона</div>
                 </div>
@@ -1652,7 +1644,7 @@
                 <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=mobile_cta" 
                    class="mobile-card mobile-cta-card" 
                    onclick="trackContact('max_cta')"
-                   style="text-decoration:none; display:block; border-color:rgba(155,89,182,0.5); background:rgba(155,89,182,0.08);">
+                   style="text-decoration:none; display:block; border-color:rgba(155,89,182,0.5); background:rgba(155,89,182,0.08);" rel="noopener noreferrer">
                     <h4>🚀 Бесплатная оценка дела</h4>
                     <p>Расскажите ситуацию — я оценю шансы и скажу, что делать</p>
                     <div class="mobile-price" style="color:rgba(200,160,255,0.95);">Бесплатно · 5–10 мин</div>
@@ -1680,13 +1672,13 @@
                 <div class="mobile-card" data-modal="3">
                     <h4>🏠 Раздел имущества</h4>
                     <p>Квартира, машина, кредиты, вклады — честно и по закону</p>
-                    <div class="mobile-price">От 5 000 ₽</div>
+                    <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Семейное право</span>
                 </div>
                 <div class="mobile-card" data-modal="4">
                     <h4>⚖️ Семейные споры</h4>
                     <p>Место жительства детей, порядок общения, лишение прав</p>
-                    <div class="mobile-price">От 10 000 ₽</div>
+                    <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Суд</span>
                 </div>
                 <div class="mobile-card" data-modal="5">
@@ -1704,7 +1696,7 @@
                 <div class="mobile-card" data-modal="7">
                     <h4>📍 Ваш город</h4>
                     <p>Москва, НН, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов, Екатеринбург</p>
-                    <div class="mobile-price">Работаю онлайн по всей России</div>
+                    <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Регионы</span>
                 </div>
             </div>
@@ -1728,8 +1720,8 @@
                 <span class="modal-price-label">Стоимость</span>
                 <span class="modal-price-value" id="modalPrice">Бесплатно</span>
             </div>
-            <a href="https://t.me/BYIvanko" class="modal-btn modal-btn-primary" id="modalBtn">✈️ Написать в Telegram</a>
-            <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=modal" class="modal-btn" id="modalMax" style="margin-top:10px; background: rgba(155, 89, 182, 0.12); border-color: rgba(155, 89, 182, 0.35); color: rgba(200, 160, 255, 0.95);" target="_blank" onclick="trackContact('max')">💬 Написать в MAX</a>
+            <a href="https://t.me/BYIvanko" class="modal-btn modal-btn-primary" id="modalBtn" rel="noopener noreferrer">✈️ Написать в Telegram</a>
+            <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=modal" class="modal-btn" id="modalMax" style="margin-top:10px; background: rgba(155, 89, 182, 0.12); border-color: rgba(155, 89, 182, 0.35); color: rgba(200, 160, 255, 0.95);" target="_blank" onclick="trackContact('max')" rel="noopener noreferrer">💬 Написать в MAX</a>
             <div style="margin-top:10px; text-align:center;">
                 <a href="tel:+79774232473" style="color:#8b6914; font-size:0.82em; text-decoration:none; font-weight:600;" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
             </div>
@@ -1774,8 +1766,8 @@
                 <span class="panel-section-chevron">▼</span>
             </div>
             <div class="panel-section-body contacts-body">
-                <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn max" onclick="trackContact('max')">💬 Написать в MAX</a>
-                <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn telegram" onclick="trackContact('telegram')" target="_blank">✈️ Telegram</a>
+                <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn max" onclick="trackContact('max')" rel="noopener noreferrer">💬 Написать в MAX</a>
+                <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn telegram" onclick="trackContact('telegram')" target="_blank" rel="noopener noreferrer">✈️ Telegram</a>
                 <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
                 <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
                 <div class="contact-note" style="font-size:0.75em; color:rgba(220,195,170,0.6); text-align:center; padding:6px 0;">🚗 Выезд при острой необходимости — по договорённости</div>
@@ -1873,7 +1865,7 @@
                 </div>
                 <div class="doc-check">
                     <p>Проверьте мой статус на сайте ФНС:</p>
-                    <a href="https://npd.nalog.ru/check-status/" target="_blank" class="panel-btn" style="margin-top:8px; font-size:0.82em;">🔍 Проверить на npd.nalog.ru</a>
+                    <a href="https://npd.nalog.ru/check-status/" target="_blank" class="panel-btn" style="margin-top:8px; font-size:0.82em;" rel="noopener noreferrer">🔍 Проверить на npd.nalog.ru</a>
                     <p class="doc-hint">Введите ИНН 500918804320 и сегодняшнюю дату — сервис покажет, что я официально зарегистрирован как плательщик налога на профессиональный доход.</p>
                 </div>
                 <div class="doc-check gov-links-wrap">
@@ -1882,10 +1874,10 @@
                         <span class="gov-chevron">▼</span>
                     </div>
                     <div class="gov-links-content" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.3s ease;">
-                        <a href="https://www.gosuslugi.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">🏛️ Госуслуги — портал государственных услуг</a>
-                        <a href="https://sudrf.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">⚖️ ГАС «Правосудие» — судебные дела</a>
-                        <a href="https://fssp.gov.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">🔍 ФССП — проверка исполнительных производств</a>
-                        <a href="https://kad.arbitr.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;">📋 Картотека арбитражных дел</a>
+                        <a href="https://www.gosuslugi.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;" rel="noopener noreferrer">🏛️ Госуслуги — портал государственных услуг</a>
+                        <a href="https://sudrf.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;" rel="noopener noreferrer">⚖️ ГАС «Правосудие» — судебные дела</a>
+                        <a href="https://fssp.gov.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;" rel="noopener noreferrer">🔍 ФССП — проверка исполнительных производств</a>
+                        <a href="https://kad.arbitr.ru/" target="_blank" class="panel-btn" style="margin-top:6px; font-size:0.78em;" rel="noopener noreferrer">📋 Картотека арбитражных дел</a>
                     </div>
                 </div>
             </div>
@@ -2110,7 +2102,7 @@
                 desc: 'Профессиональная помощь по взысканию алиментов на детей и супругов. Работаю с задолженностями, изменением размера, индексацией. Сопровождаю на всех этапах — от консультации до приставов.',
                 urgency: '⏰ Срок обжалования судебного приказа — 10 дней! Не упустите.',
                 features: ['Расчёт размера алиментов (25/33/50%)', 'Взыскание задолженности + пени', 'Изменение размера алиментов', 'Индексация и неустойка', 'Работа с ФССП и приставами'],
-                price: 'Консультация 2 000 ₽',
+                price: 'Стоимость после консультации',
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty',
                 trackType: 'telegram_alimony',
@@ -2120,7 +2112,7 @@
                 desc: 'Расторжение брака через ЗАГС или суд. Подготовка всех документов удалённо. Сопровождение на каждом этапе. Развод с детьми, с имуществом, по согласию или в спорном порядке.',
                 urgency: '⚠️ При наличии несовершеннолетних детей — только через суд. Не тяните!',
                 features: ['Развод через ЗАГС (без детей)', 'Развод через суд (с детьми)', 'Подготовка искового заявления', 'Что нужно отправить ответчику', 'Представление интересов в суде'],
-                price: 'Консультация 2 000 ₽',
+                price: 'Стоимость после консультации',
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=razvod',
                 trackType: 'telegram_divorce',
@@ -2130,7 +2122,7 @@
                 desc: 'Справедливый раздел квартир, машин, вкладов, кредитов и бизнеса при разводе. Как делится автокредит? Что делать с ипотекой? Как выделить личное имущество? Защиту ваших интересов гарантирую.',
                 urgency: '⏰ Срок исковой давности — 3 года. Не ждите, пока документы потеряются.',
                 features: ['Оценка совместного имущества', 'Выделение личного имущества', 'Раздел квартир, машин, вкладов', 'Распределение кредитов и ипотеки', 'Мировое соглашение или суд'],
-                price: 'От 5 000 ₽',
+                price: 'Стоимость после консультации',
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=imushchestvo',
                 trackType: 'telegram_property',
@@ -2140,7 +2132,7 @@
                 desc: 'Сложные семейные дела: определение места жительства детей, порядок общения, лишение и восстановление родительских прав, усыновление. Подготовка документов, стратегия, представление в суде.',
                 urgency: '⚠️ Судебные сроки не ждут. Пропуск — проигрыш. Не откладывайте!',
                 features: ['Определение места жительства детей', 'Порядок общения с ребёнком', 'Лишение / восстановление родительских прав', 'Усыновление', 'Подготовка к суду: документы и стратегия'],
-                price: 'От 10 000 ₽',
+                price: 'Стоимость после консультации',
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=semya',
                 trackType: 'telegram_court',
@@ -2160,7 +2152,7 @@
                 desc: 'Не заплатили зарплату? Незаконно уволили? Купили бракованный товар? Вернём деньги + компенсацию. Работаю по всей России. Реальные кейсы: 175 000 ₽ зарплаты, 225 000 ₽ за товар.',
                 urgency: '⏰ Сроки подачи исков ограничены. Не дайте работодателю или продавцу уйти от ответственности.',
                 features: ['Возврат зарплаты и компенсация', 'Незаконное увольнение', 'Возврат бракованного товара + штраф', 'Защита прав потребителей', 'Работаю онлайн по всей России'],
-                price: 'Консультация 2 000 ₽',
+                price: 'Стоимость после консультации',
                 btn: '✈️ Написать в Telegram',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=trud',
                 trackType: 'telegram_labor',
@@ -2170,7 +2162,7 @@
                 desc: 'Работаю онлайн по всей России. Москва, Московская область, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург и другие города. Удалённо — без доплат за регион.',
                 urgency: '',
                 features: ['Онлайн-консультации по всей России', 'Электронное правосудие', 'Электронная подпись', 'Нотариусы онлайн через Госуслуги', 'Личное присутствие — крайне редко'],
-                price: 'Удалённо — без доплат',
+                price: 'Стоимость после консультации',
                 btn: '💬 Написать из региона',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=region',
                 trackType: 'telegram_region',
@@ -2193,6 +2185,15 @@
             if (typeof ym !== 'undefined') {
                 ym(106860023, 'reachGoal', 'modal_open', { modal_type: modalData[index].title });
             }
+            // Focus trap: save last focused element
+            if (document.activeElement) {
+                modalCard._lastFocus = document.activeElement;
+            }
+            // Trap focus inside modal
+            setTimeout(() => {
+                const focusable = modalCard.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])');
+                if (focusable.length) focusable[0].focus();
+            }, 100);
 
             const floatBlocksEl = document.getElementById('floatBlocks');
             const mobileCardsEl = document.getElementById('mobileCards');
@@ -2200,8 +2201,8 @@
             const stickyBarEl = document.getElementById('stickyBar');
             if (floatBlocksEl) floatBlocksEl.classList.add('modal-hidden');
             if (mobileCardsEl) mobileCardsEl.classList.add('modal-hidden');
-            if (panelEl) panelEl.style.display = 'none';
-            if (stickyBarEl) stickyBarEl.style.display = 'none';
+            if (panelEl) panelEl.classList.add('hidden-modal');
+            if (stickyBarEl) stickyBarEl.classList.add('hidden-modal');
 
             const data = modalData[index];
             modalIcon.textContent = data.icon;
@@ -2237,6 +2238,11 @@
         function closeModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
+            // Restore focus
+            if (modalCard._lastFocus) {
+                modalCard._lastFocus.focus();
+                modalCard._lastFocus = null;
+            }
 
             const floatBlocksEl = document.getElementById('floatBlocks');
             const mobileCardsEl = document.getElementById('mobileCards');
@@ -2244,8 +2250,8 @@
             const stickyBarEl = document.getElementById('stickyBar');
             if (floatBlocksEl) floatBlocksEl.classList.remove('modal-hidden');
             if (mobileCardsEl) mobileCardsEl.classList.remove('modal-hidden');
-            if (panelEl) panelEl.style.display = '';
-            if (stickyBarEl) stickyBarEl.style.display = '';
+            if (panelEl) panelEl.classList.remove('hidden-modal');
+            if (stickyBarEl) stickyBarEl.classList.remove('hidden-modal');
         }
 
         cards.forEach(card => {
@@ -2283,6 +2289,24 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
+            // Focus trap inside modal
+            if (modalOverlay.classList.contains('active') && e.key === 'Tab') {
+                const focusable = modalCard.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])');
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
         });
 
         let isModalScrolling = false;
@@ -2327,68 +2351,7 @@
         // ════════════════════════════════════════════
         // ЧЕКБОКС СОГЛАСИЯ НА КОНТАКТЫ
         // ════════════════════════════════════════════
-        (function(){
-            const CONSENT_STORAGE_KEY = 'serko_contact_consent_v1';
-            const checkbox = document.getElementById('contactConsent');
-            const contactButtons = document.querySelectorAll('.panel-btn.max, .panel-btn.telegram, .panel-btn.primary, .panel-btn[href^="mailto:"]');
-
-            const savedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
-            if (savedConsent === 'true' && checkbox) {
-                checkbox.checked = true;
-                enableButtons();
-            }
-
-            function enableButtons() {
-                contactButtons.forEach(btn => {
-                    btn.classList.remove('disabled', 'consent-required', 'show-warning');
-                    btn.style.pointerEvents = '';
-                    btn.style.opacity = '';
-                });
-            }
-
-            function disableButtons() {
-                contactButtons.forEach(btn => {
-                    btn.classList.add('disabled', 'consent-required');
-                });
-            }
-
-            if (checkbox) {
-                if (!checkbox.checked) {
-                    disableButtons();
-                }
-
-                checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                        localStorage.setItem(CONSENT_STORAGE_KEY, 'true');
-                        enableButtons();
-                    } else {
-                        localStorage.removeItem(CONSENT_STORAGE_KEY);
-                        disableButtons();
-                    }
-                });
-
-                contactButtons.forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        if (btn.classList.contains('telegram')) return;
-                        if (!checkbox.checked) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            this.classList.add('show-warning');
-                            checkbox.parentElement.style.animation = 'shake 0.5s ease';
-                            setTimeout(() => {
-                                this.classList.remove('show-warning');
-                                checkbox.parentElement.style.animation = '';
-                            }, 1500);
-
-                            if (window.innerWidth <= 768) {
-                                checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }
-                            return false;
-                        }
-                    });
-                });
-            }
-        })();
+        ;
 
         console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
 
@@ -2626,13 +2589,13 @@
 
     <!-- STICKY КОНТАКТ-БАР -->
     <div class="sticky-contact-bar" id="stickyBar">
-        <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=sticky" class="sticky-btn sticky-telegram" onclick="trackContact('telegram')" target="_blank">
+        <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=sticky" class="sticky-btn sticky-telegram" onclick="trackContact('telegram')" target="_blank" rel="noopener noreferrer">
             <span>✈️</span> Telegram
         </a>
         <a href="tel:+79774232473" class="sticky-btn sticky-phone" onclick="trackContact('phone')">
             <span>📞</span> +7 (977) 423-24-73
         </a>
-        <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=sticky" class="sticky-btn sticky-max" onclick="trackContact('max')">
+        <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=sticky" class="sticky-btn sticky-max" onclick="trackContact('max')" rel="noopener noreferrer">
             <span>💬</span> MAX
         </a>
     </div>
