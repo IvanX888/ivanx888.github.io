@@ -15,7 +15,7 @@
     <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7impbvuI88L3RleHQ+PC9zdmc+">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" fetchpriority="high">
 
     <title>Серко Иван Иванович — юрист по алиментам и разводам онлайн | Консультация 2 000 ₽</title>
     <meta name="description" content="Серко Иван Иванович — юрист по алиментам, разводам, разделу имущества онлайн. Бесплатная оценка дела. 127+ решённых дел. Работаю удалённо: Москва, НН, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов, Екатеринбург.">
@@ -112,7 +112,28 @@
         .price, .mobile-price, .modal-price-value { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; letter-spacing: 0.5px; }
         .panel-btn, .modal-btn { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; letter-spacing: 0.5px; }
         body { display: flex; overflow: hidden; }
-@media (max-width: 768px) {
+
+        .faq-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: rgba(255, 215, 100, 0.9);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .faq-answer {
+            font-size: 0.78em;
+            color: rgba(220, 195, 170, 0.75);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
             html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
             body { display: block; height: auto; }
 
@@ -2279,6 +2300,70 @@
             50% { transform: scale(1.4); opacity: 0.7; }
         }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Сколько стоит консультация юриста по алиментам?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Первичная консультация стоит 2 000 ₽. На ней я оцениваю документы, объясняю перспективы дела и предлагаю план действий. Бесплатная оценка дела — 5–10 минут в чате."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как взыскать алименты, если отец не работает?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Если отец не работает, алименты назначаются в твёрдой денежной сумме от прожиточного минимума ребёнка в вашем регионе. Я помогу подготовить иск, рассчитать размер и взыскать задолженность через суд и приставов."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли развестись онлайн без присутствия в суде?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Если нет несовершеннолетних детей — развод возможен через ЗАГС онлайн через Госуслуги. При наличии детей — только через суд, но можно участвовать удалённо через видеоконференцию или доверить представление юристу по нотариальной доверенности."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как делится ипотечная квартира при разводе?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ипотечная квартира, купленная в браке, делится поровну. Варианты: продажа квартиры и погашение кредита, выкуп доли одним из супругов с рефинансированием, или мировое соглашение с фиксированными выплатами. Я помогу защитить ваши интересы в суде."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что делать, если бывший не платит алименты?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Нужно обратиться к судебным приставам с заявлением о розыске должника и наложении взыскания. Также можно взыскать пени — 0,1% от суммы долга за каждый день просрочки. Я помогу подготовить документы и работаю с ФССП."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько времени занимает развод через суд?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "При отсутствии споров — от 2 до 4 месяцев. Если есть споры об имуществе или детях — от 6 до 12 месяцев. Срок зависит от загруженности суда и готовности сторон к компромиссам."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Нужен ли брачный договор, если нет детей?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Брачный договор полезен в любом браке — он защищает имущество, нажитое до брака, бизнес, наследство и инвестиции. Стоимость составления от 4 000 ₽, нотариальное удостоверение — дополнительно."
+      }
+    }
+  ]
+}
+</script>
 
 <base target="_blank">
 </head>
@@ -2301,7 +2386,7 @@
 
     <!-- Основная зона -->
     <div class="photo-area" id="photoArea">
-        <img src="my-photo.jpg" width="1200" height="1600" alt="Серко Иван Иванович — семейный юрист" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center 42%;" id="heroPhoto">
+        <img src="my-photo.jpg" width="1200" height="1600" alt="Серко Иван Иванович — семейный юрист" loading="eager" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; object-position:center 42%;" id="heroPhoto">
 
         <div class="floating-blocks" id="floatBlocks">
             <div class="float-carousel" id="floatCarousel">
@@ -2360,6 +2445,13 @@
                     <span class="tag">Гражданское право</span>
                     <div class="card-arrow">↗ Обсудить ситуацию</div>
                 </div>
+
+                <a href="faq.html" class="float-card" id="full-faq" style="--tilt:-2deg;text-decoration:none;display:block;" target="_blank" rel="noopener noreferrer">
+                    <h4>📖 Полный FAQ</h4>
+                    <p>40+ развёрнутых ответов с законами и сроками. Калькулятор алиментов. Таблица прожиточных минимумов по всем регионам.</p>
+                    <span class="tag">FAQ</span>
+                    <div class="card-arrow">↗ Перейти к ответам</div>
+                </a>
 
                 <div class="float-card" data-modal="7" style="--tilt:2deg;" id="regions" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>📍 Ваш город</h4>
@@ -2429,13 +2521,21 @@
                     <div class="mobile-price">Консультация 2 000 ₽</div>
                     <span class="mobile-tag">Гражданское право</span>
                 </div>
+                <a href="faq.html" class="mobile-card" style="text-decoration:none;display:block;" target="_blank" rel="noopener noreferrer">
+                    <h4>📖 Полный FAQ</h4>
+                    <p>40+ развёрнутых ответов, калькулятор алиментов, таблица регионов</p>
+                    <span class="mobile-tag">FAQ</span>
+                </a>
                 <div class="mobile-card" data-modal="7">
                     <h4>📍 Ваш город</h4>
                     <p>Москва, НН, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов, Екатеринбург</p>
                     
                     <span class="mobile-tag">Регионы</span>
                 </div>
-            </div>
+            </div>                
+                    <span class="mobile-tag">FAQ</span>
+                </div>
+
         </div>
 
     <!-- Модальное окно -->
@@ -2456,8 +2556,8 @@
                 <span class="modal-price-label">Стоимость</span>
                 <span class="modal-price-value" id="modalPrice">Бесплатно</span>
             </div>
-            <a href="https://t.me/BYIvanko" class="modal-btn modal-btn-primary" id="modalBtn" rel="noopener noreferrer">✈️ Написать в Telegram</a>
-            <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=modal" class="modal-btn" id="modalMax" style="margin-top:10px; background: rgba(155, 89, 182, 0.12); border-color: rgba(155, 89, 182, 0.35); color: rgba(200, 160, 255, 0.95);" target="_blank" onclick="trackContact('max')" rel="noopener noreferrer">💬 Написать в MAX</a>
+            <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=modal" class="modal-btn modal-btn-primary" id="modalBtn" target="_blank" onclick="trackContact('max')" rel="noopener noreferrer">💬 Написать в MAX</a>
+            <a href="https://t.me/BYIvanko" class="modal-btn modal-btn-telegram" id="modalTelegram" style="margin-top:10px;" target="_blank" onclick="trackContact('telegram')" rel="noopener noreferrer">✈️ Написать в Telegram</a>
             <div style="margin-top:10px; text-align:center;">
                 <a href="tel:+79774232473" style="color:#8b6914; font-size:0.82em; text-decoration:none; font-weight:600;" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
             </div>
@@ -2472,6 +2572,7 @@
                 <span class="panel-section-icon">👨‍⚖️</span>
                 <div class="panel-section-title-wrap">
                     <h2 class="panel-section-title">Серко Иван Иванович</h2>
+                    <h1 style="font-size:0.95em;font-weight:600;color:rgba(255,215,100,0.95);margin-top:4px;text-shadow:0 2px 8px rgba(0,0,0,0.6);font-family:'Playfair Display',Georgia,serif;letter-spacing:1px;line-height:1.3;">Юрист по алиментам и разводам онлайн</h1>
                     <span class="panel-section-subtitle">Юрист онлайн · Москва и вся Россия</span>
                 </div>
                 <span class="panel-section-chevron">▼</span>
@@ -2567,16 +2668,49 @@
 
         <div class="panel-divider"></div>
 
-        <!-- БЛОК 4: FAQ Алименты -->
-        <div class="panel-section faq-link-section" style="margin-bottom:4px;">
-            <a href="faq.html" class="panel-btn" style="text-decoration:none; display:flex; align-items:center; gap:12px; justify-content:flex-start; padding:14px 18px;">
-                <span style="font-size:1.4em;">❓</span>
-                <div style="text-align:left;">
-                    <div style="font-size:1.05em; font-weight:600; color:rgba(255, 240, 220, 0.95); letter-spacing:0.5px;">Частые вопросы</div>
-                    <div style="font-size:0.72em; color:rgba(220, 195, 170, 0.65); margin-top:2px;">15 ответов юриста: алименты, развод, имущество</div>
+        <!-- БЛОК 4: FAQ — быстрые ответы (SEO) -->
+        <div class="panel-section faq-section" data-expandable>
+            <div class="panel-section-header">
+                <span class="panel-section-icon">❓</span>
+                <div class="panel-section-title-wrap">
+                    <span class="panel-section-title">Быстрые ответы</span>
+                    <span class="panel-section-subtitle">7 вопросов — ответы за 30 сек</span>
                 </div>
-                <span style="margin-left:auto; font-size:0.75em; color:rgba(255, 215, 100, 0.6);">→</span>
-            </a>
+                <span class="panel-section-chevron">▼</span>
+            </div>
+            <div class="panel-section-body">
+                <div class="faq-item">
+                    <div class="faq-question">Сколько стоит консультация юриста по алиментам?</div>
+                    <div class="faq-answer">Первичная консультация — 2 000 ₽. На ней я оцениваю документы, объясняю перспективы и предлагаю план действий. Бесплатная оценка дела — 5–10 минут в чате. <a href="faq.html#alimony" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Как взыскать алименты, если отец не работает?</div>
+                    <div class="faq-answer">Алименты назначаются в твёрдой сумме — прожиточный минимум на ребёнка в вашем регионе (ст. 83 СК РФ). Помогу подготовить иск и работать с приставами. <a href="faq.html#alimony" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли развестись онлайн без присутствия в суде?</div>
+                    <div class="faq-answer">Без детей — через ЗАГС онлайн на Госуслугах. С детьми — через суд, но можно участвовать удалённо или доверить мне представление по доверенности. <a href="faq.html#divorce" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Как делится ипотечная квартира при разводе?</div>
+                    <div class="faq-answer">Делится поровну (ст. 34 СК РФ). Варианты: продажа и погашение кредита, выкуп доли с рефинансированием, или мировое соглашение. Помогу защитить ваши интересы. <a href="faq.html#property" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Что делать, если бывший не платит алименты?</div>
+                    <div class="faq-answer">Обратитесь к приставам с заявлением. Также можно взыскать пени — 0,1% от долга за каждый день просрочки (ст. 115 СК РФ). Подготовлю документы и проконтролирую исполнение. <a href="faq.html#alimony" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Сколько времени занимает развод через суд?</div>
+                    <div class="faq-answer">Без споров — 2–4 месяца. С имуществом или детьми — 6–12 месяцев. Срок зависит от загруженности суда и готовности к компромиссам. <a href="faq.html#divorce" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Нужен ли брачный договор, если нет детей?</div>
+                    <div class="faq-answer">Да — он защищает имущество, бизнес и инвестиции, нажитые до брака. Стоимость составления от 4 000 ₽. <a href="faq.html#property" target="_blank" style="color:rgba(100,200,255,0.9);text-decoration:none;">→ Подробнее</a></div>
+                </div>
+                <div style="text-align:center;padding:12px 0 4px 0;">
+                    <a href="faq.html" target="_blank" style="color:rgba(255,215,100,0.9);font-size:0.85em;text-decoration:none;font-weight:600;">📖 Открыть полный FAQ — 40+ ответов, калькулятор, регионы</a>
+                </div>
+            </div>
         </div>
 
         <!-- БЛОК 5: Документы и статус -->
@@ -2625,6 +2759,8 @@
             <span><a href="consent.html">Согласие на обработку данных</a></span>
             <span class="panel-footer-sep">·</span>
             <span><a href="offer.html">Договор оферты</a></span>
+            <span class="panel-footer-sep">·</span>
+            <span><a href="about.html">О юристе</a></span>
             <span class="panel-footer-sep">·</span>
             <span>© 2026 Серко Иван Иванович</span>
         </div>
@@ -3060,49 +3196,49 @@ function trackContact(type) {
                 urgency: '⏰ Чем раньше обратитесь — тем больше шансов. Судебные сроки не ждут!',
                 features: ['Бесплатная оценка за 5–10 минут', 'Анализ документов и перспектив', 'Чёткий план действий', 'Оценка стоимости и сроков', 'Переход к консультации или документам'],
                 price: 'Бесплатно',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=ocenka',
-                trackType: 'telegram_cta',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=ocenka',
+                trackType: 'max_cta',
             },
             {
                 icon: '👨‍👩‍👧', title: 'Алименты', tag: 'Семейное право',
                 desc: 'Профессиональная помощь по взысканию алиментов на детей и супругов. Работаю с задолженностями, изменением размера, индексацией. Сопровождаю на всех этапах — от консультации до приставов.',
                 urgency: '⏰ Срок обжалования судебного приказа — 10 дней! Не упустите.',
                 features: ['Расчёт размера алиментов (25/33/50%)', 'Взыскание задолженности + пени', 'Изменение размера алиментов', 'Индексация и неустойка', 'Работа с ФССП и приставами'],
-                price: 'Стоимость после консультации',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty',
-                trackType: 'telegram_alimony',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty',
+                trackType: 'max_alimony',
             },
             {
                 icon: '💔', title: 'Развод', tag: 'Семейное право',
                 desc: 'Расторжение брака через ЗАГС или суд. Подготовка всех документов удалённо. Сопровождение на каждом этапе. Развод с детьми, с имуществом, по согласию или в спорном порядке.',
                 urgency: '⚠️ При наличии несовершеннолетних детей — только через суд. Не тяните!',
                 features: ['Развод через ЗАГС (без детей)', 'Развод через суд (с детьми)', 'Подготовка искового заявления', 'Что нужно отправить ответчику', 'Представление интересов в суде'],
-                price: 'Стоимость после консультации',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=razvod',
-                trackType: 'telegram_divorce',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=razvod',
+                trackType: 'max_divorce',
             },
             {
                 icon: '🏠', title: 'Раздел имущества', tag: 'Семейное право',
                 desc: 'Справедливый раздел квартир, машин, вкладов, кредитов и бизнеса при разводе. Как делится автокредит? Что делать с ипотекой? Как выделить личное имущество? Защиту ваших интересов гарантирую.',
                 urgency: '⏰ Срок исковой давности — 3 года. Не ждите, пока документы потеряются.',
                 features: ['Оценка совместного имущества', 'Выделение личного имущества', 'Раздел квартир, машин, вкладов', 'Распределение кредитов и ипотеки', 'Мировое соглашение или суд'],
-                price: 'Стоимость после консультации',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=imushchestvo',
-                trackType: 'telegram_property',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=imushchestvo',
+                trackType: 'max_property',
             },
             {
                 icon: '⚖️', title: 'Семейные споры', tag: 'Суд',
                 desc: 'Сложные семейные дела: определение места жительства детей, порядок общения, лишение и восстановление родительских прав, усыновление. Подготовка документов, стратегия, представление в суде.',
                 urgency: '⚠️ Судебные сроки не ждут. Пропуск — проигрыш. Не откладывайте!',
                 features: ['Определение места жительства детей', 'Порядок общения с ребёнком', 'Лишение / восстановление родительских прав', 'Усыновление', 'Подготовка к суду: документы и стратегия'],
-                price: 'Стоимость после консультации',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=semya',
-                trackType: 'telegram_court',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=semya',
+                trackType: 'max_court',
             },
             {
                 icon: '📋', title: 'Документы и договоры', tag: 'Документ',
@@ -3110,39 +3246,39 @@ function trackContact(type) {
                 urgency: '✅ Защитить имущество можно в любой момент — до брака или во время.',
                 features: ['Брачный договор (от 4 000 ₽)', 'Исковые заявления и жалобы', 'Проверка документов перед подачей', 'Составление договоров', 'Нотариальное удостоверение'],
                 price: 'От 3 000 ₽',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=dokumenty',
-                trackType: 'telegram_docs',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=dokumenty',
+                trackType: 'max_docs',
             },
             {
                 icon: '💼', title: 'Трудовые и потребительские споры', tag: 'Гражданское право',
                 desc: 'Не заплатили зарплату? Незаконно уволили? Купили бракованный товар? Вернём деньги + компенсацию. Работаю по всей России. Реальные кейсы: 175 000 ₽ зарплаты, 225 000 ₽ за товар.',
                 urgency: '⏰ Сроки подачи исков ограничены. Не дайте работодателю или продавцу уйти от ответственности.',
                 features: ['Возврат зарплаты и компенсация', 'Незаконное увольнение', 'Возврат бракованного товара + штраф', 'Защита прав потребителей', 'Работаю онлайн по всей России'],
-                price: 'Стоимость после консультации',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=trud',
-                trackType: 'telegram_labor',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=trud',
+                trackType: 'max_labor',
             },
             {
                 icon: '📍', title: 'Ваш город', tag: 'Регионы',
                 desc: 'Работаю онлайн по всей России. Москва, Московская область, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург и другие города. Удалённо — без доплат за регион.',
                 urgency: '',
                 features: ['Онлайн-консультации по всей России', 'Электронное правосудие', 'Электронная подпись', 'Нотариусы онлайн через Госуслуги', 'Выезд при острой необходимости'],
-                price: 'Стоимость после консультации',
+                price: 'Консультация 2 000 ₽',
                 btn: '💬 Написать из региона',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=region',
-                trackType: 'telegram_region',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=region',
+                trackType: 'max_region',
             },
             {
                 icon: '🗺️', title: 'Работаю по всей России', tag: 'География',
                 desc: 'Онлайн-консультации и сопровождение дел по всей территории Российской Федерации. Москва, Московская область, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург и другие города.',
                 urgency: '',
                 features: ['Москва и Московская область', 'Нижний Новгород', 'Пермь', 'Казань', 'Самара', 'Волгоград', 'Краснодар', 'Ростов-на-Дону', 'Екатеринбург', 'Другие города РФ'],
-                price: 'Без доплат за регион',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=map',
-                trackType: 'telegram_map',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=map',
+                trackType: 'max_map',
                 mode: 'map'
             },
             {
@@ -3150,10 +3286,10 @@ function trackContact(type) {
                 desc: 'Вся работа оформляется официально по договору оказания юридических услуг. Прозрачные условия, фиксированная стоимость, без скрытых платежей. Оплата по СБП, банковской картой или переводом.',
                 urgency: '',
                 features: ['Договор оказания юридических услуг', 'Фиксированная стоимость', 'Оплата по СБП / карте / переводом', 'Чек от самозанятого (НПД)', 'Возможность рассрочки'],
-                price: 'По договорённости',
-                btn: '✈️ Написать в Telegram',
-                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=contract',
-                trackType: 'telegram_contract',
+                price: 'Консультация 2 000 ₽',
+                btn: '💬 Написать в MAX',
+                btnLink: 'https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=contract',
+                trackType: 'max_contract',
                 mode: 'contract'
             }
         ];
@@ -3263,7 +3399,9 @@ function trackContact(type) {
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
+                if (card.tagName === 'A' || card.closest('a')) return;
                 const index = parseInt(card.dataset.modal);
+                if (isNaN(index)) return;
                 openModal(index);
             });
             // Keyboard accessibility for carousel cards
@@ -3277,8 +3415,10 @@ function trackContact(type) {
         });
 
         document.querySelectorAll('.mobile-card').forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+                if (card.tagName === 'A' || card.closest('a')) return;
                 const index = parseInt(card.dataset.modal);
+                if (isNaN(index)) return;
                 openModal(index);
             });
         });
