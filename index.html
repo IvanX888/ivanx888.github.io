@@ -161,7 +161,6 @@
 
             /* ═══ ЕДИНЫЙ СТИЛЬ GLASSMORPHISM ДЛЯ ВСЕХ БЛОКОВ ═══ */
 
-            .mobile-card,
             .panel-header,
             .panel-section,
             .panel-info-block,
@@ -184,9 +183,17 @@
                 box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
                 transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
             }
+            .mobile-card {
+                background: transparent !important;
+                border: 1px solid rgba(255, 255, 255, 0.22) !important;
+                border-radius: 24px !important;
+                position: relative !important;
+                overflow: hidden !important;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+                transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            }
 
             /* Золотой градиентный ободок */
-            .mobile-card::before,
             .panel-header::before,
             .panel-section::before,
             .panel-info-block::before,
@@ -213,7 +220,6 @@
                 opacity: 0.6;
             }
 
-            .mobile-card > *,
             .panel-header > *,
             .panel-section > *,
             .panel-info-block > *,
@@ -230,7 +236,6 @@
                 z-index: 2;
             }
 
-            .mobile-card:hover,
             .panel-header:hover,
             .panel-section:hover,
             .panel-info-block:hover,
@@ -243,6 +248,11 @@
             .contacts-body .panel-btn:hover,
             .doc-check .panel-btn:hover,
             .faq-link-section .panel-btn:hover {
+                border-color: rgba(255, 215, 100, 0.4) !important;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,100,0.1) !important;
+                transform: translateY(-2px) !important;
+            }
+            .mobile-card:hover {
                 border-color: rgba(255, 215, 100, 0.4) !important;
                 box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,100,0.1) !important;
                 transform: translateY(-2px) !important;
@@ -835,11 +845,11 @@
             position: absolute; 
             width: 220px; 
             padding: 16px 18px 36px 18px; 
-            background: rgba(255, 255, 255, 0.04); 
+            background: rgba(40, 28, 16, 0.45); 
             backdrop-filter: blur(12px) saturate(1.2); 
             -webkit-backdrop-filter: blur(12px) saturate(1.2); 
-            border: 1px solid rgba(255, 255, 255, 0.15); 
-            border-radius: 18px; 
+            border: 1px solid rgba(255, 255, 255, 0.22); 
+            border-radius: 24px; 
             pointer-events: auto; 
             transform-style: preserve-3d; 
             transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
@@ -865,17 +875,18 @@
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 18px;
+            border-radius: 24px;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, transparent 30%, transparent 70%, rgba(255,215,100,0.2) 100%);
+            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, rgba(255,215,100,0.05) 30%, transparent 50%, rgba(255,215,100,0.05) 70%, rgba(255,215,100,0.3) 100%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
+            z-index: 0;
             opacity: 0.6;
         }
         .float-card:hover { 
-            background: rgba(255, 255, 255, 0.10); 
+            background: rgba(40, 28, 16, 0.55); 
             border-color: rgba(255, 215, 100, 0.8); 
             box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,100,0.2); 
             z-index: 200; 
@@ -1304,10 +1315,27 @@
             backdrop-filter: blur(12px); 
             -webkit-backdrop-filter: blur(12px); 
             border: 1px solid rgba(200, 160, 100, 0.25); 
-            border-radius: 20px; 
+            border-radius: 24px; 
             width: 100%; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); 
+            position: relative;
+            overflow: hidden;
         }
+        .panel-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, rgba(255,215,100,0.05) 30%, transparent 50%, rgba(255,215,100,0.05) 70%, rgba(255,215,100,0.3) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .panel-header > * { position: relative; z-index: 2; }
         .panel-header h2 { 
             font-size: 1.4em; 
             font-weight: 300; 
@@ -1361,7 +1389,24 @@
             transform-style: preserve-3d; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
             text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+            position: relative;
+            overflow: hidden;
         }
+        .panel-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, rgba(255,215,100,0.05) 30%, transparent 50%, rgba(255,215,100,0.05) 70%, rgba(255,215,100,0.3) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .panel-btn > * { position: relative; z-index: 2; }
         .panel-btn:hover { 
             background: rgba(100, 70, 45, 0.4); 
             border-color: rgba(220, 180, 110, 0.45); 
@@ -1406,11 +1451,28 @@
             backdrop-filter: blur(8px); 
             -webkit-backdrop-filter: blur(8px); 
             border: 1px solid rgba(200, 160, 100, 0.18); 
-            border-radius: 16px; 
+            border-radius: 24px; 
             text-align: center; 
             transition: all 0.3s ease; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            position: relative;
+            overflow: hidden;
         }
+        .panel-info-block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, rgba(255,215,100,0.05) 30%, transparent 50%, rgba(255,215,100,0.05) 70%, rgba(255,215,100,0.3) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .panel-info-block > * { position: relative; z-index: 2; }
         .panel-btn.telegram { 
             background: rgba(0, 136, 204, 0.12); 
             border-color: rgba(0, 136, 204, 0.3); 
@@ -1543,14 +1605,30 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(200, 160, 100, 0.18);
-            border-radius: 18px;
+            border-radius: 24px;
             overflow: hidden;
             transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-bottom: 4px;
             flex-shrink: 0;
+            position: relative;
         }
+        .panel-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, rgba(255,215,100,0.05) 30%, transparent 50%, rgba(255,215,100,0.05) 70%, rgba(255,215,100,0.3) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .panel-section > * { position: relative; z-index: 2; }
         .panel-section:hover {
             background: rgba(100, 70, 45, 0.35);
             border-color: rgba(220, 180, 110, 0.35);
@@ -2201,7 +2279,7 @@
             50% { transform: scale(1.4); opacity: 0.7; }
         }
 </style>
-<base target="_blank">
+
 <base target="_blank">
 </head>
 <body>
