@@ -77,10 +77,13 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/106860023" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-        <link rel="preconnect" href="https://mc.yandex.ru">
+    <link rel="preconnect" href="https://mc.yandex.ru">
     <link rel="preconnect" href="https://t.me">
     <link rel="dns-prefetch" href="https://max.ru">
+    <base target="_blank">
+
 <style>
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #fff; background: #0d0d0d; }
         h1, h2, h3, .panel-section-title, .modal-card h3, .float-card h4 { font-family: 'Playfair Display', 'Georgia', serif; }
@@ -92,8 +95,692 @@
         .panel-btn, .modal-btn { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; letter-spacing: 0.5px; }
         body { display: flex; overflow: hidden; }
 @media (max-width: 768px) {
-    body { overflow-x: hidden; overflow-y: auto; }
-}
+            html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+            body { display: block; height: auto; }
+
+            /* Фото — фиксированный фон */
+            .photo-area {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                height: 100svh !important;
+                z-index: 0 !important;
+                overflow: hidden !important;
+                background: #1a120b !important;
+            }
+            .photo-area img {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                height: 100svh !important;
+                object-fit: cover !important;
+                object-position: center 42% !important;
+                z-index: 0 !important;
+                display: block !important;
+            }
+            .photo-area::after {
+                content: '' !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                height: 100svh !important;
+                background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%) !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+            }
+
+            .floating-blocks { display: none !important; }
+            .carousel-controls { display: none !important; }
+
+            /* ═══ ЕДИНЫЙ СТИЛЬ GLASSMORPHISM ДЛЯ ВСЕХ БЛОКОВ ═══ */
+
+            .mobile-card,
+            .panel-header,
+            .panel-section,
+            .panel-info-block,
+            .case-card,
+            .doc-row,
+            .faq-section,
+            .faq-link-section,
+            .gov-links-toggle,
+            .consent-checkbox-block,
+            .contacts-body .panel-btn,
+            .doc-check .panel-btn,
+            .faq-link-section .panel-btn {
+                background: transparent !important;
+                backdrop-filter: blur(12px) saturate(1.2) !important;
+                -webkit-backdrop-filter: blur(12px) saturate(1.2) !important;
+                border: 1px solid rgba(255, 255, 255, 0.22) !important;
+                border-radius: 24px !important;
+                position: relative !important;
+                overflow: hidden !important;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+                transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            }
+
+            /* Золотой градиентный ободок */
+            .mobile-card::before,
+            .panel-header::before,
+            .panel-section::before,
+            .panel-info-block::before,
+            .case-card::before,
+            .doc-row::before,
+            .faq-section::before,
+            .faq-link-section::before,
+            .gov-links-toggle::before,
+            .consent-checkbox-block::before,
+            .contacts-body .panel-btn::before,
+            .doc-check .panel-btn::before,
+            .faq-link-section .panel-btn::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 24px;
+                padding: 1px;
+                background: linear-gradient(135deg, rgba(255,215,100,0.3) 0%, rgba(255,215,100,0.05) 30%, transparent 50%, rgba(255,215,100,0.05) 70%, rgba(255,215,100,0.3) 100%);
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                pointer-events: none;
+                z-index: 0;
+                opacity: 0.6;
+            }
+
+            .mobile-card > *,
+            .panel-header > *,
+            .panel-section > *,
+            .panel-info-block > *,
+            .case-card > *,
+            .doc-row > *,
+            .faq-section > *,
+            .faq-link-section > *,
+            .gov-links-toggle > *,
+            .consent-checkbox-block > *,
+            .contacts-body .panel-btn > *,
+            .doc-check .panel-btn > *,
+            .faq-link-section .panel-btn > * {
+                position: relative;
+                z-index: 2;
+            }
+
+            .mobile-card:hover,
+            .panel-header:hover,
+            .panel-section:hover,
+            .panel-info-block:hover,
+            .case-card:hover,
+            .doc-row:hover,
+            .faq-section:hover,
+            .faq-link-section:hover,
+            .gov-links-toggle:hover,
+            .consent-checkbox-block:hover,
+            .contacts-body .panel-btn:hover,
+            .doc-check .panel-btn:hover,
+            .faq-link-section .panel-btn:hover {
+                border-color: rgba(255, 215, 100, 0.4) !important;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,100,0.1) !important;
+                transform: translateY(-2px) !important;
+            }
+
+            .case-card,
+            .doc-row,
+            .gov-links-toggle,
+            .consent-checkbox-block {
+                border-radius: 18px !important;
+            }
+            .case-card::before,
+            .doc-row::before,
+            .gov-links-toggle::before,
+            .consent-checkbox-block::before {
+                border-radius: 18px !important;
+            }
+
+            .contacts-body .panel-btn,
+            .doc-check .panel-btn,
+            .faq-link-section .panel-btn {
+                border-radius: 16px !important;
+                margin-top: 6px;
+                text-align: center;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .contacts-body .panel-btn::before,
+            .doc-check .panel-btn::before,
+            .faq-link-section .panel-btn::before {
+                border-radius: 16px !important;
+            }
+
+            .panel-section::after,
+            .panel-header::after,
+            .panel-info-block::after,
+            .case-card::after,
+            .panel::after {
+                display: none !important;
+            }
+
+            /* Мобильные карточки услуг */
+            .mobile-cards {
+                display: block !important;
+                width: 100%;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 16px;
+                position: relative;
+                z-index: 2;
+                margin-top: calc(100vh - 140px);
+                margin-top: calc(100dvh - 140px);
+                margin-top: calc(100svh - 140px);
+            }
+            .mobile-cards-scroll {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 0 0 20px 0;
+                overflow: visible;
+                max-height: none;
+                scroll-snap-type: none;
+            }
+            .mobile-card {
+                flex-shrink: 0;
+                width: 100%;
+                padding: 18px 18px 32px 18px;
+                cursor: pointer;
+            }
+            .mobile-card:active { transform: scale(0.98) !important; }
+            .mobile-cards::after { display: none !important; }
+            .mobile-card h4 {
+                font-size: 0.95em;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.95);
+                margin-bottom: 8px;
+                text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
+            }
+            .mobile-card p {
+                font-size: 0.78em;
+                color: rgba(255, 255, 255, 0.85);
+                line-height: 1.5;
+                margin-bottom: 10px;
+                text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.7);
+            }
+            .mobile-price {
+                font-size: 0.88em;
+                font-weight: 600;
+                color: rgba(255, 215, 100, 0.95);
+                margin-bottom: 8px;
+                text-shadow: 0 0 20px rgba(255, 215, 100, 0.6), 0 2px 6px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
+            }
+            .mobile-tag {
+                display: inline-block;
+                font-size: 0.65em;
+                color: rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 3px 10px;
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+                text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            }
+            .mobile-tag.urgent {
+                color: rgba(255, 160, 160, 0.95);
+                border-color: rgba(255, 120, 120, 0.4);
+                background: rgba(255,80,80,0.1);
+            }
+            .mobile-tag.cta-tag {
+                background: rgba(255, 215, 100, 0.15);
+                border-color: rgba(255, 215, 100, 0.4);
+                color: rgba(255, 215, 100, 0.95);
+            }
+
+            /* Панель */
+            .panel { 
+                width: 100% !important; 
+                min-width: auto !important; 
+                height: auto !important; 
+                min-height: auto !important; 
+                border-left: none !important; 
+                border-top: none !important; 
+                padding: 20px 16px 90px 16px !important; 
+                gap: 12px; 
+                background: transparent !important;
+                position: relative;
+                z-index: 2;
+            }
+
+            .panel-header { 
+                width: 100%;
+                padding: 24px 20px !important;
+                text-align: center;
+            }
+            .panel-header h2 { 
+                font-size: 1.3em; 
+                font-weight: 300; 
+                letter-spacing: 4px; 
+                color: rgba(255,240,220,0.95); 
+                margin-bottom: 8px; 
+                text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
+            }
+            .panel-header p { 
+                font-size: 0.82em; 
+                color: rgba(220, 195, 170, 0.85); 
+                line-height: 1.6; 
+                text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.6);
+            }
+
+            .panel-divider { 
+                width: 40%; 
+                height: 1px; 
+                background: linear-gradient(90deg, transparent, rgba(200, 160, 100, 0.3), transparent); 
+                margin: 4px 0; 
+                flex-shrink: 0;
+            }
+
+            .panel-section {
+                width: 100%;
+                margin-bottom: 4px;
+                cursor: pointer;
+            }
+            .panel-section-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 14px 18px;
+                position: relative;
+                user-select: none;
+            }
+            .panel-section-icon {
+                font-size: 1.4em;
+                flex-shrink: 0;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            }
+            .panel-section-title-wrap {
+                flex: 1;
+                min-width: 0;
+            }
+            .panel-section-title {
+                font-size: 1.05em;
+                font-weight: 600;
+                color: rgba(255, 240, 220, 0.95);
+                letter-spacing: 0.5px;
+                text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.6);
+                line-height: 1.3;
+            }
+            .panel-section-subtitle {
+                font-size: 0.72em;
+                color: rgba(220, 195, 170, 0.75);
+                display: block;
+                margin-top: 2px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+            }
+            .panel-section-chevron {
+                font-size: 0.75em;
+                color: rgba(255, 215, 100, 0.6);
+                transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+                flex-shrink: 0;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            }
+            .panel-section.expanded .panel-section-chevron {
+                transform: rotate(180deg);
+            }
+            .panel-section-body {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.35s ease;
+                padding: 0 18px;
+            }
+            .panel-section.expanded .panel-section-body {
+                max-height: 800px;
+                padding: 4px 18px 16px 18px;
+            }
+
+            .about-short {
+                font-size: 0.78em;
+                color: rgba(255, 215, 100, 0.85);
+                margin-bottom: 10px;
+                font-weight: 500;
+                text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.6);
+                line-height: 1.4;
+            }
+            .about-details p {
+                font-size: 0.8em;
+                color: rgba(220, 195, 170, 0.85);
+                line-height: 1.6;
+                margin-bottom: 12px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+            }
+            .about-badges {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .about-badge {
+                font-size: 0.72em;
+                color: rgba(255, 240, 220, 0.85);
+                background: rgba(255, 215, 100, 0.08);
+                border: 1px solid rgba(255, 215, 100, 0.2);
+                padding: 4px 10px;
+                border-radius: 10px;
+                display: inline-block;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+
+            .contacts-body {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .contacts-body .panel-btn {
+                padding: 14px 16px;
+                font-size: 0.88em;
+            }
+            .contacts-body .contact-note {
+                font-size: 0.75em;
+                color: rgba(220,195,170,0.7);
+                text-align: center;
+                padding: 6px 0;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+
+            .cases-body {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .case-card {
+                padding: 14px 16px;
+            }
+            .case-card::before {
+                background: linear-gradient(180deg, rgba(255,215,100,0.5), rgba(255,215,100,0.1)) !important;
+                border-radius: 18px 0 0 18px !important;
+                width: 3px;
+                left: 0;
+                right: auto;
+                opacity: 0.8;
+            }
+            .case-sum {
+                font-size: 1.15em;
+                font-weight: 700;
+                color: rgba(255, 215, 100, 0.95);
+                text-shadow: 0 0 12px rgba(255, 215, 100, 0.4), 0 2px 6px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
+                margin-bottom: 4px;
+            }
+            .case-theme {
+                font-size: 0.82em;
+                font-weight: 600;
+                color: rgba(255, 240, 220, 0.9);
+                margin-bottom: 3px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+            }
+            .case-client {
+                font-size: 0.75em;
+                color: rgba(220, 195, 170, 0.7);
+                margin-bottom: 8px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+            .case-desc {
+                font-size: 0.76em;
+                color: rgba(220, 195, 170, 0.8);
+                line-height: 1.5;
+                padding-left: 8px;
+                border-left: 1px solid rgba(255, 215, 100, 0.2);
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+
+            .docs-body {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .doc-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+            }
+            .doc-label {
+                font-size: 0.78em;
+                color: rgba(220, 195, 170, 0.7);
+                flex-shrink: 0;
+                min-width: 50px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+            .doc-value {
+                font-size: 0.85em;
+                font-weight: 600;
+                color: rgba(255, 240, 220, 0.95);
+                font-family: 'Courier New', monospace;
+                letter-spacing: 0.5px;
+                flex: 1;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+            }
+            .doc-copy {
+                background: rgba(255, 215, 100, 0.1);
+                border: 1px solid rgba(255, 215, 100, 0.2);
+                border-radius: 8px;
+                padding: 6px 10px;
+                font-size: 0.85em;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                color: rgba(255, 215, 100, 0.8);
+                position: relative;
+                z-index: 2;
+            }
+            .doc-copy:hover {
+                background: rgba(255, 215, 100, 0.25);
+                border-color: rgba(255, 215, 100, 0.4);
+                transform: scale(1.1);
+            }
+            .doc-copy.copied {
+                background: rgba(37, 211, 102, 0.2);
+                border-color: rgba(37, 211, 102, 0.4);
+            }
+            .doc-check p {
+                font-size: 0.78em;
+                color: rgba(220, 195, 170, 0.8);
+                line-height: 1.5;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+            .doc-hint {
+                font-size: 0.72em !important;
+                color: rgba(220, 195, 170, 0.6) !important;
+                margin-top: 8px;
+                padding: 8px 10px;
+                background: rgba(0,0,0,0.15);
+                border-radius: 8px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            }
+
+            .faq-section {
+                width: 100%;
+                margin-bottom: 4px;
+                cursor: pointer;
+            }
+            .faq-section-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 14px 18px;
+                position: relative;
+                user-select: none;
+            }
+            .faq-section-icon {
+                font-size: 1.4em;
+                flex-shrink: 0;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            }
+            .faq-section-title-wrap {
+                flex: 1;
+                min-width: 0;
+            }
+            .faq-section-title {
+                font-size: 1.05em;
+                font-weight: 600;
+                color: rgba(255, 240, 220, 0.95);
+                letter-spacing: 0.5px;
+                text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.6);
+                line-height: 1.3;
+            }
+            .faq-section-subtitle {
+                font-size: 0.72em;
+                color: rgba(220, 195, 170, 0.75);
+                display: block;
+                margin-top: 2px;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+            .faq-section-chevron {
+                font-size: 0.75em;
+                color: rgba(255, 215, 100, 0.6);
+                transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+                flex-shrink: 0;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            }
+            .faq-section.expanded .faq-section-chevron {
+                transform: rotate(180deg);
+            }
+            .faq-section-body {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.35s ease;
+                padding: 0 18px;
+            }
+            .faq-section.expanded .faq-section-body {
+                max-height: 1200px;
+                padding: 4px 18px 16px 18px;
+            }
+            .faq-item {
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .faq-item:last-child {
+                border-bottom: none;
+            }
+            .faq-question {
+                font-size: 0.85em;
+                font-weight: 600;
+                color: rgba(255, 215, 100, 0.9);
+                margin-bottom: 6px;
+                line-height: 1.4;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+            }
+            .faq-answer {
+                font-size: 0.78em;
+                color: rgba(220, 195, 170, 0.8);
+                line-height: 1.6;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+
+            .faq-link-section {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+            .faq-link-section .panel-btn {
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                justify-content: flex-start;
+                padding: 14px 18px;
+                width: 100%;
+            }
+
+            .gov-links-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease, padding 0.3s ease;
+                padding: 0 4px;
+            }
+            .gov-links-content.open {
+                max-height: 400px !important;
+                padding: 8px 4px 4px 4px;
+            }
+
+            .consent-checkbox-block {
+                width: 100%;
+                padding: 12px 16px;
+                margin-top: 4px;
+            }
+            .consent-label {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                cursor: pointer;
+                position: relative;
+                z-index: 2;
+            }
+            .consent-checkbox {
+                width: 18px;
+                height: 18px;
+                margin-top: 2px;
+                accent-color: rgba(220, 180, 90, 0.8);
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+            .consent-text {
+                font-size: 0.75em;
+                color: rgba(220, 195, 170, 0.75);
+                line-height: 1.5;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+            .consent-text a {
+                color: rgba(255, 215, 100, 0.85);
+                text-decoration: underline;
+            }
+            .consent-text a:hover {
+                color: rgba(255, 215, 100, 1);
+            }
+
+            .panel-footer-bar {
+                width: 100%;
+                margin-top: auto;
+                padding-top: 14px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 4px 10px;
+                font-size: 0.72em;
+                color: rgba(200, 175, 150, 0.6);
+                text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            }
+            .panel-footer-bar a {
+                color: rgba(200, 175, 150, 0.65);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .panel-footer-bar a:hover {
+                color: rgba(255, 215, 100, 0.9);
+            }
+            .panel-footer-sep {
+                color: rgba(200, 175, 150, 0.3);
+            }
+
+            .modal-card { 
+                width: 92vw; 
+                max-width: 92vw;
+                max-height: 85vh;
+                padding: 20px 18px; 
+            }
+            .modal-card .modal-close {
+                position: fixed;
+                top: calc(50% - 42vh + 10px);
+                right: calc(4vw + 6px);
+                z-index: 1001;
+                background: rgba(40, 28, 16, 0.9);
+                border-color: rgba(255, 100, 100, 0.5);
+            }
+            .modal-card .modal-icon {
+                margin-top: 30px;
+            }
+        }
 
         .photo-area { flex: 1; height: 100vh; position: relative; overflow: hidden; background: #1a120b; }
         .photo-area img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
@@ -788,128 +1475,7 @@
             transform: scale(0.95) translateY(10px);
             pointer-events: none;
         }
-        @media (max-width: 768px) {
-            .mobile-cards {
-                display: block;
-                width: 100%;
-                background: linear-gradient(180deg, #0d0d0d 0%, #1a120b 100%);
-                padding: 16px 0;
-                border-top: 1px solid rgba(200, 160, 100, 0.15);
-                position: relative;
-                z-index: 20;
-            }
-            .mobile-cards-scroll {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                padding: 0 16px;
-                overflow-y: auto;
-                overflow-x: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                max-height: 420px;
-                scroll-snap-type: y mandatory;
-            }
-            .mobile-cards-scroll::-webkit-scrollbar {
-                display: none;
-            }
-            .mobile-card {
-                flex-shrink: 0;
-                width: 100%;
-                padding: 18px 18px 32px 18px;
-                background: rgba(255, 255, 255, 0.04);
-                backdrop-filter: blur(12px) saturate(1.2);
-                -webkit-backdrop-filter: blur(12px) saturate(1.2);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 18px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-                position: relative;
-                overflow: hidden;
-                scroll-snap-align: start;
-            }
-            .mobile-card:active {
-                transform: scale(0.98);
-            }
-            .mobile-cta-card {
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            .mobile-cta-card:hover {
-                background: rgba(155, 89, 182, 0.15) !important;
-                border-color: rgba(155, 89, 182, 0.7) !important;
-                box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 25px rgba(155, 89, 182, 0.15) !important;
-            }
-            .mobile-cta-card:active {
-                transform: scale(0.97);
-            }
-            @media (min-width: 769px) {
-                .mobile-cta-card { display: none !important; }
-                .desktop-only-cta { display: block !important; }
-            }
-            .mobile-cards::after {
-                content: '↑ свайп ↑';
-                position: absolute;
-                bottom: 4px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 0.7em;
-                color: rgba(255, 215, 100, 0.4);
-                letter-spacing: 2px;
-                animation: fadeOutHint 4s ease forwards;
-                animation-delay: 3s;
-                pointer-events: none;
-            }
-            @keyframes fadeOutHint {
-                0% { opacity: 1; }
-                100% { opacity: 0; }
-            }
-            .mobile-card h4 {
-                font-size: 0.95em;
-                font-weight: 600;
-                color: rgba(255, 255, 255, 0.95);
-                margin-bottom: 8px;
-            }
-            .mobile-card p {
-                font-size: 0.78em;
-                color: rgba(255, 255, 255, 0.75);
-                line-height: 1.5;
-                margin-bottom: 10px;
-            }
-            .mobile-price {
-                font-size: 0.88em;
-                font-weight: 600;
-                color: rgba(255, 215, 100, 0.95);
-                margin-bottom: 8px;
-            }
-            .mobile-tag {
-                display: inline-block;
-                font-size: 0.65em;
-                color: rgba(255, 255, 255, 0.55);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                padding: 3px 10px;
-                border-radius: 12px;
-                background: rgba(255,255,255,0.05);
-            }
-            .mobile-tag.urgent {
-                color: rgba(255, 120, 120, 0.95);
-                border-color: rgba(255, 120, 120, 0.35);
-                background: rgba(255,80,80,0.08);
-            }
-            .mobile-tag.cta-tag {
-                background: rgba(255, 215, 100, 0.15);
-                border-color: rgba(255, 215, 100, 0.4);
-                color: rgba(255, 215, 100, 0.95);
-            }
-            .floating-blocks, .carousel-controls {
-                display: none !important;
-            }
-            .panel {
-                position: relative;
-                z-index: 10;
-            }
-        }
+        
 
         .consent-checkbox-block {
             width: 100%;
@@ -1267,47 +1833,7 @@
             .panel-btn { padding: 16px 18px; font-size: 0.9em; }
             .photo-area img { object-position: center 40%; }
         }
-        @media (max-width: 768px) {
-            html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
-            body { flex-direction: column; height: auto; padding-bottom: 90px; }
-            .photo-area { flex: none; height: 55vh; min-height: 280px; }
-            .photo-area img { object-position: center 38%; }
-            .floating-blocks { display: none; }
-            .carousel-controls { display: none; }
-            .panel { 
-                width: 100%; 
-                min-width: auto; 
-                height: auto; 
-                min-height: auto; 
-                border-left: none; 
-                border-top: 1px solid rgba(200, 160, 100, 0.15); 
-                padding: 25px 20px; 
-                gap: 12px; 
-                background: rgba(50, 32, 18, 0.75); 
-            }
-            .panel-header { width: 100%; }
-            .panel-header h2 { font-size: 1.2em; }
-            .panel-divider { width: 40%; }
-            .panel-btn { flex: 1 1 140px; max-width: 200px; padding: 14px 16px; font-size: 0.88em; }
-            .panel-footer-bar { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 15px; padding-top: 15px; padding-bottom: 20px; }
-            .modal-card { 
-                width: 92vw; 
-                max-width: 92vw;
-                max-height: 85vh;
-                padding: 20px 18px; 
-            }
-            .modal-card .modal-close {
-                position: fixed;
-                top: calc(50% - 42vh + 10px);
-                right: calc(4vw + 6px);
-                z-index: 1001;
-                background: rgba(40, 28, 16, 0.9);
-                border-color: rgba(255, 100, 100, 0.5);
-            }
-            .modal-card .modal-icon {
-                margin-top: 30px;
-            }
-        }
+        
         @media (max-width: 500px) {
             .photo-area { height: 50vh; min-height: 240px; }
             .panel-btn { flex: 1 1 100%; max-width: none; }
@@ -1553,8 +2079,110 @@
                 border-radius: 8px;
             }
         }
-    </style>
-    <base target="_blank">
+    
+        /* Russia map modal styles */
+        .russia-map-wrap {
+            width: 100%;
+            padding: 10px 0;
+        }
+        .russia-map {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 16px;
+            display: block;
+        }
+        .russia-map path {
+            fill: rgba(255, 215, 100, 0.08);
+            stroke: rgba(255, 215, 100, 0.4);
+            stroke-width: 1.5;
+        }
+        .city-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .city-tag {
+            font-size: 0.78em;
+            color: rgba(255, 240, 220, 0.9);
+            background: rgba(255, 215, 100, 0.1);
+            border: 1px solid rgba(255, 215, 100, 0.3);
+            padding: 5px 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        /* Contract preview styles */
+        .contract-preview {
+            width: 100%;
+            text-align: left;
+        }
+        .contract-text {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.82em;
+            color: rgba(220, 195, 170, 0.85);
+            line-height: 1.6;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .contract-text p {
+            margin-bottom: 10px;
+        }
+        .contract-text strong {
+            color: rgba(255, 215, 100, 0.9);
+        }
+
+        /* About badge hover */
+        .about-badge:hover {
+            background: rgba(255, 215, 100, 0.2) !important;
+            border-color: rgba(255, 215, 100, 0.5) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Enhanced card borders */
+        .mobile-card, .panel-section, .case-card, .faq-section {
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        .mobile-card:hover, .panel-section:hover, .case-card:hover, .faq-section:hover {
+            border-color: rgba(255, 215, 100, 0.5) !important;
+        }
+        /* Scroll hint animation for mobile cards */
+        .scroll-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.4em;
+            color: rgba(255, 215, 100, 0.7);
+            animation: scrollHintPulse 2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 10;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+        @keyframes scrollHintPulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+        }
+
+        .float-card:focus-visible {
+            outline: 2px solid rgba(255, 215, 100, 0.8);
+            outline-offset: 3px;
+        }
+        .mobile-card:focus-visible {
+            outline: 2px solid rgba(255, 215, 100, 0.8);
+            outline-offset: 2px;
+        }
+
+
+        @keyframes cityPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.7; }
+        }
+</style>
 <base target="_blank">
 </head>
 <body>
@@ -1576,11 +2204,11 @@
 
     <!-- Основная зона -->
     <div class="photo-area" id="photoArea">
-        <img src="my-photo.jpg" width="1200" height="1600" alt="Иван Серко — семейный юрист" loading="lazy" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; object-position:center 42%;" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg, #1f140e 0%, #0a0705 100%)'; this.parentElement.style.backgroundSize='cover'; this.parentElement.style.backgroundPosition='center';">
+        <img src="my-photo.jpg" width="1200" height="1600" alt="Иван Серко — семейный юрист" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center 42%;" id="heroPhoto">
 
         <div class="floating-blocks" id="floatBlocks">
             <div class="float-carousel" id="floatCarousel">
-                <div class="float-card" data-modal="0" style="--tilt:-3deg;" id="cta-card">
+                <div class="float-card" data-modal="0" style="--tilt:-3deg;" id="cta-card" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>🚀 Бесплатная оценка дела</h4>
                     <p>Расскажите ситуацию — я оценю шансы, объясню план действий и скажу, стоит ли идти в суд. Без обязательств.</p>
                     <div class="price">Бесплатно · 5–10 мин</div>
@@ -1588,7 +2216,7 @@
                     <div class="card-arrow">↗ Рассказать ситуацию</div>
                 </div>
 
-                <div class="float-card" data-modal="1" style="--tilt:2deg;" id="alimony">
+                <div class="float-card" data-modal="1" style="--tilt:2deg;" id="alimony" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>👨‍👩‍👧 Алименты</h4>
                     <p>25% на 1 ребёнка, 33% на 2-х, 50% на 3-х. Взыскание задолженности, изменение размера, индексация. Работаю с приставами.</p>
                     <div class="price">Консультация 2 000 ₽</div>
@@ -1596,7 +2224,7 @@
                     <div class="card-arrow">↗ Разберём ваш случай</div>
                 </div>
 
-                <div class="float-card" data-modal="2" style="--tilt:-1deg;" id="divorce">
+                <div class="float-card" data-modal="2" style="--tilt:-1deg;" id="divorce" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>💔 Развод</h4>
                     <p>Без детей — через ЗАГС за 1 месяц. С детьми — только через суд. Пошаговое сопровождение, подготовка документов удалённо.</p>
                     <div class="price">Консультация 2 000 ₽</div>
@@ -1604,7 +2232,7 @@
                     <div class="card-arrow">↗ Подготовим документы</div>
                 </div>
 
-                <div class="float-card" data-modal="3" style="--tilt:3deg;" id="property">
+                <div class="float-card" data-modal="3" style="--tilt:3deg;" id="property" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>🏠 Раздел имущества</h4>
                     <p>Квартира в ипотеке, машина, вклады — всё делится с учётом вклада каждого. Кредиты тоже распределяются. Справедливо и по закону.</p>
                     <div class="price">Консультация 2 000 ₽</div>
@@ -1612,7 +2240,7 @@
                     <div class="card-arrow">↗ Защитим ваши интересы</div>
                 </div>
 
-                <div class="float-card" data-modal="4" style="--tilt:-2deg;" id="family-disputes">
+                <div class="float-card" data-modal="4" style="--tilt:-2deg;" id="family-disputes" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>⚖️ Семейные споры</h4>
                     <p>Место жительства детей, порядок общения, лишение/восстановление родительских прав, усыновление. Документы и стратегия.</p>
                     <div class="price">Консультация 2 000 ₽</div>
@@ -1620,7 +2248,7 @@
                     <div class="card-arrow">↗ Подготовим к суду</div>
                 </div>
 
-                <div class="float-card" data-modal="5" style="--tilt:1deg;" id="documents">
+                <div class="float-card" data-modal="5" style="--tilt:1deg;" id="documents" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>📋 Документы и договоры</h4>
                     <p>Брачный договор, иски, жалобы, заявления. Проверка перед подачей. Одна ошибка = отказ в суде. Грамотно оформлю под вашу ситуацию.</p>
                     <div class="price">От 3 000 ₽</div>
@@ -1628,7 +2256,7 @@
                     <div class="card-arrow">↗ Заказать документ</div>
                 </div>
 
-                <div class="float-card" data-modal="6" style="--tilt:-4deg;" id="labor-consumer">
+                <div class="float-card" data-modal="6" style="--tilt:-4deg;" id="labor-consumer" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>💼 Трудовые и потребительские споры</h4>
                     <p>Не заплатили зарплату? Незаконно уволили? Товар бракованный? Вернём деньги + компенсацию. Работаю по всей России.</p>
                     <div class="price">Консультация 2 000 ₽</div>
@@ -1636,10 +2264,10 @@
                     <div class="card-arrow">↗ Обсудить ситуацию</div>
                 </div>
 
-                <div class="float-card" data-modal="7" style="--tilt:2deg;" id="regions">
+                <div class="float-card" data-modal="7" style="--tilt:2deg;" id="regions" role="button" tabindex="0" aria-label="Открыть подробности">
                     <h4>📍 Ваш город</h4>
                     <p>Москва, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург. Работаю онлайн — без доплат за регион.</p>
-                    <div class="price">Консультация 2 000 ₽</div>
+                    
                     <span class="tag">Регионы</span>
                     <div class="card-arrow">↗ Написать из региона</div>
                 </div>
@@ -1650,6 +2278,7 @@
         <!-- Мобильные карточки услуг -->
         <div class="mobile-cards" id="mobileCards">
             <div class="mobile-cards-scroll" id="mobileCardsScroll">
+                <div class="scroll-hint" id="scrollHint">↓</div>
                 <!-- CTA: прямой переход в MAX на мобильных -->
                 <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=mobile_cta" 
                    class="mobile-card mobile-cta-card" 
@@ -1706,7 +2335,7 @@
                 <div class="mobile-card" data-modal="7">
                     <h4>📍 Ваш город</h4>
                     <p>Москва, НН, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов, Екатеринбург</p>
-                    <div class="mobile-price">Консультация 2 000 ₽</div>
+                    
                     <span class="mobile-tag">Регионы</span>
                 </div>
             </div>
@@ -1755,9 +2384,9 @@
                 <div class="about-details">
                     <p>Работаю удалённо — это экономит ваше время и деньги. Всё официально по договору, безопасно и прозрачно. При острой необходимости выезжаю к клиенту. Консультирую по семейным, гражданским и потребительским вопросам.</p>
                     <div class="about-badges">
-                        <span class="about-badge">🌐 Вся Россия</span>
-                        <span class="about-badge">📝 По договору</span>
-                        <span class="about-badge">🚗 Выезд при нужде</span>
+                        <span class="about-badge" onclick="openModal(8)" style="cursor:pointer; transition:all 0.3s ease;">🌐 Вся Россия</span>
+                        <span class="about-badge" onclick="window.open('offer.html', '_self')" style="cursor:pointer; transition:all 0.3s ease;" role="link" tabindex="0">📝 По договору</span>
+                        <span class="about-badge" onclick="openModal(7)" style="cursor:pointer; transition:all 0.3s ease;">🚗 Выезд при нужде</span>
                     </div>
                 </div>
             </div>
@@ -1906,9 +2535,240 @@
 
     <script>
         // ════════════════════════════════════════════
-        // МЕТРИКА
-        // ════════════════════════════════════════════
-        function trackContact(type) {
+// HELPER FUNCTIONS FOR SPECIAL MODALS
+// ════════════════════════════════════════════
+
+function renderMapFeatures(container) {
+    container.innerHTML = '';
+    const li = document.createElement('li');
+    li.style.padding = '0';
+    li.style.border = 'none';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'russia-map-wrap';
+    wrap.style.width = '100%';
+    wrap.style.padding = '10px 0';
+
+    const title = document.createElement('h4');
+    title.textContent = '🗺️ Регионы работы';
+    title.style.color = 'rgba(255,215,100,0.9)';
+    title.style.marginBottom = '16px';
+    title.style.fontSize = '1em';
+    title.style.textAlign = 'center';
+    wrap.appendChild(title);
+
+    // Stylized map container
+    const mapBox = document.createElement('div');
+    mapBox.style.width = '100%';
+    mapBox.style.maxWidth = '460px';
+    mapBox.style.margin = '0 auto 20px';
+    mapBox.style.position = 'relative';
+    mapBox.style.aspectRatio = '2 / 1';
+    mapBox.style.background = 'linear-gradient(135deg, rgba(255,215,100,0.04) 0%, rgba(255,215,100,0.01) 50%, rgba(255,215,100,0.04) 100%)';
+    mapBox.style.border = '1px solid rgba(255,215,100,0.15)';
+    mapBox.style.borderRadius = '16px';
+    mapBox.style.overflow = 'hidden';
+
+    // Grid lines (longitude/latitude style)
+    for (let i = 1; i < 5; i++) {
+        const hLine = document.createElement('div');
+        hLine.style.position = 'absolute';
+        hLine.style.left = '0';
+        hLine.style.right = '0';
+        hLine.style.top = (i * 20) + '%';
+        hLine.style.height = '1px';
+        hLine.style.background = 'rgba(255,215,100,0.06)';
+        mapBox.appendChild(hLine);
+
+        const vLine = document.createElement('div');
+        vLine.style.position = 'absolute';
+        vLine.style.top = '0';
+        vLine.style.bottom = '0';
+        vLine.style.left = (i * 20) + '%';
+        vLine.style.width = '1px';
+        vLine.style.background = 'rgba(255,215,100,0.06)';
+        mapBox.appendChild(vLine);
+    }
+
+    // City positions (percent-based for responsiveness)
+    const cities = [
+        { name: 'Москва', x: 18, y: 55, label: 'top' },
+        { name: 'Н. Новгород', x: 25, y: 48, label: 'bottom' },
+        { name: 'Самара', x: 28, y: 62, label: 'top' },
+        { name: 'Волгоград', x: 20, y: 72, label: 'bottom' },
+        { name: 'Казань', x: 32, y: 55, label: 'top' },
+        { name: 'Пермь', x: 42, y: 48, label: 'bottom' },
+        { name: 'Екатеринбург', x: 48, y: 52, label: 'top' },
+        { name: 'Ростов', x: 16, y: 80, label: 'top' },
+        { name: 'Краснодар', x: 12, y: 88, label: 'bottom' }
+    ];
+
+    cities.forEach(function(city, idx) {
+        // City dot with glow
+        const dot = document.createElement('div');
+        dot.style.position = 'absolute';
+        dot.style.left = city.x + '%';
+        dot.style.top = city.y + '%';
+        dot.style.width = '10px';
+        dot.style.height = '10px';
+        dot.style.marginLeft = '-5px';
+        dot.style.marginTop = '-5px';
+        dot.style.borderRadius = '50%';
+        dot.style.background = 'rgba(255,215,100,0.9)';
+        dot.style.boxShadow = '0 0 8px rgba(255,215,100,0.6), 0 0 16px rgba(255,215,100,0.3)';
+        dot.style.zIndex = '2';
+        dot.style.animation = 'cityPulse 2s ease-in-out ' + (idx * 0.2) + 's infinite';
+        mapBox.appendChild(dot);
+
+        // City label
+        const label = document.createElement('div');
+        label.textContent = city.name;
+        label.style.position = 'absolute';
+        label.style.left = city.x + '%';
+        label.style.fontSize = '0.68em';
+        label.style.color = 'rgba(255,240,220,0.85)';
+        label.style.whiteSpace = 'nowrap';
+        label.style.textShadow = '0 1px 4px rgba(0,0,0,0.8)';
+        label.style.zIndex = '3';
+        label.style.transform = 'translateX(-50%)';
+        if (city.label === 'top') {
+            label.style.top = (city.y - 10) + '%';
+        } else {
+            label.style.top = (city.y + 6) + '%';
+        }
+        mapBox.appendChild(label);
+    });
+
+    // Connection lines between nearby cities
+    const connections = [
+        [0, 1], [1, 4], [4, 5], [5, 6], [0, 2], [2, 3], [3, 7], [7, 8]
+    ];
+    connections.forEach(function(pair) {
+        const c1 = cities[pair[0]];
+        const c2 = cities[pair[1]];
+        const line = document.createElement('div');
+        const dx = (c2.x - c1.x);
+        const dy = (c2.y - c1.y);
+        const len = Math.sqrt(dx*dx + dy*dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        line.style.position = 'absolute';
+        line.style.left = c1.x + '%';
+        line.style.top = c1.y + '%';
+        line.style.width = len + '%';
+        line.style.height = '1px';
+        line.style.background = 'linear-gradient(90deg, rgba(255,215,100,0.3), rgba(255,215,100,0.05))';
+        line.style.transformOrigin = '0 50%';
+        line.style.transform = 'rotate(' + angle + 'deg)';
+        line.style.zIndex = '1';
+        mapBox.appendChild(line);
+    });
+
+    wrap.appendChild(mapBox);
+
+    // City tags below map
+    const cityList = document.createElement('div');
+    cityList.className = 'city-list';
+    cityList.style.display = 'flex';
+    cityList.style.flexWrap = 'wrap';
+    cityList.style.gap = '8px';
+    cityList.style.justifyContent = 'center';
+    cityList.style.marginTop = '4px';
+
+    const cityNames = ['Москва', 'Нижний Новгород', 'Пермь', 'Казань', 'Самара', 'Волгоград', 'Краснодар', 'Ростов-на-Дону', 'Екатеринбург'];
+    cityNames.forEach(function(name) {
+        const tag = document.createElement('span');
+        tag.className = 'city-tag';
+        tag.textContent = '📍 ' + name;
+        tag.style.fontSize = '0.78em';
+        tag.style.color = 'rgba(255,240,220,0.9)';
+        tag.style.background = 'rgba(255,215,100,0.1)';
+        tag.style.border = '1px solid rgba(255,215,100,0.3)';
+        tag.style.padding = '5px 12px';
+        tag.style.borderRadius = '12px';
+        tag.style.display = 'inline-block';
+        tag.style.transition = 'all 0.3s ease';
+        cityList.appendChild(tag);
+    });
+
+    wrap.appendChild(cityList);
+
+    const note = document.createElement('p');
+    note.textContent = '✅ Работаю онлайн по всей России — без доплат за регион. При острой необходимости выезжаю к клиенту.';
+    note.style.marginTop = '16px';
+    note.style.color = 'rgba(220,195,170,0.8)';
+    note.style.fontSize = '0.82em';
+    note.style.lineHeight = '1.6';
+    note.style.textAlign = 'center';
+    wrap.appendChild(note);
+
+    li.appendChild(wrap);
+    container.appendChild(li);
+}
+
+function renderContractFeatures(container) {
+    container.innerHTML = '';
+    const li = document.createElement('li');
+    li.style.padding = '0';
+    li.style.border = 'none';
+
+    const preview = document.createElement('div');
+    preview.className = 'contract-preview';
+    preview.style.width = '100%';
+    preview.style.textAlign = 'left';
+
+    const title = document.createElement('h4');
+    title.textContent = '📋 Типовой договор оказания юридических услуг';
+    title.style.color = 'rgba(255,215,100,0.9)';
+    title.style.marginBottom = '12px';
+    title.style.fontSize = '1em';
+    preview.appendChild(title);
+
+    const textDiv = document.createElement('div');
+    textDiv.className = 'contract-text';
+    textDiv.style.background = 'rgba(0,0,0,0.2)';
+    textDiv.style.border = '1px solid rgba(255,255,255,0.1)';
+    textDiv.style.borderRadius = '12px';
+    textDiv.style.padding = '16px';
+    textDiv.style.fontSize = '0.82em';
+    textDiv.style.color = 'rgba(220,195,170,0.85)';
+    textDiv.style.lineHeight = '1.6';
+    textDiv.style.maxHeight = '300px';
+    textDiv.style.overflowY = 'auto';
+
+    const contractContent = [
+        {bold: '1. Предмет договора', text: 'Исполнитель обязуется оказать Заказчику юридические услуги по делу: _______________________'},
+        {bold: '2. Стоимость и оплата', text: 'Стоимость услуг составляет _______ рублей. Оплата производится по СБП, банковской картой или переводом.'},
+        {bold: '3. Сроки', text: 'Срок оказания услуг: _______________. При необходимости сроки могут быть продлены по согласованию сторон.'},
+        {bold: '4. Права и обязанности', text: 'Исполнитель обязуется: сохранять конфиденциальность, действовать в интересах Заказчика, своевременно информировать о ходе дела.'},
+        {bold: '5. Ответственность', text: 'Исполнитель несёт ответственность за качество оказанных услуг в соответствии с законодательством РФ.'}
+    ];
+
+    contractContent.forEach(function(item) {
+        const p = document.createElement('p');
+        p.style.marginBottom = '10px';
+        const strong = document.createElement('strong');
+        strong.textContent = item.bold;
+        strong.style.color = 'rgba(255,215,100,0.9)';
+        p.appendChild(strong);
+        const span = document.createElement('span');
+        span.textContent = ' ' + item.text;
+        p.appendChild(span);
+        textDiv.appendChild(p);
+    });
+
+    const note = document.createElement('p');
+    note.textContent = '✅ Договор составляется индивидуально под каждое дело после консультации.';
+    note.style.marginTop = '16px';
+    note.style.color = 'rgba(255,215,100,0.7)';
+    note.style.fontSize = '0.85em';
+    textDiv.appendChild(note);
+
+    preview.appendChild(textDiv);
+    li.appendChild(preview);
+    container.appendChild(li);
+}
+
+function trackContact(type) {
             if (typeof ym !== 'undefined') {
                 ym(106860023, 'reachGoal', 'contact_click', { contact_type: type });
                 if (type === 'phone') ym(106860023, 'reachGoal', 'phone_click');
@@ -2171,11 +3031,33 @@
                 icon: '📍', title: 'Ваш город', tag: 'Регионы',
                 desc: 'Работаю онлайн по всей России. Москва, Московская область, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург и другие города. Удалённо — без доплат за регион.',
                 urgency: '',
-                features: ['Онлайн-консультации по всей России', 'Электронное правосудие', 'Электронная подпись', 'Нотариусы онлайн через Госуслуги', 'Личное присутствие — крайне редко'],
+                features: ['Онлайн-консультации по всей России', 'Электронное правосудие', 'Электронная подпись', 'Нотариусы онлайн через Госуслуги', 'Выезд при острой необходимости'],
                 price: 'Стоимость после консультации',
                 btn: '💬 Написать из региона',
                 btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=region',
                 trackType: 'telegram_region',
+            },
+            {
+                icon: '🗺️', title: 'Работаю по всей России', tag: 'География',
+                desc: 'Онлайн-консультации и сопровождение дел по всей территории Российской Федерации. Москва, Московская область, Нижний Новгород, Пермь, Казань, Самара, Волгоград, Краснодар, Ростов-на-Дону, Екатеринбург и другие города.',
+                urgency: '',
+                features: ['Москва и Московская область', 'Нижний Новгород', 'Пермь', 'Казань', 'Самара', 'Волгоград', 'Краснодар', 'Ростов-на-Дону', 'Екатеринбург', 'Другие города РФ'],
+                price: 'Без доплат за регион',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=map',
+                trackType: 'telegram_map',
+                mode: 'map'
+            },
+            {
+                icon: '📝', title: 'Работа по договору', tag: 'Официально',
+                desc: 'Вся работа оформляется официально по договору оказания юридических услуг. Прозрачные условия, фиксированная стоимость, без скрытых платежей. Оплата по СБП, банковской картой или переводом.',
+                urgency: '',
+                features: ['Договор оказания юридических услуг', 'Фиксированная стоимость', 'Оплата по СБП / карте / переводом', 'Чек от самозанятого (НПД)', 'Возможность рассрочки'],
+                price: 'По договорённости',
+                btn: '✈️ Написать в Telegram',
+                btnLink: 'https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=contract',
+                trackType: 'telegram_contract',
+                mode: 'contract'
             }
         ];
 
@@ -2205,6 +3087,11 @@
                 if (focusable.length) focusable[0].focus();
             }, 100);
 
+            // Save and set body overflow
+            if (!document.body._originalOverflow) {
+                document.body._originalOverflow = document.body.style.overflow || '';
+            }
+
             const floatBlocksEl = document.getElementById('floatBlocks');
             const mobileCardsEl = document.getElementById('mobileCards');
             const panelEl = document.querySelector('.panel');
@@ -2233,21 +3120,34 @@
                 modalUrgency.style.display = 'none';
             }
 
-            modalFeatures.innerHTML = '';
-            data.features.forEach(f => {
-                const li = document.createElement('li');
-                li.textContent = f;
-                modalFeatures.appendChild(li);
-            });
+            // Show price row
+            const priceRow = modalCard.querySelector('.modal-price-row');
+            if (priceRow) {
+                priceRow.style.display = 'flex';
+            }
 
-            modalOverlay.classList.add('active');
+            modalFeatures.innerHTML = '';
+
+            // Handle special modal modes
+            if (data.mode === 'map') {
+                renderMapFeatures(modalFeatures);
+            } else if (data.mode === 'contract') {
+                renderContractFeatures(modalFeatures);
+            } else {
+                data.features.forEach(function(f) {
+                    const li = document.createElement('li');
+                    li.textContent = f;
+                    modalFeatures.appendChild(li);
+                });
+            }modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             modalCard.scrollTop = 0;
         }
 
         function closeModal() {
             modalOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+            // Restore original body overflow
+            document.body.style.overflow = document.body._originalOverflow || '';
             // Restore focus
             if (modalCard._lastFocus) {
                 modalCard._lastFocus.focus();
@@ -2268,6 +3168,14 @@
             card.addEventListener('click', () => {
                 const index = parseInt(card.dataset.modal);
                 openModal(index);
+            });
+            // Keyboard accessibility for carousel cards
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const index = parseInt(card.dataset.modal);
+                    openModal(index);
+                }
             });
         });
 
@@ -2356,71 +3264,58 @@
             resizeTimeout = setTimeout(updateRadius, 150);
         });
 
-        console.log('✅ Карусель: горизонтальное вращение, внизу, не перекрывает лицо.');
+        // Hero photo error handler (moved from inline for CSP compatibility)
+        (function(){
+            const heroPhoto = document.getElementById('heroPhoto');
+            if (heroPhoto) {
+                heroPhoto.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    this.parentElement.style.background = 'linear-gradient(145deg, #1f140e 0%, #0a0705 100%)';
+                    this.parentElement.style.backgroundSize = 'cover';
+                    this.parentElement.style.backgroundPosition = 'center';
+                });
+            }
+        })();
+
+        
+
+        
 
         // ════════════════════════════════════════════
-        // ЧЕКБОКС СОГЛАСИЯ НА КОНТАКТЫ
-        // ════════════════════════════════════════════
-        ;
-
-        console.log('✅ Модалка: стеклянная, воздушная, как карточки.');
-
-        // ════════════════════════════════════════════
-        // МОБИЛЬНЫЕ КАРТОЧКИ: АНИМАЦИЯ ПРОКРУТКИ ПРИ ВХОДЕ
-        // Показываем пользователю, что карточки листаются,
-        // но возвращаем на первую (CTA) карточку
+        // МОБИЛЬНЫЕ КАРТОЧКИ: индикатор прокрутки
+        // Показываем стрелку, скрываем при первом скролле
         // ════════════════════════════════════════════
         (function(){
             const scrollContainer = document.getElementById('mobileCardsScroll');
-            if (!scrollContainer) return;
+            const scrollHint = document.getElementById('scrollHint');
+            if (!scrollContainer || !scrollHint) return;
 
             const isMobile = window.innerWidth <= 768;
-            if (!isMobile) return;
+            if (!isMobile) {
+                scrollHint.style.display = 'none';
+                return;
+            }
 
-            setTimeout(function(){
-                const cardHeight = 180;
-                // Scroll down just 1 card to hint at more content
-                const scrollAmount = cardHeight * 1.2;
-                const startScroll = scrollContainer.scrollTop;
-                const targetScroll = Math.min(scrollAmount, scrollContainer.scrollHeight - scrollContainer.clientHeight);
-                const duration = 1200;
-                const startTime = performance.now();
+            // Hide hint on first user scroll
+            scrollContainer.addEventListener('scroll', function onScroll() {
+                scrollHint.style.opacity = '0';
+                scrollHint.style.transition = 'opacity 0.5s ease';
+                setTimeout(function() {
+                    scrollHint.style.display = 'none';
+                }, 500);
+                scrollContainer.removeEventListener('scroll', onScroll);
+            }, { passive: true });
 
-                function easeOutCubic(t) {
-                    return 1 - Math.pow(1 - t, 3);
+            // Auto-hide after 4 seconds anyway
+            setTimeout(function() {
+                if (scrollHint.style.display !== 'none') {
+                    scrollHint.style.opacity = '0';
+                    scrollHint.style.transition = 'opacity 0.5s ease';
+                    setTimeout(function() {
+                        scrollHint.style.display = 'none';
+                    }, 500);
                 }
-
-                function animateScroll(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = easeOutCubic(progress);
-
-                    scrollContainer.scrollTop = startScroll + (targetScroll - startScroll) * eased;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateScroll);
-                    } else {
-                        // Return to first card (CTA) after short pause
-                        setTimeout(function(){
-                            const backDuration = 1000;
-                            const backStart = scrollContainer.scrollTop;
-                            const backTarget = 0; // Back to top (first card)
-                            const backStartTime = performance.now();
-
-                            function animateBack(currentTime) {
-                                const elapsed = currentTime - backStartTime;
-                                const progress = Math.min(elapsed / backDuration, 1);
-                                const eased = easeOutCubic(progress);
-                                scrollContainer.scrollTop = backStart - (backStart - backTarget) * eased;
-                                if (progress < 1) requestAnimationFrame(animateBack);
-                            }
-                            requestAnimationFrame(animateBack);
-                        }, 600);
-                    }
-                }
-
-                requestAnimationFrame(animateScroll);
-            }, 800);
+            }, 4000);
         })();
 
         // ════════════════════════════════════════════
@@ -2504,11 +3399,20 @@
             }
         }
 
+
+
+    </script>
+
+    <script>
         // ════════════════════════════════════════════
-        // COOKIE CONSENT
+        // UNIFIED: Sticky bar + Cookie banner (single source of truth)
         // ════════════════════════════════════════════
         document.addEventListener('DOMContentLoaded', function(){
             const COOKIE_KEY = 'serko_cookie_consent';
+            const bar = document.getElementById('stickyBar');
+            const cookieBannerEl = document.getElementById('cookieBanner');
+            const isMobile = window.innerWidth < 769;
+            var cookieShown = false;
 
             function getCookie(name) {
                 const value = '; ' + document.cookie;
@@ -2522,19 +3426,23 @@
                 document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
             }
 
-            const cookieConsent = getCookie(COOKIE_KEY);
-            const cookieBannerEl = document.getElementById('cookieBanner');
-            if (!cookieConsent && cookieBannerEl) {
-                // On mobile, cookie banner is handled by sticky bar script (5s delay)
-                // On desktop, show after 1.5s
-                if (window.innerWidth >= 769) {
+            const alreadyDecided = getCookie(COOKIE_KEY);
+
+            function showCookieBanner() {
+                if (alreadyDecided) return;
+                if (cookieBannerEl && !cookieShown) {
+                    cookieShown = true;
+                    cookieBannerEl.classList.add('visible');
+                    // Auto-hide after 10 seconds if not interacted
                     setTimeout(function(){
-                        cookieBannerEl.classList.add('visible');
-                    }, 1500);
+                        if (cookieBannerEl && cookieBannerEl.classList.contains('visible')) {
+                            cookieBannerEl.classList.remove('visible');
+                        }
+                    }, 10000);
                 }
-                // Mobile: delayed by sticky bar script to 5s
             }
 
+            // Cookie button handlers
             const cookieAcceptBtn = document.getElementById('cookieAccept');
             if (cookieAcceptBtn) {
                 cookieAcceptBtn.addEventListener('click', function(){
@@ -2551,48 +3459,12 @@
                 });
             }
 
-
-        });
-
-    </script>
-
-    <script>
-        // Unified mobile UX: contacts first, then cookie banner
-        document.addEventListener('DOMContentLoaded', function(){
-            const bar = document.getElementById('stickyBar');
-            const cookieBannerEl = document.getElementById('cookieBanner');
-            const isMobile = window.innerWidth < 769;
-
-            function getCookie(name) {
-                const value = '; ' + document.cookie;
-                const parts = value.split('; ' + name + '=');
-                if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
-                return null;
-            }
-
-            const alreadyDecided = getCookie('serko_cookie_consent');
-            var cookieShown = false;
-
-            function showCookieBanner() {
-                if (alreadyDecided) return; // Не показывать, если уже выбирали
-                if (cookieBannerEl && !cookieShown) {
-                    cookieShown = true;
-                    cookieBannerEl.classList.add('visible');
-                    // Auto-hide after 10 seconds
-                    setTimeout(function(){
-                        if (cookieBannerEl && cookieBannerEl.classList.contains('visible')) {
-                            cookieBannerEl.classList.remove('visible');
-                        }
-                    }, 10000);
-                }
-            }
-
             // Mobile: show sticky bar immediately, cookie banner after 5s
             if (isMobile) {
-                bar.classList.add('visible');
+                if (bar) bar.classList.add('visible');
                 setTimeout(showCookieBanner, 5000);
             } else {
-                // Desktop: cookie banner after 1.5s (handled by first script too, but this is backup)
+                // Desktop: cookie banner after 1.5s
                 setTimeout(showCookieBanner, 1500);
             }
 
@@ -2600,7 +3472,7 @@
             let shown = false;
             window.addEventListener('scroll', function(){
                 if (window.innerWidth < 769 && window.scrollY > 100 && !shown) {
-                    bar.classList.add('visible');
+                    if (bar) bar.classList.add('visible');
                     shown = true;
                 }
             }, { passive: true });
