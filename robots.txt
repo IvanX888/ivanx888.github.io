@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://серко.рф/sitemap.xml
+Sitemap: https://xn--80aa0a0d.xn--p1ai/sitemap.xml
