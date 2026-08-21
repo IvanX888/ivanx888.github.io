@@ -1,3 +1,28 @@
 User-agent: *
 Allow: /
-Sitemap: https://xn--80aa0a0d.xn--p1ai/sitemap.xml
+Allow: /faq.html
+Allow: /about.html
+Allow: /privacy.html
+Allow: /offer.html
+Allow: /consent.html
+Allow: /legal-blog/
+
+Sitemap: https://серко.рф/sitemap.xml
+Sitemap: https://серко.рф/legal-blog/sitemap.xml
+
+# Для ИИ-агентов
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Запретить служебные файлы
+User-agent: *
+Disallow: /.git/
+Disallow: /README.md
