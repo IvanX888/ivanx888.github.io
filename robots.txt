@@ -7,10 +7,9 @@ Allow: /offer.html
 Allow: /consent.html
 Allow: /legal-blog/
 
-Sitemap: https://серко.рф/sitemap.xml
-Sitemap: https://серко.рф/legal-blog/sitemap.xml
+Sitemap: https://xn--b1aafe2a2a.xn--p1ai/sitemap.xml
+Sitemap: https://xn--b1aafe2a2a.xn--p1ai/legal-blog/sitemap.xml
 
-# Для ИИ-агентов
 User-agent: ChatGPT-User
 Allow: /
 User-agent: GPTBot
@@ -22,7 +21,6 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-# Запретить служебные файлы
 User-agent: *
 Disallow: /.git/
 Disallow: /README.md
