@@ -1,9 +1,15 @@
 User-agent: *
 Allow: /
-Allow: /_posts/
-Allow: /index.html
+Allow: /faq.html
+Allow: /about.html
+Allow: /privacy.html
+Allow: /offer.html
+Allow: /consent.html
+Allow: /alimenty.html
+Allow: /razvod.html
+Allow: /legal-blog/
 
-# AI-боты — разрешить сканирование для индексации в нейросетях
+# AI-боты — разрешить сканирование
 User-agent: ChatGPT-User
 Allow: /
 User-agent: GPTBot
@@ -29,10 +35,10 @@ Allow: /
 User-agent: GigaChat
 Allow: /
 
-# Закрыть служебное
+# Служебное закрыть
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /README.md
 
-Sitemap: https://серко.рф/legal-blog/sitemap.xml
+# Только основной sitemap — блог уже внутри него
 Sitemap: https://серко.рф/sitemap.xml
