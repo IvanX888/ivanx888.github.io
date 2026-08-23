@@ -7,8 +7,8 @@ Allow: /offer.html
 Allow: /consent.html
 Allow: /legal-blog/
 
-Sitemap: https://серко.рф/sitemap.xml
-Sitemap: https://серко.рф/legal-blog/sitemap.xml
+Sitemap: https://xn--e1akmgd.xn--p1ai/sitemap.xml
+Sitemap: https://xn--e1akmgd.xn--p1ai/legal-blog/sitemap.xml
 
 User-agent: ChatGPT-User
 Allow: /
