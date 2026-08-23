@@ -1,26 +1,38 @@
 User-agent: *
 Allow: /
-Allow: /faq.html
-Allow: /about.html
-Allow: /privacy.html
-Allow: /offer.html
-Allow: /consent.html
-Allow: /legal-blog/
+Allow: /_posts/
+Allow: /index.html
 
-Sitemap: https://xn--e1akmgd.xn--p1ai/sitemap.xml
-Sitemap: https://xn--e1akmgd.xn--p1ai/legal-blog/sitemap.xml
-
+# AI-боты — разрешить сканирование для индексации в нейросетях
 User-agent: ChatGPT-User
 Allow: /
 User-agent: GPTBot
-Allow: /
-User-agent: PerplexityBot
 Allow: /
 User-agent: Claude-Web
 Allow: /
 User-agent: anthropic-ai
 Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: DeepSeek
+Allow: /
+User-agent: DeepSeekBot
+Allow: /
+User-agent: Kimi
+Allow: /
+User-agent: KimiBot
+Allow: /
+User-agent: YandexBot
+Allow: /
+User-agent: YaDirectFetcher
+Allow: /
+User-agent: GigaChat
+Allow: /
 
-User-agent: *
+# Закрыть служебное
 Disallow: /.git/
+Disallow: /.github/
 Disallow: /README.md
+
+Sitemap: https://серко.рф/legal-blog/sitemap.xml
+Sitemap: https://серко.рф/sitemap.xml
