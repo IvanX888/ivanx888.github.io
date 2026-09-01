@@ -1,44 +1,41 @@
 User-agent: *
 Allow: /
-Allow: /faq.html
-Allow: /about.html
-Allow: /privacy.html
-Allow: /offer.html
-Allow: /consent.html
-Allow: /alimenty.html
-Allow: /razvod.html
 Allow: /legal-blog/
+Disallow: /404.html
+Disallow: /privacy.html
+Disallow: /offer.html
 
-# AI-боты — разрешить сканирование
-User-agent: ChatGPT-User
+User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
 User-agent: GPTBot
 Allow: /
-User-agent: Claude-Web
+
+User-agent: ClaudeBot
 Allow: /
-User-agent: anthropic-ai
-Allow: /
+
 User-agent: PerplexityBot
 Allow: /
-User-agent: DeepSeek
-Allow: /
-User-agent: DeepSeekBot
-Allow: /
-User-agent: Kimi
-Allow: /
-User-agent: KimiBot
-Allow: /
-User-agent: YandexBot
-Allow: /
-User-agent: YaDirectFetcher
-Allow: /
-User-agent: GigaChat
+
+User-agent: CCBot
 Allow: /
 
-# Служебное закрыть
-Disallow: /.git/
-Disallow: /.github/
-Disallow: /README.md
+Host: https://серко.рф
 
-# Только основной sitemap — блог уже внутри него
 Sitemap: https://серко.рф/sitemap.xml
+Sitemap: https://серко.рф/legal-blog/sitemap.xml
+
+LLM-crawl: https://серко.рф/llms.txt
+LLM-crawl-full: https://серко.рф/llms-full.txt
