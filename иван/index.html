@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Серко — универсальный исполнитель | Ищу работу</title>
+    <meta name="description" content="Управление проектами, юриспруденция, разработка, автоматизация. Готов взять проект под ключ и довести от идеи до результата.">
+    <meta name="keywords" content="Иван Серко, Серко, универсальный специалист, управление проектами, юрист, разработчик, ищу работу">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --highlight: #f59e0b;
+            --success: #10b981;
+            --light: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text); line-height: 1.6; background: var(--light);
+        }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 2rem; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px);
+            display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;
+        }
+        nav.scrolled { padding: 0.6rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: 2px; }
+        .logo span { color: var(--highlight); }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; font-size: 0.88rem; transition: color 0.3s; position: relative; }
+        .nav-links a:hover { color: var(--highlight); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--highlight); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; }
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 60%, #1e3a5f 100%);
+            position: relative; overflow: hidden; padding: 6rem 2rem 4rem;
+        }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 2; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--success); border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; animation: fadeInUp 0.6s ease; }
+        .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        .hero h1 { font-size: 3rem; font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 1.2rem; animation: fadeInUp 0.7s ease 0.1s both; }
+        .hero h1 .accent { color: var(--highlight); }
+        .hero-sub { font-size: 1.15rem; color: rgba(255,255,255,0.75); margin-bottom: 2rem; line-height: 1.7; animation: fadeInUp 0.7s ease 0.2s both; }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both; }
+        .btn-primary { padding: 1rem 2.2rem; background: var(--highlight); color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; border: 2px solid var(--highlight); display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-primary:hover { background: transparent; color: var(--highlight); transform: translateY(-2px); }
+        .btn-secondary { padding: 1rem 2.2rem; background: transparent; color: var(--white); text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; border: 2px solid rgba(255,255,255,0.25); transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-secondary:hover { border-color: var(--highlight); color: var(--highlight); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; animation: fadeInUp 0.8s ease 0.4s both; }
+        .hero-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 1rem; }
+        .hero-card .fact-row { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+        .hero-card .fact-row:last-child { border-bottom: none; }
+        .hero-card .fact-icon { font-size: 1.2rem; }
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .section-header p { color: var(--text-light); font-size: 1.05rem; }
+        .section-header .line { width: 50px; height: 3px; background: var(--accent); margin: 1rem auto 0; border-radius: 2px; }
+        .roles { background: var(--white); }
+        .roles-intro { text-align: center; max-width: 700px; margin: 0 auto 2.5rem; font-size: 1.05rem; color: var(--text-light); line-height: 1.7; }
+        .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+        .role-card { background: var(--light); border: 1px solid var(--border); border-radius: 14px; padding: 1.8rem; transition: all 0.35s; position: relative; overflow: hidden; }
+        .role-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); opacity: 0; transition: opacity 0.3s; }
+        .role-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-color: var(--accent-light); }
+        .role-card:hover::before { opacity: 1; }
+        .role-card .role-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+        .role-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
+        .role-card .role-sub { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+        .role-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.55; margin-bottom: 0.8rem; }
+        .role-card .role-proof { font-size: 0.8rem; color: var(--text-light); padding-top: 0.6rem; border-top: 1px dashed var(--border); }
+        .role-card .role-proof strong { color: var(--success); }
+        .why-me { background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+        .why-card { background: var(--white); border-radius: 14px; padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid var(--border); transition: all 0.3s; }
+        .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        .why-card .num { width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; }
+        .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--primary); }
+        .why-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.55; }
+        .proof { background: var(--white); }
+        .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
+        .proof-card { background: var(--light); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s; }
+        .proof-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .proof-card .proof-head { padding: 1.2rem 1.5rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--white); }
+        .proof-card .proof-head h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+        .proof-card .proof-head span { font-size: 0.75rem; opacity: 0.7; }
+        .proof-card .proof-body { padding: 1.2rem 1.5rem; }
+        .proof-card .proof-body p { font-size: 0.88rem; color: var(--text-light); line-height: 1.55; margin-bottom: 0.8rem; }
+        .proof-card .proof-body a { font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; }
+        .proof-card .proof-body a:hover { gap: 0.6rem; }
+        .proof-stats { display: flex; gap: 1.5rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px dashed var(--border); }
+        .proof-stats .stat { text-align: center; }
+        .proof-stats .stat b { display: block; font-size: 1.1rem; color: var(--primary); }
+        .proof-stats .stat span { font-size: 0.7rem; color: var(--text-light); text-transform: uppercase; }
+        .story { background: var(--primary); color: var(--white); }
+        .story .section-header h2 { color: var(--white); }
+        .story .section-header p { color: rgba(255,255,255,0.6); }
+        .story-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+        .story-photo { aspect-ratio: 1; background: linear-gradient(135deg, #1e3a5f, var(--secondary)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--white); border: 1px solid rgba(255,255,255,0.1); }
+        .story-text h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
+        .story-text p { color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; }
+        .story-text .highlight-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.2rem; margin-top: 1rem; }
+        .story-text .highlight-box p { margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+        .story-text .highlight-box p strong { color: var(--highlight); }
+        .story-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.2rem; }
+        .story-facts .sf { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .story-facts .sf-icon { font-size: 1.1rem; flex-shrink: 0; }
+        .skills { background: var(--light); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .skill-group { background: var(--white); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); }
+        .skill-group h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .skill-list { list-style: none; }
+        .skill-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--text-light); display: flex; align-items: flex-start; gap: 0.5rem; }
+        .skill-list li:last-child { border-bottom: none; }
+        .skill-list li .level { font-weight: 600; color: var(--primary); white-space: nowrap; }
+        .skill-list li .sep { color: var(--border); margin: 0 0.3rem; }
+        .cta-banner { background: linear-gradient(135deg, var(--accent), #1e40af); padding: 4rem 2rem; text-align: center; color: var(--white); }
+        .cta-banner h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.8rem; }
+        .cta-banner p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-banner .btn-light { padding: 1rem 2.5rem; background: var(--white); color: var(--accent); text-decoration: none; border-radius: 10px; font-weight: 700; display: inline-block; transition: all 0.3s; }
+        .cta-banner .btn-light:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .contact { background: var(--white); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 0 auto; }
+        .contact-info h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--primary); }
+        .contact-info > p { color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .contact-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--text-light); }
+        .contact-row a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .contact-row a:hover { text-decoration: underline; }
+        .contact-form { background: var(--light); padding: 2rem; border-radius: 14px; border: 1px solid var(--border); }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.3rem; font-size: 0.85rem; font-weight: 500; color: var(--text-light); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--white); color: var(--text); font-family: inherit; font-size: 0.9rem; transition: all 0.2s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+        .submit-btn { width: 100%; padding: 0.9rem; background: var(--accent); color: var(--white); border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+        .submit-btn:hover { background: #2563eb; transform: translateY(-1px); }
+        .companies { background: var(--light); padding: 3rem 2rem; }
+        .companies details { max-width: 800px; margin: 0 auto; background: var(--white); border-radius: 12px; border: 1px solid var(--border); padding: 1.5rem; }
+        .companies summary { font-weight: 700; color: var(--primary); cursor: pointer; font-size: 1rem; }
+        .companies ul { margin-top: 1rem; padding-left: 1.5rem; color: var(--text-light); font-size: 0.9rem; line-height: 1.8; }
+        .companies ul li { margin-bottom: 0.3rem; }
+        
+/* === ФОТО: fallback-логика === */
+.story-photo { position: relative; overflow: hidden; }
+.story-photo img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity 0.4s ease; z-index: 2;
+}
+.story-photo img.loaded { opacity: 1; }
+.story-photo .fallback-icon { position: relative; z-index: 1; font-size: 5rem; }
+
+footer { background: var(--primary); color: rgba(255,255,255,0.4); text-align: center; padding: 2rem; font-size: 0.8rem; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        footer a:hover { color: var(--highlight); }
+        .scroll-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 42px; height: 42px; background: var(--accent); color: var(--white); border: none; border-radius: 50%; font-size: 1.1rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; display: flex; align-items: center; justify-content: center; }
+        .scroll-top.visible { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-3px); background: #2563eb; }
+        .fade-in { opacity: 0; transform: translateY(25px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-btn { display: block; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .story-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .story-facts { grid-template-columns: 1fr; }
+            section { padding: 3rem 1rem; }
+            .section-header h2 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+<nav id="navbar">
+    <div class="logo">СЕРКО<span>.</span></div>
+    <ul class="nav-links">
+        <li><a href="#roles">Кем могу быть</a></li>
+        <li><a href="#why">Почему СЕРКО</a></li>
+        <li><a href="#proof">Доказательства</a></li>
+        <li><a href="#story">Моя история</a></li>
+        <li><a href="#skills">Навыки</a></li>
+        <li><a href="#contact">Написать мне</a></li>
+    </ul>
+    <button class="mobile-btn" onclick="toggleMenu()">☰</button>
+</nav>
+
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div>
+            <div class="hero-badge">🔍 Открыт к предложениям</div>
+            <h1>Не нанимайте<br>5 человек.<br>Наймите <span class="accent">Ивана Серко.</span></h1>
+            <p class="hero-sub">
+                Беру задачу от идеи до результата. Комплексно, без потерь на стыках.<br>
+                Управление проектами, юриспруденция, разработка, автоматизация, маркетинг.<br>
+                Один человек, который закроет несколько функций сразу.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">💼 Пригласить на собеседование</a>
+                <a href="#roles" class="btn-secondary">👀 Кем я могу быть полезен</a>
+            </div>
+        </div>
+        <div class="hero-card">
+            <h3>📋 Быстрые факты</h3>
+            <div class="fact-row"><span class="fact-icon">👤</span><span>39 лет</span></div>
+            <div class="fact-row"><span class="fact-icon">📍</span><span>Готов к переезду</span></div>
+            <div class="fact-row"><span class="fact-icon">⚖️</span><span>Юрист, веду частную практику</span></div>
+            <div class="fact-row"><span class="fact-icon">🏗️</span><span>Много лет на крупных стройках (космодром Восточный, БелАЭС, аэропорты)</span></div>
+            <div class="fact-row"><span class="fact-icon">📦</span><span>Маркетолог / менеджер склада</span></div>
+            <div class="fact-row"><span class="fact-icon">💻</span><span>6+ проектов с нуля в одиночку</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="roles" id="roles">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Кем я могу быть полезен вашей компании</h2>
+            <p>Не одна должность — а решение задач в нескольких областях одновременно</p>
+            <div class="line"></div>
+        </div>
+        <p class="roles-intro fade-in">
+            Я не претендую на одну конкретную должность. Я предлагаю компаниям <strong>универсального исполнителя</strong>, который может взять проект (или задачу) любой сложности и довести её от идеи до работающего результата. Анализ → планирование → исполнение → контроль → сдача.
+        </p>
+        <div class="roles-grid">
+            <div class="role-card fade-in">
+                <div class="role-icon">📋</div>
+                <div class="role-sub">Управление проектами</div>
+                <h3>Руководитель проекта / Agile-менеджер</h3>
+                <p>Понимаю и применяю базовые принципы Agile/Scrum. Планирую этапы, контролирую сроки и веду проект до результата. Постоянно развиваюсь в этой области.</p>
+                <div class="role-proof"><strong>→</strong> Запускал сайты, веб-приложения, Telegram-ботов. Вёл проекты от идеи до запуска. Постоянно развиваюсь в этой области.</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">💻</div>
+                <div class="role-sub">IT / Разработка</div>
+                <h3>Junior Frontend / Вайбкодер</h3>
+                <p>Создаю сайты, веб-приложения и Telegram-боты с нуля. HTML, CSS, JavaScript, Python. Работаю с IndexedDB, localStorage, PWA. Умею делать оффлайн-приложения.</p>
+                <div class="role-proof"><strong>→</strong> 6 проектов на GitHub, все рабочие и в продакшене</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">🔍</div>
+                <div class="role-sub">Маркетинг / Продажи</div>
+                <h3>Маркетолог / SMM / Контент-менеджер</h3>
+                <p>Сам продвигаю свои проекты: SEO, контент-маркетинг, веду блог, настраиваю аналитику (Я.Метрика, GA). Пишу тексты, которые продают. Умею вести переговоры и закрывать сделки. Есть опыт продаж B2B (информационно-правовые системы). Главный сайт — <a href="https://серко.рф" target="_blank" style="color:var(--accent);text-decoration:underline;">серко.рф</a>.</p>
+                <div class="role-proof"><strong>→</strong> Юридический сайт приносит реальных клиентов из поиска</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">⚖️</div>
+                <div class="role-sub">Юриспруденция</div>
+                <h3>Юрист / Юрисконсульт</h3>
+                <p>Веду частную практику. Гражданское, семейное, трудовое право, защита прав потребителей. Договоры, претензии, иски.</p>
+                <div class="role-proof"><strong>→</strong> Реальные выигранные дела: алименты, разводы, защита имущества</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">🏗️</div>
+                <div class="role-sub">Производство</div>
+                <h3>Мастер / Прораб / Начальник участка</h3>
+                <p>Работал электрогазосварщиком на крупнейших стройках. Работал мастером в ДРСУ: учёт, контроль бригад, отчётность. Не боюсь грязной работы и выездов на объект.</p>
+                <div class="role-proof"><strong>→</strong> Создал приложение для учёта работ — знаю задачи изнутри</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">📦</div>
+                <div class="role-sub">Логистика / Склад</div>
+                <h3>Менеджер склада / Логист</h3>
+                <p>Опыт работы менеджером склада в оптовой компании: приёмка, отгрузка, оптимизация процессов, работа с рекламациями, документооборот. Знаю складскую логистику и автоматизацию.</p>
+                <div class="role-proof"><strong>→</strong> Оптимизировал процессы приёмки/отгрузки на складе</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">⚙️</div>
+                <div class="role-sub">Автоматизация</div>
+                <h3>Специалист по цифровизации</h3>
+                <p>Автоматизирую рутину: отчёты, шаблоны документов, учёт, CRM. Интегрирую сервисы: Telegram-боты, Google-формы, облачные базы. Обучаю коллег работе с новыми инструментами.</p>
+                <div class="role-proof"><strong>→</strong> Журнал ДРСУ сократил время отчётности с 3 часов до 20 минут</div>
+            </div>
+            <div class="role-card fade-in">
+                <div class="role-icon">📞</div>
+                <div class="role-sub">Администрирование</div>
+                <h3>Офис-менеджер / Ассистент руководителя</h3>
+                <p>Организую документооборот, веду переписку, планирую встречи, работаю с клиентами. Умею работать в стрессе и многозадачности.</p>
+                <div class="role-proof"><strong>→</strong> Сам веду все дела: от сайта до бухгалтерии самозанятого</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-me" id="why">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Почему именно я</h2>
+            <p>Работодателю важен результат, а не количество людей в штате</p>
+            <div class="line"></div>
+        </div>
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <div class="num">1</div>
+                <h3>Беру проект от начала до конца</h3>
+                <p>Не просто выполняю задачу — веду проект полностью: анализ, планирование, исполнение, контроль, сдача. По методологии Agile/Scrum: спринты, бэклог, ретроспективы.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">2</div>
+                <h3>Экономия на ФОТ до 60%</h3>
+                <p>Один человек вместо команды из программиста, юриста и маркетолога. Нет затрат на найм, адаптацию и управление несколькими людьми. Один оклад — несколько функций.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">3</div>
+                <h3>Нет «белых пятен» между отделами</h3>
+                <p>Когда юрист не понимает IT, а программист не понимает бизнес — проекты тонут. Я говорю на языке всех сторон и свожу их воедино без потерь.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">4</div>
+                <h3>Готов работать много и вгрызаться</h3>
+                <p>Могу сидеть над задачей часами и днями, пока не решу. Не смотрю на часы. Не ищу отмазки. Нужен результат — получите результат. Это доказывают мои проекты.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">5</div>
+                <h3>Быстро учусь и адаптируюсь</h3>
+                <p>С помощью цифровых инструментов с нуля создал и запустил 6+ работающих проектов. Разобрался в SEO и вывел сайт в топ. Если нужно новое — разберусь, не ждите «это не моя задача».</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">6</div>
+                <h3>Понимаю бизнес изнутри</h3>
+                <p>Много лет работал на стройках и на производстве, понимаю процессы изнутри. Веду свой бизнес как самозанятый. Знаю, что такое дедлайны, бюджеты, клиенты и «надо вчера». Не теоретик — практик.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">7</div>
+                <h3>Юридическая защита встроена</h3>
+                <p>Любой продукт, который я делаю, проходит через призму закона. Договоры, политики конфиденциальности, compliance — всё будет чисто. Бонус, который не умеют 90% разработчиков.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="num">8</div>
+                <h3>Действующий бизнес как доказательство</h3>
+                <p>Мой юридический сайт приносит реальных клиентов. Это не теория — это живой бизнес, который я сам создал, продвигаю и развиваю.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="proof" id="proof">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Мои проекты</h2>
+            <p>Каждый проект создан с нуля, в одиночку, без команды и бюджета</p>
+            <div class="line"></div>
+        </div>
+        <div class="proof-grid">
+            <div class="proof-card fade-in">
+                <div class="proof-head"><h4>⚖️ LexConsult</h4><span>Юридический сайт с SEO</span></div>
+                <div class="proof-body">
+                    <p>Сайт юридических услуг: алименты, разводы, защита прав потребителей. SEO-оптимизация, формы заявок, структурированный контент, микроразметка. Работает на привлечение реальных клиентов.</p>
+                    <a href="https://серко.рф/lexconsult" target="_blank">Перейти на сайт →</a>
+                    <div class="proof-stats"><div class="stat"><b>1</b><span>человек</span></div><div class="stat"><b>0 ₽</b><span>бюджет</span></div><div class="stat"><b>Работает</b><span>статус</span></div></div>
+                </div>
+            </div>
+            <div class="proof-card fade-in">
+                <div class="proof-head"><h4>🏗️ Журнал ДРСУ</h4><span>Приложение учёта для производства</span></div>
+                <div class="proof-body">
+                    <p>Полноценное веб-приложение для мастера ДРСУ: учёт материалов, заявок, контроль работ, отчёты по людям и объектам. Работает оффлайн (IndexedDB). Создано под реальные производственные задачи. Сократил время отчётности с 3 часов до 20 минут.</p>
+                    <a href="https://серко.рф/drsujournal" target="_blank">Перейти на сайт →</a>
+                    <div class="proof-stats"><div class="stat"><b>1</b><span>человек</span></div><div class="stat"><b>0 ₽</b><span>бюджет</span></div><div class="stat"><b>Оффлайн</b><span>режим</span></div></div>
+                </div>
+            </div>
+            <div class="proof-card fade-in">
+                <div class="proof-head"><h4>🤖 Lawyer Assistant v3</h4><span>Веб-ассистент для юристов</span></div>
+                <div class="proof-body">
+                    <p>Автоматизация рутинных задач юриста: шаблоны документов, справочная система, калькуляторы. PWA-приложение — работает как нативное на телефоне. Экономит часы работы.</p>
+                    <a href="https://серко.рф/lawyer_assistant_v3" target="_blank">Перейти на сайт →</a>
+                    <div class="proof-stats"><div class="stat"><b>1</b><span>человек</span></div><div class="stat"><b>0 ₽</b><span>бюджет</span></div><div class="stat"><b>PWA</b><span>формат</span></div></div>
+                </div>
+            </div>
+            <div class="proof-card fade-in">
+                <div class="proof-head"><h4>💬 Consullex Bot</h4><span>Telegram-бот на Python</span></div>
+                <div class="proof-body">
+                    <p>Telegram-бот для автоматизации юридических консультаций. Маршрутизация запросов, автоматические ответы, интеграция с внешними сервисами. Работает 24/7 без вмешательства.</p>
+                    <a href="https://t.me/ConsullexBot" target="_blank">Открыть в Telegram →</a>
+                    <div class="proof-stats"><div class="stat"><b>1</b><span>человек</span></div><div class="stat"><b>Python</b><span>стек</span></div><div class="stat"><b>24/7</b><span>работа</span></div></div>
+                </div>
+            </div>
+            <div class="proof-card fade-in">
+                <div class="proof-head"><h4>📝 Юридический блог</h4><span>Контент-маркетинг</span></div>
+                <div class="proof-body">
+                    <p>Блог с разборами кейсов, юридическими статьями и SEO-контентом. Привлекает органический трафик из поисковиков. Доказательство навыков копирайтинга и продвижения.</p>
+                    <a href="https://серко.рф/legal-blog" target="_blank">Перейти на сайт →</a>
+                    <div class="proof-stats"><div class="stat"><b>1</b><span>человек</span></div><div class="stat"><b>SEO</b><span>продвижение</span></div><div class="stat"><b>Трафик</b><span>результат</span></div></div>
+                </div>
+            </div>
+            <div class="proof-card fade-in">
+                <div class="proof-head"><h4>📚 Адвокатский экзамен</h4><span>Образовательный ресурс</span></div>
+                <div class="proof-body">
+                    <p>Структурированный план подготовки к адвокатскому экзамену. Темы, тесты, прогресс обучения. Показывает способность систематизировать сложную информацию и создавать образовательные продукты.</p>
+                    <a href="https://серко.рф/advocate-exam" target="_blank">Перейти на сайт →</a>
+                    <div class="proof-stats"><div class="stat"><b>1</b><span>человек</span></div><div class="stat"><b>0 ₽</b><span>бюджет</span></div><div class="stat"><b>Образование</b><span>сфера</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="story" id="story">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Моя история — почему я такой</h2>
+            <p>Не классический путь, но он сделал меня тем, кто я есть</p>
+            <div class="line" style="background: var(--highlight);"></div>
+        </div>
+        <div class="story-grid">
+            <div class="story-photo fade-in">
+                <img src="serko.jpg" alt="Иван Серко" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                <span class="fallback-icon">👨‍💻</span>
+            </div>
+            <div class="story-text fade-in">
+                <h3>Я не выбирал одну профессию — я накапливал навыки</h3>
+                <p>Мне 39 лет. Много лет работал электрогазосварщиком на крупнейших стройках: космодром «Восточный», БелАЭС, аэропорт Домодедово. Знаю производство изнутри — от сварки до сдачи объекта.</p>
+                <p>Потом — юрист в крупной агропромышленной организации: договоры, суды, госзакупки, строительное согласование. Потом — менеджер склада в оптовой компании по светотехнике: приёмка, отгрузка, оптимизация процессов.</p>
+                                <p>Параллельно развиваю цифровые навыки — создаю сайты, приложения и инструменты автоматизации. Всё это помогает мне решать задачи комплексно и эффективно.</p>
+                <p>Параллельно продолжаю вести частную юридическую практику — есть постоянные клиенты. Это живой бизнес, который я сам создал, продвигаю и развиваю.</p>
+                <div class="highlight-box">
+                    <p><strong>Суть в том:</strong> я не претендую на позицию «гуру». Я предлагаю компании <strong>универсального исполнителя проектов</strong>, который может закрыть сразу несколько задач, готов работать много, не боится нового и понимает бизнес не из теории, а из собственного опыта на стройках, на складе, в судах и в своём бизнесе.</p>
+                </div>
+                <div class="story-facts">
+                    <div class="sf"><span class="sf-icon">⚖️</span><span>Юрист — веду частную практику</span></div>
+                    <div class="sf"><span class="sf-icon">🏗️</span><span>Много лет сварщик: Восточный, БелАЭС, Домодедово</span></div>
+                    <div class="sf"><span class="sf-icon">📦</span><span>Маркетолог / менеджер склада</span></div>
+                    <div class="sf"><span class="sf-icon">💻</span><span>6 IT-проектов, созданных в одиночку</span></div>
+                    <div class="sf"><span class="sf-icon">📈</span><span>Сам продвигаю: SEO, контент, реклама</span></div>
+                    <div class="sf"><span class="sf-icon">📋</span><span>Agile / Scrum — управление проектами</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Что я умею и применяю</h2>
+            <p>Словесные градации: от «владею уверенно» до «знаком»</p>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-group fade-in">
+                <h4>💻 Разработка и цифровые продукты</h4>
+                <ul class="skill-list">
+                    <li>Создаю сайты, веб-приложения и Telegram-ботов. Управляю процессом: ставлю задачи, проверяю результат, довожу до запуска. Код пишу с помощью ИИ-ассистентов, но архитектуру, логику и контроль качества — беру на себя.</li>
+                    <li>Понимаю структуру и логику веб-проектов, могу собрать работающий продукт «под ключ».</li>
+                    <li>Работаю с HTML, CSS, JavaScript, Python — на уровне, достаточном для создания и поддержки проектов.</li>
+                    <li>Имею опыт с PWA, IndexedDB, локальными базами данных — делаю приложения, которые работают офлайн.</li>
+                    <li>1С — изучаю, но пока не использую в работе.</li>
+                </ul>
+            </div>
+            <div class="skill-group fade-in">
+                <h4>📋 Управление проектами</h4>
+                <ul class="skill-list">
+                    <li>Понимаю и применяю принципы Agile, Scrum, Kanban на практике.</li>
+                    <li>Планирую этапы, декомпозирую задачи, контролирую сроки и результат.</li>
+                    <li>Веду проект от идеи до запуска — с документацией, отчётностью и адаптацией под изменения.</li>
+                    <li>Знаком с Jira, Trello, MS Project — могу работать в этих системах.</li>
+                </ul>
+            </div>
+            <div class="skill-group fade-in">
+                <h4>📢 Маркетинг и продвижение</h4>
+                <ul class="skill-list">
+                    <li>Хорошо знаю SEO — поисковое продвижение, контент-стратегия, семантика.</li>
+                    <li>Настраиваю аналитику (Яндекс.Метрика, Google Analytics).</li>
+                    <li>Понимаю, как привлекать клиентов через контент и структуру сайта.</li>
+                    <li>Копирайтинг и тексты — делаю с помощью ИИ, но всегда под свою задачу и под свой стиль.</li>
+                </ul>
+            </div>
+            <div class="skill-group fade-in">
+                <h4>⚖️ Юриспруденция</h4>
+                <ul class="skill-list">
+                    <li>Знаю и применяю гражданское, семейное, трудовое право, защиту прав потребителей.</li>
+                    <li>Составляю договоры, претензии, иски, жалобы — проверяю много раз, анализирую нормы.</li>
+                    <li>Понимаю, где искать информацию в кодексах и законах, умею анализировать и применять.</li>
+                    <li>Веду частную практику — консультирую, помогаю людям.</li>
+                </ul>
+            </div>
+            <div class="skill-group fade-in">
+                <h4>🏗️ Производство и склад</h4>
+                <ul class="skill-list">
+                    <li>Умею читать чертежи и техническую документацию.</li>
+                    <li>Работал электрогазосварщиком на крупных стройках (космодром, АЭС, аэропорты).</li>
+                    <li>Организовывал приёмку, отгрузку, учёт на складе и на производстве.</li>
+                    <li>Понимаю процессы изнутри — от сварки до сдачи объекта.</li>
+                </ul>
+            </div>
+            <div class="skill-group fade-in">
+                <h4>⚙️ Автоматизация и инструменты</h4>
+                <ul class="skill-list">
+                    <li>Автоматизирую рутину: отчёты, шаблоны, интеграция сервисов.</li>
+                    <li>Имею опыт с CRM (Bitrix24, amoCRM), Telegram-боты, Google-формы.</li>
+                    <li>Владею MS Office (Word, Excel, PowerPoint), Google Docs.</li>
+                    <li>Знаком с 1С, облачными базами данных.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <div class="container">
+        <h2>Нужен человек, который закроет несколько задач сразу?</h2>
+        <p>Я не заменю целый отдел. Но я заменю 2–3 сотрудника на старте, пока бизнес растёт. И сделаю это дешевле, быстрее и без потерь в коммуникации. Беру проект от идеи до результата.</p>
+        <a href="#contact" class="btn-light">📩 Написать СЕРКО прямо сейчас</a>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Давайте познакомимся</h2>
+            <p>Я открыт к предложениям. Даже если вы не уверены — напишите, обсудим.</p>
+            <div class="line"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Как со мной связаться</h3>
+                <p>Отвечаю быстро. Готов к звонкам, видеособеседованиям и личным встречам.</p>
+                <div class="contact-row">📧 <a href="mailto:333742917@mail.ru">333742917@mail.ru</a></div>
+                <div class="contact-row">🌐 <a href="https://серко.рф" target="_blank">серко.рф</a></div>
+                <div class="contact-row">📍 Готов к переезду</div>
+                <div class="contact-row">📝 Опыт: сварщик, юрист, менеджер склада, самозанятый</div>
+                <div class="contact-row">📞 <span style="font-weight:600;color:var(--primary);">+375 33 374-29-17</span></div>
+                <div style="margin-top:1.5rem;display:flex;gap:0.8rem;flex-wrap:wrap;">
+                    <a href="tel:+375333742917" class="btn-primary" style="font-size:0.9rem;padding:0.7rem 1.4rem;">📞 Позвонить</a>
+                    <a href="mailto:333742917@mail.ru" class="btn-secondary" style="font-size:0.9rem;padding:0.7rem 1.4rem;border-color:rgba(255,255,255,0.25);color:var(--white);">✉️ Написать на Email</a>
+                </div>
+            </div>
+            <div class="contact-form fade-in" style="background:transparent;border:none;padding:0;display:flex;flex-direction:column;gap:1rem;justify-content:center;">
+                <div style="background:var(--light);padding:1.5rem;border-radius:14px;border:1px solid var(--border);text-align:center;">
+                    <h4 style="margin-bottom:0.5rem;color:var(--primary);">📄 Скачать резюме</h4>
+                    <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:1rem;">PDF-версия для печати или отправки</p>
+                    <a href="/resume.pdf" class="btn-primary" style="font-size:0.9rem;padding:0.7rem 1.4rem;display:inline-block;">Скачать PDF</a>
+                </div>
+                <div style="background:var(--light);padding:1.5rem;border-radius:14px;border:1px solid var(--border);text-align:center;">
+                    <h4 style="margin-bottom:0.5rem;color:var(--primary);">🔗 Поделиться</h4>
+                    <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:1rem;">Скопируйте ссылку на эту страницу</p>
+                    <button onclick="navigator.clipboard.writeText(window.location.href);alert('Ссылка скопирована!')" class="submit-btn" style="width:auto;padding:0.7rem 1.4rem;font-size:0.9rem;display:inline-block;">Копировать ссылку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="companies" id="companies">
+    <div class="container">
+        <details>
+            <summary>📂 Где я работал (подробнее)</summary>
+            <ul>
+                <li>Менеджер склада — оптовая компания по светотехнической продукции</li>
+                <li>Юрист — крупная агропромышленная организация</li>
+                <li>Менеджер по продажам — компания по продаже сварочных материалов</li>
+                <li>Менеджер по продажам — компания по продаже информационно-правовых систем</li>
+                <li>Электрогазосварщик — строительные организации: космодром «Восточный», БелАЭС, аэропорт Домодедово и др.</li>
+                <li>Мастер — дорожно-ремонтное предприятие (ДРСУ)</li>
+            </ul>
+        </details>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Иван Серко · <a href="https://серко.рф" target="_blank" style="color:rgba(255,255,255,0.6);">серко.рф</a> · Все проекты созданы с нуля в одиночку</p>
+    <p><a href="https://серко.рф" target="_blank">серко.рф</a></p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function handleSubmit(e) {
+    e.preventDefault();
+    alert('Спасибо за сообщение! СЕРКО свяжется с вами в ближайшее время.');
+}
+
+function toggleMenu() {
+    const nl = document.querySelector('.nav-links');
+    const showing = nl.style.display === 'flex';
+    nl.style.display = showing ? 'none' : 'flex';
+    if(!showing) { nl.style.position='absolute'; nl.style.top='100%'; nl.style.left='0'; nl.style.right='0'; nl.style.flexDirection='column'; nl.style.background='rgba(15,23,42,0.98)'; nl.style.padding='1rem 2rem'; nl.style.gap='1rem'; }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) { e.preventDefault(); document.querySelector(this.getAttribute('href'))?.scrollIntoView({behavior:'smooth'}); });
+});
+</script>
+</body>
+</html>
