@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серко — разработка сайтов, приложений, автоматизация | Иван Серко</title>
+    <meta name="description" content="Создаю сайты, веб-приложения, Telegram-боты под ключ. Юридическая проверка, SEO, полный цикл от идеи до запуска.">
+    <meta name="keywords" content="Серко, Иван Серко, разработка сайтов, веб-приложения, Telegram-боты, автоматизация, SEO, юридическая проверка, вайбкодинг">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --light: #f5f5f5;
+            --text: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --card-bg: rgba(255,255,255,0.95);
+            --glass: rgba(255,255,255,0.1);
+            --border: #e2e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text); line-height: 1.6; background: var(--light);
+        }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 2rem; background: rgba(26,26,46,0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;
+        }
+        nav.scrolled { padding: 0.7rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: 2px; }
+        .logo span { color: var(--highlight); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.3s; position: relative; }
+        .nav-links a:hover { color: var(--highlight); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--highlight); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+        .hero {
+            position: relative; height: 100vh; min-height: 600px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%); }
+        .hero-slide.active { opacity: 1; }
+        .hero-slide::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: var(--white); max-width: 800px; padding: 0 2rem; }
+        .hero-brand { font-size: 0.75rem; font-weight: 600; letter-spacing: 6px; color: var(--highlight); margin-bottom: 1rem; text-transform: uppercase; animation: fadeInUp 0.6s ease; }
+        .hero-content h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; animation: fadeInUp 0.8s ease; }
+        .hero-content p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero-btn { display: inline-block; padding: 1rem 2.5rem; background: var(--highlight); color: var(--white); text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; animation: fadeInUp 0.8s ease 0.4s both; border: 2px solid var(--highlight); }
+        .hero-btn:hover { background: transparent; color: var(--highlight); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(233,69,96,0.3); }
+        .hero-btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.3); margin-left: 1rem; }
+        .hero-btn-outline:hover { border-color: var(--highlight); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .slider-dots { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 10; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; border: none; }
+        .dot.active { background: var(--highlight); width: 30px; border-radius: 6px; }
+        .slider-arrows { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; display: flex; justify-content: space-between; padding: 0 2rem; z-index: 10; pointer-events: none; }
+        .arrow { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-size: 1.2rem; cursor: pointer; transition: all 0.3s; pointer-events: all; display: flex; align-items: center; justify-content: center; }
+        .arrow:hover { background: var(--highlight); border-color: var(--highlight); }
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; }
+        .section-header .line { width: 60px; height: 4px; background: var(--highlight); margin: 1rem auto 0; border-radius: 2px; }
+        .portfolio { background: var(--white); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .portfolio-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.4s ease; border: 1px solid rgba(0,0,0,0.05); }
+        .portfolio-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .portfolio-card .card-img { height: 200px; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .portfolio-card .card-img::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z'/%3E%3C/g%3E%3C/svg%3E"); }
+        .portfolio-card .card-img .icon { font-size: 3rem; z-index: 1; }
+        .portfolio-card .card-body { padding: 1.5rem; }
+        .portfolio-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .portfolio-card p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5; }
+        .portfolio-card .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+        .portfolio-card .tag { padding: 0.25rem 0.7rem; background: rgba(15,52,96,0.08); color: var(--accent); border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .portfolio-card .card-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--highlight); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: gap 0.3s; }
+        .portfolio-card .card-link:hover { gap: 0.7rem; }
+        .portfolio-cta { text-align: center; margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 16px; color: var(--white); }
+        .portfolio-cta h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .portfolio-cta p { opacity: 0.9; margin-bottom: 1.5rem; }
+        .services { background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .service-item { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.05); transition: all 0.3s; border-left: 4px solid var(--highlight); }
+        .service-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .service-item .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .service-item h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .service-item p { color: var(--text-light); font-size: 0.9rem; }
+        .about { background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
+        .about-photo { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--white); box-shadow: 0 20px 40px rgba(26,26,46,0.2); }
+        .about-text h3 { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .about-text .about-sub { color: var(--highlight); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; }
+        .about-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 1rem; }
+        .about-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+        .fact { display: flex; align-items: flex-start; gap: 0.7rem; }
+        .fact .fact-icon { font-size: 1.3rem; flex-shrink: 0; }
+        .fact span { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+        .tools { background: var(--primary); color: var(--white); }
+        .tools .section-header h2 { color: var(--white); }
+        .tools .section-header p { color: rgba(255,255,255,0.7); }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .tool-card { background: var(--glass); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center; transition: all 0.3s; }
+        .tool-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px); }
+        .tool-card .tool-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .tool-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .tool-card p { font-size: 0.8rem; opacity: 0.7; }
+        .pm-skills { background: var(--light); }
+        .pm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .pm-card { background: var(--white); border-radius: 14px; padding: 1.8rem; border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s; }
+        .pm-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .pm-card h4 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+        .pm-card ul { list-style: none; }
+        .pm-card ul li { padding: 0.4rem 0; font-size: 0.88rem; color: var(--text-light); border-bottom: 1px solid var(--border); }
+        .pm-card ul li:last-child { border-bottom: none; }
+        .pm-card ul li::before { content: '✓ '; color: var(--success); font-weight: 700; }
+        .why-me { background: var(--light); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .why-card { background: var(--white); padding: 2rem; border-radius: 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .why-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .why-card .num { width: 50px; height: 50px; background: var(--highlight); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800; margin: 0 auto 1rem; }
+        .why-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); }
+        .why-card p { font-size: 0.9rem; color: var(--text-light); }
+        .process { background: var(--white); }
+        .process-steps { display: flex; justify-content: space-between; position: relative; max-width: 900px; margin: 0 auto; }
+        .process-steps::before { content: ''; position: absolute; top: 25px; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg, var(--highlight), var(--accent)); border-radius: 2px; }
+        .step { text-align: center; position: relative; z-index: 1; flex: 1; }
+        .step .step-num { width: 50px; height: 50px; background: var(--white); border: 3px solid var(--highlight); color: var(--highlight); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 1rem; }
+        .step h4 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem; }
+        .step p { font-size: 0.8rem; color: var(--text-light); }
+        .contact { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--white); }
+        .contact .section-header h2 { color: var(--white); }
+        .contact .section-header p { color: rgba(255,255,255,0.7); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 0 auto; }
+        .contact-info h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .contact-info p { opacity: 0.9; margin-bottom: 1.5rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .contact-item .icon { font-size: 1.3rem; }
+        .contact-item a { color: var(--white); text-decoration: none; opacity: 0.9; transition: opacity 0.3s; }
+        .contact-item a:hover { opacity: 1; color: var(--highlight); }
+        .contact-form { background: var(--glass); backdrop-filter: blur(10px); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.9rem; opacity: 0.9; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: var(--white); font-family: inherit; font-size: 0.95rem; transition: all 0.3s; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--highlight); background: rgba(255,255,255,0.1); }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .submit-btn { width: 100%; padding: 1rem; background: var(--highlight); color: var(--white); border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .submit-btn:hover { background: #d63a54; transform: translateY(-2px); }
+        .form-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; text-align: center; }
+        
+/* === ФОТО: fallback-логика === */
+.about-photo { position: relative; overflow: hidden; }
+.about-photo img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity 0.4s ease; z-index: 2;
+}
+.about-photo img.loaded { opacity: 1; }
+.about-photo .fallback-icon { position: relative; z-index: 1; font-size: 5rem; }
+
+.portfolio-card .card-img img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity 0.4s ease; z-index: 2;
+}
+.portfolio-card .card-img img.loaded { opacity: 1; }
+.portfolio-card .card-img .icon { position: relative; z-index: 1; }
+
+footer { background: #0f0f1a; color: rgba(255,255,255,0.4); text-align: center; padding: 2rem; font-size: 0.85rem; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        footer a:hover { color: var(--highlight); }
+        .scroll-top { position: fixed; bottom: 2rem; right: 2rem; width: 45px; height: 45px; background: var(--highlight); color: var(--white); border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; display: flex; align-items: center; justify-content: center; }
+        .scroll-top.visible { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(233,69,96,0.4); }
+        .fade-in { opacity: 0; transform: translateY(25px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-content h1 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .process-steps { flex-direction: column; gap: 2rem; }
+            .process-steps::before { display: none; }
+            .about-facts { grid-template-columns: 1fr; }
+            section { padding: 3rem 1rem; }
+            .section-header h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<nav id="navbar">
+    <div class="logo">СЕРКО<span>.</span></div>
+    <ul class="nav-links">
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#portfolio">Портфолио</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#pm">Управление проектами</a></li>
+        <li><a href="#tools">Инструменты</a></li>
+        <li><a href="#contact">Контакты</a></li>
+    </ul>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+
+<section class="hero" id="hero">
+    <div class="hero-slide active">
+        <div class="hero-content">
+            <div class="hero-brand">СЕРКО</div>
+            <h1>Создаю сайты и приложения под задачи бизнеса</h1>
+            <p>От идеи до запуска и продвижения — полный цикл разработки</p>
+            <a href="#contact" class="hero-btn">Обсудить задачу</a>
+            <a href="#portfolio" class="hero-btn hero-btn-outline">Смотреть работы</a>
+        </div>
+    </div>
+    <div class="hero-slide">
+        <div class="hero-content">
+            <div class="hero-brand">СЕРКО</div>
+            <h1>Ваш личный IT-отдел в одном лице</h1>
+            <p>Не нужна команда — я закрою весь цикл сам: от ТЗ до поддержки</p>
+            <a href="#contact" class="hero-btn">Обсудить задачу</a>
+            <a href="#about" class="hero-btn hero-btn-outline">Узнать больше</a>
+        </div>
+    </div>
+    <div class="hero-slide">
+        <div class="hero-content">
+            <div class="hero-brand">СЕРКО</div>
+            <h1>Юридическая грамотность + код</h1>
+            <p>Делаю продукты, которые не нарушают законы и реально работают</p>
+            <a href="#contact" class="hero-btn">Обсудить задачу</a>
+            <a href="#services" class="hero-btn hero-btn-outline">Мои услуги</a>
+        </div>
+    </div>
+    <div class="hero-slide">
+        <div class="hero-content">
+            <div class="hero-brand">СЕРКО</div>
+            <h1>От космодрома до кода</h1>
+            <p>Много лет на стройках + юрист + менеджер склада + разработчик. Понимаю ваши задачи изнутри.</p>
+            <a href="#contact" class="hero-btn">Обсудить задачу</a>
+            <a href="#about" class="hero-btn hero-btn-outline">Моя история</a>
+        </div>
+    </div>
+    <div class="slider-arrows">
+        <button class="arrow" onclick="prevSlide()">‹</button>
+        <button class="arrow" onclick="nextSlide()">›</button>
+    </div>
+    <div class="slider-dots">
+        <button class="dot active" onclick="goToSlide(0)"></button>
+        <button class="dot" onclick="goToSlide(1)"></button>
+        <button class="dot" onclick="goToSlide(2)"></button>
+        <button class="dot" onclick="goToSlide(3)"></button>
+    </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Моё портфолио</h2>
+            <p>Реальные проекты, созданные с нуля одним человеком</p>
+            <div class="line"></div>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card fade-in">
+                <div class="card-img">
+                    <img src="project_lexconsult.jpg" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                    <span class="icon">⚖️</span>
+                </div>
+                <div class="card-body">
+                    <h3>LexConsult — Юридический сайт</h3>
+                    <p>Сайт юридических услуг с SEO-оптимизацией, формами заявок и структурированным контентом. Работает на привлечение клиентов из поиска. Действующий бизнес более 1 года.</p>
+                    <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">SEO</span><span class="tag">Адаптив</span></div>
+                    <a href="https://серко.рф/lexconsult" class="card-link" target="_blank">Перейти на сайт →</a>
+                </div>
+            </div>
+            <div class="portfolio-card fade-in">
+                <div class="card-img">
+                    <img src="project_blog.jpg" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                    <span class="icon">📝</span>
+                </div>
+                <div class="card-body">
+                    <h3>Юридический блог</h3>
+                    <p>Блог с разборами кейсов, юридическими статьями и контент-маркетингом. Привлекает органический трафик из поисковиков.</p>
+                    <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">Контент</span><span class="tag">GitHub Pages</span></div>
+                    <a href="https://серко.рф/legal-blog" class="card-link" target="_blank">Перейти на сайт →</a>
+                </div>
+            </div>
+            <div class="portfolio-card fade-in">
+                <div class="card-img">
+                    <img src="project_lawyer.jpg" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                    <span class="icon">🤖</span>
+                </div>
+                <div class="card-body">
+                    <h3>Lawyer Assistant v3</h3>
+                    <p>Веб-приложение-ассистент для юристов. Автоматизация рутинных задач, шаблоны документов, справочная система. PWA — работает как приложение на телефоне.</p>
+                    <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">Автоматизация</span><span class="tag">PWA</span></div>
+                    <a href="https://серко.рф/lawyer_assistant_v3" class="card-link" target="_blank">Перейти на сайт →</a>
+                </div>
+            </div>
+            <div class="portfolio-card fade-in">
+                <div class="card-img">
+                    <img src="project_drsu.jpg" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                    <span class="icon">🏗️</span>
+                </div>
+                <div class="card-body">
+                    <h3>Журнал ДРСУ</h3>
+                    <p>Приложение учёта для мастера ДРСУ: материалы, заявки, контроль работ, отчёты по людям и объектам. Оффлайн-режим через IndexedDB. Сократил время отчётности с 3 часов до 20 минут.</p>
+                    <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">IndexedDB</span><span class="tag">Оффлайн</span></div>
+                    <a href="https://серко.рф/drsujournal" class="card-link" target="_blank">Перейти на сайт →</a>
+                </div>
+            </div>
+            <div class="portfolio-card fade-in">
+                <div class="card-img">
+                    <img src="project_exam.jpg" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                    <span class="icon">📚</span>
+                </div>
+                <div class="card-body">
+                    <h3>Адвокатский экзамен</h3>
+                    <p>Структурированный план подготовки к адвокатскому экзамену. Темы, тесты, прогресс обучения. Образовательный продукт с нуля.</p>
+                    <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">Образование</span><span class="tag">GitHub Pages</span></div>
+                    <a href="https://серко.рф/advocate-exam" class="card-link" target="_blank">Перейти на сайт →</a>
+                </div>
+            </div>
+            <div class="portfolio-card fade-in">
+                <div class="card-img">
+                    <img src="project_bot.jpg" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                    <span class="icon">💬</span>
+                </div>
+                <div class="card-body">
+                    <h3>Consullex Bot</h3>
+                    <p>Telegram-бот на Python для автоматизации юридических консультаций. Маршрутизация запросов, автоматические ответы, интеграция с сервисами. Работает 24/7.</p>
+                    <div class="tags"><span class="tag">Python</span><span class="tag">Telegram API</span><span class="tag">Бот</span></div>
+                    <a href="https://t.me/ConsullexBot" class="card-link" target="_blank">Открыть в Telegram →</a>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-cta fade-in">
+            <h3>Ваш проект здесь?</h3>
+            <p>Есть идея, но нет разработчика? Давайте обсудим — я помогу воплотить её в жизнь. От анализа до запуска.</p>
+            <a href="#contact" class="hero-btn" style="background: var(--white); color: var(--primary);">Начать проект</a>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Мои услуги</h2>
+            <p>Цифровые инструменты для бизнеса и специалистов — от идеи до результата</p>
+            <div class="line"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-item fade-in">
+                <div class="icon">🌐</div>
+                <h3>Сайты под ключ</h3>
+                <p>Лендинги, корпоративные сайты, портфолио. От дизайна до публикации на хостинге.</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="icon">📱</div>
+                <h3>Веб-приложения</h3>
+                <p>Инструменты учёта, CRM, дашборды. Работают в браузере и на телефоне.</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="icon">🤖</div>
+                <h3>Telegram-боты</h3>
+                <p>Автоматизация коммуникаций, приём заявок, рассылки, интеграции.</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="icon">🔍</div>
+                <h3>SEO & Продвижение</h3>
+                <p>Оптимизация под поисковики, настройка аналитики, контент-стратегия.</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="icon">⚙️</div>
+                <h3>Автоматизация</h3>
+                <p>Упрощение рутины: отчёты, шаблоны, интеграция сервисов.</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="icon">🛡️</div>
+                <h3>Юридическая проверка</h3>
+                <p>Проверка продуктов на соответствие законодательству РФ и РБ.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Обо мне</h2>
+            <p>Юрист, разработчик, производственник, менеджер.</p>
+            <div class="line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-photo fade-in">
+                <img src="serko.jpg" alt="Иван Серко" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+                <span class="fallback-icon">👨‍💻</span>
+            </div>
+            <div class="about-text fade-in">
+                <h3>Я</h3>
+                <div class="about-sub">Универсальный исполнитель проектов</div>
+                <p>Помогаю малому и среднему бизнесу, производствам и частным специалистам получать цифровые инструменты, которые экономят время и приносят результат. Беру задачу от идеи до запуска.</p>
+                <p>Много лет работал электрогазосварщиком на крупнейших стройках: космодром «Восточный», БелАЭС, аэропорт Домодедово. Знаю производство изнутри — от сварки до сдачи объекта.</p>
+                <p>Работал юристом в крупной агропромышленной организации и менеджером склада в оптовой компании. Понимаю бизнес-процессы изнутри.</p>
+                <p>Сейчас — самозанятый и практикующий юрист. Веду частную практику, сайт приносит реальных клиентов. Параллельно создаю цифровые продукты для бизнеса — от сайтов до Telegram-ботов.</p>
+                <div class="about-facts">
+                    <div class="fact"><span class="fact-icon">⚖️</span><span>Юрист — веду частную практику, есть клиенты</span></div>
+                    <div class="fact"><span class="fact-icon">🏗️</span><span>Много лет сварщиком: Восточный, БелАЭС, Домодедово</span></div>
+                    <div class="fact"><span class="fact-icon">📦</span><span>Менеджер склада — оптимизация процессов в оптовой компании</span></div>
+                    <div class="fact"><span class="fact-icon">💻</span><span>6+ проектов с нуля в одиночку</span></div>
+                    <div class="fact"><span class="fact-icon">📈</span><span>Сам продвигаю проекты: SEO, реклама, блог</span></div>
+                    <div class="fact"><span class="fact-icon">📋</span><span>Agile / Scrum — управление проектами от идеи до результата</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pm-skills" id="pm">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Управление проектами</h2>
+            <p>Не просто разработчик — а исполнитель, который ведёт проект от начала до конца</p>
+            <div class="line"></div>
+        </div>
+        <div class="pm-grid">
+            <div class="pm-card fade-in">
+                <h4>📋 Планирование и контроль</h4>
+                <ul>
+                    <li>Декомпозиция задач и постановка ТЗ</li>
+                    <li>Управление сроками и рисками</li>
+                    <li>Контроль исполнения и отчётность</li>
+                    <li>Ведение проекта от идеи до сдачи</li>
+                </ul>
+            </div>
+            <div class="pm-card fade-in">
+                <h4>🔄 Agile / Scrum / Kanban</h4>
+                <ul>
+                    <li>Планирование спринтов</li>
+                    <li>Управление бэклогом</li>
+                    <li>Проведение ретроспектив</li>
+                    <li>Гибкое реагирование на изменения</li>
+                </ul>
+            </div>
+            <div class="pm-card fade-in">
+                <h4>🛠️ Инструменты</h4>
+                <ul>
+                    <li>Jira — управление задачами и проектами</li>
+                    <li>Trello — визуальное планирование</li>
+                    <li>MS Project — сложные проекты с диаграммами Ганта</li>
+                    <li>YouTrack — трекинг и баг-репорты</li>
+                </ul>
+            </div>
+            <div class="pm-card fade-in">
+                <h4>📊 Опыт управления</h4>
+                <ul>
+                    <li>Проект приобретения автомобиля для руководителя</li>
+                    <li>Тендеры, согласования, контроль рисков</li>
+                    <li>Успешное завершение в срок и в бюджете</li>
+                    <li>Работа с несколькими подрядчиками одновременно</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tools" id="tools">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Интеграции и инструменты</h2>
+            <p>С чем работает СЕРКО</p>
+            <div class="line"></div>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card fade-in"><div class="tool-icon">💬</div><h4>Telegram-боты</h4><p>aiogram, python-telegram-bot</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">📊</div><h4>Аналитика</h4><p>Google Analytics, Яндекс.Метрика</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">🗄️</div><h4>CRM</h4><p>Bitrix24, amoCRM</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">💳</div><h4>Платежи</h4><p>ЮKassa, СБП, интеграции</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">📧</div><h4>Рассылки</h4><p>Email, Telegram-рассылки</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">☁️</div><h4>Базы данных</h4><p>IndexedDB, localStorage, облако</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">🎨</div><h4>Фронтенд</h4><p>HTML5, CSS3, JavaScript, PWA</p></div>
+            <div class="tool-card fade-in"><div class="tool-icon">🐍</div><h4>Бэкенд</h4><p>Python, REST API</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="why-me" id="why">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Почему я</h2>
+            <p>4 причины выбрать сотрудничество</p>
+            <div class="line"></div>
+        </div>
+        <div class="why-grid">
+            <div class="why-card fade-in"><div class="num">1</div><h3>Экономия</h3><p>Один специалист вместо команды из 3–5 человек. Нет накладных расходов на менеджмент и коммуникацию между отделами.</p></div>
+            <div class="why-card fade-in"><div class="num">2</div><h3>Полный цикл</h3><p>От сбора требований и прототипа до запуска, SEO и поддержки. Не нужно искать отдельных подрядчиков.</p></div>
+            <div class="why-card fade-in"><div class="num">3</div><h3>Опыт изнутри</h3><p>Знаю производство, юриспруденцию и бизнес не по учебникам, а по реальной работе на крупных объектах и в компаниях.</p></div>
+            <div class="why-card fade-in"><div class="num">4</div><h3>Юридическая грамотность</h3><p>Проверяю продукты на соответствие законодательству. Защищаю от рисков ещё на этапе разработки.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="process" id="process">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Как я работаю</h2>
+            <p>4 простых шага от заявки до запуска</p>
+            <div class="line"></div>
+        </div>
+        <div class="process-steps fade-in">
+            <div class="step"><div class="step-num">1</div><h4>Заявка</h4><p>Обсуждаем задачу,<br>цели и бюджет</p></div>
+            <div class="step"><div class="step-num">2</div><h4>ТЗ</h4><p>Составляем техническое<br>задание и сроки</p></div>
+            <div class="step"><div class="step-num">3</div><h4>Разработка</h4><p>Создаю продукт<br>с промежуточными показами</p></div>
+            <div class="step"><div class="step-num">4</div><h4>Запуск</h4><p>Публикация, настройка,<br>обучение и поддержка</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Связаться со мной</h2>
+            <p>Готов обсудить ваш проект — пишите!</p>
+            <div class="line"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Давайте работать вместе</h3>
+                <p>Расскажите о задаче — я оценю сроки, предложу решение и рассчитаю стоимость. Первичная консультация бесплатно.</p>
+                <div class="contact-item"><span class="icon">📧</span><a href="mailto:333742917@mail.ru">333742917@mail.ru</a></div>
+                <div class="contact-item"><span class="icon">🌐</span><a href="https://серко.рф" target="_blank">серко.рф</a></div>
+                <div class="contact-item"><span class="icon">📞</span><span style="font-weight:600;color:var(--white);">+375 33 374-29-17</span></div>
+                <div style="margin-top:1.5rem;display:flex;gap:0.8rem;flex-wrap:wrap;">
+                    <a href="tel:+375333742917" class="hero-btn" style="font-size:0.9rem;padding:0.7rem 1.4rem;background:var(--highlight);border-color:var(--highlight);">📞 Позвонить</a>
+                    <a href="mailto:333742917@mail.ru" class="hero-btn hero-btn-outline" style="font-size:0.9rem;padding:0.7rem 1.4rem;">✉️ Email</a>
+                </div>
+            </div>
+            <div class="contact-form fade-in" style="background:transparent;border:none;padding:0;display:flex;flex-direction:column;gap:1rem;justify-content:center;">
+                <div style="background:var(--white);padding:1.5rem;border-radius:14px;border:1px solid var(--border);text-align:center;">
+                    <h4 style="margin-bottom:0.5rem;color:var(--primary);">📄 Скачать резюме</h4>
+                    <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:1rem;">PDF-версия для печати или отправки</p>
+                    <a href="/resume.pdf" class="hero-btn" style="font-size:0.9rem;padding:0.7rem 1.4rem;display:inline-block;">Скачать PDF</a>
+                </div>
+                <div style="background:var(--white);padding:1.5rem;border-radius:14px;border:1px solid var(--border);text-align:center;">
+                    <h4 style="margin-bottom:0.5rem;color:var(--primary);">🔗 Поделиться</h4>
+                    <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:1rem;">Скопируйте ссылку на эту страницу</p>
+                    <button onclick="navigator.clipboard.writeText(window.location.href);alert('Ссылка скопирована!')" class="submit-btn" style="width:auto;padding:0.7rem 1.4rem;font-size:0.9rem;display:inline-block;">Копировать ссылку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Серко · <a href="https://серко.рф" target="_blank" style="color:rgba(255,255,255,0.6);">серко.рф</a> · Создано с ❤️ и кодом</p>
+    <p><a href="https://серко.рф" target="_blank">серко.рф</a></p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</button>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
+let slideInterval;
+function showSlide(index) {
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    currentSlide = index;
+}
+function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+function prevSlide() { showSlide((currentSlide - 1 + slides.length) % slides.length); }
+function goToSlide(index) { showSlide(index); resetInterval(); }
+function resetInterval() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 5000); }
+slideInterval = setInterval(nextSlide, 5000);
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+});
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+fadeElements.forEach(el => observer.observe(el));
+
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const showing = navLinks.style.display === 'flex';
+    navLinks.style.display = showing ? 'none' : 'flex';
+    if (!showing) {
+        navLinks.style.position = 'absolute'; navLinks.style.top = '100%';
+        navLinks.style.left = '0'; navLinks.style.right = '0';
+        navLinks.style.flexDirection = 'column'; navLinks.style.background = 'rgba(26,26,46,0.98)';
+        navLinks.style.padding = '1rem 2rem'; navLinks.style.gap = '1rem';
+    }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+</script>
+</body>
+</html>
