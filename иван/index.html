@@ -36,8 +36,6 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* ===== NAVBAR ===== */
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -102,8 +100,6 @@
             font-size: 1.4rem;
             cursor: pointer;
         }
-
-        /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -257,8 +253,6 @@
             letter-spacing: 1.5px;
             margin-top: 0.3rem;
         }
-
-        /* ===== SECTIONS ===== */
         section { padding: 5rem 2rem; }
         .section-header {
             text-align: center;
@@ -283,8 +277,6 @@
             margin: 1.2rem auto 0;
             border-radius: 2px;
         }
-
-        /* ===== SCENARIOS ===== */
         .scenarios {
             background: linear-gradient(180deg, var(--bg) 0%, var(--bg-card) 100%);
         }
@@ -373,8 +365,6 @@
             color: var(--text);
             font-weight: 600;
         }
-
-        /* ===== PROJECTS ===== */
         .projects-grid {
             max-width: 900px;
             margin: 0 auto;
@@ -449,8 +439,6 @@
             color: var(--accent);
             gap: 0.7rem;
         }
-
-        /* ===== ROLES ===== */
         .roles-grid {
             max-width: 900px;
             margin: 0 auto;
@@ -488,16 +476,14 @@
             color: var(--text-muted);
             line-height: 1.55;
         }
-
-        /* ===== ABOUT ===== */
         .about {
             background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%);
         }
         .about-grid {
-            max-width: 860px;
+            max-width: 900px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 360px 1fr;
             gap: 3rem;
             align-items: start;
         }
@@ -560,8 +546,6 @@
             color: var(--text-dim);
         }
         .about-box strong { color: var(--text); }
-
-        /* ===== CONTACT ===== */
         .contact-box {
             max-width: 640px;
             margin: 0 auto;
@@ -607,8 +591,6 @@
             font-weight: 500;
         }
         .contact-links a:hover { color: var(--accent); }
-
-        /* ===== FOOTER ===== */
         footer {
             background: var(--bg-card);
             border-top: 1px solid var(--border);
@@ -665,8 +647,6 @@
             font-weight: 500;
         }
         .footer-meta a:hover { color: var(--accent); }
-
-        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -684,14 +664,17 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .navbar { padding: 0.8rem 1rem; }
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
+            .nav-contact-top a,
+            .nav-contact-top a.phone {
+                font-size: 0.68rem;
+                padding: 0.35rem 0.6rem;
+            }
             .about-grid { grid-template-columns: 1fr; }
-            .about-photo { max-width: 260px; margin: 0 auto; }
+            .about-photo { width: 100%; max-width: 340px; margin: 0 auto; }
             .hero-facts { gap: 1.5rem; }
             .hero-fact:not(:last-child)::after { display: none; }
             .scenario-card { padding: 1.8rem; }
@@ -700,10 +683,10 @@
             .project-card { padding: 1.5rem; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <a href="#hero" class="nav-logo">СЕРКО<span>.</span></a>
     <div class="nav-links">
@@ -715,12 +698,11 @@
     </div>
     <div class="nav-contact-top">
         <a href="tel:+375333742917" class="phone">+375 33 374-29-17</a>
-        <a href="/cdn-cgi/l/email-protection#21121212161513181016614c40484d0f5354"><span class="__cf_email__" data-cfemail="a29191919596909b9395e2cfc3cbce8cd0d7">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#b48787878380868d8583f4d9d5ddd89ac6c1"><span class="__cf_email__" data-cfemail="d7e4e4e4e0e3e5eee6e097bab6bebbf9a5a2">[email&#160;protected]</span></a>
     </div>
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="hero">
     <canvas id="heroCanvas"></canvas>
     <div class="hero-content">
@@ -750,23 +732,20 @@
     </div>
 </section>
 
-<!-- SCENARIOS -->
 <section class="scenarios" id="scenarios">
     <div class="section-header fade-in">
         <h2>Что я могу сделать для <span style="color:var(--accent)">вашего</span> бизнеса</h2>
         <p>Выберите тип предприятия — и увидите конкретные задачи, которые я закрою</p>
         <div class="line"></div>
     </div>
-
     <div class="scenario-tabs fade-in">
-        <button class="scenario-tab active" onclick="showScenario(0)">⚙️ Техническое производство</button>
+        <button class="scenario-tab active" onclick="showScenario(0)">⚙️ Промышленное производство</button>
         <button class="scenario-tab" onclick="showScenario(1)">🥛 Продовольственное производство</button>
         <button class="scenario-tab" onclick="showScenario(2)">🏗️ Строительство</button>
         <button class="scenario-tab" onclick="showScenario(3)">🏢 Любая компания</button>
     </div>
-
     <div class="scenario-card fade-in" id="scenarioCard">
-        <h3><span class="emoji">⚙️</span> Техническое производство — типичные задачи и мои решения</h3>
+        <h3><span class="emoji">⚙️</span> Промышленное производство — типичные задачи и мои решения</h3>
         <ul class="scenario-list">
             <li><strong>Автоматизировать учёт смен и техники</strong> — создам систему, где мастер в пару кликов формирует наряды, а программа считает часы и трудозатраты автоматически</li>
             <li><strong>Провести тендер или закупку</strong> — подготовлю документацию, найду поставщиков, сопровожу от заявки до контракта</li>
@@ -779,79 +758,54 @@
     </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="projects" id="projects">
     <div class="section-header fade-in">
         <h2>Работающие системы, созданные с нуля</h2>
         <p>Не теория — реальные продукты, которые экономят время и деньги</p>
         <div class="line"></div>
     </div>
-
     <div class="projects-grid">
         <div class="project-card fade-in">
             <span class="tag">Производство</span>
             <h3>⚙️ Система учёта смен и техники для ДРСУ</h3>
             <p>Веб-приложение для мастера: выбор сотрудников, техники, объектов → автоматический расчёт часов и трудозатрат → печать готовых нарядов.</p>
             <div class="project-stats">
-                <div class="project-stat">
-                    <div class="val">в разы</div>
-                    <div class="lab">сокращение отчётности</div>
-                </div>
-                <div class="project-stat">
-                    <div class="val">0</div>
-                    <div class="lab">ошибок в подсчётах</div>
-                </div>
+                <div class="project-stat"><div class="val">в разы</div><div class="lab">сокращение отчётности</div></div>
+                <div class="project-stat"><div class="val">0</div><div class="lab">ошибок в подсчётах</div></div>
             </div>
             <a href="https://серко.рф/drsujournal" target="_blank" class="project-link">Открыть проект →</a>
         </div>
-
         <div class="project-card fade-in">
             <span class="tag" style="background:rgba(74,222,128,0.1);color:var(--green)">Продажи</span>
             <h3>💻 Экосистема привлечения клиентов</h3>
             <p>Лендинг с ценами + живой блог + Яндекс Директ + Telegram-бот. Клиенты приходят, читают, фильтруются — вы получаете только готовых к оплате.</p>
             <div class="project-stats">
-                <div class="project-stat">
-                    <div class="val">стабильно</div>
-                    <div class="lab">поток заявок</div>
-                </div>
-                <div class="project-stat">
-                    <div class="val">100%</div>
-                    <div class="lab">самостоятельно создано</div>
-                </div>
+                <div class="project-stat"><div class="val">стабильно</div><div class="lab">поток заявок</div></div>
+                <div class="project-stat"><div class="val">100%</div><div class="lab">самостоятельно создано</div></div>
             </div>
             <a href="https://серко.рф/lexconsult" target="_blank" class="project-link">Открыть проект →</a>
         </div>
-
         <div class="project-card fade-in">
             <span class="tag" style="background:rgba(90,122,150,0.15);color:var(--steel)">Автоматизация</span>
             <h3>🤖 Telegram-бот юридических консультаций</h3>
             <p>Автоматизированный помощник с кнопками, быстрыми ответами и плавным переводом на живого специалиста.</p>
             <a href="https://t.me/ConsullexBot" target="_blank" class="project-link">Открыть бота →</a>
         </div>
-
-        <div class="project-card fade-in">
-            <span class="tag" style="background:rgba(236,72,153,0.1);color:#ec4899">ИИ</span>
-            <h3>🧠 Карманный ИИ-справочник по праву</h3>
-            <p>Поиск по статьям, резюме норм, быстрые ответы — всё в одном приложении для юристов и не только.</p>
-            <a href="https://серко.рф/lawyer_assistant_v3" target="_blank" class="project-link">Открыть проект →</a>
-        </div>
-
-        <div class="project-card fade-in">
-            <span class="tag" style="background:rgba(245,158,11,0.1);color:#f59e0b">Образование</span>
-            <h3>📚 Подготовка к адвокатскому экзамену</h3>
-            <p>Учебные материалы, тесты и справочники для сдачи квалификационного экзамена.</p>
-            <a href="https://серко.рф/advocate-exam" target="_blank" class="project-link">Открыть проект →</a>
-        </div>
-
         <div class="project-card fade-in">
             <span class="tag" style="background:rgba(16,185,129,0.1);color:#10b981">Безопасность</span>
             <h3>🛡️ Анонимайзер документов</h3>
             <p>Инструмент для автоматического удаления персональных данных из файлов перед передачей третьим лицам.</p>
+            <a href="https://серко.рф/anonym" target="_blank" class="project-link">Открыть проект →</a>
+        </div>
+        <div class="project-card fade-in">
+            <span class="tag" style="background:rgba(201,168,76,0.1);color:var(--accent)">Портфолио</span>
+            <h3>🌐 Основной сайт serko.рф</h3>
+            <p>Центральный хаб всех проектов: юридические услуги, автоматизация, блог, инструменты — всё в одном месте.</p>
+            <a href="https://серко.рф" target="_blank" class="project-link">Открыть сайт →</a>
         </div>
     </div>
 </section>
 
-<!-- ROLES -->
 <section class="roles" id="roles">
     <div class="section-header fade-in">
         <h2>Кем я могу быть полезен</h2>
@@ -859,40 +813,15 @@
         <div class="line"></div>
     </div>
     <div class="roles-grid">
-        <div class="role-card fade-in">
-            <span class="emoji">📊</span>
-            <h3>Менеджер проектов</h3>
-            <p>Внедрение, развитие, запуск новых направлений — от идеи до результата</p>
-        </div>
-        <div class="role-card fade-in">
-            <span class="emoji">⚙️</span>
-            <h3>Инженер по автоматизации</h3>
-            <p>Цифровизация учёта, отчётности, документооборота — без дорогих лицензий</p>
-        </div>
-        <div class="role-card fade-in">
-            <span class="emoji">⚖️</span>
-            <h3>Юрист</h3>
-            <p>Договоры, суды, консультации, лицензии, НПА — разберу, найду решение, внедрю</p>
-        </div>
-        <div class="role-card fade-in">
-            <span class="emoji">📋</span>
-            <h3>Специалист по закупкам</h3>
-            <p>Тендеры, документация, работа с поставщиками — от заявки до контракта</p>
-        </div>
-        <div class="role-card fade-in">
-            <span class="emoji">📈</span>
-            <h3>Маркетолог / продвижение</h3>
-            <p>Реклама, сайты, соцсети, привлечение клиентов — настраиваю и веду</p>
-        </div>
-        <div class="role-card fade-in">
-            <span class="emoji">💻</span>
-            <h3>Разработчик / создатель ПО</h3>
-            <p>Сайты, PWA, боты, автоматизация — под ваш процесс, не шаблонно</p>
-        </div>
+        <div class="role-card fade-in"><span class="emoji">📊</span><h3>Менеджер проектов</h3><p>Внедрение, развитие, запуск новых направлений — от идеи до результата</p></div>
+        <div class="role-card fade-in"><span class="emoji">⚙️</span><h3>Инженер по автоматизации</h3><p>Цифровизация учёта, отчётности, документооборота — без дорогих лицензий</p></div>
+        <div class="role-card fade-in"><span class="emoji">⚖️</span><h3>Юрист</h3><p>Договоры, суды, консультации, лицензии, НПА — разберу, найду решение, внедрю</p></div>
+        <div class="role-card fade-in"><span class="emoji">📋</span><h3>Специалист по закупкам</h3><p>Тендеры, документация, работа с поставщиками — от заявки до контракта</p></div>
+        <div class="role-card fade-in"><span class="emoji">📈</span><h3>Маркетолог / продвижение</h3><p>Реклама, сайты, соцсети, привлечение клиентов — настраиваю и веду</p></div>
+        <div class="role-card fade-in"><span class="emoji">💻</span><h3>Разработчик / создатель ПО</h3><p>Сайты, PWA, боты, автоматизация — под ваш процесс, не шаблонно</p></div>
     </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
     <div class="section-header fade-in">
         <h2>Кто я</h2>
@@ -916,7 +845,6 @@
     </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
     <div class="section-header fade-in">
         <h2>Давайте обсудим вашу задачу</h2>
@@ -929,17 +857,16 @@
         <div class="contact-btns">
             <a href="tel:+375333742917" class="btn btn-primary">Позвонить</a>
             <a href="viber://chat?number=+375333742917" class="btn btn-secondary">Viber</a>
-            <a href="/cdn-cgi/l/email-protection#a99a9a9a9e9d9b90989ee9c4c8c0c587dbdc" class="btn btn-secondary">Email</a>
+            <a href="/cdn-cgi/l/email-protection#f6c5c5c5c1c2c4cfc7c1b69b979f9ad88483" class="btn btn-secondary">Email</a>
         </div>
         <div class="contact-links">
             <a href="tel:+375333742917">+375 33 374-29-17</a>
-            <a href="/cdn-cgi/l/email-protection#271414141013151e1610674a464e4b095552"><span class="__cf_email__" data-cfemail="dcefefefebe8eee5edeb9cb1bdb5b0f2aea9">[email&#160;protected]</span></a>
+            <a href="/cdn-cgi/l/email-protection#82b1b1b1b5b6b0bbb3b5c2efe3ebeeacf0f7"><span class="__cf_email__" data-cfemail="b58686868281878c8482f5d8d4dcd99bc7c0">[email&#160;protected]</span></a>
             <a href="https://серко.рф" target="_blank">serko.рф</a>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-links">
         <a href="https://серко.рф/lexconsult" target="_blank">🏛️ LexConsult</a>
@@ -947,32 +874,26 @@
         <a href="https://серко.рф/lawyer_assistant_v3" target="_blank">🧠 Lawyer Assistant</a>
         <a href="https://t.me/ConsullexBot" target="_blank">🤖 Consullex Bot</a>
         <a href="https://серко.рф/legal-blog" target="_blank">📝 Юридический блог</a>
-        <a href="https://серко.рф/advocate-exam" target="_blank">📚 Адвокатский экзамен</a>
+        <a href="https://серко.рф/anonym" target="_blank">🛡️ Анонимайзер</a>
     </div>
     <div class="footer-brand">СЕРКО<span>.</span></div>
     <div class="footer-name">Иван Серко — универсальный исполнитель</div>
     <div class="footer-year">© 2026</div>
     <div class="footer-meta">
-        <a href="/cdn-cgi/l/email-protection#d2e1e1e1e5e6e0ebe3e592bfb3bbbefca0a7"><span class="__cf_email__" data-cfemail="6d5e5e5e5a595f545c5a2d000c0401431f18">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#596a6a6a6e6d6b60686e1934383035772b2c"><span class="__cf_email__" data-cfemail="96a5a5a5a1a2a4afa7a1d6fbf7fffab8e4e3">[email&#160;protected]</span></a>
         <a href="tel:+375333742917">+375 33 374-29-17</a>
         <a href="https://серко.рф">serko.рф →</a>
     </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ===== CANVAS PARTICLE NETWORK =====
 const canvas = document.getElementById('heroCanvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
 let mouse = { x: null, y: null };
-
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 resize();
 window.addEventListener('resize', resize);
-
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
@@ -982,19 +903,14 @@ class Particle {
         this.size = Math.random() * 1.5 + 0.5;
     }
     update() {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx; this.y += this.vy;
         if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
         if (mouse.x != null) {
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
             let dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < 180) {
-                this.x -= dx * 0.008;
-                this.y -= dy * 0.008;
-            }
+            if (dist < 180) { this.x -= dx * 0.008; this.y -= dy * 0.008; }
         }
     }
     draw() {
@@ -1004,15 +920,10 @@ class Particle {
         ctx.fill();
     }
 }
-
 for (let i = 0; i < 55; i++) particles.push(new Particle());
-
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
+    particles.forEach(p => { p.update(); p.draw(); });
     for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
             let dx = particles[i].x - particles[j].x;
@@ -1031,29 +942,15 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
+canvas.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+canvas.addEventListener('touchmove', e => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; });
+canvas.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
 
-canvas.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-canvas.addEventListener('mouseleave', () => {
-    mouse.x = null;
-    mouse.y = null;
-});
-canvas.addEventListener('touchmove', e => {
-    mouse.x = e.touches[0].clientX;
-    mouse.y = e.touches[0].clientY;
-});
-canvas.addEventListener('touchend', () => {
-    mouse.x = null;
-    mouse.y = null;
-});
-
-// ===== SCENARIO TABS =====
 const scenarios = [
     {
         emoji: '⚙️',
-        title: 'Техническое производство — типичные задачи и мои решения',
+        title: 'Промышленное производство — типичные задачи и мои решения',
         items: [
             '<strong>Автоматизировать учёт смен и техники</strong> — создам систему, где мастер в пару кликов формирует наряды, а программа считает часы и трудозатраты автоматически',
             '<strong>Провести тендер или закупку</strong> — подготовлю документацию, найду поставщиков, сопровожу от заявки до контракта',
@@ -1120,18 +1017,11 @@ function showScenario(index) {
     }, 220);
 }
 
-// ===== SCROLL ANIMATIONS =====
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            e.target.classList.add('visible');
-        }
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1139,7 +1029,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
 });
 
-// ===== MOBILE MENU =====
 function toggleMobileMenu() {
     const nl = document.querySelector('.nav-links');
     const nc = document.querySelector('.nav-contact-top');
