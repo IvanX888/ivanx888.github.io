@@ -62,7 +62,7 @@ nav.scrolled{background:rgba(242,239,235,.85);backdrop-filter:blur(16px);border-
 .hero h1 .solid{color:var(--txt)}
 .hero h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--txt)}
 .hero-sub{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--muted);max-width:620px;margin-bottom:2.2rem}
-.typed{color:var(--acc);font-weight:600;border-bottom:3px solid var(--acc)}
+.typed{display:inline-block;min-width:10ch;white-space:nowrap;text-align:left;color:var(--acc);font-weight:600;border-bottom:3px solid var(--acc)}
 .caret{display:inline-block;width:3px;height:1.1em;background:var(--acc);vertical-align:-.15em;animation:blink 1s steps(1) infinite;margin-left:2px}
 @keyframes blink{50%{opacity:0}}
 .badges{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2.4rem}
@@ -195,7 +195,7 @@ section{padding:4rem 0}
 <span class="badge">💬 Telegram и MAX</span>
 </div>
 <div class="rv" style="--d:.34s">
-<a class="btn btn-main" href="https://t.me/BYIvanko" target="_blank" rel="noopener">Написать в Telegram ✈️</a>
+<a class="btn btn-main" href="https://t.me/BYIvanko">Написать в Telegram ✈️</a>
 <a class="btn btn-ghost" href="#services">Услуги и цены ↓</a>
 </div>
 </div>
@@ -211,12 +211,12 @@ section{padding:4rem 0}
 <div class="sec-head rv"><span class="mono">// услуги и цены</span><h2>Что я <em>делаю</em></h2><p>Честные цены «от» — точную стоимость фиксируем в ТЗ до начала работы.</p></div>
 <!-- EDIT-PRICES: поправьте цифры -->
 <div class="svc-grid">
-<div class="svc rv" style="--d:0s"><div class="ic">🌐</div><h3>Лендинг / сайт-визитка</h3><p>Продающая страница под вашу задачу: прототип, дизайн, формы заявки, аналитика.</p><div class="price-row"><span class="price">от 25 000 ₽</span><a class="go" href="https://t.me/BYIvanko" target="_blank" rel="noopener">заказать →</a></div></div>
-<div class="svc rv" style="--d:.06s"><div class="ic">🏢</div><h3>Корпоративный сайт</h3><p>Несколько страниц, блог, каталог услуг, подключение Метрики и заявок.</p><div class="price-row"><span class="price">от 45 000 ₽</span><a class="go" href="https://t.me/BYIvanko" target="_blank" rel="noopener">заказать →</a></div></div>
-<div class="svc rv" style="--d:.12s"><div class="ic">🛒</div><h3>Интернет-магазин</h3><p>Карточки товаров, корзина, онлайн-оплата, заявки в Telegram.</p><div class="price-row"><span class="price">от 60 000 ₽</span><a class="go" href="https://t.me/BYIvanko" target="_blank" rel="noopener">заказать →</a></div></div>
-<div class="svc rv" style="--d:0s"><div class="ic">📱</div><h3>Веб-приложение</h3><p>Индивидуальный инструмент: учёт, CRM, дашборды. Работает в браузере и на телефоне.</p><div class="price-row"><span class="price">от 50 000 ₽</span><a class="go" href="https://t.me/BYIvanko" target="_blank" rel="noopener">заказать →</a></div></div>
-<div class="svc rv" style="--d:.06s"><div class="ic">🤖</div><h3>Telegram-бот</h3><p>Приём заявок, рассылки, интеграции с вашими сервисами. Работает 24/7.</p><div class="price-row"><span class="price">от 20 000 ₽</span><a class="go" href="https://t.me/BYIvanko" target="_blank" rel="noopener">заказать →</a></div></div>
-<div class="svc rv" style="--d:.12s"><div class="ic">🔍</div><h3>SEO и продвижение</h3><p>Аудит, семантика, техническая оптимизация, план контента. Магия, которая приводит клиентов из поиска.</p><div class="price-row"><span class="price">от 15 000 ₽</span><a class="go" href="https://t.me/BYIvanko" target="_blank" rel="noopener">заказать →</a></div></div>
+<div class="svc rv" style="--d:0s"><div class="ic">🌐</div><h3>Лендинг / сайт-визитка</h3><p>Продающая страница под вашу задачу: прототип, дизайн, формы заявки, аналитика.</p><div class="price-row"><span class="price">от 25 000 ₽</span><a class="go" href="https://t.me/BYIvanko">заказать →</a></div></div>
+<div class="svc rv" style="--d:.06s"><div class="ic">🏢</div><h3>Корпоративный сайт</h3><p>Несколько страниц, блог, каталог услуг, подключение Метрики и заявок.</p><div class="price-row"><span class="price">от 45 000 ₽</span><a class="go" href="https://t.me/BYIvanko">заказать →</a></div></div>
+<div class="svc rv" style="--d:.12s"><div class="ic">🛒</div><h3>Интернет-магазин</h3><p>Карточки товаров, корзина, онлайн-оплата, заявки в Telegram.</p><div class="price-row"><span class="price">от 60 000 ₽</span><a class="go" href="https://t.me/BYIvanko">заказать →</a></div></div>
+<div class="svc rv" style="--d:0s"><div class="ic">📱</div><h3>Веб-приложение</h3><p>Индивидуальный инструмент: учёт, CRM, дашборды. Работает в браузере и на телефоне.</p><div class="price-row"><span class="price">от 50 000 ₽</span><a class="go" href="https://t.me/BYIvanko">заказать →</a></div></div>
+<div class="svc rv" style="--d:.06s"><div class="ic">🤖</div><h3>Telegram-бот</h3><p>Приём заявок, рассылки, интеграции с вашими сервисами. Работает 24/7.</p><div class="price-row"><span class="price">от 20 000 ₽</span><a class="go" href="https://t.me/BYIvanko">заказать →</a></div></div>
+<div class="svc rv" style="--d:.12s"><div class="ic">🔍</div><h3>SEO и продвижение</h3><p>Аудит, семантика, техническая оптимизация, план контента. Магия, которая приводит клиентов из поиска.</p><div class="price-row"><span class="price">от 15 000 ₽</span><a class="go" href="https://t.me/BYIvanko">заказать →</a></div></div>
 </div>
 </div>
 </section>
@@ -226,12 +226,12 @@ section{padding:4rem 0}
 <div class="sec-head rv"><span class="mono">// портфолио</span><h2>Мои <em>проекты</em></h2><p>Листайте — всё сделано с нуля одним человеком и работает в реальном бизнесе.</p></div>
 <div class="car-wrap rv">
 <div class="car" id="car">
-<div class="pf"><div class="pf-img"><img src="project_lexconsult.jpg" alt="LexConsult — сайт юридических услуг" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">⚖️</span></div><div class="pf-body"><h3>LexConsult — сайт услуг</h3><p>Сайт с SEO-оптимизацией и формами заявок. Более года стабильно приводит клиентов из поиска.</p><div class="res">→ органика: клиенты из Google и Яндекса</div><a href="https://серко.рф/lexconsult" target="_blank" rel="noopener">смотреть проект →</a></div></div>
-<div class="pf"><div class="pf-img"><img src="project_bot.jpg" alt="Consullex Bot — Telegram-бот на Python" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">💬</span></div><div class="pf-body"><h3>Consullex Bot</h3><p>Telegram-бот на Python: маршрутизация запросов, автоматические ответы, интеграции.</p><div class="res">→ работает 24/7 без участия человека</div><a href="https://t.me/ConsullexBot" target="_blank" rel="noopener">открыть бота →</a></div></div>
-<div class="pf"><div class="pf-img"><img src="project_drsu.jpg" alt="Журнал ДРСУ — приложение учёта с офлайн-режимом" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">🏗️</span></div><div class="pf-body"><h3>Журнал ДРСУ</h3><p>Приложение учёта для мастера: материалы, заявки, отчёты. Оффлайн-режим через IndexedDB.</p><div class="res">→ отчётность: 3 часа → 20 минут</div><a href="https://серко.рф/drsujournal" target="_blank" rel="noopener">смотреть проект →</a></div></div>
-<div class="pf"><div class="pf-img"><img src="project_lawyer.jpg" alt="Lawyer Assistant — PWA-приложение" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">🤖</span></div><div class="pf-body"><h3>Lawyer Assistant v3</h3><p>PWA-приложение: шаблоны документов, справочная система, автоматизация рутины. Ставится на телефон как приложение.</p><div class="res">→ PWA: работает без установки из сторов</div><a href="https://серко.рф/lawyer_assistant_v3" target="_blank" rel="noopener">смотреть проект →</a></div></div>
-<div class="pf"><div class="pf-img"><img src="project_blog.jpg" alt="Юридический блог — контент и SEO" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">📝</span></div><div class="pf-body"><h3>Юридический блог</h3><p>Блог с разборами кейсов и контент-маркетингом. Растёт органический трафик из поиска.</p><div class="res">→ трафик растёт без рекламы</div><a href="https://серко.рф/legal-blog" target="_blank" rel="noopener">смотреть проект →</a></div></div>
-<div class="pf"><div class="pf-img"><img src="project_exam.jpg" alt="Адвокатский экзамен — образовательная платформа" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">📚</span></div><div class="pf-body"><h3>Адвокатский экзамен</h3><p>Образовательная платформа: план подготовки, темы, тесты, трекинг прогресса.</p><div class="res">→ продукт с нуля до запуска</div><a href="https://серко.рф/advocate-exam" target="_blank" rel="noopener">смотреть проект →</a></div></div>
+<div class="pf"><div class="pf-img"><img src="project_lexconsult.jpg" alt="LexConsult — сайт юридических услуг" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">⚖️</span></div><div class="pf-body"><h3>LexConsult — сайт услуг</h3><p>Сайт с SEO-оптимизацией и формами заявок. Более года стабильно приводит клиентов из поиска.</p><div class="res">→ органика: клиенты из Google и Яндекса</div><a href="https://серко.рф/lexconsult">смотреть проект →</a></div></div>
+<div class="pf"><div class="pf-img"><img src="project_bot.jpg" alt="Consullex Bot — Telegram-бот на Python" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">💬</span></div><div class="pf-body"><h3>Consullex Bot</h3><p>Telegram-бот на Python: маршрутизация запросов, автоматические ответы, интеграции.</p><div class="res">→ работает 24/7 без участия человека</div><a href="https://t.me/ConsullexBot">открыть бота →</a></div></div>
+<div class="pf"><div class="pf-img"><img src="project_drsu.jpg" alt="Журнал ДРСУ — приложение учёта с офлайн-режимом" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">🏗️</span></div><div class="pf-body"><h3>Журнал ДРСУ</h3><p>Приложение учёта для мастера: материалы, заявки, отчёты. Оффлайн-режим через IndexedDB.</p><div class="res">→ отчётность: 3 часа → 20 минут</div><a href="https://серко.рф/drsujournal">смотреть проект →</a></div></div>
+<div class="pf"><div class="pf-img"><img src="project_lawyer.jpg" alt="Lawyer Assistant — PWA-приложение" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">🤖</span></div><div class="pf-body"><h3>Lawyer Assistant v3</h3><p>PWA-приложение: шаблоны документов, справочная система, автоматизация рутины. Ставится на телефон как приложение.</p><div class="res">→ PWA: работает без установки из сторов</div><a href="https://серко.рф/lawyer_assistant_v3">смотреть проект →</a></div></div>
+<div class="pf"><div class="pf-img"><img src="project_blog.jpg" alt="Юридический блог — контент и SEO" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">📝</span></div><div class="pf-body"><h3>Юридический блог</h3><p>Блог с разборами кейсов и контент-маркетингом. Растёт органический трафик из поиска.</p><div class="res">→ трафик растёт без рекламы</div><a href="https://серко.рф/legal-blog">смотреть проект →</a></div></div>
+<div class="pf"><div class="pf-img"><img src="project_exam.jpg" alt="Адвокатский экзамен — образовательная платформа" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'"><span class="emo">📚</span></div><div class="pf-body"><h3>Адвокатский экзамен</h3><p>Образовательная платформа: план подготовки, темы, тесты, трекинг прогресса.</p><div class="res">→ продукт с нуля до запуска</div><a href="https://серко.рф/advocate-exam">смотреть проект →</a></div></div>
 </div>
 <div class="car-nav">
 <button class="car-btn" onclick="document.getElementById('car').scrollBy({left:-520,behavior:'smooth'})" aria-label="Назад">←</button>
@@ -290,15 +290,15 @@ section{padding:4rem 0}
 <h2>Обсудим ваш <em>проект?</em></h2>
 <p>Опишите задачу парой предложений — я оценю сроки и предложу решение. Первичная консультация бесплатная. Отвечаю быстро.</p>
 <div class="c-row">
-<a class="c-link tg" href="https://t.me/BYIvanko" target="_blank" rel="noopener">✈️ Написать в Telegram</a>
-<a class="c-link" href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" target="_blank" rel="noopener"><b style="font-family:'Space Grotesk';letter-spacing:.08em;border:1.5px solid currentColor;border-radius:6px;padding:.05rem .35rem;font-size:.8em">MAX</b>&nbsp;Написать в MAX</a>
+<a class="c-link tg" href="https://t.me/BYIvanko">✈️ Написать в Telegram</a>
+<a class="c-link" href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0"><b style="font-family:'Space Grotesk';letter-spacing:.08em;border:1.5px solid currentColor;border-radius:6px;padding:.05rem .35rem;font-size:.8em">MAX</b>&nbsp;Написать в MAX</a>
 <a class="c-link" href="mailto:333742917@mail.ru">📧 333742917@mail.ru</a>
 </div>
 </div>
 </div>
 </section>
 
-<footer><div class="wrap">© 2026 СЕРКО · <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0" target="_blank" rel="noopener">MAX</a> · сайты, боты, приложения</div></footer>
+<footer><div class="wrap">© 2026 СЕРКО · <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0">MAX</a> · сайты, боты, приложения</div></footer>
 
 <script>
 const nav=document.getElementById('nav');
@@ -311,7 +311,17 @@ if(!del&&ci===w.length){s=1600;del=true}
 else if(del&&ci===0){del=false;wi=(wi+1)%words.length;s=350}
 else ci+=del?-1:1;
 setTimeout(tick,s)}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){var el=document.querySelector(this.getAttribute('href'));if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}})});
 tick();
+/* колесо над каруселью: листает слайды до края, затем прокручивает страницу */
+const car=document.getElementById('car');
+car.addEventListener('wheel',function(e){
+  if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
+  const max=car.scrollWidth-car.clientWidth;
+  const atStart=car.scrollLeft<=0&&e.deltaY<0;
+  const atEnd=car.scrollLeft>=max-1&&e.deltaY>0;
+  if(!atStart&&!atEnd){e.preventDefault();car.scrollLeft+=e.deltaY}
+},{passive:false});
 </script>
 </body>
 </html>
