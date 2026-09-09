@@ -2,8 +2,6 @@ User-agent: *
 Allow: /
 Allow: /legal-blog/
 Disallow: /404.html
-Disallow: /privacy.html
-Disallow: /offer.html
 
 User-agent: Googlebot
 Allow: /
