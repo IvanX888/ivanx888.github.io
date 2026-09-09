@@ -47,16 +47,6 @@ nav.scrolled{background:rgba(242,239,235,.85);backdrop-filter:blur(16px);border-
 /* hero */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:6rem;overflow:hidden}
 .hero::before{content:'';position:absolute;width:700px;height:700px;left:-250px;bottom:-300px;background:radial-gradient(circle,rgba(196,85,45,.14),transparent 65%);pointer-events:none}
-/* шестерёнки */
-.gears{position:absolute;top:14%;right:5%;width:180px;height:180px;pointer-events:none;user-select:none;z-index:1}
-.gear{position:absolute}
-.gear-a{width:150px;animation:spin 26s linear infinite}
-.gear-b{width:92px;top:106px;left:-36px;animation:spinRev 16s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes spinRev{to{transform:rotate(-360deg)}}
-.gears-mini{position:absolute;top:4rem;right:1.2rem;width:110px;height:110px;z-index:1}
-.gears-mini .gear-a{width:96px}
-.gears-mini .gear-b{width:60px;top:66px;left:-22px}
 .hero-in{max-width:1000px}
 .hero h1{font-size:clamp(2.7rem,8.5vw,6.2rem);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin:1.3rem 0 1.6rem}
 .hero h1 .solid{color:var(--txt)}
@@ -162,10 +152,9 @@ footer a{color:#B8B0A6}
 .burger{display:block}
 .btn-ghost{margin-left:0;margin-top:.8rem}
 section{padding:4rem 0}
-.gears{transform:scale(.55);transform-origin:top right;top:9%;right:2%}
-.gears-mini{display:none}
 }
 </style>
+<link rel="stylesheet" href="gears.css">
 <base target="_blank">
 </head>
 <body>
