@@ -2577,6 +2577,7 @@
     }
     </script>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -2815,7 +2816,7 @@
                 <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn max" onclick="trackContact('max')" target="_blank" rel="noopener noreferrer">💬 Написать в MAX</a>
                 <a href="https://t.me/BYIvanko?utm_source=direct&utm_medium=cpc&utm_campaign=alimenty" class="panel-btn telegram" onclick="trackContact('telegram')" target="_blank" rel="noopener noreferrer">✈️ Telegram</a>
                 <a href="tel:+79774232473" class="panel-btn primary" onclick="trackContact('phone')">📞 +7 (977) 423-24-73</a>
-                <a href="mailto:333742917@mail.ru" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
+                <a href="/cdn-cgi/l/email-protection#3c0f0f0f0b080e050d0b7c515d5550124e49" class="panel-btn" onclick="trackContact('email')">✉️ Email</a>
                 <div class="contact-note" style="font-size:0.75em; color:rgba(220,195,170,0.6); text-align:center; padding:6px 0;">🚗 Выезд при острой необходимости — по договорённости</div>
                 <div class="consent-checkbox-block">
                     <label class="consent-label">
@@ -2984,7 +2985,7 @@
         </div>
     </aside>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ════════════════════════════════════════════
 // HELPER FUNCTIONS FOR SPECIAL MODALS
 // ════════════════════════════════════════════
@@ -3420,7 +3421,7 @@ function trackContact(type) {
             },
             {
                 icon: '👨‍👩‍👧', title: 'Алименты', tag: 'Семейное право',
-                desc: 'Профессиональная помощь по взысканию алиментов на детей и супругов. Работаю с задолженностями, изменением размера, индексацией. Сопровождаю на всех этапах — от консультации до приставов.',
+                desc: 'Профессиональная помощь по взысканию алиментов на детей и супругов. Работаю с задолженностями, изменением размера, индексацией. Сопровождаю на всех этапах — от консультации до приставов. <a href="/alimenty.html" style="color:rgba(255,215,100,0.95);text-decoration:underline;">Подробнее об услуге →</a>',
                 urgency: '⏰ Срок обжалования судебного приказа — 10 дней! Не упустите.',
                 features: ['Расчёт размера алиментов (25/33/50%)', 'Взыскание задолженности + пени', 'Изменение размера алиментов', 'Индексация и неустойка', 'Работа с ФССП и приставами'],
                 price: 'Консультация 2 000 ₽',
@@ -3430,7 +3431,7 @@ function trackContact(type) {
             },
             {
                 icon: '💔', title: 'Развод', tag: 'Семейное право',
-                desc: 'Расторжение брака через ЗАГС или суд. Подготовка всех документов удалённо. Сопровождение на каждом этапе. Развод с детьми, с имуществом, по согласию или в спорном порядке.',
+                desc: 'Расторжение брака через ЗАГС или суд. Подготовка всех документов удалённо. Сопровождение на каждом этапе. Развод с детьми, с имуществом, по согласию или в спорном порядке. <a href="/razvod.html" style="color:rgba(255,215,100,0.95);text-decoration:underline;">Подробнее об услуге →</a>',
                 urgency: '⚠️ При наличии несовершеннолетних детей — только через суд. Не тяните!',
                 features: ['Развод через ЗАГС (без детей)', 'Развод через суд (с детьми)', 'Подготовка искового заявления', 'Что нужно отправить ответчику', 'Представление интересов в суде'],
                 price: 'Консультация 2 000 ₽',
@@ -3556,7 +3557,7 @@ function trackContact(type) {
             modalIcon.textContent = data.icon;
             modalTag.textContent = data.tag;
             modalTitle.textContent = data.title;
-            modalDesc.textContent = data.desc;
+            modalDesc.innerHTML = data.desc;
             modalPrice.textContent = data.price;
             modalBtn.textContent = data.btn;
             modalBtn.href = data.btnLink;
