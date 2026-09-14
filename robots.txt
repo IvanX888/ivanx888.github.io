@@ -1,39 +1,29 @@
 User-agent: *
 Allow: /
-Allow: /legal-blog/
-Disallow: /404.html
+Disallow: /?utm_
+Disallow: /*?utm_
 
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Yandex
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
+# AI-поисковики и ассистенты
 User-agent: GPTBot
 Allow: /
-
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
 User-agent: ClaudeBot
 Allow: /
-
 User-agent: PerplexityBot
 Allow: /
-
-User-agent: CCBot
+User-agent: Google-Extended
 Allow: /
-
-Host: https://серко.рф
+User-agent: Applebot-Extended
+Allow: /
+User-agent: YandexGPT
+Allow: /
 
 Sitemap: https://серко.рф/sitemap.xml
 Sitemap: https://серко.рф/legal-blog/sitemap.xml
 
-LLM-crawl: https://серко.рф/llms.txt
-LLM-crawl-full: https://серко.рф/llms-full.txt
+# Для ИИ-ассистентов
+LLMs: https://серко.рф/llms.txt
+LLMs-Full: https://серко.рф/llms-full.txt
