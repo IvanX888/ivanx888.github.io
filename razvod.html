@@ -14,12 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Развод через суд и ЗАГС — раздел имущества, дети | Серко И.И.</title>
+    <title>Развод через суд и ЗАГС: раздел имущества, дети | Серко И.И.</title>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LegalService",
-  "name": "Юрист по разводам — Серко Иван Иванович",
+  "name": "Юрист по разводам: Серко Иван Иванович",
   "description": "Развод через ЗАГС и суд онлайн: раздел имущества и ипотеки, алименты, определение места жительства детей, брачный договор. Консультация 2 000 ₽. Вся Россия.",
   "url": "https://серко.рф/razvod.html",
   "telephone": "+7-977-423-24-73",
@@ -56,11 +56,26 @@
         .footer { text-align: center; padding: 30px 20px; border-top: 1px solid rgba(200,160,100,0.15); margin-top: 40px; font-size: 0.85em; color: rgba(220,195,170,0.6); }
         .footer a { color: rgba(255,215,100,0.85); text-decoration: none; }
         .footer a:hover { color: rgba(255,215,100,1); }
+
+        /* Карточка юриста */
+        .lawyer-hero { display: flex; gap: 26px; align-items: center; margin: 32px 0; padding: 26px; background: rgba(80,55,35,0.3); border: 1px solid rgba(200,160,100,0.22); border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+        .lawyer-photo { flex-shrink: 0; }
+        .lawyer-photo img { width: 150px; height: 190px; object-fit: cover; object-position: center 22%; border-radius: 18px; border: 1px solid rgba(255,215,100,0.45); box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 30px rgba(255,215,100,0.1); display: block; }
+        .lawyer-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.45em; font-weight: 600; color: rgba(255,240,220,0.97); margin-bottom: 4px; }
+        .lawyer-role { font-size: 0.85em; color: rgba(255,215,100,0.85); margin-bottom: 12px; letter-spacing: 0.5px; }
+        .lawyer-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+        .lawyer-badges span { font-size: 0.72em; color: rgba(255,240,220,0.85); background: rgba(255,215,100,0.08); border: 1px solid rgba(255,215,100,0.2); padding: 4px 10px; border-radius: 10px; }
+        .lawyer-text { font-size: 0.9em; color: rgba(220,195,170,0.85); line-height: 1.6; margin-bottom: 14px; }
+        .lawyer-text b { color: rgba(255,240,220,0.95); }
+
         @media (max-width: 600px) {
             .header h1 { font-size: 1.5em; }
             .header p { font-size: 1em; }
             .section { padding: 20px; margin: 24px 0; }
             .btn { display: block; width: 100%; margin: 8px 0; }
+            .lawyer-hero { flex-direction: column; text-align: center; padding: 22px 18px; }
+            .lawyer-photo img { width: 130px; height: 165px; }
+            .lawyer-badges { justify-content: center; }
         }
     </style>
     <base target="_blank">
@@ -79,11 +94,11 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Сколько стоит развод через суд?", "acceptedAnswer": {"@type": "Answer", "text": "Госпошлина — 5 000 ₽ (2026). Моё сопровождение — от 7 000 ₽ по договору. Итоговая стоимость зависит от того, есть ли споры о детях и имуществе."}},
+    {"@type": "Question", "name": "Сколько стоит развод через суд?", "acceptedAnswer": {"@type": "Answer", "text": "Госпошлина: 5 000 ₽ (2026). Моё сопровождение: от 7 000 ₽ по договору. Итоговая стоимость зависит от того, есть ли споры о детях и имуществе."}},
     {"@type": "Question", "name": "С кем остаются дети после развода?", "acceptedAnswer": {"@type": "Answer", "text": "По соглашению родителей или решению суда. Суд исходит из интересов ребёнка: возраст, привязанность, условия проживания. Помогу доказать, что ребёнку лучше жить с вами."}},
     {"@type": "Question", "name": "Что делать, если супруг против развода?", "acceptedAnswer": {"@type": "Answer", "text": "Отказ второго супруга не препятствие: суд расторгает брак, даже если один против (ст. 22 СК РФ). Возможны две отсрочки по месяцу, но решение не зависит от согласия."}},
     {"@type": "Question", "name": "Как делится квартира и ипотека при разводе?", "acceptedAnswer": {"@type": "Answer", "text": "Имущество, нажитое в браке, делится поровну (ст. 34 СК РФ). Ипотеку обычно делят вместе с квартирой: продажа и погашение долга, выкуп доли или мировое соглашение."}},
-    {"@type": "Question", "name": "Можно ли развестись онлайн?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Без детей — через ЗАГС онлайн на Госуслугах. С детьми — участие в заседании по видеоконференции или представитель по нотариальной доверенности."}},
+    {"@type": "Question", "name": "Можно ли развестись онлайн?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Без детей: через ЗАГС онлайн на Госуслугах. С детьми: участие в заседании по видеоконференции или представитель по нотариальной доверенности."}},
     {"@type": "Question", "name": "Нужен ли брачный договор?", "acceptedAnswer": {"@type": "Answer", "text": "Стоит оформить, если есть квартира, бизнес, крупные вклады или наследство. Договор определяет, что останется личным при разводе. Составление от 4 000 ₽."}}
   ]
 }
@@ -126,7 +141,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Серко Иван Иванович — Юрист онлайн",
+  "name": "Серко Иван Иванович: Юрист онлайн",
   "url": "https://серко.рф",
   "logo": "https://серко.рф/my-photo.jpg",
   "sameAs": [
@@ -145,7 +160,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Серко Иван Иванович — Юрист онлайн",
+  "name": "Серко Иван Иванович: Юрист онлайн",
   "url": "https://серко.рф",
   "description": "Юрист по алиментам, разводам и разделу имущества. Консультация 2000 рублей. Работаю онлайн по всей России.",
   "inLanguage": "ru-RU"
@@ -155,7 +170,7 @@
 <body>
     <div class="header">
         <h1>💔 Юрист по разводам</h1>
-        <p>Развод через ЗАГС и суд, с детьми и имуществом. Консультация — <strong>2 000 ₽</strong>. Работаю онлайн по всей России.</p>
+        <p>Развод через ЗАГС и суд, с детьми и имуществом. Консультация: <strong>2 000 ₽</strong>. Работаю онлайн по всей России.</p>
         <div style="margin-top:20px;">
             <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=razvod_landing" class="btn" target="_blank" rel="noopener noreferrer">💬 Написать в MAX</a>
             <a href="https://t.me/BYIvanko" class="btn btn-telegram" target="_blank" rel="noopener noreferrer">✈️ Telegram</a>
@@ -163,32 +178,43 @@
     </div>
 
     <div class="container">
+        <div class="lawyer-hero">
+            <div class="lawyer-photo"><img src="/my-photo.jpg" alt="Серко Иван Иванович, семейный юрист"></div>
+            <div class="lawyer-info">
+                <div class="lawyer-name">Серко Иван Иванович</div>
+                <div class="lawyer-role">Семейный юрист · не адвокат · самозанятый</div>
+                <div class="lawyer-badges"><span>127+ решённых дел</span><span>Работа онлайн</span><span>Договор и чек</span></div>
+                <p class="lawyer-text">Веду каждое дело лично: от бесплатной оценки ситуации до исполнения решения суда. <b>Первая оценка дела бесплатно, за 5–10 минут в чате.</b></p>
+                <a href="https://max.ru/u/f9LHodD0cOKLQaqrbDh7KzCMyA51SDd-Ot0J6I2Q-i4Cy4nlitDD6GeCYL0?utm_source=direct&utm_medium=cpc&utm_campaign=razvod_landing" class="btn" target="_blank" rel="noopener noreferrer">Разобрать мою ситуацию</a>
+            </div>
+        </div>
+
         <div class="section">
             <h2>📋 Услуги по разводу</h2>
             <ul>
-                <li><strong>Развод через ЗАГС</strong> — без детей, по согласию обоих супругов. Срок — 1 месяц.</li>
-                <li><strong>Развод через суд</strong> — с детьми, без согласия, имущественные споры. Срок — 2–12 месяцев.</li>
-                <li><strong>Раздел имущества</strong> — квартира, машина, вклады, кредиты. Честно и по закону (ст. 34 СК РФ).</li>
-                <li><strong>Брачный договор</strong> — защита имущества до и во время брака. От 4 000 ₽.</li>
-                <li><strong>Место жительства детей</strong> — определение, с кем остаются дети после развода.</li>
-                <li><strong>Порядок общения с ребёнком</strong> — график встреч для второго родителя.</li>
-                <li><strong>Алименты при разводе</strong> — взыскание на содержание детей и бывшего супруга.</li>
-                <li><strong>Раздел квартиры и ипотеки</strong> — оценка, доли, выкуп, рефинансирование кредита.</li>
-                <li><strong>Лишение и ограничение родительских прав</strong> — если ребёнку грозит опасность.</li>
-                <li><strong>Установление отцовства</strong> — в судебном порядке, с ДНК-экспертизой.</li>
+                <li><strong>Развод через ЗАГС:</strong> без детей, по согласию обоих супругов. Срок: 1 месяц.</li>
+                <li><strong>Развод через суд:</strong> с детьми, без согласия, имущественные споры. Срок: 2–12 месяцев.</li>
+                <li><strong>Раздел имущества:</strong> квартира, машина, вклады, кредиты. Честно и по закону (ст. 34 СК РФ).</li>
+                <li><strong>Брачный договор:</strong> защита имущества до и во время брака. От 4 000 ₽.</li>
+                <li><strong>Место жительства детей:</strong> определение, с кем остаются дети после развода.</li>
+                <li><strong>Порядок общения с ребёнком:</strong> график встреч для второго родителя.</li>
+                <li><strong>Алименты при разводе:</strong> взыскание на содержание детей и бывшего супруга.</li>
+                <li><strong>Раздел квартиры и ипотеки:</strong> оценка, доли, выкуп, рефинансирование кредита.</li>
+                <li><strong>Лишение и ограничение родительских прав:</strong> если ребёнку грозит опасность.</li>
+                <li><strong>Установление отцовства:</strong> в судебном порядке, с ДНК-экспертизой.</li>
             </ul>
-            <div class="price-tag">Консультация — 2 000 ₽</div>
+            <div class="price-tag">Консультация: 2 000 ₽</div>
         </div>
 
         <div class="section">
             <h2>🏆 Решённые дела</h2>
             <div class="case-card">
                 <div class="case-sum">320 000 ₽</div>
-                <div class="case-desc">Сохранил квартиру при разводе. Жена требовала половину, хотя квартира куплена до брака. Нашёл документы, доказал в суде — квартира осталась клиенту. <em>— Дмитрий Сергеевич</em></div>
+                <div class="case-desc">Сохранил квартиру при разводе. Жена требовала половину, хотя квартира куплена до брака. Нашёл документы, доказал в суде: квартира осталась клиенту. <em>Дмитрий Сергеевич</em></div>
             </div>
             <div class="case-card">
                 <div class="case-sum">95 000 ₽</div>
-                <div class="case-desc">Защитил бизнес перед вторым браком. Составил брачный договор, всё чётко расписали. Нотариус заверил. <em>— Мария Игоревна</em></div>
+                <div class="case-desc">Защитил бизнес перед вторым браком. Составил брачный договор, всё чётко расписали. Нотариус заверил. <em>Мария Игоревна</em></div>
             </div>
         </div>
 
@@ -196,11 +222,11 @@
             <h2>❓ Частые вопросы</h2>
             <div class="faq-item">
                 <div class="faq-q">Можно ли развестись онлайн без присутствия в суде?</div>
-                <div class="faq-a">Без детей — через ЗАГС онлайн на Госуслугах. С детьми — через суд, но можно участвовать удалённо через видеоконференцию или доверить представление юристу по нотариальной доверенности.</div>
+                <div class="faq-a">Без детей: через ЗАГС онлайн на Госуслугах. С детьми: через суд, но можно участвовать удалённо через видеоконференцию или доверить представление юристу по нотариальной доверенности.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q">Сколько времени занимает развод через суд?</div>
-                <div class="faq-a">При отсутствии споров — от 2 до 4 месяцев. Если есть споры об имуществе или детях — от 6 до 12 месяцев. Срок зависит от загруженности суда и готовности сторон к компромиссам.</div>
+                <div class="faq-a">При отсутствии споров: от 2 до 4 месяцев. Если есть споры об имуществе или детях: от 6 до 12 месяцев. Срок зависит от загруженности суда и готовности сторон к компромиссам.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q">Как делится ипотечная квартира при разводе?</div>
@@ -208,11 +234,11 @@
             </div>
             <div class="faq-item">
                 <div class="faq-q">Нужен ли брачный договор, если нет детей?</div>
-                <div class="faq-a">Брачный договор полезен в любом браке — он защищает имущество, нажитое до брака, бизнес, наследство и инвестиции. Стоимость составления от 4 000 ₽, нотариальное удостоверение — дополнительно.</div>
+                <div class="faq-a">Брачный договор полезен в любом браке: он защищает имущество, нажитое до брака, бизнес, наследство и инвестиции. Стоимость составления от 4 000 ₽, нотариальное удостоверение оплачивается отдельно.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q">Сколько стоит и сколько длится развод через суд?</div>
-                <div class="faq-a">Госпошлина — 5 000 ₽, моё сопровождение — от 7 000 ₽. Без споров развод занимает 2–4 месяца (с обязательной отсрочкой минимум месяц), со спорами — 6–12 месяцев.</div>
+                <div class="faq-a">Госпошлина: 5 000 ₽, моё сопровождение: от 7 000 ₽. Без споров развод занимает 2–4 месяца (с обязательной отсрочкой минимум месяц), со спорами: 6–12 месяцев.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-q">Что делать, если супруг против развода?</div>
@@ -234,71 +260,22 @@
         <div class="panel-footer-bar" style="width:100%;margin-top:40px;padding-top:18px;border-top:1px solid rgba(200,160,100,0.2);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 10px;font-size:0.8em;color:rgba(230,210,185,0.88);text-align:center;">
         <span><a href="/" style="color:rgba(255,215,100,0.85);text-decoration:none;">Главная</a></span>
         <span style="color:rgba(200,175,150,0.25);">·</span>
-        <span><a href="faq.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">FAQ</a></span>
+        <span><a href="/alimenty.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Алименты</a></span>
         <span style="color:rgba(200,175,150,0.25);">·</span>
-        <span><a href="about.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">О юристе</a></span>
+        <span><a href="/faq.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">FAQ</a></span>
         <span style="color:rgba(200,175,150,0.25);">·</span>
-        <span><a href="privacy.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Политика конфиденциальности</a></span>
+        <span><a href="/about.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">О юристе</a></span>
         <span style="color:rgba(200,175,150,0.25);">·</span>
-        <span><a href="offer.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Договор оферты</a></span>
+        <span><a href="/москва/" style="color:rgba(230,210,185,0.85);text-decoration:none;">Москва</a></span>
         <span style="color:rgba(200,175,150,0.25);">·</span>
-        <span><a href="consent.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Согласие на обработку данных</a></span>
+        <span><a href="/privacy.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Политика конфиденциальности</a></span>
+        <span style="color:rgba(200,175,150,0.25);">·</span>
+        <span><a href="/offer.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Договор оферты</a></span>
+        <span style="color:rgba(200,175,150,0.25);">·</span>
+        <span><a href="/consent.html" style="color:rgba(230,210,185,0.85);text-decoration:none;">Согласие на обработку данных</a></span>
         <span style="color:rgba(200,175,150,0.25);">·</span>
         <span>© 2026 Серко Иван Иванович · ИНН 500918804320</span>
     </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            const COOKIE_KEY = 'serko_cookie_consent';
-            const cookieBannerEl = document.getElementById('cookieBanner');
-            var cookieShown = false;
-
-            function getCookie(name) {
-                const value = '; ' + document.cookie;
-                const parts = value.split('; ' + name + '=');
-                if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
-                return null;
-            }
-
-            function setCookie(name, value, days) {
-                const expires = new Date(Date.now() + days * 864e5).toUTCString();
-                document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
-            }
-
-            const alreadyDecided = getCookie(COOKIE_KEY);
-
-            function showCookieBanner() {
-                if (alreadyDecided) return;
-                if (cookieBannerEl && !cookieShown) {
-                    cookieShown = true;
-                    cookieBannerEl.classList.add('visible');
-                    setTimeout(function(){
-                        if (cookieBannerEl && cookieBannerEl.classList.contains('visible')) {
-                            cookieBannerEl.classList.remove('visible');
-                        }
-                    }, 10000);
-                }
-            }
-
-            const cookieAcceptBtn = document.getElementById('cookieAccept');
-            if (cookieAcceptBtn) {
-                cookieAcceptBtn.addEventListener('click', function(){
-                    setCookie(COOKIE_KEY, 'accepted', 365);
-                    if (cookieBannerEl) cookieBannerEl.classList.remove('visible');
-                });
-            }
-
-            const cookieDeclineBtn = document.getElementById('cookieDecline');
-            if (cookieDeclineBtn) {
-                cookieDeclineBtn.addEventListener('click', function(){
-                    setCookie(COOKIE_KEY, 'declined', 365);
-                    if (cookieBannerEl) cookieBannerEl.classList.remove('visible');
-                });
-            }
-
-            setTimeout(showCookieBanner, 1500);
-        });
-    </script>
 </body>
 </html>
