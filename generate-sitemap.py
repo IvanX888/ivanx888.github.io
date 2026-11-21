@@ -70,12 +70,26 @@ def generate():
             if img_info.get("caption"):
                 SubElement(img, "image:caption").text = img_info["caption"]
 
-    # Добавляем sitemap блога
+    # Добавляем sitemap блога: индекс и посты
+    BLOG_POSTS = [
+        ("regulirovanie-iskusstvennogo-intellekta.html", "2026-11-21"),
+        ("babuschka-ili-babka-yazyk-prava.html",         "2026-09-08"),
+        ("alimenty-na-rebenka.html",                     "2026-08-31"),
+        ("kak-vyselit-devushku.html",                    "2026-08-30"),
+    ]
+
     url = SubElement(urlset, "url")
     SubElement(url, "loc").text = f"{BASE_URL}/legal-blog/"
     SubElement(url, "lastmod").text = datetime.now().strftime("%Y-%m-%d")
-    SubElement(url, "changefreq").text = "daily"
+    SubElement(url, "changefreq").text = "weekly"
     SubElement(url, "priority").text = "0.9"
+
+    for post, lastmod in BLOG_POSTS:
+        url = SubElement(urlset, "url")
+        SubElement(url, "loc").text = f"{BASE_URL}/legal-blog/{post}"
+        SubElement(url, "lastmod").text = lastmod
+        SubElement(url, "changefreq").text = "monthly"
+        SubElement(url, "priority").text = "0.8"
 
     xml_str = parseString(tostring(urlset, encoding="unicode")).toprettyxml(indent="  ")
     # Убираем лишние пустые строки от minidom
